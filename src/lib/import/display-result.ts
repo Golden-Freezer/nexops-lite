@@ -6,6 +6,7 @@ export interface ImportDisplayResult {
   success: number
   error: number
   errors: string[]
+  warnings: string[]
 }
 
 function getFailureMessage(error: unknown): string {
@@ -28,6 +29,7 @@ export function toImportDisplayResult(
       success: 0,
       error: 1,
       errors: [getFailureMessage(failure)],
+      warnings: [],
     }
   }
 
@@ -37,6 +39,7 @@ export function toImportDisplayResult(
     success: result.successCount,
     error: result.errorCount,
     errors: result.errors.map((error) => error.message).slice(0, 3),
+    warnings: result.warnings?.slice(0, 3) ?? [],
   }
 }
 

@@ -238,6 +238,25 @@ export async function runImport(supabase: any, params: RunImportParams): Promise
       }
     }
 
+    // 라이트판: 판매 통계의 노출상품ID로 비어 있는 상품 노출ID를 채운다
+    // (광고 보고서 → 주력상품 연결이 노출ID로 상품을 묶기 때문)
+    const exposureByOption = new Map<string, string>()
+    for (const r of rows) {
+      const optionId = String(r.option_id || '').trim()
+      const exposureId = String(r.coupang_product_id || '').trim()
+      if (optionId && exposureId && exposureId !== 'TOTAL') exposureByOption.set(optionId, exposureId)
+    }
+    for (const [optionId, exposureId] of exposureByOption) {
+      const matched = productMap.get(optionId)
+      if (!matched) continue
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await (supabase as any)
+        .from('products')
+        .update({ coupang_exposure_id: exposureId })
+        .eq('id', matched.id)
+        .is('coupang_exposure_id', null)
+    }
+
     // 이동평균 원가 조회 (SSOT — inventory_state.avg_cost_krw)
     const avgCostMap = new Map<string, number>()
     const productIdsMatched = [...new Set([...productMap.values()].map((p) => p.id))]

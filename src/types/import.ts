@@ -1,6 +1,13 @@
 // 엑셀 임포트 관련 타입
 
-export type ImportType = 'sales' | 'inventory_health' | 'ad_billing' | 'ledger' | 'product' | 'purchase'
+export type ImportType =
+  | 'sales'
+  | 'inventory_health'
+  | 'ad_billing'
+  | 'ad_report'
+  | 'ledger'
+  | 'product'
+  | 'purchase'
 
 export interface ImportBatch {
   id: string
@@ -38,6 +45,9 @@ export interface ImportResult {
   updatedCount?: number
   invalidStatusCount?: number // 허용값 외 판매상태 → 필드 무시
   ignoredColumns?: string[] // 파일에 있었지만 매핑되지 않아 무시된 컬럼
+  focusProductCount?: number
+  campaignCount?: number
+  warnings?: string[]
 }
 
 export interface ImportError {
@@ -153,6 +163,27 @@ export const IMPORT_CONFIGS: Record<ImportType, ImportConfig> = {
       '노출수': 'impressions',
       '클릭수': 'clicks',
       '전환수': 'conversions',
+    },
+  },
+  ad_report: {
+    type: 'ad_report',
+    headerRow: 0,
+    requiredColumns: ['캠페인 ID', '광고집행 옵션ID'],
+    columnMapping: {
+      '캠페인 ID': 'campaign_id',
+      '캠페인명': 'campaign_name',
+      '광고집행 상품명': 'advertised_product_name',
+      '광고집행 옵션ID': 'advertised_option_id',
+      '날짜': 'metric_date',
+      '일자': 'metric_date',
+      '노출수': 'impressions',
+      '클릭수': 'clicks',
+      '광고비': 'delivered_ad_cost',
+      '총 주문수(1일)': 'ad_attributed_orders',
+      '총 판매수량(1일)': 'ad_attributed_units',
+      '총 전환매출액(1일)': 'ad_attributed_sales',
+      '캠페인 시작일': 'campaign_start_date',
+      '캠페인 종료일': 'campaign_end_date',
     },
   },
   purchase: {

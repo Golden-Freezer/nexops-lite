@@ -81,6 +81,14 @@ const TYPE_CONFIG: Record<
     bg: "bg-purple-50 border-purple-200",
     dot: "bg-purple-500",
   },
+  ad_report: {
+    label: "광고 보고서",
+    desc: "매출 성장 광고 보고서",
+    icon: BarChart3,
+    color: "text-fuchsia-700",
+    bg: "bg-fuchsia-50 border-fuchsia-200",
+    dot: "bg-fuchsia-500",
+  },
   ledger: {
     label: "판매장부",
     desc: "그로스판매장부 (전체)",
@@ -111,6 +119,7 @@ const MANUAL_TYPES: ImportType[] = [
   "sales",
   "inventory_health",
   "ad_billing",
+  "ad_report",
   "ledger",
   "product",
   "purchase",
@@ -554,6 +563,7 @@ export default function ImportPage() {
       "sales",
       "inventory_health",
       "ad_billing",
+      "ad_report",
       "ledger",
       "product",
       "purchase",
@@ -607,6 +617,8 @@ export default function ImportPage() {
                   <span className="font-mono">inventory_health_*</span> (재고)
                   <span className="text-blue-300">|</span>
                   <span className="font-mono">dailySettlement-*</span> (광고)
+                  <span className="text-blue-300">|</span>
+                  <span className="font-mono">pa_total_campaign_*</span> (광고 보고서)
                   <span className="text-blue-300">|</span>
                   <span className="font-mono">DB_구매</span> (매입)
                 </p>
@@ -862,6 +874,15 @@ export default function ImportPage() {
                         ))}
                       </ul>
                     )}
+                    {r.warnings.length > 0 && (
+                      <ul className="mt-1 space-y-0.5">
+                        {r.warnings.map((warning, j) => (
+                          <li key={j} className="text-[10px] text-amber-600">
+                            {warning}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
               ))}
@@ -898,6 +919,8 @@ export default function ImportPage() {
                       "파일명: inventory_health_sku_info_날짜.xlsx"}
                     {type === "ad_billing" &&
                       "파일명: A*-dailySettlement-날짜-날짜.xlsx"}
+                    {type === "ad_report" &&
+                      "파일명: A*_pa_total_campaign_날짜_날짜.xlsx"}
                     {type === "ledger" && "파일명: *그로스판매장부*.xlsx"}
                     {type === "product" && "파일명: 01_상품.xlsx"}
                     {type === "purchase" &&
