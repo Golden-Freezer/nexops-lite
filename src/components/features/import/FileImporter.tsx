@@ -21,6 +21,10 @@ const IMPORT_LABELS: Record<ImportType, { title: string; description: string }> 
     title: '광고 정산 (dailySettlement)',
     description: '쿠팡윙 > 광고 > 일별 정산에서 다운로드한 xlsx 파일 (다중 선택 가능)',
   },
+  ad_report: {
+    title: '광고 보고서 (매출 성장 광고 보고서)',
+    description: '쿠팡 광고센터에서 다운로드한 pa_total_campaign xlsx 파일',
+  },
   ledger: {
     title: '판매장부 (전체)',
     description: '그로스판매장부 xlsx 파일 (21개 시트)',
@@ -360,6 +364,11 @@ export function FileImporter({ importType, onComplete }: FileImporterProps) {
                 {result.errors.length > 5 && (
                   <li className="text-slate-400">... 외 {result.errors.length - 5}건</li>
                 )}
+              </ul>
+            )}
+            {result.warnings && result.warnings.length > 0 && (
+              <ul className="mt-2 space-y-1 text-xs text-amber-700">
+                {result.warnings.map((warning) => <li key={warning}>{warning}</li>)}
               </ul>
             )}
           </div>

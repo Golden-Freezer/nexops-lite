@@ -33,6 +33,47 @@ export interface ProductPreview {
   sampleRows: { rowIndex: number; optionId: string; isNew: boolean; data: Record<string, unknown> }[]
 }
 
+interface FileImportResponse {
+  ok: boolean
+  inserted: number
+  updated: number
+  skipped: number
+  errors: string[]
+  focusProducts?: number
+  campaigns?: number
+  warnings?: string[]
+  error?: string
+}
+
+async function submitRawFile(file: File): Promise<ImportResult> {
+  const formData = new FormData()
+  formData.append('file', file)
+  const response = await apiFetch('/api/import/file', {
+    method: 'POST',
+    body: formData,
+  })
+  const body = await response.json().catch(() => ({})) as Partial<FileImportResponse>
+  if (!response.ok) throw new Error(body.error || '파일 임포트 실패')
+
+  const inserted = body.inserted ?? 0
+  const updated = body.updated ?? 0
+  const skipped = body.skipped ?? 0
+  const errors = Array.isArray(body.errors) ? body.errors : []
+  return {
+    batchId: `file:${file.name}`,
+    totalRows: inserted + updated + skipped,
+    successCount: inserted + updated,
+    errorCount: errors.length,
+    skippedCount: skipped,
+    errors: errors.map((message) => ({ row: 0, message })),
+    insertedCount: inserted,
+    updatedCount: updated,
+    focusProductCount: body.focusProducts,
+    campaignCount: body.campaigns,
+    warnings: body.warnings,
+  }
+}
+
 export function useImport() {
   const { settings } = useBusinessSettings()
   const [importing, setImporting] = useState(false)
@@ -47,6 +88,8 @@ export function useImport() {
     file: File,
     importType: ImportType
   ): Promise<ImportResult> => {
+    if (importType === 'ad_report') return submitRawFile(file)
+
     const buffer = await file.arrayBuffer()
     // 파싱·매핑·검증·날짜 상속은 서버 자동 임포트(/api/import/auto)와 공용 (assemble.ts)
     const config = resolveImportConfig(importType, settings?.importColumnMappings)
@@ -191,6 +234,7 @@ export function useImport() {
     let totalSkipped = 0
     let totalRows = 0
     const allErrors: ImportResult['errors'] = []
+    const allWarnings: string[] = []
     const allSkippedReasons: Record<string, number> = {}
     let totalMerged = 0
     let fallbackAgg: ImportResult['fallbackApplied'] | undefined
@@ -214,6 +258,7 @@ export function useImport() {
         totalSkipped += res.skippedCount
         totalRows += res.totalRows
         allErrors.push(...res.errors)
+        if (res.warnings) allWarnings.push(...res.warnings)
         if (res.skippedReasons) {
           for (const [reason, count] of Object.entries(res.skippedReasons)) {
             allSkippedReasons[reason] = (allSkippedReasons[reason] || 0) + count
@@ -251,6 +296,7 @@ export function useImport() {
       errorCount: totalError,
       skippedCount: totalSkipped,
       errors: allErrors.slice(0, 20),
+      warnings: allWarnings.slice(0, 20),
       skippedReasons: Object.keys(allSkippedReasons).length > 0 ? allSkippedReasons : undefined,
       mergedCount: totalMerged || undefined,
       ...(fallbackAgg ? { fallbackApplied: fallbackAgg, unmatchedOptions: unmatchedAgg } : {}),
