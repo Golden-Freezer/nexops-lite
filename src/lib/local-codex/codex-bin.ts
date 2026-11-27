@@ -105,6 +105,7 @@ function runOnce(
     let timedOut = false
     let settled = false
     let graceTimer: ReturnType<typeof setTimeout> | undefined
+    // eslint-disable-next-line prefer-const -- finish()가 먼저 선언되어 참조하므로 나중에 대입한다
     let timer: ReturnType<typeof setTimeout> | undefined
 
     const finish = (result: Pick<CodexRunResult, 'exitCode' | 'spawnError' | 'killUnconfirmed'>) => {
