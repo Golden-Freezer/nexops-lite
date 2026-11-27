@@ -11,6 +11,7 @@
 | "광고 보고서 올려 줘" / "주력상품 갱신" | 대표님이 광고센터 ▶ 광고 보고서 ▶ 매출 성장 광고 보고서에서 받은 `*_pa_total_campaign_*.xlsx`를 `장부받기/받은파일`에 두게 하고 `npm run ledger -- --올리기만 장부받기/받은파일` |
 | "상세페이지 만들어 줘" / "대표이미지 만들어 줘" | `npm run dev` 실행 → http://localhost:3000/registration/detail-page (또는 /registration/thumbnail) 을 열게 안내. 만들기는 이 PC에서만 된다(Vercel 주소에서는 보기·고치기만) |
 | "배포해 줘" | 아래 '처음 배포' 순서 |
+| "내 PC 준비해 줘" / "사전 과제 해 줘" | `docs/시작하기.md`의 'AI가 하는 순서'(Node.js·Git·Vercel 설치·로그인, 레포 복사, 바탕화면으로 받기, 부품 설치) |
 
 ## 처음 배포
 `docs/배포.md`의 '2. AI가 하는 순서'를 그대로 따른다(2026-11-27 실제 시험 통과 순서). Supabase·Vercel 모두 CLI로 하고, 대표님은 브라우저 로그인·허용만 한다. 비밀번호·키 값은 화면에 출력하지 않고 `.env.local`·`장부받기/`(둘 다 .gitignore)에만 둔다.
