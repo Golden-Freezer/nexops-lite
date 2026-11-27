@@ -5,9 +5,8 @@
  * callAgent 배선만(CLAUDE.md AI 호출/순수 로직 분리 원칙 — 오케스트레이션은 lib/registration/pdp-image-stage.ts 소관).
  */
 
-import type Anthropic from '@anthropic-ai/sdk'
 import type { AgentConfig, RunContext } from '../types'
-import { callAgent } from '../_base'
+import { callAgent, type ImageBlockParam } from '../_base'
 import { parseLlmJson } from '../json-parser'
 import {
   buildVisionGatePrompt,
@@ -21,7 +20,7 @@ import type { VisionImage } from './thumbnail-vision-agent'
 const IDENTITY_CONFIG: AgentConfig = { model: 'claude-sonnet-5', maxTokens: 200, disableThinking: true }
 const GATE_CONFIG: AgentConfig = { model: 'claude-sonnet-5', maxTokens: 500, disableThinking: true }
 
-function imageBlock(image: VisionImage): Anthropic.ImageBlockParam {
+function imageBlock(image: VisionImage): ImageBlockParam {
   return { type: 'image', source: { type: 'base64', media_type: image.mediaType, data: image.data } }
 }
 

@@ -21,6 +21,7 @@ import { ImageModelSelect } from './ImageModelSelect'
 import { PdpFormPro } from './PdpFormPro'
 import { PdpFormProductInfo } from './PdpFormProductInfo'
 import { SectionTitle } from './PdpFormFields'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
 // POST /api/registration/pdp의 검증 상한과 공유하는 SSOT — pdp-state.ts에서 임포트한다.
 const MAX_SOURCE_IMAGES = PDP_MAX_SOURCE_IMAGES
@@ -39,6 +40,7 @@ interface DraftLoad {
 }
 
 export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (jobId: string) => void }) {
+  const localCodexAvailable = useLocalCodexAvailable()
   const [mode, setMode] = useState<PdpMode>('pro')
   const [track, setTrack] = useState<GenerationTrack>('standard')
   const [spec, setSpec] = useState<PdpSpecSheet>({ productName: '' })
@@ -121,6 +123,10 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
   }
 
   async function submit() {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     if (!spec.productName.trim()) {
       setError('상품명을 입력하세요.')
       return
@@ -275,7 +281,8 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
 
       <button
         onClick={submit}
-        disabled={busy}
+        disabled={!localCodexAvailable || busy}
+        title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
         className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs px-4 py-2 rounded-full bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50"
       >
         {busy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5" />}

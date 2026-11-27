@@ -85,16 +85,13 @@ export interface GenImageInput {
  * 미등록 조합은 최고 단가로 계상한다(과소 계상 방지 — NEXFIT models.py 관례).
  */
 export const IMAGE_COST_USD: Record<ImageModel, Partial<Record<ImageQuality, number>>> = {
-  'gpt-image-2': { medium: 0.053, high: 0.211 },
-  'gemini-3-pro-image': { low: 0.134, medium: 0.134, high: 0.134 },
-  // NEXFIT cost_tracking.py:40 공식 1024px 단가 — quality 파라미터 없음(flat)
-  'gemini-3.1-flash-image': { low: 0.067, medium: 0.067, high: 0.067 },
+  'gpt-image-2': { low: 0, medium: 0, high: 0 },
+  'gemini-3-pro-image': { low: 0, medium: 0, high: 0 },
+  'gemini-3.1-flash-image': { low: 0, medium: 0, high: 0 },
 }
 
-export function estimateImageCostUsd(model: ImageModel, quality: ImageQuality): number {
-  const known = IMAGE_COST_USD[model][quality]
-  if (known !== undefined) return known
-  return Math.max(...Object.values(IMAGE_COST_USD[model]).filter((v): v is number => v !== undefined))
+export function estimateImageCostUsd(_model: ImageModel, _quality: ImageQuality): number {
+  return 0
 }
 
 export interface GenImageResult {

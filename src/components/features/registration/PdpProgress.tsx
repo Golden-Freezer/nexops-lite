@@ -11,6 +11,7 @@ import { Check, Loader2, RotateCcw } from 'lucide-react'
 import type { PdpJobRow } from '@/lib/registration/pdp-state'
 import { PDP_STEP_PROGRESS, stripStepFailurePrefix } from '@/lib/registration/pdp-state'
 import { PDP_STATUS_LABELS, PDP_UI_STEPS, PDP_STEP_LABELS, pdpApi } from '@/lib/registration/pdp-client'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
 // 순수 상한 고정값으로는 이미지 단계(장당 run 1회)가 완주 전에 잘릴 수 있다 — 최악 경로(단계당
 // 재시도 + Pro 20여 장 이미지)를 감안한 절대 상한. 실제 종료는 아래 스톨 감지가 대부분 담당한다.
@@ -23,6 +24,7 @@ export function PdpProgress({
   jobId: string
   onJobChange?: (job: PdpJobRow) => void
 }) {
+  const localCodexAvailable = useLocalCodexAvailable()
   const [job, setJob] = useState<PdpJobRow | null>(null)
   const [running, setRunning] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -36,6 +38,10 @@ export function PdpProgress({
   }, [])
 
   const drive = useCallback(async () => {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     setRunning(true)
     setError(null)
     try {
@@ -61,7 +67,7 @@ export function PdpProgress({
     } finally {
       if (aliveRef.current) setRunning(false)
     }
-  }, [jobId, onJobChange])
+  }, [jobId, onJobChange, localCodexAvailable])
 
   // 탭 재진입 시 GET으로 복원 후, 미완료 잡이면 이어서 run
   useEffect(() => {
@@ -71,14 +77,15 @@ export function PdpProgress({
         if (cancelled) return
         setJob(loaded)
         onJobChange?.(loaded)
-        if (loaded.current_step !== 'done' && loaded.current_step !== 'failed') void drive()
+        if (localCodexAvailable && loaded.current_step !== 'done' && loaded.current_step !== 'failed') void drive()
       })
       .catch((e) => !cancelled && setError(e instanceof Error ? e.message : '잡 로드 실패'))
     return () => {
       cancelled = true
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- jobId 변경 시에만 재실행, drive는 jobId에 종속
-  }, [jobId])
+    // localCodexAvailable은 hydration 뒤 확정되므로 localhost에서 한 번 더 복원해 자동 실행한다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- onJobChange 변경은 잡 재실행 사유가 아님
+  }, [jobId, localCodexAvailable])
 
   if (!job) {
     return (
@@ -164,7 +171,8 @@ export function PdpProgress({
           </div>
           <button
             onClick={() => void drive()}
-            disabled={running}
+            disabled={!localCodexAvailable || running}
+            title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
             className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-white disabled:opacity-50 ${
               failed ? 'bg-danger-500 hover:bg-danger-600' : 'bg-warning-500 hover:bg-warning-600'
             }`}

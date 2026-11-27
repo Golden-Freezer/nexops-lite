@@ -17,6 +17,7 @@ import {
 } from '@/lib/registration/thumbnail-types'
 import { ImageModelSelect } from './ImageModelSelect'
 import { ThumbnailResults } from './ThumbnailResults'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
 const STATUS_LABELS: Record<string, string> = {
   pending: '대기',
@@ -35,6 +36,7 @@ async function api<T>(url: string, init?: RequestInit): Promise<T> {
 }
 
 export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; resumeJobId?: string }) {
+  const localCodexAvailable = useLocalCodexAvailable()
   const [sourceUrls, setSourceUrls] = useState<string[]>([])
   const [productName, setProductName] = useState('')
   const [categoryHint, setCategoryHint] = useState('')
@@ -86,6 +88,10 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
 
   // run 드라이버 — done/failed까지 순차 호출 (2초 간격은 불필요: run 자체가 스텝 완료까지 대기)
   const drive = useCallback(async (jobId: string) => {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     setRunning(true)
     setError(null)
     try {
@@ -103,7 +109,7 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
     } finally {
       if (aliveRef.current) setRunning(false)
     }
-  }, [])
+  }, [localCodexAvailable])
 
   // 재개 모드 — 히스토리에서 진입 (?jobId=)
   useEffect(() => {
@@ -116,10 +122,10 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
         setQuality(loaded.imageQuality === 'high' ? 'high' : 'medium')
         if (loaded.productName) setProductName(loaded.productName)
         setSourceUrls(loaded.sourceImages)
-        if (loaded.status !== 'done' && loaded.status !== 'failed') void drive(loaded.id)
+        if (localCodexAvailable && loaded.status !== 'done' && loaded.status !== 'failed') void drive(loaded.id)
       })
       .catch((e) => setError(e instanceof Error ? e.message : '잡 로드 실패'))
-  }, [resumeJobId, drive])
+  }, [resumeJobId, drive, localCodexAvailable])
 
   async function uploadFiles(files: FileList | null) {
     if (!files || files.length === 0) return
@@ -145,6 +151,10 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
   }
 
   async function start() {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     setError(null)
     setJob(null)
     try {
@@ -265,7 +275,8 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
         />
         <button
           onClick={start}
-          disabled={running || uploading || sourceUrls.length === 0}
+          disabled={!localCodexAvailable || running || uploading || sourceUrls.length === 0}
+          title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
           className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs px-4 py-2 rounded-full bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50"
         >
           {running ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5" />}
