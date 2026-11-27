@@ -18,6 +18,7 @@ export interface UspIconAsset {
   title: string
   keywords: string[]
   url: string
+  storagePath: string
 }
 
 export interface UspIconManifest {
@@ -30,8 +31,8 @@ export function iconLibraryPrefix(userId: string): string {
 }
 
 /**
- * 카탈로그 → 실사용 라이브러리. 스토리지 업로드는 생성 스크립트가 보장(카탈로그와 1:1) —
- * 개별 존재 확인 왕복은 하지 않는다. env 미설정(테스트 등)이면 null(우아한 생략 → 폴백 생성).
+ * 카탈로그 → 후보 라이브러리. 실제 스토리지 객체 존재 확인은 pdp-image-stage가 URL 기록 직전에 한다.
+ * env 미설정(테스트 등)이면 null(우아한 생략 → 폴백 생성).
  */
 export function getUspIconLibrary(userId: string): UspIconManifest | null {
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -44,6 +45,7 @@ export function getUspIconLibrary(userId: string): UspIconManifest | null {
       title: c.title,
       keywords: c.keywords,
       url: `${prefix}/${c.slug}.png`,
+      storagePath: `${iconLibraryPrefix(userId)}/${c.slug}.png`,
     })),
   }
 }

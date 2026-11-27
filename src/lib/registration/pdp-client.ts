@@ -32,6 +32,7 @@ export const PDP_STATUS_LABELS: Record<PdpStep, string> = {
   design: '섹션 디자인 중',
   copywriting: '카피라이팅 중',
   images: '이미지 생성 중',
+  waiting_rate_limit: '이미지 한도 대기 중',
   compose: '합성 중',
   done: '완료',
   failed: '실패',

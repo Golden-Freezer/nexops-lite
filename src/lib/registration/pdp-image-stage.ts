@@ -11,18 +11,20 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { generateImage } from '@/lib/agents/image/generate'
 import { estimateImageCostUsd } from '@/lib/agents/image/types'
+import { RateLimitedError } from '@/lib/local-codex/image'
 import type { RunContext } from '@/lib/agents/types'
 import { fetchImageAsBase64, type VisionImage } from '@/lib/agents/registration/thumbnail-vision-agent'
 import { readIdentityCard, judgeImageGate } from '@/lib/agents/registration/pdp-image-agent'
 import { buildStyleCharter, getCategoryDirective } from '@/lib/agents/registration/prompts/pdp-image-prompts'
 import { applyRegenDirective, classifyGateFailure, type GateScoreRow } from '@/lib/agents/registration/prompts/pdp-image-gate-prompts'
-import { uploadPdpImage } from './storage'
+import { pdpStorageObjectExists, uploadPdpImage } from './storage'
 import { buildImageGroundingBlock } from './corpus'
 import { buildInternalizedImageBlock } from './corpus-v2'
 import { buildAgeComplianceImageBlock } from './compliance-gate'
 import { resolveGenerationTrack } from './pdp-state'
 import { mergeManualStrategy } from './pdp-strategy-contract'
-import { buildImageTasks, allImageTasksFailed, type ImageTask } from './pdp-image-tasks'
+import { buildImageTasks, type ImageTask } from './pdp-image-tasks'
+import { calculateRateLimitRetry, getRateLimitWaitUntil } from './pdp-image-retry'
 import { getUspIconLibrary, selectUspIcon } from './usp-icon-library'
 import { updatePdpJob } from './pdp-jobs'
 import type { DesignPrompts, PdpJobRow, SectionImage } from './pdp-state'
@@ -164,6 +166,7 @@ async function generateSection(ctx: GenerateContext, task: ImageTask): Promise<{
   // 생성 자체가 성공하면 즉시 비용을 확정한다 — 이후 업로드 단계에서 실패해도(네트워크·스토리지 장애)
   // 이미 발생한 생성 비용은 보존해야 한다(§6.4, catch에서도 이 값을 그대로 반환).
   let costUsd = 0
+  const prior = ctx.sectionImages.find((section) => section.section === task.section)
   try {
     const result = await generateImage({
       prompt,
@@ -184,7 +187,22 @@ async function generateSection(ctx: GenerateContext, task: ImageTask): Promise<{
     return { entry: { section: task.section, url, prompt: task.prompt, retried: Boolean(ctx.regenScore) }, costUsd }
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e)
-    const prior = ctx.sectionImages.find((s) => s.section === task.section)
+    if (e instanceof RateLimitedError) {
+      const retry = calculateRateLimitRetry(prior?.rateLimitCount)
+      return {
+        entry: {
+          section: task.section,
+          url: prior?.url ?? '',
+          prompt: task.prompt,
+          error: message,
+          pendingRegen: true,
+          regenReason: 'rate_limit',
+          retried: prior?.retried ?? false,
+          ...retry,
+        },
+        costUsd,
+      }
+    }
     return {
       entry: { section: task.section, url: prior?.url ?? '', prompt: task.prompt, error: `${task.section} 생성 실패: ${message}`, retried: Boolean(ctx.regenScore) },
       costUsd,
@@ -220,7 +238,12 @@ async function gateAndMaybeRegen(
   }
 
   return {
-    entry: { ...entry, pendingRegen: true, error: `게이트 미달 — 재생성 대기: ${score.artifact_reason || '일관성 미달'}` },
+    entry: {
+      ...entry,
+      pendingRegen: true,
+      regenReason: 'gate',
+      error: `게이트 미달 — 재생성 대기: ${score.artifact_reason || '일관성 미달'}`,
+    },
     costUsd: gateCost,
   }
 }
@@ -240,6 +263,15 @@ export async function runImagesStep(db: SupabaseClient, userId: string, job: Pdp
     userId,
     ...(job.business_id ? { businessId: job.business_id } : {}),
     stage: 'images',
+  }
+
+  // 남은 작업이 전부 미래의 한도 재시도라면 참조 로드·식별카드·이미지 생성 모두 건너뛴다.
+  const initialWaitUntil = getRateLimitWaitUntil(tasks, sectionImages)
+  if (initialWaitUntil) {
+    return updatePdpJob(db, userId, job.id, {
+      currentStep: 'waiting_rate_limit',
+      progress: Math.max(job.progress, 75),
+    })
   }
 
   const sourceRefs = await loadValidRefs(job.source_images)
@@ -283,9 +315,11 @@ export async function runImagesStep(db: SupabaseClient, userId: string, job: Pdp
       for (const t of pendingUspTasks) {
         const idx = Number(t.section.split(':')[1] ?? '-1')
         const icon = selectUspIcon(cards[idx]?.title || '', manifest)
-        if (icon) {
+        if (icon && await pdpStorageObjectExists(db, icon.storagePath)) {
           sectionImages = upsertSectionImage(sectionImages, { section: t.section, url: icon.url, prompt: `library:${icon.slug}` })
           libraryHits++
+        } else if (icon) {
+          console.warn(`[registration/pdp-image] USP 아이콘 객체 없음 — 폴백 생성: ${icon.storagePath}`)
         }
       }
       if (libraryHits > 0) await updatePdpJob(db, userId, job.id, { sectionImages, costUsd })
@@ -308,15 +342,30 @@ export async function runImagesStep(db: SupabaseClient, userId: string, job: Pdp
   // 1) 게이트 재생성 대기 큐(이월분) 우선
   for (const pending of sectionImages.filter((e) => e.pendingRegen)) {
     if (slotsUsed >= slotBudget) break
+    const retryAt = pending.retryAfter ? Date.parse(pending.retryAfter) : Number.NaN
+    if (Number.isFinite(retryAt) && retryAt > Date.now()) continue
     const task = tasks.find((t) => t.section === pending.section)
     if (!task) continue
+    const directRetry = pending.regenReason === 'missing'
+      || pending.regenReason === 'rate_limit'
+      || pending.rateLimitCount !== undefined
+      || pending.retryAfter !== undefined
     const reasonScore: GateScoreRow = { artifact_reason: pending.error ?? '', same_product: undefined }
-    const regen = await generateSection({ ...baseCtx(), regenScore: reasonScore }, task)
-    sectionImages = upsertSectionImage(sectionImages, { ...regen.entry, pendingRegen: false })
+    const regen = await generateSection(
+      directRetry ? baseCtx() : { ...baseCtx(), regenScore: reasonScore },
+      task,
+    )
+    sectionImages = upsertSectionImage(sectionImages, regen.entry)
     costUsd += regen.costUsd
     slotsUsed++
     // 장 단위 부분 저장 — 이후 슬롯에서 504가 나도 이번 장은 잡에 남는다(§6.4).
     await updatePdpJob(db, userId, job.id, { sectionImages, costUsd })
+    if (directRetry && regen.entry.url && !regen.entry.error) {
+      const gated = await gateAndMaybeRegen(baseCtx(), task, regen.entry)
+      sectionImages = upsertSectionImage(sectionImages, gated.entry)
+      costUsd += gated.costUsd
+      await updatePdpJob(db, userId, job.id, { sectionImages, costUsd })
+    }
   }
 
   // 2) 신규 태스크(순서대로 — hero가 항상 먼저 나온다)
@@ -338,28 +387,19 @@ export async function runImagesStep(db: SupabaseClient, userId: string, job: Pdp
     }
   }
 
-  const producedCount = sectionImages.filter((e) => e.url).length
+  const producedCount = tasks.filter((task) => findSectionUrl(sectionImages, task.section)).length
   const allTasksAttempted = tasks.every((t) => sectionImages.some((e) => e.section === t.section && (e.url || e.error)))
   const noRegenPending = !sectionImages.some((e) => e.pendingRegen)
   const allDone = allTasksAttempted && noRegenPending
   const subProgress = tasks.length > 0 ? Math.round((producedCount / tasks.length) * 20) : 0
 
-  if (allImageTasksFailed(tasks, sectionImages)) {
-    // 전량 실패 — compose로 전진하면 빈 산출로 합성이 진행된다. 명시적으로 failed 전이(§6.4).
-    return updatePdpJob(db, userId, job.id, {
-      sectionImages,
-      designPrompts,
-      costUsd,
-      currentStep: 'failed',
-      error: `이미지 생성 ${tasks.length}건 전부 실패 — 섹션별 사유는 section_images[].error 참조`,
-    })
-  }
+  const waitUntil = getRateLimitWaitUntil(tasks, sectionImages)
 
   return updatePdpJob(db, userId, job.id, {
     sectionImages,
     designPrompts,
     costUsd,
-    currentStep: allDone ? 'compose' : 'images',
+    currentStep: allDone ? 'compose' : waitUntil ? 'waiting_rate_limit' : 'images',
     progress: allDone ? 95 : 75 + subProgress,
   })
 }

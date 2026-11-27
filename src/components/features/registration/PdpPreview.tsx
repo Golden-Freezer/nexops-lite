@@ -6,23 +6,63 @@
  */
 
 import { useState } from 'react'
-import { Download, PenSquare, Smartphone, Rows3 } from 'lucide-react'
+import { Download, Loader2, PenSquare, RotateCcw, Smartphone, Rows3 } from 'lucide-react'
 import { resolveGenerationTrack, stripStepFailurePrefix, type PdpJobRow } from '@/lib/registration/pdp-state'
+import { pdpApi } from '@/lib/registration/pdp-client'
 import { PdpEditorPreview } from './PdpEditorPreview'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
-export function PdpPreview({ job }: { job: PdpJobRow }) {
+export function PdpPreview({
+  job,
+  onJobChange,
+}: {
+  job: PdpJobRow
+  onJobChange?: (job: PdpJobRow) => void
+}) {
   const [mobileFrame, setMobileFrame] = useState(true)
+  const [regenerating, setRegenerating] = useState(false)
+  const [regenerateError, setRegenerateError] = useState<string | null>(null)
+  const localCodexAvailable = useLocalCodexAvailable()
   const warnings = job.copy_sections.similarity_warnings ?? []
   const track = resolveGenerationTrack(job)
   const qualityReport = job.copy_sections.quality_report
   const ageCompliance = job.copy_sections.age_compliance
+  const missingImageCount = job.section_images.filter((image) => !image.url).length
+
+  const regenerateMissing = async () => {
+    setRegenerating(true)
+    setRegenerateError(null)
+    try {
+      const { job: updated } = await pdpApi<{ job: PdpJobRow }>(
+        `/api/registration/pdp/${job.id}/regenerate-missing`,
+        { method: 'POST' },
+      )
+      onJobChange?.(updated)
+    } catch (error) {
+      setRegenerateError(error instanceof Error ? error.message : '빠진 이미지 재생성 준비 실패')
+    } finally {
+      setRegenerating(false)
+    }
+  }
 
   return (
     <div className="space-y-4">
       {/* 완료 잡이라도 경고·폴백 사유(job.error)가 남아있을 수 있다 — 유사도 배너와 별개로 항상 노출(§6.4). */}
-      {job.error && (
-        <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
-          경고: {stripStepFailurePrefix(job.error)}
+      {(job.error || missingImageCount > 0) && (
+        <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700 space-y-2">
+          <div>경고: {stripStepFailurePrefix(job.error) ?? `이미지 ${missingImageCount}장이 빠졌습니다.`}</div>
+          {missingImageCount > 0 && (
+            <button
+              onClick={() => void regenerateMissing()}
+              disabled={!localCodexAvailable || regenerating}
+              title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
+              className="inline-flex items-center gap-1.5 rounded-full bg-warning-500 px-3 py-1.5 text-xs text-white hover:bg-warning-600 disabled:opacity-50"
+            >
+              {regenerating ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <RotateCcw className="h-3.5 w-3.5" />}
+              빠진 이미지 다시 만들기
+            </button>
+          )}
+          {regenerateError && <div className="text-danger-600">{regenerateError}</div>}
         </div>
       )}
       {warnings.length > 0 && (

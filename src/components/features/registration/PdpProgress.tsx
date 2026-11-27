@@ -16,6 +16,11 @@ import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 // 순수 상한 고정값으로는 이미지 단계(장당 run 1회)가 완주 전에 잘릴 수 있다 — 최악 경로(단계당
 // 재시도 + Pro 20여 장 이미지)를 감안한 절대 상한. 실제 종료는 아래 스톨 감지가 대부분 담당한다.
 const ABSOLUTE_MAX_RUN_CALLS = 60
+const RATE_LIMIT_POLL_MS = 30_000
+
+function wait(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
 
 export function PdpProgress({
   jobId,
@@ -48,7 +53,8 @@ export function PdpProgress({
       // 스톨 감지 — 직전 응답과 (단계·section_images 수·progress)가 완전히 동일하면 더 돌려도
       // 진행되지 않는다는 뜻이므로 즉시 멈춘다(잡 상태 기반 종료, 고정 호출 수 상한 대신).
       let prevSignature: string | null = null
-      for (let i = 0; i < ABSOLUTE_MAX_RUN_CALLS && aliveRef.current; i++) {
+      let activeRunCalls = 0
+      while (activeRunCalls < ABSOLUTE_MAX_RUN_CALLS && aliveRef.current) {
         const { job: updated } = await pdpApi<{ job: PdpJobRow }>(`/api/registration/pdp/${jobId}/run`, {
           method: 'POST',
         })
@@ -56,6 +62,12 @@ export function PdpProgress({
         setJob(updated)
         onJobChange?.(updated)
         if (updated.current_step === 'done' || updated.current_step === 'failed') return
+        if (updated.current_step === 'waiting_rate_limit') {
+          prevSignature = null
+          await wait(RATE_LIMIT_POLL_MS)
+          continue
+        }
+        activeRunCalls++
         // cost_usd 포함: 게이트 재생성이 슬롯을 소비한 run은 단계·장수·진행률이 그대로여도
         // 비용은 증가한다 — 이를 스톨로 오탐하지 않기 위함(E2E 2026-08-10 실측)
         const signature = `${updated.current_step}:${updated.section_images.length}:${updated.progress}:${updated.cost_usd}`
@@ -96,16 +108,28 @@ export function PdpProgress({
   }
 
   const failed = job.current_step === 'failed'
+  const waitingRateLimit = job.current_step === 'waiting_rate_limit'
   // 실패 시 current_step 자체는 진행 단계명을 잃으므로, progress 값으로 실패 지점을 역추정한다
   // (PDP_STEP_PROGRESS는 PDP_UI_STEPS와 동일 순서로 오르는 값이므로 매치되는 스텝을 실패 지점으로 본다).
   const activeIdx = failed
     ? PDP_UI_STEPS.findIndex((s) => PDP_STEP_PROGRESS[s] === job.progress)
     : job.current_step === 'done'
       ? PDP_UI_STEPS.length
-      : PDP_UI_STEPS.indexOf(job.current_step as (typeof PDP_UI_STEPS)[number])
+      : waitingRateLimit
+        ? PDP_UI_STEPS.indexOf('images')
+        : PDP_UI_STEPS.indexOf(job.current_step as (typeof PDP_UI_STEPS)[number])
 
   const expectedImages = Object.keys(job.design_prompts?.section_image_prompts ?? {}).length
-  const generatedImages = job.section_images.length
+  const generatedImages = job.section_images.filter((image) => image.url).length
+  const nextRetryAt = Math.min(
+    ...job.section_images
+      .filter((image) => image.pendingRegen && image.retryAfter)
+      .map((image) => Date.parse(image.retryAfter!))
+      .filter(Number.isFinite),
+  )
+  const retryMinutes = Number.isFinite(nextRetryAt)
+    ? Math.max(1, Math.ceil((nextRetryAt - Date.now()) / 60_000))
+    : 1
 
   return (
     <div className="space-y-4">
@@ -147,9 +171,14 @@ export function PdpProgress({
           })}
         </ol>
 
-        {job.current_step === 'images' && expectedImages > 0 && (
+        {(job.current_step === 'images' || waitingRateLimit) && expectedImages > 0 && (
           <div className="text-[11px] text-slate-500">
             섹션 이미지 {generatedImages} / {expectedImages}장 생성됨
+          </div>
+        )}
+        {waitingRateLimit && (
+          <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
+            Codex 이미지 한도 때문에 잠시 쉬는 중 — 약 {retryMinutes}분 뒤 이어서 만듭니다. 창을 닫지 마세요.
           </div>
         )}
       </section>

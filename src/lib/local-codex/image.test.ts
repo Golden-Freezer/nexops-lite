@@ -1,7 +1,14 @@
 import path from 'node:path'
 import { writeFile } from 'node:fs/promises'
 import { describe, expect, it, vi } from 'vitest'
-import { buildCodexImageArgs, createCodexImage, parsePngDimensions } from './image'
+import {
+  CODEX_IMAGE_RATE_LIMIT_MESSAGE,
+  RateLimitedError,
+  buildCodexImageArgs,
+  createCodexImage,
+  isRateLimitOutput,
+  parsePngDimensions,
+} from './image'
 
 function fakePng(width: number, height: number): Buffer {
   const buffer = Buffer.alloc(24)
@@ -39,5 +46,37 @@ describe('codexImage', () => {
   it('PNG 헤더에서 크기를 판독한다', () => {
     expect(parsePngDimensions(fakePng(1200, 800))).toEqual({ width: 1200, height: 800 })
     expect(parsePngDimensions(Buffer.from('not-png'))).toBeNull()
+  })
+
+  it.each([
+    '429 Too Many Requests',
+    'rate limit exceeded',
+    'usage_limit_reached',
+  ])('Codex 출력의 이미지 한도 오류를 판별한다: %s', (output) => {
+    expect(isRateLimitOutput(output)).toBe(true)
+  })
+
+  it('한도 오류는 재시도하지 않고 RateLimitedError로 던진다', async () => {
+    const run = vi.fn(async () => ({
+      exitCode: 1,
+      stdout: '',
+      stderr: 'ERROR: exceeded retry limit, last status: 429 Too Many Requests',
+      timedOut: false,
+    }))
+
+    const promise = createCodexImage({ run })({ prompt: '상품 이미지' })
+    await expect(promise).rejects.toEqual(expect.any(RateLimitedError))
+    await expect(promise).rejects.toThrow(CODEX_IMAGE_RATE_LIMIT_MESSAGE)
+    expect(run).toHaveBeenCalledOnce()
+  })
+
+  it('정상 이미지가 나오면 로그에 429 글자가 있어도 성공으로 본다', async () => {
+    const png = fakePng(1024, 1024)
+    const run = vi.fn(async (input: { cwd: string }) => {
+      await writeFile(path.join(input.cwd, 'out', 'image.png'), png)
+      return { exitCode: 0, stdout: 'user: 리뷰 429개 텀블러', stderr: '', timedOut: false }
+    })
+    const result = await createCodexImage({ run })({ prompt: '리뷰 429개 텀블러' })
+    expect(result.base64).toBe(png.toString('base64'))
   })
 })

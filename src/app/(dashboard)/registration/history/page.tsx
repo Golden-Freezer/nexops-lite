@@ -5,15 +5,22 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Loader2 } from 'lucide-react'
+import { Loader2, RotateCcw } from 'lucide-react'
 import { Header } from '@/components/layout/Header'
 import {
   THUMBNAIL_CUTS,
   THUMBNAIL_CUT_LABELS,
   type ThumbnailJob,
 } from '@/lib/registration/thumbnail-types'
-import { resolveGenerationTrack, type GenerationTrack, type PdpJobRow, type PdpStep } from '@/lib/registration/pdp-state'
+import {
+  resolveGenerationTrack,
+  stripStepFailurePrefix,
+  type GenerationTrack,
+  type PdpJobRow,
+  type PdpStep,
+} from '@/lib/registration/pdp-state'
 import { PDP_STATUS_LABELS, pdpApi } from '@/lib/registration/pdp-client'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from '@/components/features/registration/LocalCodexNotice'
 
 const STATUS_BADGES: Record<string, { label: string; cls: string }> = {
   done: { label: '완료', cls: 'text-brand-600 border-brand-200 bg-brand-50' },
@@ -31,6 +38,7 @@ const PDP_STATUS_CLS: Record<PdpStep, string> = {
   design: 'text-amber-600 border-amber-200 bg-amber-50',
   copywriting: 'text-amber-600 border-amber-200 bg-amber-50',
   images: 'text-amber-600 border-amber-200 bg-amber-50',
+  waiting_rate_limit: 'text-warning-700 border-warning-500/30 bg-warning-50',
   compose: 'text-amber-600 border-amber-200 bg-amber-50',
   done: 'text-brand-600 border-brand-200 bg-brand-50',
   failed: 'text-danger-600 border-danger-200 bg-danger-50',
@@ -98,10 +106,21 @@ function ThumbnailRow({ job }: { job: ThumbnailJob }) {
   )
 }
 
-function PdpRow({ job }: { job: PdpJobRow }) {
+function PdpRow({
+  job,
+  regenerating,
+  localCodexAvailable,
+  onRegenerate,
+}: {
+  job: PdpJobRow
+  regenerating: boolean
+  localCodexAvailable: boolean
+  onRegenerate: (jobId: string) => void
+}) {
   const thumbUrl = job.section_images.find((img) => img.url)?.url
   const inProgress = job.current_step !== 'done' && job.current_step !== 'failed'
   const track = resolveGenerationTrack(job)
+  const missingImageCount = job.section_images.filter((image) => !image.url).length
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-3 flex items-center flex-wrap gap-3">
       {thumbUrl ? (
@@ -132,12 +151,28 @@ function PdpRow({ job }: { job: PdpJobRow }) {
           {new Date(job.created_at).toLocaleString('ko-KR')} · {job.image_model} ({job.image_quality}) · $
           {job.cost_usd.toFixed(3)}
         </div>
+        {job.current_step === 'done' && job.error && (
+          <div className="mt-1 text-[10px] text-warning-700">
+            경고: {stripStepFailurePrefix(job.error)}
+          </div>
+        )}
       </div>
       {/* 상태 배지+액션 — 폭이 부족하면 이 그룹 전체가 다음 줄로 내려간다(shrink-0으로 찌그러짐 방지) */}
       <div className="flex items-center gap-2 shrink-0 ml-auto">
         <span className={`text-[10px] border rounded-full px-2 py-0.5 ${PDP_STATUS_CLS[job.current_step]}`}>
           {PDP_STATUS_LABELS[job.current_step]}
         </span>
+        {job.current_step === 'done' && missingImageCount > 0 && (
+          <button
+            onClick={() => onRegenerate(job.id)}
+            disabled={!localCodexAvailable || regenerating}
+            title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
+            className="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full bg-warning-500 text-white hover:bg-warning-600 disabled:opacity-50"
+          >
+            {regenerating ? <Loader2 className="h-3 w-3 animate-spin" /> : <RotateCcw className="h-3 w-3" />}
+            빠진 이미지 다시 만들기
+          </button>
+        )}
         <Link
           href={`/registration/detail-page?jobId=${job.id}`}
           className="text-[11px] px-2.5 py-1 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-50"
@@ -153,8 +188,26 @@ export default function RegistrationHistoryPage() {
   const [thumbnailJobs, setThumbnailJobs] = useState<ThumbnailJob[] | null>(null)
   const [pdpJobs, setPdpJobs] = useState<PdpJobRow[] | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [regeneratingId, setRegeneratingId] = useState<string | null>(null)
+  const localCodexAvailable = useLocalCodexAvailable()
   // 트랙 필터(부록 F-3) — 표준/내재화 선택 시 상세페이지 잡만 해당 트랙으로 좁힌다(대표이미지는 트랙 무관이라 숨김)
   const [trackFilter, setTrackFilter] = useState<'all' | GenerationTrack>('all')
+
+  const regenerateMissing = async (jobId: string) => {
+    setRegeneratingId(jobId)
+    setError(null)
+    try {
+      const { job } = await pdpApi<{ job: PdpJobRow }>(
+        `/api/registration/pdp/${jobId}/regenerate-missing`,
+        { method: 'POST' },
+      )
+      setPdpJobs((jobs) => jobs?.map((entry) => entry.id === job.id ? job : entry) ?? [job])
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : '빠진 이미지 재생성 준비 실패')
+    } finally {
+      setRegeneratingId(null)
+    }
+  }
 
   useEffect(() => {
     let alive = true
@@ -229,7 +282,13 @@ export default function RegistrationHistoryPage() {
           entry.kind === 'thumbnail' ? (
             <ThumbnailRow key={`thumb-${entry.id}`} job={entry.job} />
           ) : (
-            <PdpRow key={`pdp-${entry.id}`} job={entry.job} />
+            <PdpRow
+              key={`pdp-${entry.id}`}
+              job={entry.job}
+              regenerating={regeneratingId === entry.id}
+              localCodexAvailable={localCodexAvailable}
+              onRegenerate={(jobId) => void regenerateMissing(jobId)}
+            />
           )
         )}
       </div>

@@ -59,10 +59,22 @@ export async function uploadPdpImage(
   const ext = mimeType === 'image/jpeg' ? 'jpg' : mimeType === 'image/webp' ? 'webp' : 'png'
   const safeSection = section.replace(/[^a-zA-Z0-9_-]/g, '-')
   const path = `${userId}/registration/${jobId}/pdp-${safeSection}-${Date.now()}.${ext}`
-  const { error } = await supabase.storage
+  const { data, error } = await supabase.storage
     .from(BUCKET)
     .upload(path, Buffer.from(base64, 'base64'), { contentType: mimeType, upsert: false })
-  if (error) throw new Error(`PDP 이미지 업로드 실패(${section}): ${error.message}`)
-  const { data } = supabase.storage.from(BUCKET).getPublicUrl(path)
-  return data.publicUrl
+  if (error || !data?.path) {
+    throw new Error(`PDP 이미지 업로드 실패(${section}): ${error?.message ?? '저장 경로를 확인하지 못했습니다.'}`)
+  }
+  const { data: publicData } = supabase.storage.from(BUCKET).getPublicUrl(data.path)
+  return publicData.publicUrl
+}
+
+/** 카탈로그 URL을 기록하기 전에 실제 스토리지 객체가 있는지 확인한다. */
+export async function pdpStorageObjectExists(supabase: SupabaseClient, storagePath: string): Promise<boolean> {
+  const slash = storagePath.lastIndexOf('/')
+  const folder = slash >= 0 ? storagePath.slice(0, slash) : ''
+  const name = slash >= 0 ? storagePath.slice(slash + 1) : storagePath
+  const { data, error } = await supabase.storage.from(BUCKET).list(folder, { search: name, limit: 10 })
+  if (error) return false
+  return (data ?? []).some((entry) => entry.name === name)
 }

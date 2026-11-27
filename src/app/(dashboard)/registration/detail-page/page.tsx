@@ -35,7 +35,7 @@ function DetailPageContent() {
       <LocalCodexNotice />
       {!jobId && <PdpForm draftId={draftId} onCreated={handleCreated} />}
       {jobId && !showPreview && <PdpProgress jobId={jobId} onJobChange={setJob} />}
-      {jobId && showPreview && job && <PdpPreview job={job} />}
+      {jobId && showPreview && job && <PdpPreview job={job} onJobChange={setJob} />}
     </div>
   )
 }

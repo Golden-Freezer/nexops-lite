@@ -65,6 +65,7 @@ export type PdpStep =
   | 'design'
   | 'copywriting'
   | 'images'
+  | 'waiting_rate_limit'
   | 'compose'
   | 'done'
   | 'failed'
@@ -369,6 +370,12 @@ export interface SectionImage {
   error?: string
   /** Vision 게이트 미달 — 다음 생성 슬롯(같은 run 또는 이월된 run)에서 재생성 1회 예정 */
   pendingRegen?: boolean
+  /** 재생성 큐에 들어온 이유. 구 레코드의 미기록 값은 게이트 재생성으로 해석한다. */
+  regenReason?: 'gate' | 'rate_limit' | 'missing'
+  /** Codex 이미지 한도 대기 종료 시각(ISO 8601). 이 시각 전에는 생성 호출을 하지 않는다. */
+  retryAfter?: string
+  /** 같은 섹션에서 연속으로 발생한 한도 오류 횟수(지수 백오프 계산용) */
+  rateLimitCount?: number
   /** 게이트 재생성 예산을 이미 소비함(재재생성 금지 — thumbnail-pipeline retried 관례와 동일) */
   retried?: boolean
 }
@@ -453,6 +460,7 @@ export const PDP_STEP_PROGRESS: Record<PdpStep, number> = {
   design: 40,
   copywriting: 55,
   images: 75,
+  waiting_rate_limit: 75,
   compose: 95,
   done: 100,
   failed: 0,

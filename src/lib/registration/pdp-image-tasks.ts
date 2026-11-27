@@ -314,9 +314,8 @@ export function buildImageTasks(job: PdpJobRow): ImageTask[] {
 }
 
 /**
- * 전 태스크가 시도됐고(url||error) 단 한 장도 성공하지 못했는지 판정 — images 단계 전량 실패 시
- * compose로 잘못 전진하지 않도록 pdp-image-stage.ts가 이 신호로 currentStep='failed'를 택한다(§6.4).
- * 순수 함수라 DB·LLM 모킹 없이 단위 테스트 가능(pdp-pipeline.test.ts).
+ * 전 태스크가 시도됐고(url||error) 단 한 장도 성공하지 못했는지 판정하는 호환용 순수 헬퍼.
+ * 현재 파이프라인은 빈 이미지도 합성하되 완료 error로 요약하므로 진단·기존 호출 호환에만 쓴다.
  */
 export function allImageTasksFailed(tasks: ImageTask[], sectionImages: SectionImage[]): boolean {
   if (tasks.length === 0) return false
@@ -351,7 +350,9 @@ export function toGeneratedImagesMap(sectionImages: SectionImage[]): GeneratedIm
     map[entry.section] = entry.url
   }
   for (const [key, arr] of Object.entries(lists)) {
-    map[key] = arr.filter((u): u is string => Boolean(u))
+    // 인덱스를 압축하면 howto:1이 howto:0 카피에 붙는 식으로 이미지가 다른 섹션으로 이동한다.
+    // 희소 배열을 그대로 두면 합성기가 빠진 인덱스에는 빈 이미지를 렌더하지 않고 다음 인덱스를 보존한다.
+    map[key] = arr
   }
   return map
 }

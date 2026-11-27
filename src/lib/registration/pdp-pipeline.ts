@@ -45,6 +45,7 @@ import { CATEGORY_TO_ESSENCE, mergeManualStrategy } from './pdp-strategy-contrac
 import { getPdpJob, updatePdpJob } from './pdp-jobs'
 import { runImagesStep } from './pdp-image-stage'
 import { buildImageTasks, toGeneratedImagesMap } from './pdp-image-tasks'
+import { buildMissingImageSummary } from './pdp-image-retry'
 import { composePdp } from './pdp-composer'
 import {
   encodeStepFailure,
@@ -394,7 +395,7 @@ async function stepCompose(db: SupabaseClient, userId: string, job: PdpJobRow): 
     ...(copySectionsPatch ? { copySections: copySectionsPatch } : {}),
     currentStep: 'done',
     progress: PDP_STEP_PROGRESS.done,
-    error: null,
+    error: buildMissingImageSummary(buildImageTasks(job), job.section_images),
   })
 }
 

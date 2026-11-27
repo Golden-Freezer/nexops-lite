@@ -8,6 +8,16 @@ import { DEFAULT_CODEX_TIMEOUT_MS } from './llm'
 const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])
 const MAX_REFERENCES = 5
 
+export const CODEX_IMAGE_RATE_LIMIT_MESSAGE =
+  'Codex 이미지 사용 한도에 걸렸습니다. 잠시 뒤 다시 만듭니다.'
+
+export class RateLimitedError extends Error {
+  constructor() {
+    super(CODEX_IMAGE_RATE_LIMIT_MESSAGE)
+    this.name = 'RateLimitedError'
+  }
+}
+
 export type CodexImageReference =
   | string
   | { url: string }
@@ -145,6 +155,14 @@ function failureReason(result: CodexRunResult, outputReason: string): string {
   return `${outputReason}${detail ? ` · ${detail}` : ''}`
 }
 
+export function isRateLimitOutput(output: string): boolean {
+  return /(?:\b429\b|too many requests|rate[\s_-]*limit|usage[\s_-]*limit)/i.test(output)
+}
+
+function resultShowsRateLimit(result: CodexRunResult): boolean {
+  return isRateLimitOutput([result.stdout, result.stderr, result.spawnError].filter(Boolean).join('\n'))
+}
+
 export function createCodexImage(dependencies: { run?: RunCodex } = {}) {
   const run = dependencies.run ?? runCodexProcess
   return async function codexImageWithDependencies(input: CodexImageInput): Promise<CodexImageResult> {
@@ -185,10 +203,12 @@ export function createCodexImage(dependencies: { run?: RunCodex } = {}) {
           stdin: prompt,
           timeoutMs: input.timeoutMs ?? DEFAULT_CODEX_TIMEOUT_MS,
         })
-        if (result.timedOut) throw new Error(failureReason(result, lastReason))
-        const buffer = await readFile(outPath).catch(() => null)
+        const buffer = result.timedOut ? null : await readFile(outPath).catch(() => null)
         const outputReason = buffer ? validateOutput(buffer, target) : '산출 파일이 없습니다.'
         if (buffer && !outputReason) return { base64: buffer.toString('base64'), mimeType: 'image/png' }
+        // 정상 산출이 없을 때만 한도 판정 — 프롬프트·로그에 '429' 같은 글자가 섞여도 성공 이미지를 버리지 않는다.
+        if (resultShowsRateLimit(result)) throw new RateLimitedError()
+        if (result.timedOut) throw new Error(failureReason(result, lastReason))
         lastReason = failureReason(result, outputReason ?? '산출 검증 실패')
       }
       throw new Error(`Codex 이미지 생성 실패(2회 시도): ${lastReason}`)
