@@ -115,7 +115,7 @@ export function ProductForm({ initial, computed, onSubmit, loading }: ProductFor
             type="text"
             value={data.productName}
             onChange={(e) => update('productName', e.target.value)}
-            placeholder="예: 페어넥스 유모차스트랩 블랙"
+            placeholder="예: 원목도마 대"
             className={inputClass}
           />
         </div>

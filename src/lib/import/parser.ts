@@ -148,7 +148,7 @@ export function getUnmappedHeaders(headers: string[], config: ImportConfig): str
 /**
  * 파일명에서 날짜 추출
  * 예: "Statistics-20260415~20260415_(0) (4).xlsx" → "2026-04-15"
- * 예: "A01008637-dailySettlement-20260415-20260415.xlsx" → "2026-04-15"
+ * 예: "A00000000-dailySettlement-20260415-20260415.xlsx" → "2026-04-15"
  */
 /**
  * Statistics 파일이 여러 날짜 취합 파일인지 검증

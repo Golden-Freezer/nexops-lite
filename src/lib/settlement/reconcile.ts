@@ -5,7 +5,7 @@
  * 매핑 근거: docs/reports/wing-settlement-recon-20260713.md(윙 API 실캡처),
  * docs/plans/settlement-recon/DESIGN.md, CLAUDE.md 마진 계산 공식.
  *
- * 실데이터 검증(2026-07-13, 페어넥스 A01008637 2건 수집):
+ * 실데이터 검증(2026-07-13, 실제 셀러 계정 2건 수집):
  *  - 반품 부호: 쿠팡 totalRefundedAmount는 음수(-2,711,700) 확인 → 절대값 정규화 반영 완료.
  *  - 입출고비 grain: 우리 '입출고배송비'는 쿠팡 fulfillment에 대응, warehousing/보관료는
  *    우리가 별도로 안 잡는 비용이라 blind-spot(ours=null)로 둔다(설계 유지).
