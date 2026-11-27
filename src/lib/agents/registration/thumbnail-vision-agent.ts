@@ -3,9 +3,8 @@
  * Vision은 속성 추출만 한다(프롬프트 저작 금지 — 원본 P4 교훈). callAgent 경유(재시도·예산·로그).
  */
 
-import type Anthropic from '@anthropic-ai/sdk'
 import type { AgentConfig, AgentOutput, RunContext } from '../types'
-import { callAgent } from '../_base'
+import { callAgent, type ImageBlockParam } from '../_base'
 import { parseLlmJson } from '../json-parser'
 import {
   buildVisionAnalysisPrompt,
@@ -60,7 +59,7 @@ export async function fetchImageAsBase64(url: string): Promise<VisionImage | nul
   }
 }
 
-function imageBlock(image: VisionImage): Anthropic.ImageBlockParam {
+function imageBlock(image: VisionImage): ImageBlockParam {
   return {
     type: 'image',
     source: { type: 'base64', media_type: image.mediaType, data: image.data },

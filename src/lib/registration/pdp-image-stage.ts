@@ -1,18 +1,16 @@
 /**
  * PDP 파이프라인 5단계(이미지 생성) run 오케스트레이션 — NEXFIT image_generation_agent.py
- * 이식(§9.1 ③ 실측 축소판: Lite/Judge 티어링·Pillow 합성 없음, run당 이미지 1(high)/2(medium)장
+ * 이식(§9.1 ③ 실측 축소판: Lite/Judge 티어링·Pillow 합성 없음, run당 이미지 1장
  * 순차 생성). 태스크 목록·팔레트 치환은 pdp-image-tasks.ts(순수) 소관, 여기는 참조 로드·Style
  * Charter·식별카드·생성 호출·Vision 게이트·스토리지 저장까지의 오케스트레이션만 담당한다.
  *
- * run 시간 예산: Vercel maxDuration=120s, gpt-image-2 high ~70s/장(§9.1 실측). 게이트 재생성은
- * 원칙적으로 같은 run에서 즉시 1회 시도하되(비용·지연 모두 게이트 콜보다 훨씬 큰 재생성 콜 자체가
- * 병목), RUN_TIME_BUDGET_MS를 넘기면 이번 run은 재생성을 미루고 `pendingRegen` 플래그만 남겨
- * 다음 run이 최우선으로 이어받는다(§6.3 "이월 가능한 구조").
+ * 로컬 Codex 호출은 오래 걸릴 수 있으므로 게이트 재생성도 `pendingRegen`으로 이월해 다음 run에서
+ * 한 장만 처리한다(§6.3 "이월 가능한 구조").
  */
 
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { generateImage } from '@/lib/agents/image/generate'
-import { estimateImageCostUsd, type ImageQuality } from '@/lib/agents/image/types'
+import { estimateImageCostUsd } from '@/lib/agents/image/types'
 import type { RunContext } from '@/lib/agents/types'
 import { fetchImageAsBase64, type VisionImage } from '@/lib/agents/registration/thumbnail-vision-agent'
 import { readIdentityCard, judgeImageGate } from '@/lib/agents/registration/pdp-image-agent'
@@ -28,12 +26,6 @@ import { buildImageTasks, allImageTasksFailed, type ImageTask } from './pdp-imag
 import { getUspIconLibrary, selectUspIcon } from './usp-icon-library'
 import { updatePdpJob } from './pdp-jobs'
 import type { DesignPrompts, PdpJobRow, SectionImage } from './pdp-state'
-
-/** Vercel maxDuration=120s 대비 안전 여유 — 이 시점 이후엔 신규 재생성 시도를 이월한다. */
-const RUN_TIME_BUDGET_MS = 90_000
-
-/** 재생성 1장의 예상 소요 시간(§9.1 실측 근사) — 동기 재생성 진입 여부는 "경과 + 예상 시간 < 예산"으로 판단한다. */
-const REGEN_ESTIMATE_MS: Record<ImageQuality, number> = { high: 80_000, medium: 40_000, low: 40_000 }
 
 // NEXFIT image_generation_agent.py:150 IMAGE_QUALITY_THRESHOLDS["consistency_score_min"]
 const CONSISTENCY_SCORE_MIN = 0.7
@@ -157,7 +149,11 @@ interface GenerateContext {
 async function generateSection(ctx: GenerateContext, task: ImageTask): Promise<{ entry: SectionImage; costUsd: number }> {
   const heroUrl = task.section === 'hero' ? undefined : findSectionUrl(ctx.sectionImages, 'hero')
   const styleRef = heroUrl ? await fetchImageAsBase64(heroUrl) : null
-  const refs = task.effectOnly ? [] : [...ctx.sourceRefs, ...(styleRef ? [styleRef] : [])]
+  const refs = task.effectOnly
+    ? []
+    : styleRef
+      ? [...ctx.sourceRefs.slice(0, 4), styleRef]
+      : ctx.sourceRefs.slice(0, 5)
 
   let prompt = assemblePrompt(task.prompt, task, ctx.designPrompts, Boolean(styleRef), ctx.imageGroundingBlock)
   if (ctx.regenScore) prompt = applyRegenDirective(prompt, ctx.regenScore)
@@ -201,7 +197,6 @@ async function gateAndMaybeRegen(
   ctx: GenerateContext,
   task: ImageTask,
   entry: SectionImage,
-  runStart: number
 ): Promise<{ entry: SectionImage; costUsd: number }> {
   if (task.skipGate || !entry.url || ctx.sourceRefs.length === 0) return { entry, costUsd: 0 }
 
@@ -224,18 +219,10 @@ async function gateAndMaybeRegen(
     return { entry: { ...entry, error: `게이트 미달(재생성 소진, ${reason})`, pendingRegen: false }, costUsd: gateCost }
   }
 
-  const estimatedRegenMs = REGEN_ESTIMATE_MS[ctx.job.image_quality] ?? REGEN_ESTIMATE_MS.high
-  if (Date.now() - runStart + estimatedRegenMs >= RUN_TIME_BUDGET_MS) {
-    // 예상 재생성 소요까지 더했을 때 예산을 넘길 것 같으면(경과 시간만으로 판단하지 않는다) —
-    // 다음 run이 최우선으로 재생성하도록 이월
-    return {
-      entry: { ...entry, pendingRegen: true, error: `게이트 미달 — 재생성 대기: ${score.artifact_reason || '일관성 미달'}` },
-      costUsd: gateCost,
-    }
+  return {
+    entry: { ...entry, pendingRegen: true, error: `게이트 미달 — 재생성 대기: ${score.artifact_reason || '일관성 미달'}` },
+    costUsd: gateCost,
   }
-
-  const regen = await generateSection({ ...ctx, regenScore: score }, task)
-  return { entry: { ...regen.entry, pendingRegen: false }, costUsd: gateCost + regen.costUsd }
 }
 
 /**
@@ -243,7 +230,6 @@ async function gateAndMaybeRegen(
  * → 전 태스크 완주 시 compose로 전이. job.copy_sections.final이 없으면 호출 자체가 계약 위반(파이프라인이 보장).
  */
 export async function runImagesStep(db: SupabaseClient, userId: string, job: PdpJobRow): Promise<PdpJobRow> {
-  const runStart = Date.now()
   const tasks = buildImageTasks(job)
   if (tasks.length === 0) throw new Error('이미지 태스크를 구성할 카피 산출이 없습니다 — 잡 상태 불일치')
 
@@ -306,7 +292,7 @@ export async function runImagesStep(db: SupabaseClient, userId: string, job: Pdp
     }
   }
 
-  const slotBudget = job.image_quality === 'high' ? 1 : 2
+  const slotBudget = 1
   let slotsUsed = 0
   const baseCtx = (): GenerateContext => ({
     db,
@@ -345,7 +331,7 @@ export async function runImagesStep(db: SupabaseClient, userId: string, job: Pdp
     await updatePdpJob(db, userId, job.id, { sectionImages, costUsd })
 
     if (genResult.entry.url) {
-      const gated = await gateAndMaybeRegen(baseCtx(), task, genResult.entry, runStart)
+      const gated = await gateAndMaybeRegen(baseCtx(), task, genResult.entry)
       sectionImages = upsertSectionImage(sectionImages, gated.entry)
       costUsd += gated.costUsd
       await updatePdpJob(db, userId, job.id, { sectionImages, costUsd })

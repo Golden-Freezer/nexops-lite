@@ -7,6 +7,7 @@ import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Header } from '@/components/layout/Header'
 import { ThumbnailStudio } from '@/components/features/registration/ThumbnailStudio'
+import { LocalCodexNotice } from '@/components/features/registration/LocalCodexNotice'
 
 function ThumbnailContent() {
   const searchParams = useSearchParams()
@@ -14,6 +15,7 @@ function ThumbnailContent() {
   const resumeJobId = searchParams.get('jobId') ?? undefined
   return (
     <div className="max-w-4xl mx-auto px-4 lg:px-6 py-6">
+      <LocalCodexNotice />
       <ThumbnailStudio draftId={draftId} resumeJobId={resumeJobId} />
     </div>
   )

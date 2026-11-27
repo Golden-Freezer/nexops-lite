@@ -5,6 +5,7 @@
 import Link from 'next/link'
 import { Image as ImageIcon, FileText, History } from 'lucide-react'
 import { Header } from '@/components/layout/Header'
+import { LocalCodexNotice } from '@/components/features/registration/LocalCodexNotice'
 
 const ENTRIES = [
   {
@@ -35,6 +36,7 @@ export default function RegistrationPage() {
     <>
       <Header title="상품등록" />
       <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6">
+        <LocalCodexNotice />
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {ENTRIES.map((entry) => (
             <Link

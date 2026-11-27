@@ -4,9 +4,8 @@
  * Pillow 점유율 실측은 이식하지 않는다 — VLM의 tight_bbox_occupancy 추정을 그대로 쓴다(설계문서 결정 A).
  */
 
-import type Anthropic from '@anthropic-ai/sdk'
 import type { AgentConfig, RunContext } from '../types'
-import { callAgent } from '../_base'
+import { callAgent, type ImageBlockParam } from '../_base'
 import { parseLlmJson } from '../json-parser'
 import {
   GATE_PROMPT,
@@ -169,7 +168,7 @@ export function failedGate(message: string): GateResult {
   }
 }
 
-function imageBlock(image: VisionImage): Anthropic.ImageBlockParam {
+function imageBlock(image: VisionImage): ImageBlockParam {
   return {
     type: 'image',
     source: { type: 'base64', media_type: image.mediaType, data: image.data },
