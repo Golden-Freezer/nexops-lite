@@ -1,0 +1,638 @@
+[
+  {
+    "id": "hidden_page_layout_01",
+    "sectionType": "hidden_page",
+    "name": "미니멀 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "히든",
+      "스텝"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 480
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 720
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_02",
+    "sectionType": "hidden_page",
+    "name": "볼드 다크 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "히든",
+      "스텝"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 460
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 700
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_03",
+    "sectionType": "hidden_page",
+    "name": "이미지 우선 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "히든",
+      "스텝"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 504,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 624,
+            "width": 740,
+            "height": 480
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1164
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_04",
+    "sectionType": "hidden_page",
+    "name": "좌우 분할 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "이미지",
+      "스텝"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 470,
+            "y": 80,
+            "width": 330,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 470,
+            "y": 200,
+            "width": 330,
+            "height": 460
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_05",
+    "sectionType": "hidden_page",
+    "name": "오버레이 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "이미지",
+      "히든"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 504,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 764
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_06",
+    "sectionType": "hidden_page",
+    "name": "그라디언트 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "히든",
+      "스텝"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #141E30 0%, #243B55 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 480
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 720
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_07",
+    "sectionType": "hidden_page",
+    "name": "카드 스텝 그룹",
+    "thumbnail": "/layouts/thumbnails/hidden_page_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "스텝",
+      "그룹"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 160,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "card_group",
+          "position": {
+            "x": 60,
+            "y": 664,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 924
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_08",
+    "sectionType": "hidden_page",
+    "name": "스택 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_08.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "이미지",
+      "스텝"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 160,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 664,
+            "width": 740,
+            "height": 400
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1124
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_09",
+    "sectionType": "hidden_page",
+    "name": "풀블리드 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_09.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "이미지",
+      "스텝"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#0B0B0B"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 720
+          },
+          "imageStyle": {
+            "objectFit": "cover"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 100
+          },
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "left",
+            "letterSpacing": -0.5,
+            "lineHeight": 1.3,
+            "color": "#FFFFFF"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 760,
+            "width": 740,
+            "height": 320
+          },
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "left",
+            "lineHeight": 1.7,
+            "color": "#E5E7EB"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1140
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "hidden_page_layout_10",
+    "sectionType": "hidden_page",
+    "name": "다이내믹 스텝 히든",
+    "thumbnail": "/layouts/thumbnails/hidden_page_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "스텝",
+      "카드"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.bgSub}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 70,
+            "width": 740,
+            "height": 90
+          },
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "center",
+            "letterSpacing": -0.5,
+            "lineHeight": 1.3
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "steps",
+          "elementType": "card_group",
+          "position": {
+            "x": 60,
+            "y": 210,
+            "width": 740,
+            "height": 420
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 690
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  }
+]

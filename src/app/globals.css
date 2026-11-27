@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+/* ── NexOps Design System Theme ── */
+@theme {
+  /* Brand Primary (FAIRNEX 패밀리 공통 Green) */
+  --color-brand-50: #F0FDF4;
+  --color-brand-100: #DCFCE7;
+  --color-brand-200: #BBF7D0;
+  --color-brand-300: #86EFAC;
+  --color-brand-400: #4ADE80;
+  --color-brand-500: #22C55E;
+  --color-brand-600: #16A34A;
+  --color-brand-700: #15803D;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532D;
+  --color-brand-950: #052E16;
+
+  /* NexOps Accent (Emerald) */
+  --color-accent-50: #ECFDF5;
+  --color-accent-100: #D1FAE5;
+  --color-accent-200: #A7F3D0;
+  --color-accent-400: #34D399;
+  --color-accent-500: #10B981;
+  --color-accent-600: #059669;
+  --color-accent-700: #047857;
+  --color-accent-900: #064E3B;
+
+  /* Semantic: 이익 표시 (Green 대신 Blue) */
+  --color-positive-50: #EFF6FF;
+  --color-positive-500: #3B82F6;
+  --color-positive-600: #2563EB;
+  --color-positive-700: #1D4ED8;
+
+  /* 경고 */
+  --color-warning-50: #FFFBEB;
+  --color-warning-500: #F59E0B;
+  --color-warning-600: #D97706;
+  --color-warning-700: #B45309;
+
+  /* 위험/손실 */
+  --color-danger-50: #FEF2F2;
+  --color-danger-500: #EF4444;
+  --color-danger-600: #DC2626;
+  --color-danger-700: #B91C1C;
+
+  /* 정보 */
+  --color-info-50: #F5F3FF;
+  --color-info-500: #8B5CF6;
+  --color-info-700: #6D28D9;
+
+  /* Font */
+  --font-sans: 'Pretendard', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Border Radius */
+  --radius-DEFAULT: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-dropdown: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ── shadcn/ui CSS Variables ── */
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 20% 65%;
+    --secondary-foreground: 215 25% 27%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 142 71% 45%;
+    --radius: 0.5rem;
+
+    /* NexOps 확장 변수 */
+    --positive: 217 91% 60%;
+    --positive-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --sidebar-bg: 210 40% 96%;
+    --sidebar-active: 142 71% 45%;
+  }
+
+  .dark {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --card: 217 33% 7%;
+    --card-foreground: 210 40% 96%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 142 71% 45%;
+    --sidebar-bg: 222 47% 6%;
+    --sidebar-active: 142 64% 55%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    min-height: 100dvh;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+
+  button,
+  a,
+  input,
+  select {
+    touch-action: manipulation;
+  }
+}
+
+/* ── Chart Semantic Tokens (ops-ux Phase 0) ── */
+:root {
+  --chart-profit: #3B82F6;   /* 이익/순이익 — Blue (프로젝트 규칙: Green 금지) */
+  --chart-loss: #EF4444;     /* 손실/적자 */
+  --chart-revenue: #3B82F6;  /* 매출 강조 */
+  --chart-margin: #8B5CF6;   /* 마진 — 순이익과 구분 */
+  --chart-muted: #CBD5E1;    /* 비강조/과거 기간 */
+  --chart-ghost: #94A3B8;    /* 전기 비교 오버레이 (점선) */
+  --chart-cost: #94A3B8;     /* 원가 */
+  --chart-fee: #F59E0B;      /* 수수료/입출고 */
+  --chart-ad: #8B5CF6;       /* 광고비 */
+  --chart-expense: #64748B;  /* 지출/기타 */
+  --chart-grid: #E2E8F0;     /* 그리드선 */
+  --chart-heat-0: #F1F5F9;   /* 히트맵 농도 0 (매출 없음) */
+  --chart-heat-1: #DBEAFE;
+  --chart-heat-2: #93C5FD;
+  --chart-heat-3: #3B82F6;
+  --chart-heat-4: #1D4ED8;   /* 히트맵 최고 농도 */
+  --chart-heat-loss: #FCA5A5;/* 순이익 적자 날 */
+}
+.dark {
+  --chart-muted: #334155;
+  --chart-ghost: #64748B;
+  --chart-cost: #64748B;
+  --chart-expense: #94A3B8;
+  --chart-grid: #1E293B;
+  --chart-heat-0: #1E293B;
+  --chart-heat-1: #1E3A8A;
+  --chart-heat-2: #1D4ED8;
+  --chart-heat-3: #3B82F6;
+  --chart-heat-4: #93C5FD;
+}

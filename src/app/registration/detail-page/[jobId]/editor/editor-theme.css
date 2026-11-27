@@ -1,0 +1,100 @@
+/* ─── Canvas 에디터 디자인 토큰 (NEXFIT globals.css 이식판) ─────────────────────
+ * 에디터 컴포넌트 35파일이 참조하는 CSS 변수·유틸 클래스만 발췌.
+ * 브랜드 축은 NexOps 팔레트로 치환(설계문서 §3.1-b "스타일만 NexOps 토큰"):
+ *   editor-brand = Emerald-500 #10B981 (운영 도구), brand-primary = Green-500 #22C55E.
+ * 뉴트럴·시맨틱 토큰은 NEXFIT 값 유지(Slate 계열 — NexOps 대시보드 톤과 동일 계열).
+ * 다크모드 변형은 Phase 4(에디터는 라이트 캔버스 고정). */
+
+:root {
+  /* Brand (NexOps 치환) */
+  --brand-primary: #22c55e;
+  --brand-primary-dark: #16a34a;
+  --brand-primary-tint: rgba(34, 197, 94, 0.1);
+  --brand-success: #10b981;
+  --brand-warning: #f59e0b;
+  --brand-error: #ef4444;
+  --brand-error-tint: rgba(239, 68, 68, 0.08);
+  --brand-error-text: #b91c1c;
+
+  /* Editor brand (NexOps Emerald 치환) */
+  --editor-brand: #10b981;
+  --editor-brand-dark: #059669;
+  --editor-brand-tint: rgba(16, 185, 129, 0.1);
+  --editor-brand-hover: rgba(16, 185, 129, 0.15);
+  --editor-canvas-bg: #f7f8fa;
+  --editor-canvas-dot: rgba(0, 0, 0, 0.08);
+
+  /* Semantic surface */
+  --surface-base: #ffffff;
+  --surface-canvas: #f7f8fa;
+  --surface-elevated: #ffffff;
+  --surface-overlay: #ffffff;
+
+  /* Semantic text (Slate) */
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --text-disabled: #a0aec0;
+  --brand-text-muted: #8c9bab;
+
+  /* Semantic border */
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --border-default: #e2e8f0;
+
+  /* Interaction */
+  --hover-overlay: rgba(0, 0, 0, 0.04);
+  --pressed-overlay: rgba(0, 0, 0, 0.08);
+
+  /* Scrollbar */
+  --scrollbar-width: 6px;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.25);
+  --scrollbar-track: transparent;
+
+  /* Motion */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-micro: 200ms;
+  --duration-short: 400ms;
+  --duration-medium: 600ms;
+  --duration-long: 1000ms;
+}
+
+/* 에디터 배경 (ProEditorPage 로딩/셸) — NEXFIT gradient-bg-subtle의 NexOps 색 변형 */
+.gradient-bg-subtle {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+    #f9fafb;
+}
+
+/* 캔버스 내보내기·실측의 기준 서체 — 페이지 레벨에서 고정 */
+.nexops-editor-root {
+  font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-canvas);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* GmarketSansBold self-host — NEXFIT과 동일 자산(원 CDN 404로 self-host된 정본) */
+@font-face {
+  font-family: 'GmarketSansBold';
+  src: url('/fonts/GmarketSansBold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* 에디터 패널 스크롤바 (NEXFIT globals 발췌) */
+.nexops-editor-root ::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+.nexops-editor-root ::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+.nexops-editor-root ::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+.nexops-editor-root ::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}

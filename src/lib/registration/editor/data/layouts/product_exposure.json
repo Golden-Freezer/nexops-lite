@@ -1,0 +1,750 @@
+[
+  {
+    "id": "product_exposure_layout_01",
+    "sectionType": "product_exposure",
+    "name": "미니멀 제품 노출",
+    "thumbnail": "/layouts/thumbnails/product_exposure_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "제품",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 140,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 180
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 500
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "category"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_02",
+    "sectionType": "product_exposure",
+    "name": "볼드 다크 제품",
+    "thumbnail": "/layouts/thumbnails/product_exposure_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "제품",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 140,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 180
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 460
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "category"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_03",
+    "sectionType": "product_exposure",
+    "name": "이미지 우선 제품",
+    "thumbnail": "/layouts/thumbnails/product_exposure_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "제품",
+      "하단텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "product_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 1147
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1167,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1227,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1287,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1450
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "product_image",
+      "category"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_04",
+    "sectionType": "product_exposure",
+    "name": "좌우 분할 제품",
+    "thumbnail": "/layouts/thumbnails/product_exposure_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "제품",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 370,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 140,
+            "width": 370,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 370,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "product_image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 0,
+            "width": 430,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "product_image",
+      "category"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_05",
+    "sectionType": "product_exposure",
+    "name": "오버레이 제품",
+    "thumbnail": "/layouts/thumbnails/product_exposure_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "제품",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "product_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 1147
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 900,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1147
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "product_image",
+      "title"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_06",
+    "sectionType": "product_exposure",
+    "name": "그라디언트 제품",
+    "thumbnail": "/layouts/thumbnails/product_exposure_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "제품",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #1A1A2E 0%, #4F46E5 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 140,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 460
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "category"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_07",
+    "sectionType": "product_exposure",
+    "name": "카드 제품",
+    "thumbnail": "/layouts/thumbnails/product_exposure_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "제품",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "product_image",
+          "elementType": "image",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 740
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 820,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 960
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "product_image",
+      "title"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_08",
+    "sectionType": "product_exposure",
+    "name": "풀블리드 제품",
+    "thumbnail": "/layouts/thumbnails/product_exposure_08.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "제품",
+      "오버레이"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "product_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 1147
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 960,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1020,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1080,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1260
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "product_image",
+      "category"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_09",
+    "sectionType": "product_exposure",
+    "name": "스택 제품 노출",
+    "thumbnail": "/layouts/thumbnails/product_exposure_09.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "제품",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.bgSub}}"
+      },
+      "elements": [
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "caption",
+            "fontSize": 28,
+            "fontWeight": 500,
+            "textAlign": "center",
+            "lineHeight": 1.4,
+            "letterSpacing": 2
+          }
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 120,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "caption",
+            "fontSize": 28,
+            "fontWeight": 600,
+            "textAlign": "center",
+            "lineHeight": 1.4
+          }
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "center",
+            "lineHeight": 1.3,
+            "letterSpacing": -0.5
+          }
+        },
+        {
+          "slotId": "product_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 380,
+            "width": 860,
+            "height": 700
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 1140
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "product_image",
+      "category"
+    ]
+  },
+  {
+    "id": "product_exposure_layout_10",
+    "sectionType": "product_exposure",
+    "name": "다이나믹 제품 포커스",
+    "thumbnail": "/layouts/thumbnails/product_exposure_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이나믹",
+      "제품",
+      "포커스"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#0B0B0F"
+      },
+      "elements": [
+        {
+          "slotId": "category",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 250,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "caption",
+            "fontSize": 28,
+            "fontWeight": 500,
+            "textAlign": "left",
+            "lineHeight": 1.4,
+            "letterSpacing": 2,
+            "color": "#E5E7EB"
+          }
+        },
+        {
+          "slotId": "brand",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 250,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "caption",
+            "fontSize": 28,
+            "fontWeight": 600,
+            "textAlign": "left",
+            "lineHeight": 1.4,
+            "color": "#E5E7EB"
+          }
+        },
+        {
+          "slotId": "title",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 240,
+            "width": 250,
+            "height": 260
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "left",
+            "lineHeight": 1.35,
+            "letterSpacing": -0.5,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "slotId": "product_image",
+          "elementType": "image",
+          "position": {
+            "x": 350,
+            "y": 60,
+            "width": 450,
+            "height": 450
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 570
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "circle_focus"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "product_image",
+      "title"
+    ]
+  }
+]

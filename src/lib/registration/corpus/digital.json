@@ -1,0 +1,68 @@
+{
+ "category": "digital",
+ "generatedAt": "2026-08-19",
+ "sourceCategories": {
+  "naver": "04_디지털가전",
+  "coupang": null
+ },
+ "sectionDesign": {
+  "source": "coupang 구조화 데이터 없음 — naver 패턴노트 카테고리 분포로 대체(순서·포지션 정보 없음)",
+  "sectionCountMedian": null,
+  "sequence": []
+ },
+ "copyPatterns": {
+  "dominantAxes": "USP·기능 86 · 인증 51 · CS정책 43",
+  "reviewCountMedian": 4056,
+  "sectionCountMedian": 15,
+  "prevalentPatterns": [
+   {
+    "pattern": "USP_기능소구",
+    "intro": "제품 고유 강점(USP)·기능·성능·스펙을 아이콘/인포그래픽/포인트 나열로 소구하는 패턴. 전 카테고리에서 가장 보편적인 설득 축.",
+    "occurrencePer100": 86
+   },
+   {
+    "pattern": "신뢰_인증시험",
+    "intro": "공인 시험성적서·인증(KC/KOTITI 등)·특허·검사 결과로 주장의 근거를 대는 패턴. 화장품·식품·유아·건강 카테고리에서 비중이 높다.",
+    "occurrencePer100": 51
+   },
+   {
+    "pattern": "CS_교환환불",
+    "intro": "배송·교환·반품·A/S 정책과 주의사항 고지. 분쟁 예방(CS 방어)과 구매 후 불안 해소를 겸한다. 상세 말미 표준 섹션.",
+    "occurrencePer100": 43
+   },
+   {
+    "pattern": "프로모션_사은품",
+    "intro": "사은품 증정·1+1·세트 구성·기간 특가 등 오퍼 스택으로 전환을 미는 패턴.",
+    "occurrencePer100": 35
+   },
+   {
+    "pattern": "비교_경쟁차별",
+    "intro": "타사 vs 자사 비교표, 등급/라인업 비교 등 대조 구조로 차별점을 보여주는 패턴.",
+    "occurrencePer100": 27
+   },
+   {
+    "pattern": "신뢰_정품보장",
+    "intro": "정품 보장·가품 보상·공식 판매처 인증 소구. 브랜드/병행수입 상품 PDP의 핵심 불안 해소 장치.",
+    "occurrencePer100": 26
+   },
+   {
+    "pattern": "배송_출고소구",
+    "intro": "당일출고·오늘출발·도착보장 등 배송 속도를 전면 소구. 상세 상단 배치가 많다.",
+    "occurrencePer100": 25
+   },
+   {
+    "pattern": "옵션카탈로그",
+    "intro": "다수 옵션(컬러·스타일·구성)을 그리드/카드 카탈로그로 나열해 한 페이지에서 여러 SKU를 파는 패턴. 패션·생활 카테고리의 볼륨 상세페이지 전형.",
+    "occurrencePer100": 16
+   }
+  ]
+ },
+ "imageDirection": {
+  "source": "coupang 역할별 연출 집계 없음",
+  "roles": []
+ },
+ "gapRules": [],
+ "sourceCommitSha": "a7fbf03011f256d06daa744f488a7dba48aca82f",
+ "derivedFingerprint": "c943324f1c00",
+ "contentHash": "a2c689b030cf"
+}

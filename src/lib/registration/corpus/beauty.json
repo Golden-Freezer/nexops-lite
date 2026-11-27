@@ -1,0 +1,279 @@
+{
+ "category": "beauty",
+ "generatedAt": "2026-08-19",
+ "sourceCategories": {
+  "naver": "03_화장품미용",
+  "coupang": "02_뷰티"
+ },
+ "sectionDesign": {
+  "source": "coupang design.json v2 실측 (94건)",
+  "sectionCountMedian": 10.5,
+  "sequence": [
+   {
+    "role": "usp_feature",
+    "prevalence": 0.968,
+    "positionMode": "middle"
+   },
+   {
+    "role": "product_intro",
+    "prevalence": 0.936,
+    "positionMode": "opening"
+   },
+   {
+    "role": "size_spec",
+    "prevalence": 0.936,
+    "positionMode": "closing"
+   },
+   {
+    "role": "how_to_guide",
+    "prevalence": 0.819,
+    "positionMode": "closing"
+   },
+   {
+    "role": "option_catalog",
+    "prevalence": 0.766,
+    "positionMode": "closing"
+   },
+   {
+    "role": "brand_story",
+    "prevalence": 0.617,
+    "positionMode": "closing"
+   },
+   {
+    "role": "hook",
+    "prevalence": 0.617,
+    "positionMode": "opening"
+   },
+   {
+    "role": "certification_evidence",
+    "prevalence": 0.564,
+    "positionMode": "middle"
+   },
+   {
+    "role": "problem",
+    "prevalence": 0.351,
+    "positionMode": "early"
+   },
+   {
+    "role": "shipping_cs",
+    "prevalence": 0.319,
+    "positionMode": "opening"
+   },
+   {
+    "role": "legal_notice",
+    "prevalence": 0.266,
+    "positionMode": "closing"
+   },
+   {
+    "role": "promotion_offer",
+    "prevalence": 0.17,
+    "positionMode": "opening"
+   },
+   {
+    "role": "social_proof",
+    "prevalence": 0.149,
+    "positionMode": "early"
+   },
+   {
+    "role": "authenticity",
+    "prevalence": 0.138,
+    "positionMode": "opening"
+   },
+   {
+    "role": "target_recommendation",
+    "prevalence": 0.106,
+    "positionMode": "closing"
+   },
+   {
+    "role": "faq",
+    "prevalence": 0.021,
+    "positionMode": "closing"
+   }
+  ]
+ },
+ "copyPatterns": {
+  "dominantAxes": "인증·시험 54 · USP 36 · 옵션카탈로그 34",
+  "reviewCountMedian": 9604,
+  "sectionCountMedian": 13,
+  "prevalentPatterns": [
+   {
+    "pattern": "신뢰_인증시험",
+    "intro": "공인 시험성적서·인증(KC/KOTITI 등)·특허·검사 결과로 주장의 근거를 대는 패턴. 화장품·식품·유아·건강 카테고리에서 비중이 높다.",
+    "occurrencePer100": 54
+   },
+   {
+    "pattern": "USP_기능소구",
+    "intro": "제품 고유 강점(USP)·기능·성능·스펙을 아이콘/인포그래픽/포인트 나열로 소구하는 패턴. 전 카테고리에서 가장 보편적인 설득 축.",
+    "occurrencePer100": 36
+   },
+   {
+    "pattern": "옵션카탈로그",
+    "intro": "다수 옵션(컬러·스타일·구성)을 그리드/카드 카탈로그로 나열해 한 페이지에서 여러 SKU를 파는 패턴. 패션·생활 카테고리의 볼륨 상세페이지 전형.",
+    "occurrencePer100": 34
+   },
+   {
+    "pattern": "신뢰_정품보장",
+    "intro": "정품 보장·가품 보상·공식 판매처 인증 소구. 브랜드/병행수입 상품 PDP의 핵심 불안 해소 장치.",
+    "occurrencePer100": 31
+   },
+   {
+    "pattern": "신뢰_리뷰소구",
+    "intro": "리뷰 수·평점·재구매율·판매량·수상 이력 등 사회적 증거를 상세 본문에 끌어와 소구하는 패턴.",
+    "occurrencePer100": 30
+   },
+   {
+    "pattern": "비교_경쟁차별",
+    "intro": "타사 vs 자사 비교표, 등급/라인업 비교 등 대조 구조로 차별점을 보여주는 패턴.",
+    "occurrencePer100": 26
+   },
+   {
+    "pattern": "CS_교환환불",
+    "intro": "배송·교환·반품·A/S 정책과 주의사항 고지. 분쟁 예방(CS 방어)과 구매 후 불안 해소를 겸한다. 상세 말미 표준 섹션.",
+    "occurrencePer100": 24
+   },
+   {
+    "pattern": "프로모션_사은품",
+    "intro": "사은품 증정·1+1·세트 구성·기간 특가 등 오퍼 스택으로 전환을 미는 패턴.",
+    "occurrencePer100": 22
+   }
+  ]
+ },
+ "imageDirection": {
+  "source": "coupang design.json v2 역할별 집계 (367페이지/4,557섹션, 카테고리 무관 전체 집계)",
+  "roles": [
+   {
+    "role": "usp_feature",
+    "koreanLabel": "핵심소구",
+    "headlinePxMedian": 51,
+    "bodyPxMedian": 28,
+    "paddingPxMedian": 76,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#F6F6F6",
+     "#F7F7F7",
+     "#F8F8F8"
+    ],
+    "topTreatments": [
+     "단색",
+     "사진 배경",
+     "분할 배경"
+    ]
+   },
+   {
+    "role": "product_intro",
+    "koreanLabel": "제품소개",
+    "headlinePxMedian": 56,
+    "bodyPxMedian": 28,
+    "paddingPxMedian": 72,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#FDFDFD",
+     "#F7F7F7",
+     "#EEEEEE"
+    ],
+    "topTreatments": [
+     "단색",
+     "사진 배경",
+     "분할 배경"
+    ]
+   },
+   {
+    "role": "size_spec",
+    "koreanLabel": "실측·스펙",
+    "headlinePxMedian": 43,
+    "bodyPxMedian": 24,
+    "paddingPxMedian": 68,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#FDFDFD",
+     "#F8F8F8",
+     "#F9F9F9"
+    ],
+    "topTreatments": [
+     "단색",
+     "분할 배경",
+     "흰색 단색 배경이다."
+    ]
+   },
+   {
+    "role": "how_to_guide",
+    "koreanLabel": "사용법",
+    "headlinePxMedian": 48,
+    "bodyPxMedian": 25,
+    "paddingPxMedian": 70,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#F6F6F6",
+     "#F4F4F4",
+     "#F2F2F2"
+    ],
+    "topTreatments": [
+     "단색",
+     "사진 배경",
+     "분할 배경"
+    ]
+   },
+   {
+    "role": "option_catalog",
+    "koreanLabel": "옵션·구성",
+    "headlinePxMedian": 48,
+    "bodyPxMedian": 25,
+    "paddingPxMedian": 72,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#F4F4F4",
+     "#FAFAFA",
+     "#F9F9F9"
+    ],
+    "topTreatments": [
+     "단색",
+     "분할 배경",
+     "사진 배경"
+    ]
+   },
+   {
+    "role": "brand_story",
+    "koreanLabel": "브랜드 스토리",
+    "headlinePxMedian": 47,
+    "bodyPxMedian": 24,
+    "paddingPxMedian": 68,
+    "topHexes": [
+     "#FFFFFF",
+     "#F5F5F5",
+     "#000000",
+     "#F9F9F9",
+     "#EEEEEE"
+    ],
+    "topTreatments": [
+     "단색",
+     "사진 배경",
+     "분할 배경"
+    ]
+   }
+  ]
+ },
+ "gapRules": [
+  {
+   "section": "option_catalog",
+   "label": "옵션카탈로그",
+   "evidencePct": 34,
+   "activateDefault": false,
+   "rationale": "naver 실측 03_화장품미용 카테고리 100건 중 34건 출현(20-리포트 §3) — spec_sheet에 근거 없으면 스킵"
+  },
+  {
+   "section": "certification_evidence",
+   "label": "인증·시험",
+   "evidencePct": 54,
+   "activateDefault": true,
+   "rationale": "naver 실측 03_화장품미용 카테고리 100건 중 54건 출현(20-리포트 §3) — spec_sheet에 근거 없으면 스킵"
+  }
+ ],
+ "sourceCommitSha": "a7fbf03011f256d06daa744f488a7dba48aca82f",
+ "derivedFingerprint": "c943324f1c00",
+ "contentHash": "8b17ce99e1b2"
+}

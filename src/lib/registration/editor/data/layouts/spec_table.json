@@ -1,0 +1,619 @@
+[
+  {
+    "id": "spec_table_layout_01",
+    "sectionType": "spec_table",
+    "name": "미니멀 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "스펙",
+      "테이블"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 300
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 600
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_02",
+    "sectionType": "spec_table",
+    "name": "볼드 다크 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "스펙",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 560
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_03",
+    "sectionType": "spec_table",
+    "name": "이미지 우선 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "스펙",
+      "사이즈"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "size_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 504,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 624,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 884
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "size_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_04",
+    "sectionType": "spec_table",
+    "name": "좌우 분할 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "스펙",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 370,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 370,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "size_image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 40,
+            "width": 430,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 580
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "size_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_05",
+    "sectionType": "spec_table",
+    "name": "서브틀 배경 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_05.png",
+    "category": "overlay",
+    "tags": [
+      "서브틀",
+      "스펙",
+      "배경"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FAFAFA"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 560
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_06",
+    "sectionType": "spec_table",
+    "name": "그라디언트 라이트 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "라이트",
+      "스펙"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(180deg, #F7F7F7 0%, #EFEFEF 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 560
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_07",
+    "sectionType": "spec_table",
+    "name": "카드 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "스펙",
+      "그리드"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 300
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 560
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_08",
+    "sectionType": "spec_table",
+    "name": "스택 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_08.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "이미지",
+      "스펙"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "size_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 160,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 664,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 924
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "size_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_09",
+    "sectionType": "spec_table",
+    "name": "풀블리드 사이즈 스펙",
+    "thumbnail": "/layouts/thumbnails/spec_table_09.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "사이즈",
+      "스펙"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#0F0F0F"
+      },
+      "elements": [
+        {
+          "slotId": "size_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 720
+          },
+          "imageStyle": {
+            "objectFit": "cover"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 90
+          },
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "left",
+            "letterSpacing": -0.5,
+            "lineHeight": 1.3,
+            "color": "#FFFFFF"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 760,
+            "width": 740,
+            "height": 300
+          },
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "left",
+            "lineHeight": 1.7,
+            "color": "#E5E7EB"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1120
+    },
+    "strategyTag": "proof",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "size_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "spec_table_layout_10",
+    "sectionType": "spec_table",
+    "name": "다이내믹 스펙 시트",
+    "thumbnail": "/layouts/thumbnails/spec_table_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "스펙",
+      "테이블"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.bgSub}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 70,
+            "width": 740,
+            "height": 90
+          },
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "center",
+            "letterSpacing": -0.5,
+            "lineHeight": 1.3
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "spec_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 210,
+            "width": 740,
+            "height": 340
+          },
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "left",
+            "lineHeight": 1.7
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 620
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  }
+]

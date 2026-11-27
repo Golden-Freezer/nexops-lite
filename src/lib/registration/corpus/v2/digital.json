@@ -1,0 +1,821 @@
+{
+ "category": "digital",
+ "generatedAt": "2026-08-19",
+ "schemaVersion": 2,
+ "source": {
+  "naver": {
+   "categoryDir": "04_디지털가전",
+   "samplePages": 99
+  },
+  "coupang": null
+ },
+ "profile": {
+  "sectionCountMedian": 15,
+  "patternPrevalence": {
+   "usp_feature": 0.99,
+   "option_catalog": 0.869,
+   "size_spec": 0.96,
+   "product_intro": 0.929,
+   "shipping_cs": 0.96,
+   "how_to_guide": 0.889,
+   "certification_evidence": 0.596,
+   "promotion_offer": 0.899,
+   "brand_story": 0.434,
+   "legal_notice": 0.97,
+   "social_proof": 0.455,
+   "target_recommendation": 0.485,
+   "authenticity": 0.929,
+   "problem": 0.323,
+   "hook": 0.576,
+   "faq": 0.687
+  },
+  "trustStack": {
+   "required": [
+    "authenticity",
+    "certification_evidence",
+    "faq",
+    "hook",
+    "how_to_guide",
+    "legal_notice",
+    "option_catalog",
+    "product_intro",
+    "promotion_offer",
+    "shipping_cs",
+    "size_spec",
+    "usp_feature"
+   ],
+   "recommended": [
+    "brand_story",
+    "social_proof",
+    "target_recommendation"
+   ]
+  },
+  "copyTone": "factual_catalog",
+  "hookDefault": true
+ },
+ "sequenceFull": [
+  {
+   "role": "usp_feature",
+   "prevalence": 0.99,
+   "positionMode": "middle",
+   "positionDist": {
+    "opening": 0.043,
+    "early": 0.242,
+    "middle": 0.344,
+    "late": 0.312,
+    "closing": 0.059
+   }
+  },
+  {
+   "role": "legal_notice",
+   "prevalence": 0.97,
+   "positionMode": "opening",
+   "positionDist": {
+    "opening": 0.451,
+    "early": 0.148,
+    "middle": 0.03,
+    "late": 0.063,
+    "closing": 0.308
+   }
+  },
+  {
+   "role": "shipping_cs",
+   "prevalence": 0.96,
+   "positionMode": "closing",
+   "positionDist": {
+    "opening": 0.318,
+    "early": 0.092,
+    "middle": 0.055,
+    "late": 0.037,
+    "closing": 0.498
+   }
+  },
+  {
+   "role": "size_spec",
+   "prevalence": 0.96,
+   "positionMode": "middle",
+   "positionDist": {
+    "opening": 0.084,
+    "early": 0.128,
+    "middle": 0.315,
+    "late": 0.206,
+    "closing": 0.268
+   }
+  },
+  {
+   "role": "product_intro",
+   "prevalence": 0.929,
+   "positionMode": "early",
+   "positionDist": {
+    "opening": 0.188,
+    "early": 0.265,
+    "middle": 0.201,
+    "late": 0.141,
+    "closing": 0.205
+   }
+  },
+  {
+   "role": "authenticity",
+   "prevalence": 0.929,
+   "positionMode": "opening",
+   "positionDist": {
+    "opening": 0.439,
+    "early": 0.106,
+    "middle": 0.033,
+    "late": 0.081,
+    "closing": 0.341
+   }
+  },
+  {
+   "role": "promotion_offer",
+   "prevalence": 0.899,
+   "positionMode": "opening",
+   "positionDist": {
+    "opening": 0.612,
+    "early": 0.248,
+    "middle": 0.021,
+    "late": 0.024,
+    "closing": 0.095
+   }
+  },
+  {
+   "role": "how_to_guide",
+   "prevalence": 0.889,
+   "positionMode": "late",
+   "positionDist": {
+    "opening": 0.078,
+    "early": 0.131,
+    "middle": 0.212,
+    "late": 0.353,
+    "closing": 0.226
+   }
+  },
+  {
+   "role": "option_catalog",
+   "prevalence": 0.869,
+   "positionMode": "early",
+   "positionDist": {
+    "opening": 0.165,
+    "early": 0.254,
+    "middle": 0.204,
+    "late": 0.208,
+    "closing": 0.169
+   }
+  },
+  {
+   "role": "faq",
+   "prevalence": 0.687,
+   "positionMode": "closing",
+   "positionDist": {
+    "opening": 0.055,
+    "early": 0.046,
+    "middle": 0.041,
+    "late": 0.257,
+    "closing": 0.601
+   }
+  },
+  {
+   "role": "certification_evidence",
+   "prevalence": 0.596,
+   "positionMode": "late",
+   "positionDist": {
+    "opening": 0.14,
+    "early": 0.168,
+    "middle": 0.182,
+    "late": 0.336,
+    "closing": 0.175
+   }
+  },
+  {
+   "role": "hook",
+   "prevalence": 0.576,
+   "positionMode": "opening",
+   "positionDist": {
+    "opening": 0.364,
+    "early": 0.273,
+    "middle": 0.25,
+    "late": 0.102,
+    "closing": 0.011
+   }
+  },
+  {
+   "role": "target_recommendation",
+   "prevalence": 0.485,
+   "positionMode": "closing",
+   "positionDist": {
+    "opening": 0.069,
+    "early": 0.236,
+    "middle": 0.153,
+    "late": 0.125,
+    "closing": 0.417
+   }
+  },
+  {
+   "role": "social_proof",
+   "prevalence": 0.455,
+   "positionMode": "early",
+   "positionDist": {
+    "opening": 0.368,
+    "early": 0.456,
+    "middle": 0.14,
+    "late": 0.018,
+    "closing": 0.018
+   }
+  },
+  {
+   "role": "brand_story",
+   "prevalence": 0.434,
+   "positionMode": "early",
+   "positionDist": {
+    "opening": 0.287,
+    "early": 0.299,
+    "middle": 0.103,
+    "late": 0.115,
+    "closing": 0.195
+   }
+  },
+  {
+   "role": "problem",
+   "prevalence": 0.323,
+   "positionMode": "opening",
+   "positionDist": {
+    "opening": 0.339,
+    "early": 0.304,
+    "middle": 0.232,
+    "late": 0.107,
+    "closing": 0.018
+   }
+  }
+ ],
+ "designRecipes": {
+  "usp_feature": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 64,
+   "elementGapPx": 39,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#F5F5F5",
+    "#F4F4F4",
+    "#F7F7F7"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.244
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.04
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.038
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "option_catalog": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 56,
+   "elementGapPx": 34,
+   "topHexes": [
+    "#FFFFFF",
+    "#F5F5F5",
+    "#F6F6F6",
+    "#F7F7F7",
+    "#FEFEFE"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.267
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.029
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.013
+    }
+   ],
+   "imagesPerSection": 3,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "size_spec": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 54,
+   "elementGapPx": 34,
+   "topHexes": [
+    "#FFFFFF",
+    "#F5F5F5",
+    "#000000",
+    "#F4F4F4",
+    "#F6F6F6"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.379
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.022
+    },
+    {
+     "value": "흰색 단색 배경이다.",
+     "share": 0.012
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "product_intro": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 56,
+   "elementGapPx": 34,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#F5F5F5",
+    "#F4F4F4",
+    "#FEFEFE"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.22
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.108
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.028
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "shipping_cs": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 49,
+   "elementGapPx": 28,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#F3F3F3",
+    "#ECECEC",
+    "#F7F7F7"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.344
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.061
+    },
+    {
+     "value": "그라데이션",
+     "share": 0.015
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "how_to_guide": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 56,
+   "elementGapPx": 32,
+   "topHexes": [
+    "#FFFFFF",
+    "#F5F5F5",
+    "#F7F7F7",
+    "#F6F6F6",
+    "#F4F4F4"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.314
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.024
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.023
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "certification_evidence": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 63,
+   "elementGapPx": 39,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#F5F5F5",
+    "#F7F7F7",
+    "#F6F6F6"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.307
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.037
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.027
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "promotion_offer": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 43,
+   "elementGapPx": 24,
+   "topHexes": [
+    "#FFFFFF",
+    "#3470F7",
+    "#000000",
+    "#F3F3F3",
+    "#EDF0F7"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.197
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.045
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.042
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "brand_story": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 63,
+   "elementGapPx": 39,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#F7F7F7",
+    "#F8F8F8",
+    "#F5F5F5"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.241
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.09
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.039
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "legal_notice": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 32,
+   "elementGapPx": 18,
+   "topHexes": [
+    "#FFFFFF",
+    "#F8F9FD",
+    "#F7F7F7",
+    "#F5F5F5",
+    "#F6F6F6"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.45
+    },
+    {
+     "value": "흰색 단색 배경",
+     "share": 0.016
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.013
+    }
+   ],
+   "imagesPerSection": 0,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "social_proof": {
+   "headlinePx": 47,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 56,
+   "elementGapPx": 31,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#F5F5F5",
+    "#F8F9FB",
+    "#FEFEFE"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.332
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.043
+    },
+    {
+     "value": "그라데이션",
+     "share": 0.029
+    }
+   ],
+   "imagesPerSection": 2,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "target_recommendation": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 57,
+   "elementGapPx": 30,
+   "topHexes": [
+    "#FFFFFF",
+    "#F5F5F5",
+    "#F6F6F6",
+    "#000000",
+    "#FEFEFE"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.339
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.031
+    },
+    {
+     "value": "흰색 단색",
+     "share": 0.02
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "authenticity": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 49,
+   "elementGapPx": 30,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#152AA1",
+    "#F3F3F3",
+    "#F2F2F2"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.302
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.058
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.03
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "problem": {
+   "headlinePx": 49,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 71,
+   "elementGapPx": 43,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#FEFEFE",
+    "#F7F7F7",
+    "#F5F5F5"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.292
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.034
+    },
+    {
+     "value": "사진 배경",
+     "share": 0.03
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "hook": {
+   "headlinePx": 53,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 61,
+   "elementGapPx": 31,
+   "topHexes": [
+    "#FFFFFF",
+    "#000000",
+    "#F9F9F9",
+    "#F3F3F3",
+    "#010101"
+   ],
+   "topTreatments": [
+    {
+     "value": "사진 배경",
+     "share": 0.233
+    },
+    {
+     "value": "단색",
+     "share": 0.121
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.03
+    }
+   ],
+   "imagesPerSection": 1,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  },
+  "faq": {
+   "headlinePx": 46,
+   "bodyPx": 37,
+   "lineHeightRatio": 1.1,
+   "paddingPx": 49,
+   "elementGapPx": 28,
+   "topHexes": [
+    "#FFFFFF",
+    "#F7F7F7",
+    "#F6F6F6",
+    "#F5F5F5",
+    "#F2F2F2"
+   ],
+   "topTreatments": [
+    {
+     "value": "단색",
+     "share": 0.382
+    },
+    {
+     "value": "흰색 단색 배경",
+     "share": 0.025
+    },
+    {
+     "value": "분할 배경",
+     "share": 0.022
+    }
+   ],
+   "imagesPerSection": 0,
+   "sourcePlatform": "naver",
+   "clampedToMobileMin": true
+  }
+ },
+ "copyPatterns": {
+  "prevalentPatterns": [
+   {
+    "pattern": "USP_기능소구",
+    "intro": "제품 고유 강점(USP)·기능·성능·스펙을 아이콘/인포그래픽/포인트 나열로 소구하는 패턴. 전 카테고리에서 가장 보편적인 설득 축.",
+    "occurrencePer100": 86
+   },
+   {
+    "pattern": "신뢰_인증시험",
+    "intro": "공인 시험성적서·인증(KC/KOTITI 등)·특허·검사 결과로 주장의 근거를 대는 패턴. 화장품·식품·유아·건강 카테고리에서 비중이 높다.",
+    "occurrencePer100": 51
+   },
+   {
+    "pattern": "CS_교환환불",
+    "intro": "배송·교환·반품·A/S 정책과 주의사항 고지. 분쟁 예방(CS 방어)과 구매 후 불안 해소를 겸한다. 상세 말미 표준 섹션.",
+    "occurrencePer100": 43
+   },
+   {
+    "pattern": "프로모션_사은품",
+    "intro": "사은품 증정·1+1·세트 구성·기간 특가 등 오퍼 스택으로 전환을 미는 패턴.",
+    "occurrencePer100": 35
+   },
+   {
+    "pattern": "비교_경쟁차별",
+    "intro": "타사 vs 자사 비교표, 등급/라인업 비교 등 대조 구조로 차별점을 보여주는 패턴.",
+    "occurrencePer100": 27
+   },
+   {
+    "pattern": "신뢰_정품보장",
+    "intro": "정품 보장·가품 보상·공식 판매처 인증 소구. 브랜드/병행수입 상품 PDP의 핵심 불안 해소 장치.",
+    "occurrencePer100": 26
+   },
+   {
+    "pattern": "배송_출고소구",
+    "intro": "당일출고·오늘출발·도착보장 등 배송 속도를 전면 소구. 상세 상단 배치가 많다.",
+    "occurrencePer100": 25
+   },
+   {
+    "pattern": "옵션카탈로그",
+    "intro": "다수 옵션(컬러·스타일·구성)을 그리드/카드 카탈로그로 나열해 한 페이지에서 여러 SKU를 파는 패턴. 패션·생활 카테고리의 볼륨 상세페이지 전형.",
+    "occurrencePer100": 16
+   },
+   {
+    "pattern": "신뢰_리뷰소구",
+    "intro": "리뷰 수·평점·재구매율·판매량·수상 이력 등 사회적 증거를 상세 본문에 끌어와 소구하는 패턴.",
+    "occurrencePer100": 12
+   },
+   {
+    "pattern": "브랜드스토리",
+    "intro": "브랜드 연혁·철학·제조 배경 서사로 프리미엄/신뢰 포지셔닝을 만드는 패턴.",
+    "occurrencePer100": 2
+   },
+   {
+    "pattern": "후킹_문제제기",
+    "intro": "'이런 고민 있으시죠?' 문제 제기, 페르소나 체크리스트 등 상세 오프닝에서 주의를 낚는 후킹 장치.",
+    "occurrencePer100": 2
+   },
+   {
+    "pattern": "실측사이즈",
+    "intro": "실측 치수표·사이즈 가이드·모델 착용 정보로 사이즈 불안(의류 반품 1위 원인)을 차단하는 패턴.",
+    "occurrencePer100": 1
+   },
+   {
+    "pattern": "착용_사용컷",
+    "intro": "모델 착용컷·사용 연출컷·디테일컷의 반복 배치로 카피 없이 시각적으로 설득하는 패턴.",
+    "occurrencePer100": 1
+   }
+  ]
+ },
+ "gapRules": [],
+ "sourceCommitSha": "a7fbf03011f256d06daa744f488a7dba48aca82f",
+ "derivedFingerprint": "c943324f1c00",
+ "contentHash": "6fb600806598"
+}

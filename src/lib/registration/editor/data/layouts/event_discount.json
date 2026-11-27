@@ -1,0 +1,690 @@
+[
+  {
+    "id": "event_discount_layout_01",
+    "sectionType": "event_discount",
+    "name": "미니멀 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "할인",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 360,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 520
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_02",
+    "sectionType": "event_discount",
+    "name": "볼드 다크 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "할인",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 380,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 520
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_03",
+    "sectionType": "event_discount",
+    "name": "이미지 스타일 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_03.png",
+    "category": "image_first",
+    "tags": [
+      "할인",
+      "강조",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFF8F0"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 380,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_04",
+    "sectionType": "event_discount",
+    "name": "좌우 분할 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "할인",
+      "퍼센트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 370,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 370,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 450,
+            "y": 80,
+            "width": 370,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_05",
+    "sectionType": "event_discount",
+    "name": "오버레이 다크 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "다크",
+      "할인"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #000000 0%, #333333 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 380,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_06",
+    "sectionType": "event_discount",
+    "name": "그라디언트 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "할인",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(135deg, #FF6B6B 0%, #FE8C00 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 380,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_07",
+    "sectionType": "event_discount",
+    "name": "카드 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "할인",
+      "레드"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFF0F0"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 440
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_08",
+    "sectionType": "event_discount",
+    "name": "스택 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_08.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "할인",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#1A1A1A"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 360,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 440
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_09",
+    "sectionType": "event_discount",
+    "name": "풀블리드 브랜드 할인",
+    "thumbnail": "/layouts/thumbnails/event_discount_09.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "할인",
+      "브랜드"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.primary}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "center",
+            "lineHeight": 1.3,
+            "letterSpacing": -0.5,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 96,
+            "fontWeight": 900,
+            "textAlign": "center",
+            "lineHeight": 1.1,
+            "letterSpacing": -1,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 480,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "center",
+            "lineHeight": 1.5,
+            "color": "#E5E7EB"
+          }
+        }
+      ],
+      "estimatedHeight": 620
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_discount_layout_10",
+    "sectionType": "event_discount",
+    "name": "다이나믹 할인 스플릿",
+    "thumbnail": "/layouts/thumbnails/event_discount_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이나믹",
+      "할인",
+      "퍼센트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFF8F0"
+      },
+      "elements": [
+        {
+          "slotId": "discount_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 340,
+            "height": 240
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 88,
+            "fontWeight": 900,
+            "textAlign": "left",
+            "lineHeight": 1.1,
+            "letterSpacing": -1,
+            "color": "#FF4D4D"
+          }
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 460,
+            "y": 100,
+            "width": 340,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "left",
+            "lineHeight": 1.3,
+            "letterSpacing": -0.5
+          }
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 460,
+            "y": 260,
+            "width": 340,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "left",
+            "lineHeight": 1.6
+          }
+        }
+      ],
+      "estimatedHeight": 440
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "notch_split"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  }
+]

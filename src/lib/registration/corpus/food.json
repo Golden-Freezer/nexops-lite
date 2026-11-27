@@ -1,0 +1,249 @@
+{
+ "category": "food",
+ "generatedAt": "2026-08-19",
+ "sourceCategories": {
+  "naver": "07_식품",
+  "coupang": "04_식품"
+ },
+ "sectionDesign": {
+  "source": "coupang design.json v2 실측 (92건)",
+  "sectionCountMedian": 10,
+  "sequence": [
+   {
+    "role": "size_spec",
+    "prevalence": 0.957,
+    "positionMode": "closing"
+   },
+   {
+    "role": "usp_feature",
+    "prevalence": 0.87,
+    "positionMode": "early"
+   },
+   {
+    "role": "product_intro",
+    "prevalence": 0.804,
+    "positionMode": "opening"
+   },
+   {
+    "role": "shipping_cs",
+    "prevalence": 0.717,
+    "positionMode": "opening"
+   },
+   {
+    "role": "how_to_guide",
+    "prevalence": 0.717,
+    "positionMode": "late"
+   },
+   {
+    "role": "option_catalog",
+    "prevalence": 0.674,
+    "positionMode": "late"
+   },
+   {
+    "role": "brand_story",
+    "prevalence": 0.609,
+    "positionMode": "early"
+   },
+   {
+    "role": "certification_evidence",
+    "prevalence": 0.413,
+    "positionMode": "opening"
+   },
+   {
+    "role": "hook",
+    "prevalence": 0.348,
+    "positionMode": "opening"
+   },
+   {
+    "role": "legal_notice",
+    "prevalence": 0.196,
+    "positionMode": "closing"
+   },
+   {
+    "role": "problem",
+    "prevalence": 0.087,
+    "positionMode": "opening"
+   },
+   {
+    "role": "promotion_offer",
+    "prevalence": 0.022,
+    "positionMode": "opening"
+   },
+   {
+    "role": "social_proof",
+    "prevalence": 0.022,
+    "positionMode": "late"
+   }
+  ]
+ },
+ "copyPatterns": {
+  "dominantAxes": "CS정책 45 · 배송소구 39 · 인증 37",
+  "reviewCountMedian": 20780,
+  "sectionCountMedian": 13,
+  "prevalentPatterns": [
+   {
+    "pattern": "CS_교환환불",
+    "intro": "배송·교환·반품·A/S 정책과 주의사항 고지. 분쟁 예방(CS 방어)과 구매 후 불안 해소를 겸한다. 상세 말미 표준 섹션.",
+    "occurrencePer100": 45
+   },
+   {
+    "pattern": "배송_출고소구",
+    "intro": "당일출고·오늘출발·도착보장 등 배송 속도를 전면 소구. 상세 상단 배치가 많다.",
+    "occurrencePer100": 39
+   },
+   {
+    "pattern": "신뢰_인증시험",
+    "intro": "공인 시험성적서·인증(KC/KOTITI 등)·특허·검사 결과로 주장의 근거를 대는 패턴. 화장품·식품·유아·건강 카테고리에서 비중이 높다.",
+    "occurrencePer100": 37
+   },
+   {
+    "pattern": "옵션카탈로그",
+    "intro": "다수 옵션(컬러·스타일·구성)을 그리드/카드 카탈로그로 나열해 한 페이지에서 여러 SKU를 파는 패턴. 패션·생활 카테고리의 볼륨 상세페이지 전형.",
+    "occurrencePer100": 31
+   },
+   {
+    "pattern": "USP_기능소구",
+    "intro": "제품 고유 강점(USP)·기능·성능·스펙을 아이콘/인포그래픽/포인트 나열로 소구하는 패턴. 전 카테고리에서 가장 보편적인 설득 축.",
+    "occurrencePer100": 28
+   },
+   {
+    "pattern": "신뢰_리뷰소구",
+    "intro": "리뷰 수·평점·재구매율·판매량·수상 이력 등 사회적 증거를 상세 본문에 끌어와 소구하는 패턴.",
+    "occurrencePer100": 24
+   },
+   {
+    "pattern": "프로모션_사은품",
+    "intro": "사은품 증정·1+1·세트 구성·기간 특가 등 오퍼 스택으로 전환을 미는 패턴.",
+    "occurrencePer100": 23
+   },
+   {
+    "pattern": "비교_경쟁차별",
+    "intro": "타사 vs 자사 비교표, 등급/라인업 비교 등 대조 구조로 차별점을 보여주는 패턴.",
+    "occurrencePer100": 17
+   }
+  ]
+ },
+ "imageDirection": {
+  "source": "coupang design.json v2 역할별 집계 (367페이지/4,557섹션, 카테고리 무관 전체 집계)",
+  "roles": [
+   {
+    "role": "size_spec",
+    "koreanLabel": "실측·스펙",
+    "headlinePxMedian": 43,
+    "bodyPxMedian": 24,
+    "paddingPxMedian": 68,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#FDFDFD",
+     "#F8F8F8",
+     "#F9F9F9"
+    ],
+    "topTreatments": [
+     "단색",
+     "분할 배경",
+     "흰색 단색 배경이다."
+    ]
+   },
+   {
+    "role": "usp_feature",
+    "koreanLabel": "핵심소구",
+    "headlinePxMedian": 51,
+    "bodyPxMedian": 28,
+    "paddingPxMedian": 76,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#F6F6F6",
+     "#F7F7F7",
+     "#F8F8F8"
+    ],
+    "topTreatments": [
+     "단색",
+     "사진 배경",
+     "분할 배경"
+    ]
+   },
+   {
+    "role": "product_intro",
+    "koreanLabel": "제품소개",
+    "headlinePxMedian": 56,
+    "bodyPxMedian": 28,
+    "paddingPxMedian": 72,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#FDFDFD",
+     "#F7F7F7",
+     "#EEEEEE"
+    ],
+    "topTreatments": [
+     "단색",
+     "사진 배경",
+     "분할 배경"
+    ]
+   },
+   {
+    "role": "shipping_cs",
+    "koreanLabel": "배송·교환",
+    "headlinePxMedian": 35,
+    "bodyPxMedian": 22,
+    "paddingPxMedian": 42,
+    "topHexes": [
+     "#FFFFFF",
+     "#F5F5F5",
+     "#F4F4F4",
+     "#E2F2FF",
+     "#F9F9F9"
+    ],
+    "topTreatments": [
+     "단색",
+     "분할 배경",
+     "단색 카드"
+    ]
+   },
+   {
+    "role": "how_to_guide",
+    "koreanLabel": "사용법",
+    "headlinePxMedian": 48,
+    "bodyPxMedian": 25,
+    "paddingPxMedian": 70,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#F6F6F6",
+     "#F4F4F4",
+     "#F2F2F2"
+    ],
+    "topTreatments": [
+     "단색",
+     "사진 배경",
+     "분할 배경"
+    ]
+   },
+   {
+    "role": "option_catalog",
+    "koreanLabel": "옵션·구성",
+    "headlinePxMedian": 48,
+    "bodyPxMedian": 25,
+    "paddingPxMedian": 72,
+    "topHexes": [
+     "#FFFFFF",
+     "#FEFEFE",
+     "#F4F4F4",
+     "#FAFAFA",
+     "#F9F9F9"
+    ],
+    "topTreatments": [
+     "단색",
+     "분할 배경",
+     "사진 배경"
+    ]
+   }
+  ]
+ },
+ "gapRules": [],
+ "sourceCommitSha": "a7fbf03011f256d06daa744f488a7dba48aca82f",
+ "derivedFingerprint": "c943324f1c00",
+ "contentHash": "98dc503e0632"
+}

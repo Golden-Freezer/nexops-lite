@@ -1,0 +1,38 @@
+{
+ "generatedAt": "2026-08-19",
+ "source": "14-디자인/모바일-시인성.md + 14-디자인/생성기 재현 레시피.md 약점 필드 집계 (결정 H-2)",
+ "viewportPx": 390,
+ "minBodyPx": 14,
+ "measuredFailingSampleShare": "coupang 361건 중 360건이 판정 기준 미달(모바일-시인성.md) — 거의 전수가 반면교사",
+ "commonFailingElements": [],
+ "doNotRules": [
+  {
+   "rule": "캡처 기준 원본 폭에서 46px 미만인 본문·캡션·법정표시를 그대로 축소해 쓰지 말 것 — 모바일 390px 환산 시 14px 미만으로 떨어져 판독 불가해진다.",
+   "sampleHits": 60
+  },
+  {
+   "rule": "법정표시·전성분처럼 근거가 필요한 텍스트를 작은 래스터 이미지에만 담지 말 것 — 최소 46px 원본 크기로 별도 텍스트 블록에 분리한다.",
+   "sampleHits": 49
+  },
+  {
+   "rule": "유사한 컷·카피를 과도하게 반복해 페이지 길이를 늘리지 말 것 — 정보 밀도가 낮아지고 탐색 피로가 커진다.",
+   "sampleHits": 39
+  },
+  {
+   "rule": "옅은 파스텔·연한 색 글자를 밝은 배경에 올리지 말 것 — 명도 대비가 약해 모바일 축소 시 더 읽기 어려워진다.",
+   "sampleHits": 26
+  },
+  {
+   "rule": "섹션 사이 200px를 넘는 공백을 반복하지 말 것 — 탐색 속도를 늦추고 페이지 리듬을 늘어지게 한다.",
+   "sampleHits": 13
+  },
+  {
+   "rule": "옵션명·캡션 문구를 사진 색상·내용과 다르게 재사용하지 말 것 — 옵션마다 문구를 실제 이미지와 대조 검수한다.",
+   "sampleHits": 1
+  }
+ ],
+ "weaknessSampleCount": 60,
+ "sourceCommitSha": "a7fbf03011f256d06daa744f488a7dba48aca82f",
+ "derivedFingerprint": "c943324f1c00",
+ "contentHash": "01c0a86d5795"
+}

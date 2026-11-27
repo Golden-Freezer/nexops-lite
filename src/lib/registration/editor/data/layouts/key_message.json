@@ -1,0 +1,598 @@
+[
+  {
+    "id": "key_message_layout_01",
+    "sectionType": "key_message",
+    "name": "미니멀 핵심 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "핵심",
+      "메시지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "sub_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 360,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 580
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_02",
+    "sectionType": "key_message",
+    "name": "볼드 다크 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "핵심",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "sub_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 400,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 560
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_03",
+    "sectionType": "key_message",
+    "name": "이미지 우선 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "메시지",
+      "하단텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 504,
+            "width": 740,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "sub_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 684,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 780
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_04",
+    "sectionType": "key_message",
+    "name": "좌우 분할 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "핵심",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 370,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "sub_text",
+          "elementType": "text",
+          "position": {
+            "x": 450,
+            "y": 100,
+            "width": 350,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_05",
+    "sectionType": "key_message",
+    "name": "오버레이 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "이미지",
+      "메시지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 140,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 484
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_06",
+    "sectionType": "key_message",
+    "name": "그라디언트 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "핵심",
+      "강렬"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #000000 0%, #434343 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 740,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_07",
+    "sectionType": "key_message",
+    "name": "카드 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "핵심",
+      "메시지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 240
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "sub_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 360,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 520
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_08",
+    "sectionType": "key_message",
+    "name": "풀블리드 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_08.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "이미지",
+      "오버레이"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 600,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_09",
+    "sectionType": "key_message",
+    "name": "스택 핵심 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_09.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "브랜드톤",
+      "메시지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.bgSub}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 70,
+            "width": 740,
+            "height": 180
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 72,
+            "fontWeight": 800,
+            "textAlign": "center",
+            "letterSpacing": -1,
+            "lineHeight": 1.3
+          }
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 290,
+            "width": 860,
+            "height": 430
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        },
+        {
+          "slotId": "sub_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 760,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "center",
+            "lineHeight": 1.7
+          }
+        }
+      ],
+      "estimatedHeight": 920
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "key_message_layout_10",
+    "sectionType": "key_message",
+    "name": "다이내믹 브랜드 메시지",
+    "thumbnail": "/layouts/thumbnails/key_message_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "브랜드컬러",
+      "비대칭"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.primary}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 120,
+            "width": 480,
+            "height": 240
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 72,
+            "fontWeight": 800,
+            "textAlign": "left",
+            "color": "#FFFFFF",
+            "letterSpacing": -1,
+            "lineHeight": 1.3
+          }
+        },
+        {
+          "slotId": "sub_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 400,
+            "width": 480,
+            "height": 110
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "left",
+            "color": "#E5E7EB",
+            "lineHeight": 1.6
+          }
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 580,
+            "y": 140,
+            "width": 280,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 580
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "circle_focus"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  }
+]

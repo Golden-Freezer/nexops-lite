@@ -1,0 +1,671 @@
+[
+  {
+    "id": "problem_raise_layout_01",
+    "sectionType": "problem_raise",
+    "name": "질문형 센터",
+    "thumbnail": "/layouts/thumbnails/problem_raise_01.png",
+    "category": "minimal",
+    "tags": [
+      "텍스트중심",
+      "센터정렬",
+      "질문형",
+      "여백"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 440,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 720
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_02",
+    "sectionType": "problem_raise",
+    "name": "볼드 다크",
+    "thumbnail": "/layouts/thumbnails/problem_raise_02.png",
+    "category": "bold",
+    "tags": [
+      "다크배경",
+      "강렬",
+      "화이트텍스트",
+      "임팩트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 270
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 480,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 760
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_03",
+    "sectionType": "problem_raise",
+    "name": "이미지 퍼스트",
+    "thumbnail": "/layouts/thumbnails/problem_raise_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지상단",
+      "1:1이미지",
+      "공감장면"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "problem_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 920,
+            "width": 740,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1200,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1480
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "problem_image",
+      "question"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_04",
+    "sectionType": "problem_raise",
+    "name": "좌우 분할",
+    "thumbnail": "/layouts/thumbnails/problem_raise_04.png",
+    "category": "split",
+    "tags": [
+      "좌우분할",
+      "이미지좌",
+      "질문우"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "problem_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 143,
+            "width": 430,
+            "height": 573
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 490,
+            "y": 160,
+            "width": 310,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 490,
+            "y": 240,
+            "width": 310,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 490,
+            "y": 520,
+            "width": 310,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "problem_image",
+      "label"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_05",
+    "sectionType": "problem_raise",
+    "name": "이미지 오버레이",
+    "thumbnail": "/layouts/thumbnails/problem_raise_05.png",
+    "category": "overlay",
+    "tags": [
+      "배경이미지",
+      "텍스트오버레이",
+      "감성장면"
+    ],
+    "structure": {
+      "background": {
+        "type": "image",
+        "value": "{{section_bg_image}}"
+      },
+      "elements": [
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 400,
+            "width": 740,
+            "height": 260
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 720,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1147
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "question"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_06",
+    "sectionType": "problem_raise",
+    "name": "그라데이션 감성",
+    "thumbnail": "/layouts/thumbnails/problem_raise_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라데이션",
+      "웜톤",
+      "이미지없음"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #2C1810 0%, #4A2C1A 50%, #2C1810 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 260
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 480,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 760
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_07",
+    "sectionType": "problem_raise",
+    "name": "카드 프레임",
+    "thumbnail": "/layouts/thumbnails/problem_raise_07.png",
+    "category": "card",
+    "tags": [
+      "카드형",
+      "그림자",
+      "프레임"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F0F0F0"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 80,
+            "y": 80,
+            "width": 700,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 80,
+            "y": 160,
+            "width": 700,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 80,
+            "y": 440,
+            "width": 700,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 720
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_08",
+    "sectionType": "problem_raise",
+    "name": "풀블리드 배너",
+    "thumbnail": "/layouts/thumbnails/problem_raise_08.png",
+    "category": "full_bleed",
+    "tags": [
+      "전폭이미지",
+      "16:9",
+      "텍스트하단"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "problem_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 544,
+            "width": 740,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 824,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1100
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "problem_image",
+      "question"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_09",
+    "sectionType": "problem_raise",
+    "name": "수직 스택",
+    "thumbnail": "/layouts/thumbnails/problem_raise_09.png",
+    "category": "stacked",
+    "tags": [
+      "수직배치",
+      "중앙이미지",
+      "균등간격"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FAFAFA"
+      },
+      "elements": [
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "problem_image",
+          "elementType": "image",
+          "position": {
+            "x": 180,
+            "y": 370,
+            "width": 500,
+            "height": 500
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 930,
+            "width": 740,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1200
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "problem_image",
+      "question"
+    ]
+  },
+  {
+    "id": "problem_raise_layout_10",
+    "sectionType": "problem_raise",
+    "name": "다이나믹 비대칭",
+    "thumbnail": "/layouts/thumbnails/problem_raise_10.png",
+    "category": "dynamic",
+    "tags": [
+      "비대칭",
+      "악센트마커",
+      "시선유도"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "accent_marker",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 120,
+            "height": 340
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "question",
+          "elementType": "text",
+          "position": {
+            "x": 220,
+            "y": 120,
+            "width": 580,
+            "height": 230
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "empathy_body",
+          "elementType": "text",
+          "position": {
+            "x": 220,
+            "y": 400,
+            "width": 580,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "problem_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 660,
+            "width": 860,
+            "height": 320
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1060
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "problem_image",
+      "accent_marker"
+    ]
+  }
+]

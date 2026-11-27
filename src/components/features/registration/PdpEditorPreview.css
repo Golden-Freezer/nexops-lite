@@ -1,0 +1,8 @@
+/* 에디터 실렌더 미리보기 폰트 — editor-theme.css의 self-host 정본과 동일 자산(/fonts).
+   에디터 라우트 밖(detail-page 미리보기)에서도 헤드라인 폰트가 실물과 같게 보이도록 재선언한다. */
+@font-face {
+  font-family: 'GmarketSansBold';
+  src: url('/fonts/GmarketSansBold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}

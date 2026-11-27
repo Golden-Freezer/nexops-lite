@@ -1,0 +1,649 @@
+[
+  {
+    "id": "event_bundle_layout_01",
+    "sectionType": "event_bundle",
+    "name": "미니멀 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "번들",
+      "이벤트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 400
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_02",
+    "sectionType": "event_bundle",
+    "name": "볼드 다크 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "번들",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#1A1A2E"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 280,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 400
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_03",
+    "sectionType": "event_bundle",
+    "name": "이미지 우선 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "번들",
+      "이벤트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "banner_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 880,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1000,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1100
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "banner_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_04",
+    "sectionType": "event_bundle",
+    "name": "좌우 분할 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "번들",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 370,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 240,
+            "width": 370,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "banner_image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 60,
+            "width": 430,
+            "height": 430
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 560
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "banner_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_05",
+    "sectionType": "event_bundle",
+    "name": "오버레이 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "번들",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "banner_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 360,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "banner_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_06",
+    "sectionType": "event_bundle",
+    "name": "그라디언트 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "번들",
+      "이벤트"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #1A1A2E 0%, #4F46E5 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 260,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 440
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_07",
+    "sectionType": "event_bundle",
+    "name": "카드 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "번들",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "banner_image",
+          "elementType": "image",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 740
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 820,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 920,
+            "width": 740,
+            "height": 60
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 980
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "banner_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_08",
+    "sectionType": "event_bundle",
+    "name": "스택 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_08.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "번들",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "banner_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 160,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 664,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 804
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "banner_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_09",
+    "sectionType": "event_bundle",
+    "name": "풀블리드 번들",
+    "thumbnail": "/layouts/thumbnails/event_bundle_09.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "번들",
+      "이벤트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "banner_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 700
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 460,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 72,
+            "fontWeight": 800,
+            "textAlign": "center",
+            "lineHeight": 1.25,
+            "letterSpacing": -1,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 600,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "center",
+            "lineHeight": 1.5,
+            "color": "#E5E7EB"
+          }
+        }
+      ],
+      "estimatedHeight": 760
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "banner_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "event_bundle_layout_10",
+    "sectionType": "event_bundle",
+    "name": "다이나믹 번들 구성",
+    "thumbnail": "/layouts/thumbnails/event_bundle_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이나믹",
+      "번들",
+      "구성"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.bgSub}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 70,
+            "width": 500,
+            "height": 110
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h2",
+            "fontSize": 60,
+            "fontWeight": 700,
+            "textAlign": "left",
+            "lineHeight": 1.3,
+            "letterSpacing": -0.5
+          }
+        },
+        {
+          "slotId": "banner_image",
+          "elementType": "image",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 360,
+            "height": 360
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 460,
+            "y": 240,
+            "width": 340,
+            "height": 300
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 400,
+            "textAlign": "left",
+            "lineHeight": 1.7
+          }
+        }
+      ],
+      "estimatedHeight": 640
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "banner_image",
+      "headline"
+    ]
+  }
+]

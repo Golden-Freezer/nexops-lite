@@ -1,0 +1,635 @@
+[
+  {
+    "id": "sub2_div_page_layout_01",
+    "sectionType": "sub2_div_page",
+    "name": "미니멀 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "서브",
+      "태그"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 420
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_02",
+    "sectionType": "sub2_div_page",
+    "name": "볼드 다크 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "서브",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 400
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_03",
+    "sectionType": "sub2_div_page",
+    "name": "이미지 우선 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "서브",
+      "태그"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 880,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 980,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1120
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_04",
+    "sectionType": "sub2_div_page",
+    "name": "좌우 분할 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "이미지",
+      "태그"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 370,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 370,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 0,
+            "width": 430,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_05",
+    "sectionType": "sub2_div_page",
+    "name": "오버레이 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "이미지",
+      "서브"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 360,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_06",
+    "sectionType": "sub2_div_page",
+    "name": "그라디언트 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "서브",
+      "태그"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #485563 0%, #29323C 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 200,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 420
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_07",
+    "sectionType": "sub2_div_page",
+    "name": "카드 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "이미지",
+      "태그"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 740
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 820,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 920,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1100
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_08",
+    "sectionType": "sub2_div_page",
+    "name": "스택 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_08.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "이미지",
+      "태그"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 160,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 664,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 844
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_09",
+    "sectionType": "sub2_div_page",
+    "name": "풀블리드 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_09.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "이미지",
+      "서브"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 1000
+          },
+          "imageStyle": {
+            "objectFit": "cover"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 700,
+            "width": 740,
+            "height": 100
+          },
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 72,
+            "fontWeight": 800,
+            "textAlign": "center",
+            "letterSpacing": -1,
+            "lineHeight": 1.3,
+            "color": "#FFFFFF"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 840,
+            "width": 740,
+            "height": 100
+          },
+          "textStyle": {
+            "typoLevel": "caption",
+            "fontSize": 28,
+            "fontWeight": 500,
+            "textAlign": "center",
+            "lineHeight": 1.6,
+            "color": "#E5E7EB"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1060
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "sub2_div_page_layout_10",
+    "sectionType": "sub2_div_page",
+    "name": "다이내믹 브랜드 서브2",
+    "thumbnail": "/layouts/thumbnails/sub2_div_page_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "브랜드",
+      "태그"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.primary}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 560,
+            "height": 130
+          },
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 72,
+            "fontWeight": 800,
+            "textAlign": "left",
+            "letterSpacing": -1,
+            "lineHeight": 1.25,
+            "color": "#FFFFFF"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "tags",
+          "elementType": "text",
+          "position": {
+            "x": 180,
+            "y": 280,
+            "width": 620,
+            "height": 140
+          },
+          "textStyle": {
+            "typoLevel": "caption",
+            "fontSize": 28,
+            "fontWeight": 500,
+            "textAlign": "right",
+            "lineHeight": 1.7,
+            "color": "#E5E7EB"
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 500
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  }
+]

@@ -1,0 +1,682 @@
+[
+  {
+    "id": "perf_reviews_layout_01",
+    "sectionType": "perf_reviews",
+    "name": "미니멀 리뷰수",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "리뷰",
+      "카운트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 360
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "subtitle"
+    ]
+  },
+  {
+    "id": "perf_reviews_layout_02",
+    "sectionType": "perf_reviews",
+    "name": "볼드 다크 리뷰",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "리뷰",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 360
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "subtitle"
+    ]
+  },
+  {
+    "id": "perf_reviews_layout_03",
+    "sectionType": "perf_reviews",
+    "name": "이미지 우선 아바타",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_03.png",
+    "category": "image_first",
+    "tags": [
+      "아바타",
+      "이미지",
+      "리뷰"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 880,
+            "width": 740,
+            "height": 60
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 960,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1100
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "avatar_image",
+      "subtitle"
+    ]
+  },
+  {
+    "id": "perf_reviews_layout_04",
+    "sectionType": "perf_reviews",
+    "name": "좌우 분할",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "아바타",
+      "리뷰"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 430
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 470,
+            "y": 120,
+            "width": 330,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 470,
+            "y": 200,
+            "width": 330,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 430
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "avatar_image",
+      "subtitle"
+    ]
+  },
+  {
+    "id": "perf_reviews_layout_05",
+    "sectionType": "perf_reviews",
+    "name": "오버레이 아바타",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "아바타",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 480
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 170,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 230,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "avatar_image",
+      "subtitle"
+    ]
+  },
+  {
+    "id": "perf_reviews_layout_06",
+    "sectionType": "perf_reviews",
+    "name": "그라디언트 리뷰",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "리뷰",
+      "카운트"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #0F2027 0%, #203A43 50%, #2C5364 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 400
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "subtitle"
+    ]
+  },
+  {
+    "id": "perf_reviews_layout_07",
+    "sectionType": "perf_reviews",
+    "name": "카드 아바타 중앙",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "아바타",
+      "리뷰"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 110,
+            "y": 60,
+            "width": 640,
+            "height": 640
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 720,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 780,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 920
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "avatar_image",
+      "subtitle"
+    ],
+    "cardParams": {
+      "gap": 24,
+      "padding": 28,
+      "bodyFontSize": 34
+    }
+  },
+  {
+    "id": "perf_reviews_layout_08",
+    "sectionType": "perf_reviews",
+    "name": "스택 리뷰",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_08.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "리뷰",
+      "아바타"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 200,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 704,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 804
+    },
+    "strategyTag": "balanced",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "avatar_image",
+      "count_text"
+    ],
+    "cardParams": {
+      "gap": 12,
+      "padding": 20,
+      "bodyFontSize": 34
+    }
+  },
+  {
+    "id": "perf_reviews_layout_09",
+    "sectionType": "perf_reviews",
+    "name": "풀블리드 리뷰 오버레이",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_09.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "오버레이",
+      "리뷰"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        },
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 560,
+            "width": 740,
+            "height": 50
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "caption",
+            "fontSize": 30,
+            "fontWeight": 500,
+            "textAlign": "center",
+            "color": "#E5E7EB",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 640,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 76,
+            "fontWeight": 800,
+            "textAlign": "center",
+            "color": "#FFFFFF",
+            "letterSpacing": -1,
+            "lineHeight": 1.2
+          }
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "review_forward",
+    "frameSystem": {
+      "primary": "droplet_fresh"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "avatar_image",
+      "count_text"
+    ],
+    "cardParams": {
+      "gap": 16,
+      "padding": 24,
+      "bodyFontSize": 34
+    }
+  },
+  {
+    "id": "perf_reviews_layout_10",
+    "sectionType": "perf_reviews",
+    "name": "다이내믹 브랜드 리뷰",
+    "thumbnail": "/layouts/thumbnails/perf_reviews_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "브랜드컬러",
+      "카운트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.primary}}"
+      },
+      "elements": [
+        {
+          "slotId": "count_text",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 460,
+            "height": 150
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 80,
+            "fontWeight": 800,
+            "textAlign": "left",
+            "color": "#FFFFFF",
+            "letterSpacing": -1,
+            "lineHeight": 1.2
+          }
+        },
+        {
+          "slotId": "subtitle",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 290,
+            "width": 460,
+            "height": 50
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 500,
+            "textAlign": "left",
+            "color": "#E5E7EB",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 560,
+            "y": 80,
+            "width": 240,
+            "height": 240
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 420
+    },
+    "strategyTag": "review_forward",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "count_text"
+    ],
+    "cardParams": {
+      "gap": 20,
+      "padding": 24,
+      "bodyFontSize": 34
+    }
+  }
+]

@@ -1,0 +1,603 @@
+[
+  {
+    "id": "problem_empathy_layout_01",
+    "sectionType": "problem_empathy",
+    "name": "미니멀 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_01.png",
+    "category": "minimal",
+    "tags": [
+      "심플",
+      "공감",
+      "문제"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 240,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 460
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_02",
+    "sectionType": "problem_empathy",
+    "name": "볼드 다크 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "공감",
+      "강조"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 240,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 440
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_03",
+    "sectionType": "problem_empathy",
+    "name": "이미지 우선 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "공감",
+      "하단텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 880,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 1020,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1140
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_04",
+    "sectionType": "problem_empathy",
+    "name": "좌우 분할 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "이미지",
+      "공감"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 370,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 240,
+            "width": 370,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 0,
+            "width": 430,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_05",
+    "sectionType": "problem_empathy",
+    "name": "오버레이 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "이미지",
+      "공감"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 360,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_06",
+    "sectionType": "problem_empathy",
+    "name": "그라디언트 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "공감",
+      "문제"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(180deg, #1A1A2E 0%, #2D2D5E 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 240,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 440
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_07",
+    "sectionType": "problem_empathy",
+    "name": "카드 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "이미지",
+      "공감"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 740
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 820,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 920,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1000
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_08",
+    "sectionType": "problem_empathy",
+    "name": "스택 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_08.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "이미지",
+      "공감"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 200,
+            "width": 860,
+            "height": 484
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 704,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 844
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_09",
+    "sectionType": "problem_empathy",
+    "name": "풀블리드 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_09.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "이미지",
+      "공감"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#101014"
+      },
+      "elements": [
+        {
+          "slotId": "image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 1000
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": { "objectFit": "cover" }
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 700,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": { "typoLevel": "h1", "fontSize": 72, "fontWeight": 800, "textAlign": "center", "color": "#FFFFFF", "letterSpacing": -1, "lineHeight": 1.3 }
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 860,
+            "width": 740,
+            "height": 90
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": { "typoLevel": "body", "fontSize": 45, "fontWeight": 400, "textAlign": "center", "color": "#E5E7EB", "lineHeight": 1.6 }
+        }
+      ],
+      "estimatedHeight": 1060
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "pebble_soft"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "image",
+      "headline"
+    ]
+  },
+  {
+    "id": "problem_empathy_layout_10",
+    "sectionType": "problem_empathy",
+    "name": "다이내믹 공감",
+    "thumbnail": "/layouts/thumbnails/problem_empathy_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "브랜드컬러",
+      "공감"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.primary}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 520,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": { "typoLevel": "h2", "fontSize": 60, "fontWeight": 800, "textAlign": "left", "color": "#FFFFFF", "letterSpacing": -0.5, "lineHeight": 1.3 }
+        },
+        {
+          "slotId": "body",
+          "elementType": "text",
+          "position": {
+            "x": 280,
+            "y": 320,
+            "width": 520,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": { "typoLevel": "body", "fontSize": 45, "fontWeight": 400, "textAlign": "right", "color": "#E5E7EB", "lineHeight": 1.7 }
+        }
+      ],
+      "estimatedHeight": 520
+    },
+    "strategyTag": "emotion",
+    "frameSystem": {
+      "primary": "editorial_mix"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  }
+]

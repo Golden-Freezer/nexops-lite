@@ -1,0 +1,647 @@
+[
+  {
+    "id": "perf_rating_layout_01",
+    "sectionType": "perf_rating",
+    "name": "미니멀 별점",
+    "thumbnail": "/layouts/thumbnails/perf_rating_01.png",
+    "category": "minimal",
+    "tags": [
+      "별점",
+      "심플",
+      "평점"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 60
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 380
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_02",
+    "sectionType": "perf_rating",
+    "name": "볼드 다크 별점",
+    "thumbnail": "/layouts/thumbnails/perf_rating_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "별점",
+      "대형숫자"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 420
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_03",
+    "sectionType": "perf_rating",
+    "name": "이미지 우선 아바타",
+    "thumbnail": "/layouts/thumbnails/perf_rating_03.png",
+    "category": "image_first",
+    "tags": [
+      "아바타",
+      "이미지",
+      "하단텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 60
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 320,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 1240
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "avatar_image",
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_04",
+    "sectionType": "perf_rating",
+    "name": "좌우 분할 별점",
+    "thumbnail": "/layouts/thumbnails/perf_rating_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "별점",
+      "아바타"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 120,
+            "width": 340,
+            "height": 60
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 340,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 0,
+            "width": 430,
+            "height": 430
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 430
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "avatar_image",
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_05",
+    "sectionType": "perf_rating",
+    "name": "오버레이 아바타",
+    "thumbnail": "/layouts/thumbnails/perf_rating_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "아바타",
+      "배경"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 480
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 60
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 260,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 480
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "avatar_image",
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_06",
+    "sectionType": "perf_rating",
+    "name": "그라디언트 별점",
+    "thumbnail": "/layouts/thumbnails/perf_rating_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "별점",
+      "평점"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(135deg, #F7971E 0%, #FFD200 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 400
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_07",
+    "sectionType": "perf_rating",
+    "name": "카드 중앙 별점",
+    "thumbnail": "/layouts/thumbnails/perf_rating_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "중앙",
+      "별점"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 100,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 220,
+            "width": 740,
+            "height": 140
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 400
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_08",
+    "sectionType": "perf_rating",
+    "name": "풀블리드 아바타 오버레이",
+    "thumbnail": "/layouts/thumbnails/perf_rating_08.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "아바타",
+      "오버레이"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 860
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 340,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 460,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 860
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "avatar_image",
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_09",
+    "sectionType": "perf_rating",
+    "name": "스택 별점 강조",
+    "thumbnail": "/layouts/thumbnails/perf_rating_09.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "별점",
+      "아바타"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.bgSub}}"
+      },
+      "elements": [
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 70
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 700,
+            "textAlign": "center",
+            "lineHeight": 1.4
+          }
+        },
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 130
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 84,
+            "fontWeight": 800,
+            "textAlign": "center",
+            "letterSpacing": -1,
+            "lineHeight": 1.2
+          }
+        },
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 330,
+            "width": 860,
+            "height": 430
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 820
+    },
+    "strategyTag": "proof",
+    "frameSystem": {
+      "primary": "circle_focus"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "avatar_image",
+      "stars"
+    ]
+  },
+  {
+    "id": "perf_rating_layout_10",
+    "sectionType": "perf_rating",
+    "name": "다이내믹 브랜드 별점",
+    "thumbnail": "/layouts/thumbnails/perf_rating_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "브랜드컬러",
+      "별점"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.primary}}"
+      },
+      "elements": [
+        {
+          "slotId": "rating_number",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 120,
+            "width": 400,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 92,
+            "fontWeight": 800,
+            "textAlign": "left",
+            "color": "#FFFFFF",
+            "letterSpacing": -1,
+            "lineHeight": 1.2
+          }
+        },
+        {
+          "slotId": "stars",
+          "elementType": "text",
+          "position": {
+            "x": 480,
+            "y": 170,
+            "width": 320,
+            "height": 60
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "body",
+            "fontSize": 45,
+            "fontWeight": 700,
+            "textAlign": "left",
+            "color": "#FFFFFF",
+            "lineHeight": 1.4
+          }
+        },
+        {
+          "slotId": "avatar_image",
+          "elementType": "image",
+          "position": {
+            "x": 520,
+            "y": 300,
+            "width": 280,
+            "height": 280
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 640
+    },
+    "strategyTag": "proof",
+    "frameSystem": {
+      "primary": "notch_split"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "stars"
+    ]
+  }
+]

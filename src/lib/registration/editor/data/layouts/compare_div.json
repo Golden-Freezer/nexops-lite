@@ -1,0 +1,727 @@
+[
+  {
+    "id": "compare_div_layout_01",
+    "sectionType": "compare_div",
+    "name": "미니멀 비교표",
+    "thumbnail": "/layouts/thumbnails/compare_div_01.png",
+    "category": "minimal",
+    "tags": [
+      "텍스트중심",
+      "심플",
+      "2컬럼"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_col",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 340,
+            "height": 400
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_col",
+          "elementType": "text",
+          "position": {
+            "x": 460,
+            "y": 180,
+            "width": 340,
+            "height": 400
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 660
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_02",
+    "sectionType": "compare_div",
+    "name": "볼드 비교",
+    "thumbnail": "/layouts/thumbnails/compare_div_02.png",
+    "category": "bold",
+    "tags": [
+      "다크배경",
+      "강렬",
+      "컬러패널"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 0,
+            "y": 160,
+            "width": 430,
+            "height": 500
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 430,
+            "y": 160,
+            "width": 430,
+            "height": 500
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 740
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_03",
+    "sectionType": "compare_div",
+    "name": "이미지 퍼스트",
+    "thumbnail": "/layouts/thumbnails/compare_div_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지상단",
+      "비교이미지",
+      "텍스트하단"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "left_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 430
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 0,
+            "width": 430,
+            "height": 430
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 490,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_col",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 580,
+            "width": 340,
+            "height": 260
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_col",
+          "elementType": "text",
+          "position": {
+            "x": 460,
+            "y": 580,
+            "width": 340,
+            "height": 260
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 920
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "left_image",
+      "label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_04",
+    "sectionType": "compare_div",
+    "name": "순수 분할",
+    "thumbnail": "/layouts/thumbnails/compare_div_04.png",
+    "category": "split",
+    "tags": [
+      "좌우분할",
+      "중앙구분선",
+      "이미지+텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "left_image",
+          "elementType": "image",
+          "position": {
+            "x": 65,
+            "y": 80,
+            "width": 320,
+            "height": 320
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_label",
+          "elementType": "text",
+          "position": {
+            "x": 65,
+            "y": 450,
+            "width": 300,
+            "height": 50
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_text",
+          "elementType": "text",
+          "position": {
+            "x": 65,
+            "y": 540,
+            "width": 300,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_image",
+          "elementType": "image",
+          "position": {
+            "x": 475,
+            "y": 80,
+            "width": 320,
+            "height": 320
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_label",
+          "elementType": "text",
+          "position": {
+            "x": 475,
+            "y": 450,
+            "width": 300,
+            "height": 50
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_text",
+          "elementType": "text",
+          "position": {
+            "x": 475,
+            "y": 540,
+            "width": 300,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 820
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "left_image",
+      "left_label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_05",
+    "sectionType": "compare_div",
+    "name": "이미지 오버레이 비교",
+    "thumbnail": "/layouts/thumbnails/compare_div_05.png",
+    "category": "overlay",
+    "tags": [
+      "배경이미지",
+      "비포애프터",
+      "라벨오버레이"
+    ],
+    "structure": {
+      "background": {
+        "type": "image",
+        "value": "{{section_bg_image}}"
+      },
+      "elements": [
+        {
+          "slotId": "left_col",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 660,
+            "width": 340,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_col",
+          "elementType": "text",
+          "position": {
+            "x": 460,
+            "y": 660,
+            "width": 340,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 940
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "left_col"
+    ]
+  },
+  {
+    "id": "compare_div_layout_06",
+    "sectionType": "compare_div",
+    "name": "그라데이션 카드",
+    "thumbnail": "/layouts/thumbnails/compare_div_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라데이션",
+      "플로팅카드",
+      "그림자"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(160deg, #E8ECF0 0%, #D0D8E8 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 340,
+            "height": 420
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 460,
+            "y": 160,
+            "width": 340,
+            "height": 420
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 660
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_07",
+    "sectionType": "compare_div",
+    "name": "위너 하이라이트",
+    "thumbnail": "/layouts/thumbnails/compare_div_07.png",
+    "category": "card",
+    "tags": [
+      "위너강조",
+      "카드형",
+      "추천뱃지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FAFAFA"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "winner_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 480,
+            "height": 500
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "compare_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 570,
+            "y": 200,
+            "width": 230,
+            "height": 420
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 740
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_08",
+    "sectionType": "compare_div",
+    "name": "풀블리드 비교",
+    "thumbnail": "/layouts/thumbnails/compare_div_08.png",
+    "category": "full_bleed",
+    "tags": [
+      "전폭이미지",
+      "나란히",
+      "텍스트하단"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "left_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 700
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_image",
+          "elementType": "image",
+          "position": {
+            "x": 430,
+            "y": 0,
+            "width": 430,
+            "height": 700
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 760,
+            "width": 340,
+            "height": 90
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_label",
+          "elementType": "text",
+          "position": {
+            "x": 460,
+            "y": 760,
+            "width": 340,
+            "height": 90
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 920
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "left_image",
+      "left_label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_09",
+    "sectionType": "compare_div",
+    "name": "수직 스택 비교",
+    "thumbnail": "/layouts/thumbnails/compare_div_09.png",
+    "category": "stacked",
+    "tags": [
+      "수직배치",
+      "순차비교",
+      "구분선"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "left_col",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 740,
+            "height": 260
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "right_col",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 500,
+            "width": 740,
+            "height": 260
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 840
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "label"
+    ]
+  },
+  {
+    "id": "compare_div_layout_10",
+    "sectionType": "compare_div",
+    "name": "다이나믹 비교",
+    "thumbnail": "/layouts/thumbnails/compare_div_10.png",
+    "category": "dynamic",
+    "tags": [
+      "비대칭",
+      "위너강조",
+      "시선유도"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FAFAFA"
+      },
+      "elements": [
+        {
+          "slotId": "label",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 80,
+            "width": 740,
+            "height": 40
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "winner_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 60,
+            "y": 160,
+            "width": 500,
+            "height": 500
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "compare_col",
+          "elementType": "card_group",
+          "position": {
+            "x": 590,
+            "y": 200,
+            "width": 220,
+            "height": 420
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "summary_tag",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 720,
+            "width": 740,
+            "height": 80
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 880
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "label"
+    ]
+  }
+]

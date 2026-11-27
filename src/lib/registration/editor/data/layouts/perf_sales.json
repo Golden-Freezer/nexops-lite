@@ -1,0 +1,524 @@
+[
+  {
+    "id": "perf_sales_layout_01",
+    "sectionType": "perf_sales",
+    "name": "미니멀 완판 텍스트",
+    "thumbnail": "/layouts/thumbnails/perf_sales_01.png",
+    "category": "minimal",
+    "tags": [
+      "텍스트",
+      "심플",
+      "완판"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 97,
+            "width": 740,
+            "height": 146
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 485
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "quick",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_02",
+    "sectionType": "perf_sales",
+    "name": "볼드 다크 헤드라인",
+    "thumbnail": "/layouts/thumbnails/perf_sales_02.png",
+    "category": "bold",
+    "tags": [
+      "다크",
+      "강렬",
+      "대형"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#111111"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 162,
+            "width": 740,
+            "height": 162
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 485
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_03",
+    "sectionType": "perf_sales",
+    "name": "이미지 우선 16:9",
+    "thumbnail": "/layouts/thumbnails/perf_sales_03.png",
+    "category": "image_first",
+    "tags": [
+      "이미지",
+      "16:9",
+      "하단텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "bg_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 391
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 407,
+            "width": 740,
+            "height": 65
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 485
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "bg_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_04",
+    "sectionType": "perf_sales",
+    "name": "좌우 분할",
+    "thumbnail": "/layouts/thumbnails/perf_sales_04.png",
+    "category": "split",
+    "tags": [
+      "분할",
+      "좌이미지",
+      "우텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "slotId": "bg_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 485
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 470,
+            "y": 160,
+            "width": 330,
+            "height": 160
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 485
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "bg_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_05",
+    "sectionType": "perf_sales",
+    "name": "오버레이 센터",
+    "thumbnail": "/layouts/thumbnails/perf_sales_05.png",
+    "category": "overlay",
+    "tags": [
+      "오버레이",
+      "중앙",
+      "배경이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "bg_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 485
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 180,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 485
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "bg_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_06",
+    "sectionType": "perf_sales",
+    "name": "그라디언트 배경",
+    "thumbnail": "/layouts/thumbnails/perf_sales_06.png",
+    "category": "gradient",
+    "tags": [
+      "그라디언트",
+      "텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "gradient",
+        "value": "linear-gradient(135deg, #667EEA 0%, #764BA2 100%)"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 170,
+            "width": 740,
+            "height": 146
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 485
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_07",
+    "sectionType": "perf_sales",
+    "name": "카드 배지",
+    "thumbnail": "/layouts/thumbnails/perf_sales_07.png",
+    "category": "card",
+    "tags": [
+      "카드",
+      "배지",
+      "이미지"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#F5F5F5"
+      },
+      "elements": [
+        {
+          "slotId": "bg_image",
+          "elementType": "image",
+          "position": {
+            "x": 60,
+            "y": 52,
+            "width": 740,
+            "height": 360
+          },
+          "isDraggable": true,
+          "isResizable": true
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 430,
+            "width": 740,
+            "height": 69
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 559
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "bg_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_08",
+    "sectionType": "perf_sales",
+    "name": "풀블리드 오버레이",
+    "thumbnail": "/layouts/thumbnails/perf_sales_08.png",
+    "category": "full_bleed",
+    "tags": [
+      "풀블리드",
+      "오버레이",
+      "센터텍스트"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "#000000"
+      },
+      "elements": [
+        {
+          "slotId": "bg_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 860,
+            "height": 485
+          },
+          "isDraggable": false,
+          "isResizable": false
+        },
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 190,
+            "width": 740,
+            "height": 100
+          },
+          "isDraggable": true,
+          "isResizable": true
+        }
+      ],
+      "estimatedHeight": 485
+    },
+    "strategyTag": "function",
+    "frameSystem": {
+      "primary": "square_clean"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "bg_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_09",
+    "sectionType": "perf_sales",
+    "name": "스택 판매 실적",
+    "thumbnail": "/layouts/thumbnails/perf_sales_09.png",
+    "category": "stacked",
+    "tags": [
+      "스택",
+      "실적",
+      "브랜드"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.bgSub}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 60,
+            "width": 740,
+            "height": 120
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 72,
+            "fontWeight": 800,
+            "textAlign": "center",
+            "letterSpacing": -1,
+            "lineHeight": 1.3
+          }
+        },
+        {
+          "slotId": "bg_image",
+          "elementType": "image",
+          "position": {
+            "x": 0,
+            "y": 240,
+            "width": 860,
+            "height": 480
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 780
+    },
+    "strategyTag": "proof",
+    "frameSystem": {
+      "primary": "rounded_rect"
+    },
+    "contentDensity": "standard",
+    "requiredSlots": [
+      "bg_image",
+      "headline"
+    ]
+  },
+  {
+    "id": "perf_sales_layout_10",
+    "sectionType": "perf_sales",
+    "name": "다이내믹 완판 임팩트",
+    "thumbnail": "/layouts/thumbnails/perf_sales_10.png",
+    "category": "dynamic",
+    "tags": [
+      "다이내믹",
+      "브랜드컬러",
+      "완판"
+    ],
+    "structure": {
+      "background": {
+        "type": "solid",
+        "value": "{{palette.primary}}"
+      },
+      "elements": [
+        {
+          "slotId": "headline",
+          "elementType": "text",
+          "position": {
+            "x": 60,
+            "y": 120,
+            "width": 500,
+            "height": 200
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "textStyle": {
+            "typoLevel": "h1",
+            "fontSize": 72,
+            "fontWeight": 800,
+            "textAlign": "left",
+            "color": "#FFFFFF",
+            "letterSpacing": -1,
+            "lineHeight": 1.3
+          }
+        },
+        {
+          "slotId": "bg_image",
+          "elementType": "image",
+          "position": {
+            "x": 520,
+            "y": 280,
+            "width": 340,
+            "height": 340
+          },
+          "isDraggable": true,
+          "isResizable": true,
+          "imageStyle": {
+            "objectFit": "cover"
+          }
+        }
+      ],
+      "estimatedHeight": 680
+    },
+    "strategyTag": "proof",
+    "frameSystem": {
+      "primary": "notch_split"
+    },
+    "contentDensity": "persuasive",
+    "requiredSlots": [
+      "headline"
+    ]
+  }
+]
