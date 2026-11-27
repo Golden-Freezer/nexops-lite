@@ -11,18 +11,8 @@
 | "상세페이지 만들어 줘" / "대표이미지 만들어 줘" | `npm run dev` 실행 → http://localhost:3000/registration/detail-page (또는 /registration/thumbnail) 을 열게 안내. 만들기는 이 PC에서만 된다(Vercel 주소에서는 보기·고치기만) |
 | "배포해 줘" | 아래 '처음 배포' 순서 |
 
-## 처음 배포 (스터디 당일, docs/배포.md 와 같다)
-1. `npm install`
-2. Supabase: 대표님이 supabase.com ▶ New project(지역 Northeast Asia (Seoul), DB 비밀번호는 대표님이 정하고 메모). 만든 뒤 SQL Editor ▶ New query에 `supabase/migrations/20261128000000_nexops_lite.sql` 전체를 붙여 넣고 Run. (또는 `npx supabase login` → `npx supabase link --project-ref <ref>` → `npx supabase db push`)
-3. Project Settings ▶ API에서 세 값을 대표님이 복사: Project URL, anon public key, service_role key. `.env.local`에 적는다(아래 이름). 이 파일은 git에 올리지 않는다.
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=...
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-   SUPABASE_SERVICE_ROLE_KEY=...
-   ```
-4. `vercel link`(새 프로젝트, 이름 nexops-lite) → 세 값을 `vercel env add <이름> production`으로 넣기 → `vercel --prod`. 끝난 주소를 대표님께 알려 드린다.
-5. 대표님이 그 주소에서 첫 가입(이메일·비밀번호). 첫 1명 뒤에는 가입이 닫힌다.
-6. 장부 ▶ 설정 ▶ 업로드 키 만들기 → `npm run ledger`를 한 번 실행하면 `장부받기/설정.txt`가 생긴다. 장부 주소와 업로드 키를 적게 하고 다시 실행.
+## 처음 배포
+`docs/배포.md`의 '2. AI가 하는 순서'를 그대로 따른다(2026-11-27 실제 시험 통과 순서). Supabase·Vercel 모두 CLI로 하고, 대표님은 브라우저 로그인·허용만 한다. 비밀번호·키 값은 화면에 출력하지 않고 `.env.local`·`장부받기/`(둘 다 .gitignore)에만 둔다.
 
 ## 지킬 것
 - service_role key·업로드 키·비밀번호를 화면에 다시 출력하거나 git에 올리지 않는다. `.env.local`, `장부받기/`는 .gitignore에 있다.
