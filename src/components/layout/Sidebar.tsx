@@ -70,7 +70,7 @@ export function Sidebar() {
       {/* 로고 */}
       <div className="h-14 flex items-center px-4 border-b border-slate-200">
         <span className="text-lg font-bold text-brand-600">
-          {collapsed ? 'N' : 'NexOps'}
+          {collapsed ? 'N' : 'NEXOPS 라이트'}
         </span>
       </div>
 

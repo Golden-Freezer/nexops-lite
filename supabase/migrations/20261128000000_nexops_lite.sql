@@ -908,6 +908,52 @@ create table if not exists public."suppliers" (
 );
 alter table public."suppliers" enable row level security;
 
+-- 외래 키 (여러 번 돌려도 안전)
+do $$ begin alter table public."ad_campaigns" add constraint "lite_fk_ad_campaigns_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."ad_campaigns" add constraint "lite_fk_ad_campaigns_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."business_settings" add constraint "lite_fk_business_settings_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."coupang_imports" add constraint "lite_fk_coupang_imports_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."coupang_settlement_reports" add constraint "lite_fk_coupang_settlement_reports_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."coupang_wallet_events" add constraint "lite_fk_coupang_wallet_events_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."expense_vendors" add constraint "lite_fk_expense_vendors_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."expenses" add constraint "lite_fk_expenses_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."expenses" add constraint "lite_fk_expenses_vendor_id" foreign key ("vendor_id") references public."expense_vendors" ("id") on delete set null; exception when duplicate_object then null; end $$;
+do $$ begin alter table public."focus_product_status_events" add constraint "lite_fk_focus_product_status_events_focus_product_id" foreign key ("focus_product_id") references public."focus_products" ("id") on delete cascade; exception when duplicate_object then null; end $$;
+do $$ begin alter table public."focus_products" add constraint "lite_fk_focus_products_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."focus_rank_daily" add constraint "lite_fk_focus_rank_daily_target_id" foreign key ("target_id") references public."focus_rank_targets" ("id") on delete cascade; exception when duplicate_object then null; end $$;
+do $$ begin alter table public."focus_rank_targets" add constraint "lite_fk_focus_rank_targets_focus_product_id" foreign key ("focus_product_id") references public."focus_products" ("id") on delete cascade; exception when duplicate_object then null; end $$;
+do $$ begin alter table public."inventory" add constraint "lite_fk_inventory_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."inventory_health_history" add constraint "lite_fk_inventory_health_history_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."inventory_health_history" add constraint "lite_fk_inventory_health_history_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."inventory_movements" add constraint "lite_fk_inventory_movements_inventory_id" foreign key ("inventory_id") references public."inventory" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."inventory_movements" add constraint "lite_fk_inventory_movements_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."inventory_state" add constraint "lite_fk_inventory_state_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."product_costs" add constraint "lite_fk_product_costs_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."product_costs" add constraint "lite_fk_product_costs_supplier_id" foreign key ("supplier_id") references public."suppliers" ("id") on delete set null; exception when duplicate_object then null; end $$;
+do $$ begin alter table public."product_name_history" add constraint "lite_fk_product_name_history_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."product_name_history" add constraint "lite_fk_product_name_history_product_name_record_id" foreign key ("product_name_record_id") references public."product_names" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."product_names" add constraint "lite_fk_product_names_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."product_price_history" add constraint "lite_fk_product_price_history_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."products" add constraint "lite_fk_products_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."products" add constraint "lite_fk_products_parent_product_id" foreign key ("parent_product_id") references public."products" ("id") on delete set null; exception when duplicate_object then null; end $$;
+do $$ begin alter table public."purchase_import_receipts" add constraint "lite_fk_purchase_import_receipts_import_batch_id" foreign key ("import_batch_id") references public."coupang_imports" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."purchases" add constraint "lite_fk_purchases_supplier_id" foreign key ("supplier_id") references public."suppliers" ("id") on delete set null; exception when duplicate_object then null; end $$;
+do $$ begin alter table public."purchases" add constraint "lite_fk_purchases_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."purchases" add constraint "lite_fk_purchases_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."purchases" add constraint "lite_fk_purchases_order_account_business_id" foreign key ("order_account_business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."registration_editor_data" add constraint "lite_fk_registration_editor_data_pdp_job_id" foreign key ("pdp_job_id") references public."registration_pdp_jobs" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."registration_pdp_jobs" add constraint "lite_fk_registration_pdp_jobs_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."registration_pdp_jobs" add constraint "lite_fk_registration_pdp_jobs_draft_id" foreign key ("draft_id") references public."sourcing_registration_drafts" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."registration_thumbnail_jobs" add constraint "lite_fk_registration_thumbnail_jobs_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."registration_thumbnail_jobs" add constraint "lite_fk_registration_thumbnail_jobs_draft_id" foreign key ("draft_id") references public."sourcing_registration_drafts" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."safe_sales_gap_backfill_receipts" add constraint "lite_fk_safe_sales_gap_backfill_receipts_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."safe_sales_gap_backfill_receipts" add constraint "lite_fk_safe_sales_gap_backfill_receipts_import_batch_id" foreign key ("import_batch_id") references public."coupang_imports" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."sales_transactions" add constraint "lite_fk_sales_transactions_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."sales_transactions" add constraint "lite_fk_sales_transactions_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."settlements" add constraint "lite_fk_settlements_product_id" foreign key ("product_id") references public."products" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."settlements" add constraint "lite_fk_settlements_business_id" foreign key ("business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+do $$ begin alter table public."suppliers" add constraint "lite_fk_suppliers_default_order_account_business_id" foreign key ("default_order_account_business_id") references public."businesses" ("id"); exception when duplicate_object then null; end $$;
+
 -- 함수 (NEXOPS 마이그레이션의 마지막 정의 그대로)
 -- from 20260725090000_atomic_manual_inventory_movements.sql
 CREATE OR REPLACE FUNCTION public.apply_manual_inventory_movement(

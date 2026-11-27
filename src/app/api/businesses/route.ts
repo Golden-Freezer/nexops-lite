@@ -79,6 +79,29 @@ export async function GET(req: NextRequest) {
         NextResponse.json({ error: `사업자 목록 조회 실패: ${error.message}` }, { status: 500 }),
       )
     }
+    // 라이트판: 처음 로그인하면 사업장 '내 사업장' 1개를 자동으로 만든다.
+    if (!data || data.length === 0) {
+      const { error: createError } = await supabase.rpc('create_owned_business_atomic', {
+        p_actor_user_id: userId,
+        p_fields: { business_name: '내 사업장' },
+        p_make_default: true,
+      })
+      if (createError) {
+        return withBearerCors(
+          req,
+          NextResponse.json({ error: `기본 사업장 생성 실패: ${createError.message}` }, { status: 500 }),
+        )
+      }
+      const again = await supabase
+        .from('businesses')
+        .select('*')
+        .eq('user_id', userId)
+        .order('is_default', { ascending: false })
+      return withBearerCors(
+        req,
+        NextResponse.json({ data: again.data ?? [] }, { headers: { 'Cache-Control': 'private, no-store' } }),
+      )
+    }
     return withBearerCors(
       req,
       NextResponse.json(

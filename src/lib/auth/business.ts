@@ -36,9 +36,28 @@ export async function requireOwnedBusinessId(
   userId: string,
   requestedBusinessId?: string,
 ): Promise<string> {
-  const businessId = requestedBusinessId ?? (await requireBusinessId());
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const supabase = createAdminClient() as any;
+  // 라이트판: 사업장이 보통 1개라 헤더가 없으면(첫 화면이 사업장 목록보다 먼저 부를 때 등) 기본 사업장을 쓴다.
+  const headerBusinessId = requestedBusinessId ?? (await getBusinessId());
+  if (!headerBusinessId) {
+    const { data: fallback, error: fallbackError } = await supabase
+      .from("businesses")
+      .select("id")
+      .eq("user_id", userId)
+      .order("is_default", { ascending: false })
+      .order("created_at", { ascending: true })
+      .limit(1)
+      .maybeSingle();
+    if (fallbackError) {
+      throw NextResponse.json(
+        { error: `사업자 확인 실패: ${fallbackError.message}` },
+        { status: 500 },
+      );
+    }
+    if (fallback?.id) return fallback.id as string;
+  }
+  const businessId = headerBusinessId ?? (await requireBusinessId());
   const { data, error } = await supabase
     .from("businesses")
     .select("id")

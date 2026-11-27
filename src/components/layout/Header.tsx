@@ -5,8 +5,6 @@ import { usePathname } from 'next/navigation'
 import { useUser } from '@/lib/auth/clerk-shim'
 import { cn } from '@/lib/utils'
 import { SECTIONS, resolveSection } from '@/lib/nav/sections'
-import { HeaderWorkerControl } from './HeaderWorkerControl'
-import { HeaderStaffInboxBadge } from './HeaderStaffInboxBadge'
 
 interface HeaderProps {
   title: string
@@ -28,21 +26,12 @@ export function Header({ title }: HeaderProps) {
       <div className="flex h-14 items-center gap-2 px-4 lg:px-6">
         <h1 className="min-w-0 truncate text-base font-semibold text-slate-700">{title}</h1>
 
-        {/* 전역 워커 제어 + AI 직원 미처리 보고 뱃지 (오너 전용) */}
-        {isOwner && (
-          <div className="ml-auto flex items-center gap-2 md:mr-3">
-            <HeaderStaffInboxBadge />
-            <div className="hidden sm:block">
-              <HeaderWorkerControl />
-            </div>
-          </div>
-        )}
 
         {/* 데스크톱 섹션 탭 */}
         {visibleSections.length > 1 && (
           <nav className={cn(
             'hidden shrink-0 items-center gap-1 rounded-lg bg-slate-100 p-1 md:flex',
-            !isOwner && 'ml-auto'
+            'ml-auto'
           )}>
             {visibleSections.map((section) => (
               <Link

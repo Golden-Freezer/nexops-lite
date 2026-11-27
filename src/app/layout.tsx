@@ -5,12 +5,12 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'NEXOPS 라이트 — 사업장 운영 장부',
   description: '쿠팡 로켓그로스 셀러를 위한 상품·재고·매입·지출·정산 장부',
-  applicationName: 'NexOps',
+  applicationName: 'NEXOPS 라이트',
   manifest: '/manifest.webmanifest',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'NexOps',
+    title: 'NEXOPS 라이트',
   },
   formatDetection: {
     telephone: false,
