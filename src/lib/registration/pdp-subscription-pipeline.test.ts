@@ -166,24 +166,18 @@ describe('파이프라인 — 구독 멈춤 표지 잡(AX-CT-29)', () => {
     expect(h.seen[0].route).not.toHaveProperty('subscriptionFallback')
   })
 
-  it('구독 소프트 종료(백엔드 미등록) → 멈춤 기록·error 한 줄·사건 줄 1개, API 공급자 호출 0회, 잇기 기록 0, 표지는 subscription 그대로', async () => {
-    vi.spyOn(console, 'warn').mockImplementation(() => {})
+  it('구독 백엔드가 미등록이어도 라이트 callLlm은 로컬 Codex 경로로 계속하고 멈춤·폴백 기록을 만들지 않는다', async () => {
     h.job = stopJob()
     h.realCall = true
     const out = await runPdpStep(h.job.id, 'user-1')
-    expect(h.apiCalls).toBe(0)
-    // 실패로 세지 않는다 — current_step은 단계 그대로, 재시도 횟수 표기 없음
-    expect(out.current_step).toBe('design')
+    expect(h.apiCalls).toBe(1)
+    expect(out.current_step).toBe('copywriting')
     expect(out.model_backend).toBe('subscription')
-    expect(out.section_plan.subscription_halt).toMatchObject({ stage: 'design', reason: 'unavailable' })
+    expect(out.section_plan).not.toHaveProperty('subscription_halt')
     expect(out.section_plan).not.toHaveProperty('subscription_fallback')
-    expect(out.error).toMatch(/^\[design\] 구독 작업자 멈춤 — 구독 로그인 만료 또는 쓸 수 없는 모델/)
-    // 멈춤 저장은 다시 읽은 잡 기준 조건부 한 번(재검수 지적 1) — 표지를 api 로 바꾸는 저장(넘겨받기)은 없다
-    expect(updatePdpJobIfUnchanged).toHaveBeenCalledTimes(1)
-    expect(vi.mocked(updatePdpJobIfUnchanged).mock.calls[0][3]).not.toHaveProperty('specSheet')
-    expect(h.runs).toHaveLength(1)
-    expect(h.runs[0]).toMatchObject({ jobKey: 'pdp-subscription-halt', status: 'failed', detail: { job: out.id.slice(0, 8), stage: 'design', reason: 'unavailable' } })
-    // 프로세스 안 소프트 종료 기록은 남기지 않는다 — 이어 하기 뒤 구독을 다시 부를 수 있다
+    expect(out.error).toBeNull()
+    expect(updatePdpJobIfUnchanged).not.toHaveBeenCalled()
+    expect(h.runs).toHaveLength(0)
     expect(peekLocalLlmSoftStop()).toBeNull()
   })
 

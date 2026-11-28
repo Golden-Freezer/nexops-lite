@@ -169,7 +169,7 @@ describe('analysis — 잡 단위 기록', () => {
     // 기본값 — K4 운영 전환(오너 2026-11-06 '전환 PR 준비 승인'): K4 회차 11잡의 기록 묶음 22개 + K6 뒤 사진 다양화·정보 칸(오너 11-06 20:46) = 24개. 디자인 컷 잡이라 split·lean·long은 빠진다.
     // A는 판정이 꺼져 audience 칸이 없다. J34 켜기(통합 decide 15·17)로 usefacts·usegate가 더해져 기록 27개(templatelib 잡이라 기록된다),
     // J65 켜기(통합 decide 41·42)로 effectshot이 더해져 28개, J69 켜기(통합 decide 44)로 showbeat가 더해져 29개
-    const k4 = ['designcut', 'audience', 'designcut2', 'designlayout', 'flow', 'rhythm', 'designlong', 'shotdiv', 'palette2', 'fontpair', 'reviewfaq', 'partsrule', 'idcardall', 'templatelib', 'uspfacts', 'motionband', 'shotvary', 'infocells', 'usefacts', 'usegate', 'effectshot', 'showbeat']
+    const k4 = ['designcut', 'audience', 'designcut2', 'designlayout', 'flow', 'rhythm', 'designlong', 'shotdiv', 'palette2', 'fontpair', 'reviewfaq', 'partsrule', 'idcardall', 'templatelib', 'uspfacts', 'shotvary', 'infocells', 'usefacts', 'usegate', 'effectshot', 'showbeat']
     expect(job.analysis.enrichment).toEqual({ version: 1, features: [...RECORD_T6B.features, ...k4] })
     expect(job.analysis.decision_profile).toMatchObject({ giftability: 'high' })
   })

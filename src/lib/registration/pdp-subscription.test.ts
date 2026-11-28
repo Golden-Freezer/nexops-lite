@@ -5,12 +5,16 @@
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-const h = vi.hoisted(() => ({ update: vi.fn(), get: vi.fn(), updateJob: vi.fn() }))
+const h = vi.hoisted(() => ({ update: vi.fn(), get: vi.fn(), updateJob: vi.fn(), recordRun: vi.fn(async () => ({ recorded: true })) }))
 vi.mock('./pdp-jobs', async (orig) => ({
   isPdpJobLeased: (await orig<typeof import('./pdp-jobs')>()).isPdpJobLeased,
   updatePdpJobIfUnchanged: (...a: unknown[]) => h.update(...a),
   getPdpJob: (...a: unknown[]) => h.get(...a),
   updatePdpJob: (...a: unknown[]) => h.updateJob(...a),
+}))
+vi.mock('@/lib/ops/job-runs', async (orig) => ({
+  ...(await orig<typeof import('@/lib/ops/job-runs')>()),
+  recordJobRun: (...args: unknown[]) => (h.recordRun as (...a: unknown[]) => unknown)(...args),
 }))
 
 import type { SubscriptionFallbackRecord } from '@/lib/agents/llm/subscription-fallback'
@@ -197,8 +201,8 @@ describe('webRunTurn — 구독 멈춤 표지 잡', () => {
 })
 
 describe('haltForSubscription — 웹이 작업자 무응답을 판정했을 때', () => {
-  const runs = vi.fn()
-  const jobRunsDb = { from: (table: string) => ({ insert: async (row: unknown) => (runs(table, row), { error: null }) }) } as never
+  const runs = h.recordRun
+  const jobRunsDb = {} as never
   beforeEach(() => runs.mockReset())
 
   it('표지는 그대로 subscription — section_plan.subscription_halt(worker_stale)와 error 한 줄을 조건부 저장하고 사건 줄 1개(failed)를 남긴다', async () => {
@@ -221,11 +225,10 @@ describe('haltForSubscription — 웹이 작업자 무응답을 판정했을 때
     expect(patch.error).toBe('[design] 구독 작업자 멈춤 — 작업자가 5분 넘게 응답 없음 (작업자 무응답)')
     expect(saved?.model_backend).toBe('subscription')
     expect(runs).toHaveBeenCalledTimes(1)
-    expect(runs.mock.calls[0][0]).toBe('ops_job_runs')
-    expect(runs.mock.calls[0][1]).toMatchObject({
-      job_key: 'pdp-subscription-halt',
+    expect((runs.mock.calls[0] as unknown[])[1]).toMatchObject({
+      jobKey: 'pdp-subscription-halt',
       status: 'failed',
-      user_id: 'user-1',
+      userId: 'user-1',
       detail: { job: 'job-1234', stage: 'design', reason: 'worker_stale' },
     })
     // 저장된 잡(멈춤 기록 있음)을 다시 불러도 저장·줄이 더 생기지 않는다
@@ -245,8 +248,8 @@ describe('haltForSubscription — 웹이 작업자 무응답을 판정했을 때
 })
 
 describe('haltStopJobAfterSoftStop — 단계 안 구독 소프트 종료·프로세스 실패', () => {
-  const runs = vi.fn()
-  const jobRunsDb = { from: () => ({ insert: async (row: unknown) => (runs(row), { error: null }) }) } as never
+  const runs = h.recordRun
+  const jobRunsDb = {} as never
   beforeEach(() => {
     runs.mockReset()
     h.get.mockReset()
@@ -269,7 +272,7 @@ describe('haltStopJobAfterSoftStop — 단계 안 구독 소프트 종료·프�
     expect(patch.error).toContain('[copywriting] 구독 작업자 멈춤 — 구독 한도 소진')
     expect(h.updateJob).not.toHaveBeenCalled() // 조건 없는 저장 0
     expect(runs).toHaveBeenCalledTimes(1)
-    expect(runs.mock.calls[0][0]).toMatchObject({ job_key: 'pdp-subscription-halt', status: 'failed', detail: { stage: 'copywriting', reason: 'quota', at: iso(NOW) } })
+    expect((runs.mock.calls[0] as unknown[])[1]).toMatchObject({ jobKey: 'pdp-subscription-halt', status: 'failed', detail: { stage: 'copywriting', reason: 'quota', at: iso(NOW) } })
   })
 
   it('이미 멈춤 기록이 있으면 기록·사건 줄을 더하지 않고 error만 같은 글로 조건부 저장한다(잠금은 이 저장이 푼다)', async () => {

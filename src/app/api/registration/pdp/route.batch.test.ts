@@ -1,7 +1,6 @@
 /**
- * POST /api/registration/pdp — 모델 배치(R03). 기본 지금 배치, 'new'는 새 배치 이미지 모델(MS 2k — R05 공급자)로 정하고, 공급자가 없는
- * 환경에서는 조용히 다른 모델로 만들지 않고 400. 잡마다 배치·단계 모델 스냅숏을 넘기고, 화면이 보낸 예약 키는 받지 않는다.
- * 이미지 모델 목록은 모의로 고정한다(R05 병합 전후 모두 같은 결과). 잡 저장·초안 연결은 모의(DB 0).
+ * POST /api/registration/pdp — 라이트 모델 배치. 기본은 지금 배치이고, 배치·요청 모델·원격 공급자 등록 여부와 무관하게
+ * 이미지 모델은 codex-image로 저장한다. 잡마다 배치·단계 모델 스냅숏을 넘기고 화면이 보낸 예약 키는 받지 않는다.
  */
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
@@ -53,10 +52,10 @@ beforeEach(() => {
 })
 
 describe('POST /api/registration/pdp — 모델 배치', () => {
-  it('없으면 지금 배치 — 고른 이미지 모델 그대로, 지금 표 스냅숏을 넘긴다', async () => {
+  it('없으면 지금 배치 — 요청 모델 대신 codex-image와 지금 표 스냅숏을 넘긴다', async () => {
     expect((await post({})).status).toBe(202)
     expect(saved()).toMatchObject({
-      imageModel: 'gpt-image-2.6-sunburst',
+      imageModel: 'codex-image',
       modelBatch: { batch: 'now', snapshot: snapshotPdpRoutes('now') },
     })
   })
@@ -66,20 +65,16 @@ describe('POST /api/registration/pdp — 모델 배치', () => {
     expect(h.createPdpJob).not.toHaveBeenCalled()
   })
 
-  it('새 배치 — MS 2k 공급자가 없는 환경이면 명시 오류 400(다른 이미지 모델로 만들지 않는다)', async () => {
-    const res = await post({ modelBatch: 'new' })
-    expect(res.status).toBe(400)
-    expect((await res.json()).error).toContain('higgsfield-ms-2k')
-    expect(h.createPdpJob).not.toHaveBeenCalled()
-  })
-
-  it('새 배치 — 공급자가 있으면 이미지 모델을 MS 2k로 정하고 새 표 스냅숏을 넘긴다', async () => {
-    h.extraModels = [{ id: 'higgsfield-ms-2k' }]
-    expect((await post({ modelBatch: 'new' })).status).toBe(202)
-    expect(saved()).toMatchObject({
-      imageModel: 'higgsfield-ms-2k',
-      modelBatch: { batch: 'new', snapshot: snapshotPdpRoutes('new') },
-    })
+  it('새 배치도 원격 공급자 등록 여부와 무관하게 codex-image와 새 표 스냅숏을 넘긴다', async () => {
+    for (const extraModels of [[], [{ id: 'higgsfield-ms-2k' }]]) {
+      h.extraModels = extraModels
+      h.createPdpJob.mockClear()
+      expect((await post({ modelBatch: 'new' })).status).toBe(202)
+      expect(saved()).toMatchObject({
+        imageModel: 'codex-image',
+        modelBatch: { batch: 'new', snapshot: snapshotPdpRoutes('new') },
+      })
+    }
   })
 
   it('화면이 spec에 예약 키를 보내도 받지 않는다 — 배치는 modelBatch 칸으로만', async () => {

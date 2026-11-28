@@ -295,11 +295,11 @@ describe('images 단계의 편집기 재생성', () => {
 
   it('미달 뒤 재생성 뒤 게이트까지 들어갈 시간이 없으면 다시 만들지 않는다(rejected, 생성 1장)', async () => {
     const done = await doneJob(fixtureImagesJob('A-track-s'))
-    // 생성 1장에 110초 — 미달 판정 시점 110초 + 재생성 최악 135초 + 게이트 40초 = 285초 > 시간 예산 280초
+    // 첫 생성 뒤 170초만 남겨 재생성 최악 135초 + 게이트 40초가 들어가지 않게 한다.
     let clock = 0
     vi.spyOn(Date, 'now').mockImplementation(() => clock)
     h.generate.mockImplementation(async () => {
-      clock += 110_000
+      clock += 30 * 60_000 - 170_000
       return { base64: 'aW1n', mimeType: 'image/png', model: 'gpt-image-2' }
     })
     h.gate.mockResolvedValue({ score: MISMATCH, costUsd: 0.001 })
@@ -314,10 +314,10 @@ describe('images 단계의 편집기 재생성', () => {
     let clock = 0
     vi.spyOn(Date, 'now').mockImplementation(() => clock)
     h.generate.mockImplementation(async () => {
-      clock += 110_000
+      clock += 30 * 60_000 - 170_000
       return { base64: 'aW1n', mimeType: 'image/png', model: 'gpt-image-2' }
     })
-    // hero가 110초에 끝난 뒤 usage: 110 + 135 + 40 = 285초 > 280초 — 시작하지 않는다
+    // hero 뒤 170초만 남아 usage의 생성·게이트 175초가 들어가지 않는다.
     const after = await run(requestRegen(requestRegen(done, 'usage'), 'hero'))
     expect(calls().map((c) => c.stage)).toStrictEqual(['images/hero/editor'])
     expect(entryOf(after, 'hero').editorRegen?.status).toBe('done')
@@ -503,10 +503,10 @@ describe('편집기 사후 재생성(W5b) — lean 잡이 만들지 않은 골�
     let clock = 0
     vi.spyOn(Date, 'now').mockImplementation(() => clock)
     h.generate.mockImplementation(async () => {
-      clock += 110_000
+      clock += 30 * 60_000 - 170_000
       return { base64: 'aW1n', mimeType: 'image/png', model: 'gpt-image-2' }
     })
-    // hero가 110초에 끝난 뒤 size_comparison: 110 + 135 + 40 = 285초 > 280초 — 시작하지 않는다
+    // hero 뒤 170초만 남아 size_comparison의 생성·게이트 175초가 들어가지 않는다.
     const after = await run(requestRegen(requestRegen(done, 'size_comparison'), 'hero'))
     expect(calls().map((c) => c.stage)).toStrictEqual(['images/hero/editor'])
     expect(entryOf(after, 'size_comparison')).toMatchObject({

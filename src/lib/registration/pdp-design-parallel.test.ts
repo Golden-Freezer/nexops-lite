@@ -163,15 +163,15 @@ describe('잡 진행 잠금 — 실패 경로', () => {
 })
 
 describe('설계 단계 — 잡 모델 배치(R03)', () => {
-  it('새 배치 잡은 콜 ①·②가 같은 280초 기한을 받고 단계 안에서 새 배치로 보인다', async () => {
+  it('새 배치 잡은 콜 ①·②가 같은 30분 기한을 받고 단계 안에서 새 배치로 보인다', async () => {
     h.job = { ...h.job!, model_batch: 'new', model_route_snapshot: null }
     const before = Date.now()
     await runPdpStep(h.job.id, 'user-1')
     expect(h.seen.map((c) => c.name).sort()).toEqual(['plan', 'prompts'])
     for (const c of h.seen) {
       expect(c.batch, c.name).toBe('new')
-      expect(c.deadlineAt, c.name).toBeGreaterThanOrEqual(before + 280_000)
-      expect(c.deadlineAt, c.name).toBeLessThanOrEqual(Date.now() + 280_000)
+      expect(c.deadlineAt, c.name).toBeGreaterThanOrEqual(before + 30 * 60_000)
+      expect(c.deadlineAt, c.name).toBeLessThanOrEqual(Date.now() + 30 * 60_000)
     }
     expect(h.seen[0].deadlineAt).toBe(h.seen[1].deadlineAt)
   })

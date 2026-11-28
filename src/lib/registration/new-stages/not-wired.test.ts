@@ -30,12 +30,6 @@ const moduleFiles = walk(HERE).filter((path) => !/\.(test|fixture)\.ts$/.test(pa
  * 파이프라인·화면 밖이라 꺼진 잡 바이트와 무관하다: k-line-run 꺼진 잡 지문·pdp-new-stages-pipeline 꺼진 잡 시험 그대로)
  */
 const ALLOWED_IMPORTERS = [
-  'lib/registration/__e2e__/design1-copy-repro.ts',
-  'lib/registration/__e2e__/fact-audit-repro.test.ts',
-  'lib/registration/__e2e__/fact-audit-repro.ts',
-  'lib/registration/__e2e__/first-screen-judge.test.ts',
-  'lib/registration/__e2e__/first-screen-judge.ts',
-  'lib/registration/__e2e__/new-stages-ledger.ts',
   'lib/registration/pdp-model-routes.ts',
   'lib/registration/pdp-new-stages-stage.test.ts',
   'lib/registration/pdp-new-stages-stage.ts',

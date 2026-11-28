@@ -1,8 +1,7 @@
 /**
  * 잡별 모델 배치(R03) — 새 배치 표 = 오너 2026-11-08 ② 최종 선택 + ③ 운영 반영 1~2 + R06 5차 교체(카피 1단·설계②), 지금 배치는 표 객체 그대로(바이트 불변),
- * 잡 배치로 감싸야만 새 표, 갈래·구독 env와 섞이면 throw, 잡 스냅숏·대조, spec_sheet 예약 키, 새 배치 이미지 모델(R05 경계).
- * 새 표의 모든 단계가 callLlm의 '부르기 전에 막는 설정'에 걸리지 않는지(공급자 모의 — 유료 호출 0).
- * 구독 표지 잡(R13): Claude·GPT 단계만 구독 + API 잇기 표지, Gemini·thinking 끄기 단계는 API 그대로, 백엔드가 없으면 API로 이어 끝난다.
+ * 잡 배치로 감싸야만 새 표, 잡 스냅숏·대조와 spec_sheet 예약 키를 보존한다.
+ * 모델·구독 호환 메타데이터와 무관하게 모든 단계의 실제 실행은 callAgent(로컬 Codex) 한 경로인지 확인한다.
  */
 
 import { describe, expect, it, vi } from 'vitest'
@@ -10,21 +9,11 @@ import { describe, expect, it, vi } from 'vitest'
 const h = vi.hoisted(() => ({ calls: [] as Array<{ provider: string; model: unknown }> }))
 const ok = { success: true, data: 'ok', usage: { inputTokens: 0, outputTokens: 0, cost: 0 }, duration: 0 }
 vi.mock('@/lib/agents/_base', () => ({
-  callAgent: async (o: { config: { model: string } }) => (h.calls.push({ provider: 'anthropic', model: o.config.model }), ok),
-}))
-vi.mock('@/lib/agents/openai-chat', () => ({
-  callOpenAiChat: async (o: { model: string }) => (h.calls.push({ provider: 'openai', model: o.model }), ok),
-}))
-vi.mock('@/lib/agents/llm/providers/gemini', () => ({
-  callGemini: async (route: { model: string }) => (h.calls.push({ provider: 'gemini', model: route.model }), ok),
+  callAgent: async (o: { config: { model: string } }) => (h.calls.push({ provider: 'codex', model: o.config.model }), ok),
 }))
 
 import { callLlm, lookupLlmModel } from '@/lib/agents/llm'
-import { clearLocalLlmBackends, LlmSoftStopError } from '@/lib/agents/llm/local-llm-backend'
-import { collectSubscriptionFallbacks, type SubscriptionFallbackRecord } from '@/lib/agents/llm/subscription-fallback'
 import {
-  PDP_NEW_BATCH_IMAGE_MODEL,
-  resolveNewBatchImageModel,
   specSheetForSave,
   splitModelBatchKeys,
   withModelBatchKeys,
@@ -47,39 +36,36 @@ import {
 describe('새 배치 표(오너 ② 모델 최종 선택 · ③ 1~2 · R06 5차 교체)', () => {
   it('오너가 고른 단계만 바뀐다 — 모델·등급·상한·콜 시간', () => {
     expect(PDP_NEW_BATCH_OVERRIDES).toEqual({
-      research: { model: 'gpt-6.1-sol', maxTokens: 8000, maxTokensSteps: [8000, 16000], effort: 'medium', callTimeoutMs: 150_000 },
-      'design/section-planning': { model: 'claude-opus-5-5', maxTokens: 8000, effort: 'high', callTimeoutMs: 120_000 },
-      // R06 5차(오너 11-08 14:4x) 설계② Opus xhigh → Sol medium — 지금 상한·단계 그대로(28,000·스트리밍 불필요), 150초
-      'design/prompt': { model: 'gpt-6.1-sol', maxTokens: 12_000, maxTokensSteps: [12_000, 16_000], effort: 'medium', callTimeoutMs: 150_000 },
-      // R06 5차 카피 1단 Sol high → Opus medium — 상한 8,000 → 12,000·잘림 감지, 120초 + 재시도 1
-      // R11d(오너 2026-11-09 13:2x) 상한 12,000 → 16,000, 콜 시간 120초 → 165초(실측 초당 약 109토큰이면 16,000에 약 147초)
-      // J34(통합 decide 15 ③, c21 판정) 원문 카피 3단 Opus → Gemini argon — 상한·등급·1단 콜 시간·재시도·잘림 감지는 그대로,
-      // 2단·3단 콜 시간 150초(decide 18 — c21 2단 실측 최대 110.8초)
+      research: { model: 'gpt-6.1-sol', maxTokens: 8000, maxTokensSteps: [8000, 16000], effort: 'medium', callTimeoutMs: 25 * 60_000 },
+      'design/section-planning': { model: 'claude-opus-5-5', maxTokens: 8000, effort: 'high', callTimeoutMs: 25 * 60_000 },
+      // 모델·상한 메타데이터는 보존하고 라이트 실행 시간은 30분으로 통일한다.
+      'design/prompt': { model: 'gpt-6.1-sol', maxTokens: 12_000, maxTokensSteps: [12_000, 16_000], effort: 'medium', callTimeoutMs: 25 * 60_000 },
+      // 카피 단계도 상한·재시도·잘림 메타데이터는 보존하고 콜 시간만 30분으로 통일한다.
       'copy/structural': {
         model: 'gemini-4-argon',
         maxTokens: 16_000,
         effort: 'medium',
         failOnTruncation: true,
-        callTimeoutMs: 165_000,
+        callTimeoutMs: 25 * 60_000,
         callMaxRetries: 1,
       },
-      'copy/stage2': { model: 'gemini-4-argon', maxTokens: 16000, effort: 'low', callTimeoutMs: 150_000 },
-      'copy/stage3': { model: 'gemini-4-argon', maxTokens: 8000, effort: 'low', callTimeoutMs: 150_000 },
-      'design/template-guideline': { model: 'claude-opus-5-5', maxTokens: 1500, effort: 'medium', callTimeoutMs: 90_000 },
-      'design/template-compose': { model: 'claude-opus-5-5', maxTokens: 2000, effort: 'medium', callTimeoutMs: 90_000 },
-      'design/template-select': { model: 'claude-opus-5-5', maxTokens: 4000, effort: 'medium', callTimeoutMs: 90_000 },
+      'copy/stage2': { model: 'gemini-4-argon', maxTokens: 16000, effort: 'low', callTimeoutMs: 25 * 60_000 },
+      'copy/stage3': { model: 'gemini-4-argon', maxTokens: 8000, effort: 'low', callTimeoutMs: 25 * 60_000 },
+      'design/template-guideline': { model: 'claude-opus-5-5', maxTokens: 1500, effort: 'medium', callTimeoutMs: 25 * 60_000 },
+      'design/template-compose': { model: 'claude-opus-5-5', maxTokens: 2000, effort: 'medium', callTimeoutMs: 25 * 60_000 },
+      'design/template-select': { model: 'claude-opus-5-5', maxTokens: 4000, effort: 'medium', callTimeoutMs: 25 * 60_000 },
       // J34b(통합 decide 25, c21 칸 글 판정) 칸 글 Sol low → Gemini argon low — 상한 그대로
       'copy/template-slots': { model: 'gemini-4-argon', maxTokens: 8000, effort: 'low' },
       // ③ 식별 카드 400 → 2,000 · 게이트 500 → 4,000, 잘림 감지(R02)
-      'images/identity': { model: 'gemini-4-argon', maxTokens: 2000, effort: 'high', failOnTruncation: true, callTimeoutMs: 90_000 },
-      // R12e 게이트 콜 시간 60초 → 90초·재시도 1(R13 운영 잡 96872abb 성공 최대 58.8초, 3/28콜 60초 시간 초과)
+      'images/identity': { model: 'gemini-4-argon', maxTokens: 2000, effort: 'high', failOnTruncation: true, callTimeoutMs: 25 * 60_000 },
+      // 게이트도 재시도 1은 보존하고 콜 시간은 30분이다.
       'images/gate': {
         model: 'gemini-4-argon',
         maxTokens: 4000,
         effort: 'high',
         json: true,
         failOnTruncation: true,
-        callTimeoutMs: 90_000,
+        callTimeoutMs: 25 * 60_000,
         callMaxRetries: 1,
       },
       'images/gif-gate': { model: 'claude-opus-5-5', maxTokens: 4000, effort: 'xhigh', failOnTruncation: true },
@@ -94,7 +80,7 @@ describe('새 배치 표(오너 ② 모델 최종 선택 · ③ 1~2 · R06 5차 
     expect(PDP_MODEL_ROUTES_NEW.analysis).toEqual({ model: 'claude-haiku-5-5', maxTokens: 4096, disableThinking: true })
   })
 
-  it('새 표의 모든 단계가 callLlm의 부르기 전 거절에 걸리지 않고 API 공급자로 간다(구독 없음)', async () => {
+  it('새 표의 모든 단계가 모델 표기와 무관하게 로컬 Codex callAgent 한 경로로 간다', async () => {
     h.calls = []
     for (const stage of PDP_MODEL_STAGES) {
       const route = PDP_MODEL_ROUTES_NEW[stage]
@@ -103,6 +89,7 @@ describe('새 배치 표(오너 ② 모델 최종 선택 · ③ 1~2 · R06 5차 
       expect(out.success, `${stage} ${!out.success ? out.error.message : ''}`).toBe(true)
     }
     expect(h.calls).toHaveLength(PDP_MODEL_STAGES.length)
+    expect(new Set(h.calls.map((c) => c.provider))).toEqual(new Set(['codex']))
   })
 })
 
@@ -270,43 +257,16 @@ describe('구독 표지 잡(R13)', () => {
     })
   })
 
-  it('구독 백엔드가 없는 곳(웹)에서 표지 잡의 모든 단계는 부르기 전 거절 없이 같은 모델 API로 이어 끝나고 잇기 기록이 남는다', async () => {
+  it('구독 표지가 있어도 모든 단계는 같은 로컬 Codex 경로로 끝나며 폴백 절차가 필요 없다', async () => {
     h.calls = []
-    const records: SubscriptionFallbackRecord[] = []
-    try {
-      await collectSubscriptionFallbacks(records, async () => {
-        for (const stage of PDP_MODEL_STAGES) {
-          clearLocalLlmBackends()
-          const route = pdpRoute(stage, {}, 'new', 'subscription')
-          const out = await callLlm(route, { ...REQ, runContext: { stage } }, (t) => t)
-          expect(out.success, `${stage} ${!out.success ? out.error.message : ''}`).toBe(true)
-        }
-      })
-    } finally {
-      clearLocalLlmBackends()
+    for (const stage of PDP_MODEL_STAGES) {
+      const route = pdpRoute(stage, {}, 'new', 'subscription')
+      const out = await callLlm(route, { ...REQ, runContext: { stage } }, (t) => t)
+      expect(out.success, `${stage} ${!out.success ? out.error.message : ''}`).toBe(true)
     }
     expect(h.calls).toHaveLength(PDP_MODEL_STAGES.length)
     expect(h.calls.map((c) => c.model)).toEqual(PDP_MODEL_STAGES.map((stage) => PDP_MODEL_ROUTES_NEW[stage].model))
-    // 구독 단계 7개(J34로 원문 카피 3단, J34b로 칸 글은 Gemini API — 잇기 기록이 없다)
-    expect(records).toHaveLength(7)
-    expect(records.find((r) => r.stage === 'copy/template-slots')).toBeUndefined()
-    expect(records.every((r) => r.reason === 'unavailable' && r.apiSuccess)).toBe(true)
-    expect(records.find((r) => r.stage === 'copy/stage2')).toBeUndefined()
-    expect(records.find((r) => r.stage === 'design/template-select')).toMatchObject({ backend: 'claude-cli', model: 'claude-opus-5-5' })
-    expect(records.find((r) => r.stage === 'research')).toMatchObject({ backend: 'codex-cli', model: 'gpt-6.1-sol' })
-  })
-})
-
-describe('새 배치 이미지 모델(R05 경계)', () => {
-  it('공급자가 등록되지 않았으면 명시 오류 — 다른 모델로 넘어가지 않는다', () => {
-    const missing = resolveNewBatchImageModel(['gpt-image-2.6-sunburst', 'gpt-image-2'])
-    expect(missing.ok).toBe(false)
-    if (!missing.ok) expect(missing.error).toContain(PDP_NEW_BATCH_IMAGE_MODEL)
-  })
-
-  it('등록돼 있으면 그 id(higgsfield-ms-2k)', () => {
-    expect(PDP_NEW_BATCH_IMAGE_MODEL).toBe('higgsfield-ms-2k')
-    expect(resolveNewBatchImageModel(['gpt-image-2', 'higgsfield-ms-2k'])).toEqual({ ok: true, model: 'higgsfield-ms-2k' })
+    expect(new Set(h.calls.map((c) => c.provider))).toEqual(new Set(['codex']))
   })
 })
 
@@ -390,48 +350,16 @@ describe('구독 멈춤 표지 잡(AX-CT-29)', () => {
     })
   })
 
-  it('stop 잡 — 구독 백엔드가 없으면 구독 단계는 API 공급자를 한 번도 부르지 않고 LlmSoftStopError로 멈추고, Gemini·생각 끄기 단계는 그대로 API', async () => {
+  it('stop 표지도 라이트 실행을 멈추지 않고 모든 단계를 로컬 Codex 한 경로로 보낸다', async () => {
     h.calls = []
-    const stopped: string[] = []
-    const viaApi: string[] = []
-    clearLocalLlmBackends()
-    try {
-      for (const stage of PDP_MODEL_STAGES) {
-        const route = pdpRoute(stage, {}, 'new', 'subscription', true)
-        const before = h.calls.length
-        try {
-          const out = await callLlm(route, { ...REQ, runContext: { stage } }, (t) => t)
-          expect(out.success, stage).toBe(true)
-          viaApi.push(stage)
-          expect(h.calls.length - before, stage).toBe(1)
-          expect(route.backend, stage).not.toBe('subscription')
-        } catch (error) {
-          expect(error, stage).toBeInstanceOf(LlmSoftStopError)
-          expect((error as LlmSoftStopError).stop.reason).toBe('unavailable')
-          expect(h.calls.length - before, stage).toBe(0)
-          stopped.push(stage)
-        }
-        clearLocalLlmBackends()
-      }
-    } finally {
-      clearLocalLlmBackends()
+    for (const stage of PDP_MODEL_STAGES) {
+      const route = pdpRoute(stage, {}, 'new', 'subscription', true)
+      const before = h.calls.length
+      const out = await callLlm(route, { ...REQ, runContext: { stage } }, (t) => t)
+      expect(out.success, stage).toBe(true)
+      expect(h.calls.length - before, stage).toBe(1)
     }
-    expect(stopped.sort()).toEqual(
-      [
-        'research',
-        'design/section-planning',
-        'design/prompt',
-        'design/template-guideline',
-        'design/template-compose',
-        'design/template-select',
-        'images/gif-gate',
-      ].sort()
-    )
-    expect(viaApi).toContain('images/gate')
-    expect(viaApi).toContain('copy/stage2')
-    expect(viaApi).toContain('analysis')
-    expect(stopped.length + viaApi.length).toBe(PDP_MODEL_STAGES.length)
-    // 구독 단계가 막혀도 API 공급자(Claude·OpenAI) 호출은 0 — API 호출은 Gemini·생각 끄기 단계 몫뿐이다
-    expect(h.calls.length).toBe(viaApi.length)
+    expect(h.calls).toHaveLength(PDP_MODEL_STAGES.length)
+    expect(new Set(h.calls.map((c) => c.provider))).toEqual(new Set(['codex']))
   })
 })

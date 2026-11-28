@@ -68,7 +68,8 @@ describe('PDP 이미지 재시도 상태', () => {
       { section: 'howto:0', url: '', error: '생성 실패' },
       { section: 'howto:1', url: 'https://ok/howto-1.png' },
     ])
-    expect(ordered.howToImages?.[0]).toBeUndefined()
+    // 리스트 번호는 자리다. 앞 번호 실패를 당겨 채우지 않고 빈 문자열로 보존한다.
+    expect(ordered.howToImages?.[0]).toBe('')
     expect(ordered.howToImages?.[1]).toBe('https://ok/howto-1.png')
 
     const { finalHtml } = composePdp({

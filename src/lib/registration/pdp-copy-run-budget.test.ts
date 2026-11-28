@@ -1,6 +1,6 @@
 /**
  * 카피 단계 재생성(연령·에코·유사도 — pdp-cost-time-followup, 숫자·단위 — P0-2) — run 시간 예산·순서·결과 채택 규칙.
- * - Vercel run이면 단계 시작 + 280초를 기한으로 카피 콜에 넘기고, 재생성은 남은 시간이 120초보다 적으면 시작하지 않는다(재생성 실패와
+ * - Vercel run이면 단계 시작 + 30분을 기한으로 카피 콜에 넘기고, 재생성은 남은 시간이 120초보다 적으면 시작하지 않는다(재생성 실패와
  *   같은 처리 + 경고). 로컬 실행기(Vercel 아님)는 기한이 없다.
  * - 연령 재생성이 맨 앞이다(규정 준수 우선). 뒤의 품질 재생성(에코·유사도)이 어린이 표현을 늘리면 그 결과를 받지 않는다.
  * - 카피 생성(Stage 1)이 기본 카피로 폴백한 재생성 결과는 버리고 이전 카피를 유지한다(이전 예정 pdp-copy-regen-fallback-fix).
@@ -98,6 +98,7 @@ vi.mock('@/lib/agents/registration/pdp-copy-agent', async (orig) => ({
 
 import { checkMonthlyBudget } from '@/lib/agents/budget'
 import { COPY_REGEN_MIN_MS, runPdpStep } from './pdp-pipeline'
+import { RUN_TIME_BUDGET_MS } from './pdp-image-stage'
 import { fixtureToJob, loadEnrichmentFixture, rewindTo } from './__golden__/golden-harness'
 
 /** 재생성 콜의 종류 — 그라운딩 블록 끝에 붙은 지시로 가린다 */
@@ -145,12 +146,12 @@ afterEach(() => {
 })
 
 describe('stepCopywriting — run 시간 예산', () => {
-  it('Vercel run: 기한(단계 시작 + 280초)을 카피 콜에 넘기고, 남은 시간이 넉넉하면 재생성을 지금처럼 한다', async () => {
+  it('Vercel run: 기한(단계 시작 + 30분)을 카피 콜에 넘기고, 남은 시간이 넉넉하면 재생성을 지금처럼 한다', async () => {
     setup({ minAge: 14, vercel: true })
     h.advanceMs = 10_000
     await run()
     expect(kinds()).toEqual(['main', 'age'])
-    for (const c of h.copyCalls) expect(c.deadlineAt).toBe(h.t0 + 280_000)
+    for (const c of h.copyCalls) expect(c.deadlineAt).toBe(h.t0 + RUN_TIME_BUDGET_MS)
     expect(savedError()).not.toContain('재생성 건너뜀')
   })
 
@@ -160,7 +161,7 @@ describe('stepCopywriting — run 시간 예산', () => {
     h.outputs = [{ headline: '어린이도 쉽게 쓰는 ECHO SIMILAR 컵' }]
     h.echoOn = true
     h.corpusOn = true
-    h.advanceMs = 170_000
+    h.advanceMs = RUN_TIME_BUDGET_MS - 110_000
     await run()
     expect(h.copyCalls).toHaveLength(1)
     for (const kind of ['연령 표현', '경쟁사 리뷰 재현', '코퍼스 유사도'])
@@ -184,11 +185,11 @@ describe('stepCopywriting — run 시간 예산', () => {
 describe('stepCopywriting — 재생성 순서·결과 채택', () => {
   it('연령 재생성이 맨 앞이다 — 시간이 한 벌만 남으면 품질 재생성(에코·유사도)보다 연령이 먼저 돈다', async () => {
     setup({ minAge: 14, vercel: true })
-    // 본 콜 90초 → 남은 190초: 연령 재생성(90초) 뒤 남은 100초 < 120초라 에코·유사도는 건너뛴다
+    // 두 콜 뒤 100초만 남도록 한다: 연령 재생성은 돌고 뒤 품질 재생성은 건너뛴다.
     h.outputs = [{ headline: '어린이도 쉽게 쓰는 ECHO SIMILAR 컵' }, { headline: '누구나 쉽게 쓰는 ECHO SIMILAR 컵' }]
     h.echoOn = true
     h.corpusOn = true
-    h.advanceMs = 90_000
+    h.advanceMs = (RUN_TIME_BUDGET_MS - 100_000) / 2
     await run()
     expect(kinds()).toEqual(['main', 'age'])
     expect(savedHeadline()).toBe('누구나 쉽게 쓰는 ECHO SIMILAR 컵')
@@ -297,7 +298,7 @@ describe('stepCopywriting — 숫자·단위 재작성(P0-2)', () => {
   it('남은 시간이 모자라면 숫자 재작성도 시작하지 않고, 남은 숫자를 경고·기록한다', async () => {
     setup({ minAge: 14, vercel: true })
     h.outputs = [{ headline: '쉬운 NUMBER 컵' }]
-    h.advanceMs = 170_000
+    h.advanceMs = RUN_TIME_BUDGET_MS - 110_000
     await run()
     expect(h.copyCalls).toHaveLength(1)
     expect(savedError()).toContain('숫자·단위 재생성 건너뜀(남은 110초)')

@@ -70,6 +70,7 @@ import {
   GATE_CALL_FAILURE_REJUDGE_MAX,
   GATE_NEW_BATCH_MIN_ATTEMPT_MS,
   GATE_UNDECIDED_CALL_FAILED,
+  RUN_TIME_BUDGET_MS,
   runImagesStep,
 } from './pdp-image-stage'
 import { resolveStepToRun } from './pdp-pipeline'
@@ -161,27 +162,31 @@ describe('새 배치 — 채점 호출 실패는 통과로 치지 않는다', ()
 })
 
 describe('새 배치 — 시도 시간', () => {
-  it('남은 시간이 넉넉하면 limits 없이 route 값(90초 × 2시도)으로 부른다', async () => {
+  it('30분 route는 run의 받기 여유를 넘으므로 남은 시간에서 받기 25초를 뺀 한 번으로 제한한다', async () => {
     await run(imagesJob('new'))
     expect(h.gateCalls.length).toBeGreaterThan(0)
-    expect(h.gateCalls.every((g) => g.limits === undefined)).toBe(true)
+    for (const call of h.gateCalls) {
+      expect(call.limits).toMatchObject({ maxRetries: 0 })
+      expect((call.limits as { timeoutMs: number }).timeoutMs).toBeLessThan(30 * 60_000)
+      expect((call.limits as { timeoutMs: number }).timeoutMs).toBeGreaterThanOrEqual(GATE_NEW_BATCH_MIN_ATTEMPT_MS)
+    }
   })
 
-  it('빠듯하면 남은 시간 − 받기 25초(90초 상한)로 한 번, 60초 아래면 부르지 않고 대기(호출 실패 수에 안 셈)', async () => {
-    // hero 생성 165초 → 남은 115초(최악 206초보다 짧음) → 시도 90초
-    manualClock(165_000)
+  it('빠듯하면 남은 시간 − 받기 25초(30분 상한)로 한 번, 60초 아래면 부르지 않고 대기(호출 실패 수에 안 셈)', async () => {
+    // hero 생성 뒤 115초 → 시도 90초
+    manualClock(RUN_TIME_BUDGET_MS - 115_000)
     await run(imagesJob('new'))
     expect(h.gateCalls).toEqual([{ cut: 'hero', limits: { timeoutMs: 90_000, maxRetries: 0 } }])
 
-    // 190초 → 남은 90초 → 시도 65초(60초 이상이라 부른다)
+    // 남은 90초 → 시도 65초(60초 이상이라 부른다)
     h.gateCalls = []
-    manualClock(190_000)
+    manualClock(RUN_TIME_BUDGET_MS - 90_000)
     await run(imagesJob('new'))
     expect(h.gateCalls).toEqual([{ cut: 'hero', limits: { timeoutMs: 65_000, maxRetries: 0 } }])
 
-    // 200초 → 남은 80초 → 시도 55초 < 60초 → 부르지 않고 대기
+    // 남은 80초 → 시도 55초 < 60초 → 부르지 않고 대기
     h.gateCalls = []
-    manualClock(200_000)
+    manualClock(RUN_TIME_BUDGET_MS - 80_000)
     const out = await run(imagesJob('new'))
     expect(h.gateCalls).toHaveLength(0)
     expect(heroOf(out)).toMatchObject({ gatePending: true })
@@ -201,7 +206,7 @@ describe('지금 배치 — 그대로', () => {
   })
 
   it('시도 시간은 60초 상한·최소 시도 없음 — 남은 80초면 55초로 부른다', async () => {
-    manualClock(200_000)
+    manualClock(RUN_TIME_BUDGET_MS - 80_000)
     await run(imagesJob('now'))
     expect(h.gateCalls).toEqual([{ cut: 'hero', limits: { timeoutMs: 55_000, maxRetries: 0 } }])
   })

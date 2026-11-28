@@ -11,7 +11,7 @@ const h = vi.hoisted(() => ({
 }))
 vi.mock('@/lib/agents/_base', () => ({
   callAgent: async (o: { config: { model: string; maxTokens: number; effort?: string }; agentName: string; messages: Array<{ content: unknown }> }, parser: (t: string) => unknown) => {
-    h.calls.push({ provider: 'anthropic', model: o.config.model, maxTokens: o.config.maxTokens, effort: o.config.effort, agent: o.agentName, text: o.messages[0]?.content })
+    h.calls.push({ provider: 'codex', model: o.config.model, maxTokens: o.config.maxTokens, effort: o.config.effort, agent: o.agentName, text: o.messages[0]?.content })
     return { success: true, data: parser(h.reply), usage: { inputTokens: 10, outputTokens: 20, cost: 0.05 }, duration: 3 }
   },
 }))
@@ -19,7 +19,7 @@ vi.mock('@/lib/agents/_base', () => ({
 import { callLlm } from '@/lib/agents/llm'
 import { NEW_STAGE_ROUTE_NAMES, type NewStageRecord } from './new-stages/common'
 import type { DirectorPlan } from './new-stages/director'
-import { PDP_MODEL_ROUTES, PDP_NEW_STAGE_ROUTES, pdpNewStageRoute } from './pdp-model-routes'
+import { PDP_MODEL_ROUTES, PDP_NEW_BATCH_STAGE_DEADLINE_MS, PDP_NEW_STAGE_ROUTES, pdpNewStageRoute } from './pdp-model-routes'
 import {
   directorLineFor,
   finalScreenLinesOf,
@@ -99,7 +99,8 @@ describe('새 단계 route 표 — 새 배치만, 지금 표에 없음', () => {
     expect(pick('compose/final-review')).toEqual(['claude-opus-5-5', 'xhigh'])
     for (const route of Object.values(PDP_NEW_STAGE_ROUTES)) {
       expect(route.maxTokens).toBeLessThanOrEqual(21_333)
-      expect(route.callTimeoutMs + 20_000).toBeLessThanOrEqual(280_000)
+      expect(route.callTimeoutMs).toBeGreaterThanOrEqual(25 * 60_000)
+      expect(route.callTimeoutMs + 20_000).toBeLessThanOrEqual(PDP_NEW_BATCH_STAGE_DEADLINE_MS)
       expect(route.failOnTruncation).toBe(true)
     }
   })
@@ -121,15 +122,16 @@ describe('새 단계 route 표 — 새 배치만, 지금 표에 없음', () => {
       const out = await callLlm(route, { system: 's', messages: [{ role: 'user', content: 'u' }], agentName: 'test/new-stages' }, (t) => t)
       expect(out.success, `${name} ${!out.success ? out.error.message : ''}`).toBe(true)
     }
-    expect(h.calls.map((c) => c.provider)).toEqual(Array(5).fill('anthropic'))
+    expect(h.calls.map((c) => c.provider)).toEqual(Array(5).fill('codex'))
   })
 
   it('이 run에 콜 시간 + 저장 여유 20초가 남았을 때만 부른다', () => {
     const now = 1_000_000
-    // 사실 감사 콜 시간 200초(R11d) + 저장 여유 20초
-    expect(newStageFits('factAudit', now + 220_000, now)).toBe(true)
-    expect(newStageFits('factAudit', now + 219_999, now)).toBe(false)
-    expect(newStageFits('director', now + 140_000, now)).toBe(true)
+    const factAuditNeed = PDP_NEW_STAGE_ROUTES['copy/fact-audit'].callTimeoutMs + 20_000
+    const directorNeed = PDP_NEW_STAGE_ROUTES['images/director'].callTimeoutMs + 20_000
+    expect(newStageFits('factAudit', now + factAuditNeed, now)).toBe(true)
+    expect(newStageFits('factAudit', now + factAuditNeed - 1, now)).toBe(false)
+    expect(newStageFits('director', now + directorNeed, now)).toBe(true)
   })
 })
 
@@ -167,13 +169,13 @@ describe('연출 감독 한 줄', () => {
 
 describe('합성 뒤 검수(첫 화면 심사·최종 검수)', () => {
   it('꺼진 잡은 null(저장 그대로) — 지금 배치·스위치 없음', async () => {
-    expect(await runComposeReviewStages(job({ model_batch: 'now' }), CTX, Date.now() + 280_000)).toBeNull()
-    expect(await runComposeReviewStages(job({ analysis: {} as never }), CTX, Date.now() + 280_000)).toBeNull()
+    expect(await runComposeReviewStages(job({ model_batch: 'now' }), CTX, Date.now() + 30 * 60_000)).toBeNull()
+    expect(await runComposeReviewStages(job({ analysis: {} as never }), CTX, Date.now() + 30 * 60_000)).toBeNull()
     expect(h.calls).toHaveLength(0)
   })
 
   it('켠 잡 — 첫 화면은 웹 생략, 최종 검수는 새 단계 route로 화면 글을 보낸다', async () => {
-    const out = await runWithPdpBatch('new', () => runComposeReviewStages(job(), CTX, Date.now() + 280_000))
+    const out = await runWithPdpBatch('new', () => runComposeReviewStages(job(), CTX, Date.now() + 30 * 60_000))
     expect(out?.first_screen).toEqual({ version: 1, stage: 'firstScreen', status: 'skipped', reason: 'web_no_renderer' })
     expect(out?.final_review).toMatchObject({ status: 'done', result: { flags: [], pass: true }, costUsd: 0.05 })
     expect(out?.costUsd).toBe(0.05)
@@ -183,16 +185,16 @@ describe('합성 뒤 검수(첫 화면 심사·최종 검수)', () => {
   })
 
   it('잡 비용 상한에 닿았으면 둘 다 cost_cap 생략(부르지 않는다), 편집기 재생성 잡은 not_first_generation', async () => {
-    const capped = await runComposeReviewStages(job({ cost_usd: 10 }), CTX, Date.now() + 280_000)
+    const capped = await runComposeReviewStages(job({ cost_usd: 10 }), CTX, Date.now() + 30 * 60_000)
     expect([capped?.first_screen, capped?.final_review].map((r) => r && r.status === 'skipped' && r.reason)).toEqual(['cost_cap', 'cost_cap'])
-    const regen = await runComposeReviewStages(job({ section_images: [{ section: 'hero', url: 'x', editorRegen: { at: 'now' } } as never] }), CTX, Date.now() + 280_000)
+    const regen = await runComposeReviewStages(job({ section_images: [{ section: 'hero', url: 'x', editorRegen: { at: 'now' } } as never] }), CTX, Date.now() + 30 * 60_000)
     expect([regen?.first_screen, regen?.final_review].map((r) => r && r.status === 'skipped' && r.reason)).toEqual(['not_first_generation', 'not_first_generation'])
     expect(h.calls).toHaveLength(0)
   })
 
   it('이미 기록이 있으면 다시 부르지 않는다(null)', async () => {
     const recorded = job({ section_plan: { first_screen: { version: 1, stage: 'firstScreen', status: 'skipped', reason: 'web_no_renderer' }, final_review: { version: 1, stage: 'finalReview', status: 'skipped', reason: 'no_input' } } })
-    expect(await runComposeReviewStages(recorded, CTX, Date.now() + 280_000)).toBeNull()
+    expect(await runComposeReviewStages(recorded, CTX, Date.now() + 30 * 60_000)).toBeNull()
     expect(h.calls).toHaveLength(0)
   })
 

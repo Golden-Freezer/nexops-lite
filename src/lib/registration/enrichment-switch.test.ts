@@ -15,7 +15,7 @@ import {
 
 const T6B_DEFAULTS = ['vocab', 'persuasion', 'layouts', 'shots', 'annotations', 'mobile', 'options']
 /** 지금 기본값 — K4 운영 전환(오너 2026-11-06 09:39 '전환 PR 준비 승인'): K4 회차 11잡의 기록 묶음 22개(원장 runs.jsonl round K4)에
- * K6 뒤 사진 다양화·정보 칸(오너 2026-11-06 20:46 승인)과 움직이는 칸(오너 2026-11-06 23:2x 'GPT GIF로 사용 승인')을 더한 25개에
+ * K6 뒤 사진 다양화·정보 칸을 더하고 라이트에서 움직이는 칸은 뺀 묶음에
  * J34 켜기(오너 위임 I6-2, 통합 decide 15·17) 쓰는 법 재료·사용 판정 끝 처리를 더한 27개에 J65 켜기(통합 decide 41·42) 체감 결과 한 장면을
  * 더한 28개에 J69 켜기(통합 decide 44) 보여 줄 동작·설계를 더한 29개, 기능 목록 순서 */
 const K4: EnrichmentFeature[] = [
@@ -35,7 +35,6 @@ const K4: EnrichmentFeature[] = [
   'idcardall',
   'templatelib',
   'uspfacts',
-  'motionband',
   'shotvary',
   'infocells',
   'usefacts',
@@ -50,7 +49,7 @@ const R_SKIP = K4_SWITCHED_ON.join(',')
 const R = { NEXOPS_PDP_ENRICHMENT_SKIP: R_SKIP }
 
 describe('ENRICHMENT 스위치', () => {
-  it('기본값은 K4 운영 전환 묶음 25개(K4 회차 기록 22개 + K6 사진 다양화·정보 칸 + 움직이는 칸) — 운영(Vercel)도 같고, 시험 전 기능은 꺼져 있다', () => {
+  it('기본값은 라이트 운영 묶음(motionband 제외) — 운영 표지도 같고 시험 전 기능은 꺼져 있다', () => {
     expect(resolveEnabledFeatures({})).toEqual(K4)
     expect(resolveEnabledFeatures({ VERCEL: '1' })).toEqual(K4)
     expect(resolveEnabledFeatures({ VERCEL_ENV: 'production' })).toEqual(K4)
@@ -246,15 +245,16 @@ describe('ENRICHMENT 스위치', () => {
     expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_EXTRA: 'photoroles', NEXOPS_PDP_ENRICHMENT_SKIP: 'templatelib' })).toContain('photoroles')
   })
 
-  it('motionband(움직이는 칸)는 기본 on(오너 11-06 23:2x GPT GIF 승인, K4_SWITCHED_ON) — K 잡에서만 기록하고, 로컬 SKIP·R 대조군이면 빠지며 Vercel은 SKIP을 무시한다', () => {
-    expect(ENRICHMENT_DEFAULTS.motionband).toBe(true)
-    expect(K4_SWITCHED_ON).toContain('motionband')
-    expect(resolveEnabledFeatures({})).toEqual(expect.arrayContaining(['templatelib', 'motionband']))
-    expect(resolveEnabledFeatures({ VERCEL: '1' })).toEqual(expect.arrayContaining(['templatelib', 'motionband']))
+  it('motionband(움직이는 칸)는 라이트 기본 off — 로컬 EXTRA에서만 K 잡에 기록하고 운영은 EXTRA를 무시한다', () => {
+    expect(ENRICHMENT_DEFAULTS.motionband).toBe(false)
+    expect(K4_SWITCHED_ON).not.toContain('motionband')
+    expect(resolveEnabledFeatures({})).not.toContain('motionband')
+    expect(resolveEnabledFeatures({ VERCEL: '1' })).not.toContain('motionband')
+    expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_EXTRA: 'motionband' })).toEqual([...K4.slice(0, K4.indexOf('shotvary')), 'motionband', ...K4.slice(K4.indexOf('shotvary'))])
     expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_SKIP: 'templatelib' })).not.toContain('motionband')
     expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_SKIP: 'motionband' })).not.toContain('motionband')
     expect(resolveEnabledFeatures(R)).not.toContain('motionband')
-    expect(resolveEnabledFeatures({ VERCEL: '1', NEXOPS_PDP_ENRICHMENT_SKIP: 'motionband' })).toContain('motionband')
+    expect(resolveEnabledFeatures({ VERCEL: '1', NEXOPS_PDP_ENRICHMENT_EXTRA: 'motionband' })).not.toContain('motionband')
   })
 
   it('shotvary(K 컷 거리·사람 박자)는 기본 on(K6 뒤 K4 운영, 오너 11-06 20:46) — templatelib과 함께일 때만 기록하고, K가 아니면 빠지고, 로컬 SKIP·R 대조군이면 꺼지고 Vercel은 SKIP을 무시한다', () => {
@@ -488,8 +488,14 @@ describe('motioncodex(움직이는 칸 구독 시트, AX-CT-35) — 꺼진 채 �
     expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_EXTRA: 'motioncodex', NEXOPS_PDP_HOSTED: 'railway-worker' })).toEqual(K4)
   })
 
-  it('로컬 EXTRA로만 켜지고, 움직이는 칸(motionband)이 없는 잡에는 기록하지 않는다', () => {
-    expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_EXTRA: 'motioncodex' })).toEqual([...K4, 'motioncodex'])
+  it('로컬 EXTRA로 motionband와 함께 켜지고, 움직이는 칸이 없는 잡에는 기록하지 않는다', () => {
+    expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_EXTRA: 'motionband,motioncodex' })).toEqual([
+      ...K4.slice(0, K4.indexOf('shotvary')),
+      'motionband',
+      ...K4.slice(K4.indexOf('shotvary')),
+      'motioncodex',
+    ])
+    expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_EXTRA: 'motioncodex' })).not.toContain('motioncodex')
     expect(resolveEnabledFeatures({ NEXOPS_PDP_ENRICHMENT_EXTRA: 'motioncodex', NEXOPS_PDP_ENRICHMENT_SKIP: 'motionband' })).not.toContain('motioncodex')
     expect(resolveEnabledFeatures({ ...R, NEXOPS_PDP_ENRICHMENT_EXTRA: 'motioncodex' })).toEqual(R_DEFAULTS)
     expect(hasEnrichmentFeature({ enrichment: buildEnrichmentRecord(K4) }, 'motioncodex')).toBe(false)

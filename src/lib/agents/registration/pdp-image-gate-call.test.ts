@@ -1,5 +1,5 @@
 /**
- * 이미지 게이트 콜 시간·호출 실패 표시(하네스 R12e) — 새 배치 게이트는 route 콜 시간 90초·재시도 1을 쓰고(R13 운영 잡 96872abb: 성공 최대 58.8초,
+ * 이미지 게이트 콜 시간·호출 실패 표시 — 라이트 새 배치 게이트는 route 콜 시간 30분·재시도 1을 쓰고,
  * 3/28콜 60초 시간 초과), 지금 배치는 지금 값(60초·에이전트 기본 재시도) 그대로다. 잘림이 아닌 호출 실패에는 callFailed를 달고
  * (정책은 부르는 쪽 — pdp-image-stage), 잘림은 지금처럼 truncated만 단다. 공급자 호출은 모의(유료 0)
  */
@@ -45,10 +45,10 @@ beforeEach(() => {
 afterEach(() => vi.restoreAllMocks())
 
 describe('게이트 콜 시간 — 새 배치 route 값, 지금 배치는 지금 값', () => {
-  it('새 배치: limits 없으면 90초·재시도 1, limits가 있으면 그 값(배율 없이 고정)', async () => {
+  it('새 배치: limits 없으면 30분·재시도 1, limits가 있으면 그 값(배율 없이 고정)', async () => {
     await runWithPdpBatch('new', () => judgeImageGate(IMAGE, 'hero', IMAGE))
     expect(h.calls[0].route.model).toBe('gemini-4-argon')
-    expect(h.calls[0].request).toMatchObject({ timeoutMs: 90_000, maxRetries: 1 })
+    expect(h.calls[0].request).toMatchObject({ timeoutMs: 25 * 60_000, maxRetries: 1 })
     expect(h.calls[0].request).not.toHaveProperty('timeoutFixed')
     await runWithPdpBatch('new', () => judgeImageGate(IMAGE, 'hero', IMAGE, undefined, { timeoutMs: 65_000, maxRetries: 0 }))
     expect(h.calls[1].request).toMatchObject({ timeoutMs: 65_000, maxRetries: 0, timeoutFixed: true })

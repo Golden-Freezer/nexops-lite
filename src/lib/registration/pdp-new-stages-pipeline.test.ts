@@ -99,7 +99,7 @@ describe('기획 — 리서치 뒤·설계 앞 run 하나', () => {
     h.job = start
     const out = await runPdpStep(start.id, 'user-1')
     expect(h.calls.map((c) => c.agent)).toEqual(['registration/pdp-page-plan'])
-    expect(h.calls[0]).toMatchObject({ model: 'claude-opus-5-5', effort: 'xhigh', maxTokens: 20_000, timeoutMs: 240_000, maxRetries: 0 })
+    expect(h.calls[0]).toMatchObject({ model: 'claude-opus-5-5', effort: 'xhigh', maxTokens: 20_000, timeoutMs: 25 * 60_000, maxRetries: 0 })
     expect(h.calls[0].deadlineAt).toEqual(expect.any(Number))
     const { page_plan, ...rest } = out.research_result
     expect(rest).toEqual(start.research_result)
@@ -133,7 +133,7 @@ describe('사실 감사 — 카피 뒤 run 하나', () => {
     const out = await runPdpStep(start.id, 'user-1')
     // 골든 A-track-i 카피 화면 글 74줄·1,417자 → 40줄 기준으로 37줄 두 묶음을 동시에(R11c — R11b 1,500자 기준만이면 한 콜이었다)
     expect(h.calls.map((c) => c.agent)).toEqual(['registration/pdp-fact-audit', 'registration/pdp-fact-audit'])
-    expect(h.calls[0]).toMatchObject({ model: 'claude-opus-5-5', effort: 'xhigh', maxTokens: 20_000, timeoutMs: 200_000, maxRetries: 1 })
+    expect(h.calls[0]).toMatchObject({ model: 'claude-opus-5-5', effort: 'xhigh', maxTokens: 20_000, timeoutMs: 25 * 60_000, maxRetries: 1 })
     expect(h.calls[0].text).toContain('## 감사할 화면 글(id: 글)')
     expect(h.calls[0].text).toContain('- mainIntro.')
     const { fact_audit, ...rest } = out.copy_sections

@@ -38,6 +38,7 @@ describe('getUspIconLibrary — 투명 변환본(v2) 경로', () => {
 
   it('런타임은 icon-library-v2의 투명 변환본만 읽는다 — 원본(icon-library)은 보관용', () => {
     vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', 'https://lib.test')
+    vi.stubEnv('NEXOPS_LITE_ICON_LIBRARY', '1')
     const lib = getUspIconLibrary('user_x')!
     expect(lib.icons).toHaveLength(catalog.length)
     expect(lib.icons[0].url).toBe(`https://lib.test/storage/v1/object/public/sourcing-product-images/user_x/registration/icon-library-v2/${catalog[0].slug}.png`)
@@ -45,8 +46,9 @@ describe('getUspIconLibrary — 투명 변환본(v2) 경로', () => {
     expect(iconLibraryPrefix('user_x', 'icon-library')).toBe('user_x/registration/icon-library')
   })
 
-  it('env가 없으면 null — 라이브러리를 건너뛰고 생성 경로로 간다', () => {
-    vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', '')
+  it('라이트 플래그가 없으면 URL이 있어도 null — Codex 생성 경로로 간다', () => {
+    vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', 'https://lib.test')
+    vi.stubEnv('NEXOPS_LITE_ICON_LIBRARY', '')
     expect(getUspIconLibrary('user_x')).toBeNull()
   })
 })

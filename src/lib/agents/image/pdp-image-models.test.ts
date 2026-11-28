@@ -1,7 +1,5 @@
 /**
- * 상세페이지 이미지 모델 선택지(pdp-model-refresh) — 새 PDP 잡은 Claude·GPT만(Gemini 없음). 기본은 GPT-Image 2.6(sunburst, 오너
- * 2026-11-05 22:5x), 2.5(sunburst)·gpt-image-2는 선택지로 남는다. 이미 만든 Gemini 잡의 읽기·표시·이미지 재생성(ALL_IMAGE_MODELS)과 썸네일 스튜디오·소싱 이미지
- * 생성(IMAGE_MODELS·isImageModel)은 그대로다.
+ * 상세페이지 이미지 모델 선택지 — 라이트 새 PDP 잡은 codex-image 하나만 받는다. 기존 잡의 표시용 레지스트리는 유지한다.
  */
 
 import { describe, expect, it } from 'vitest'
@@ -16,16 +14,12 @@ import {
 } from './types'
 
 describe('PDP 이미지 모델 선택지', () => {
-  it('PDP 새 잡 선택지는 GPT-Image 2.6(기본, 첫 항목)·2.5·gpt-image-2 — Gemini·내부 전용·flare 없음', () => {
-    expect(PDP_IMAGE_MODELS.map((m) => m.id)).toEqual(['gpt-image-2.6-sunburst', 'gpt-image-2.5-sunburst', 'gpt-image-2'])
-    // PdpForm 기본값 = 첫 항목, 품질 기본 high(PdpForm·POST 라우트)
-    expect(PDP_IMAGE_MODELS[0]).toMatchObject({ id: 'gpt-image-2.6-sunburst', label: 'GPT-Image 2.6', provider: 'openai' })
-    expect(PDP_IMAGE_MODELS[0].label).not.toContain('실험')
-    expect(PDP_IMAGE_MODELS[0].note).not.toContain('비노출')
-    expect(isPdpImageModel('gpt-image-2.6-sunburst')).toBe(true)
-    expect(isPdpImageModel('gpt-image-2.5-sunburst')).toBe(true)
-    expect(isPdpImageModel('gpt-image-2')).toBe(true)
-    for (const v of ['gpt-image-2.5-flare', 'gemini-3-pro-image', 'gemini-3.1-flash-image', 'codex-image', '', 1, null]) {
+  it('PDP 새 잡 선택지는 codex-image 하나뿐이고 원격 모델은 거부한다', () => {
+    expect(PDP_IMAGE_MODELS).toEqual([
+      expect.objectContaining({ id: 'codex-image', provider: 'local' }),
+    ])
+    expect(isPdpImageModel('codex-image')).toBe(true)
+    for (const v of ['gpt-image-2.6-sunburst', 'gpt-image-2.5-sunburst', 'gpt-image-2', 'gpt-image-2.5-flare', 'gemini-3-pro-image', 'gemini-3.1-flash-image', '', 1, null]) {
       expect(isPdpImageModel(v), String(v)).toBe(false)
     }
   })

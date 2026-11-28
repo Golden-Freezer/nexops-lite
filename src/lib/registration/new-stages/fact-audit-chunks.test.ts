@@ -221,7 +221,7 @@ describe('긴 상품 시간·상한 근거(실측 값으로 고정)', () => {
     expect(P07.copyOutTokens / FACT_AUDIT_LINE_CHARS_PER_CALL).toBeGreaterThan(tokensPerChar * 1.9)
   })
 
-  it('상한까지 써도 콜 시간 안이고(Opus xhigh 속도면 약 187초 < 200초), 비스트리밍 경계 안이며, 콜 시간 + 저장 여유가 run 기한(280초) 안이다 — 묶음은 동시에 돈다', () => {
+  it('상한까지 써도 30분 콜 시간 안이고, 비스트리밍 경계 안이며, 콜 시간 + 저장 여유가 30분 이상 run 기한 안이다 — 묶음은 동시에 돈다', () => {
     expect(route.maxTokens).toBeLessThanOrEqual(SDK_NON_STREAMING_MAX_TOKENS)
     expect((route.maxTokens / tokensPerSecond) * 1000).toBeLessThan(route.callTimeoutMs)
     expect(route.callTimeoutMs + 20_000).toBeLessThanOrEqual(PDP_NEW_BATCH_STAGE_DEADLINE_MS)

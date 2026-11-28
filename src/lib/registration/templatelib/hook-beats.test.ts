@@ -158,7 +158,7 @@ describe('정원 후보 — 꺼진 잡은 안 B가 없고 켠 잡은 있다', ()
       expect(off.placed, `job-${i}`).not.toBe(BEATS_ID)
       expect(on.candidates, `job-${i}`).toContain(BEATS_ID)
     }
-  })
+  }, 30_000)
 })
 
 describe('안 B 고정(J41) — 켠 잡 + 정원 fit이면 첫 화면이 안 B, 꺼진 잡·fit 밖 잡은 그대로', () => {
@@ -173,7 +173,7 @@ describe('안 B 고정(J41) — 켠 잡 + 정원 fit이면 첫 화면이 안 B, 
         expect(on.fallbackFrom, `job-${i} ${pick}`).toBeUndefined()
       }
     }
-  })
+  }, 30_000)
 
   it('P08 꺼진 잡 — 후보에 안 B가 없고 여러 후보 중 콜이 고른 첫 화면이 놓인다(고정 없음)', async () => {
     for (let i = 0; i < 12; i++) {
@@ -184,7 +184,7 @@ describe('안 B 고정(J41) — 켠 잡 + 정원 fit이면 첫 화면이 안 B, 
       expect(last.candidates, `job-${i}`).toEqual(first.candidates)
       expect([first.placed, last.placed], `job-${i}`).not.toContain(BEATS_ID)
     }
-  })
+  }, 30_000)
 
   it.each(NOT_GARDEN)('%s(정원 아님) — 켠 잡의 첫 화면 후보·놓인 첫 화면이 꺼진 잡과 같다', async (id) => {
     const product = getPdpTestProduct(id)

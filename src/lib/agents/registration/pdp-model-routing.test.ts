@@ -1,6 +1,6 @@
 /**
- * 상세페이지 에이전트 라우트 배선(묶음 1) — 에이전트마다 PDP_MODEL_ROUTES의 맞는 단계로 부르고, 실제 공급자 호출
- * (callAgent·callOpenAiChat)까지 모델·상한·thinking·temperature와 runContext(user_id 격리)가 그대로 가는지 고정한다.
+ * 상세페이지 에이전트 라우트 배선 — 에이전트마다 PDP_MODEL_ROUTES의 맞는 단계 메타데이터를 유지하되 실제 실행은
+ * callAgent(로컬 Codex) 한 경로로 가고 runContext(user_id 격리)가 그대로 가는지 고정한다.
  * 같은 모델 단계끼리 바꿔 끼우면(예: 게이트 → 식별 카드, 상한 500 → 200) 골든은 못 잡는다 — 여기서 잡는다.
  * 공급자 SDK·HTTP는 모의(유료 호출 0).
  */
@@ -8,7 +8,7 @@
 import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { PdpJobRow } from '@/lib/registration/pdp-state'
 
-type Recorded = { agent: string; options: Record<string, unknown>; provider: 'anthropic' | 'openai' | 'gemini' }
+type Recorded = { agent: string; options: Record<string, unknown>; provider: 'codex' }
 const h = vi.hoisted(() => ({ calls: [] as Recorded[], job: null as unknown as PdpJobRow }))
 
 function canned(agent: string): string {
@@ -69,15 +69,7 @@ async function record(
 }
 
 vi.mock('../_base', () => ({
-  callAgent: (o: Record<string, unknown>, p: (t: string) => unknown) => record('anthropic', o, p),
-}))
-vi.mock('../openai-chat', () => ({
-  callOpenAiChat: (o: Record<string, unknown>, p: (t: string) => unknown) => record('openai', o, p),
-}))
-// 새 배치(R03) 게이트·식별 카드는 Gemini — 라우트와 요청을 함께 남긴다
-vi.mock('../llm/providers/gemini', () => ({
-  callGemini: (route: Record<string, unknown>, req: Record<string, unknown>, p: (t: string) => unknown) =>
-    record('gemini', { ...req, route }, p),
+  callAgent: (o: Record<string, unknown>, p: (t: string) => unknown) => record('codex', o, p),
 }))
 
 import {
@@ -185,19 +177,16 @@ describe('에이전트 → 단계 라우트 → 공급자 배선', () => {
         temperature?: number
         disableThinking?: boolean
       }
-      if (call!.provider === 'openai') {
-        expect(call!.options, agent).toMatchObject({ model: route.model, maxTokens: route.maxTokens, runContext: RUN })
-        expect(call!.options, agent).not.toHaveProperty('temperature')
-        continue
-      }
       expect(call!.options.config, agent).toEqual({
         model: route.model,
         maxTokens: route.maxTokens,
         ...(route.temperature !== undefined ? { temperature: route.temperature } : {}),
         ...(route.disableThinking ? { disableThinking: true } : {}),
+        ...((PDP_MODEL_ROUTES[stage] as { effort?: string }).effort ? { effort: (PDP_MODEL_ROUTES[stage] as { effort?: string }).effort } : {}),
       })
       expect(call!.options.runContext, agent).toEqual(RUN)
     }
+    expect(new Set(h.calls.map((call) => call.provider))).toEqual(new Set(['codex']))
     expect(new Set(h.calls.map((c) => c.agent))).toEqual(new Set(EXPECTED.map(([agent]) => agent)))
   })
 })
@@ -210,37 +199,24 @@ describe('새 배치(R03) — 잡 배치로 감싸면 같은 에이전트가 새
       expect(call, agent).toBeDefined()
       const route: PdpModelRoute = PDP_MODEL_ROUTES_NEW[stage]
       const o = call!.options
-      if (call!.provider === 'gemini') {
-        expect(o.route, agent).toEqual(route)
-      } else if (call!.provider === 'openai') {
-        expect(o, agent).toMatchObject({ model: route.model, maxTokens: route.maxTokens, runContext: RUN })
-        if (route.effort) expect(o.reasoningEffort, agent).toBe(route.effort)
-      } else {
-        expect(o.config, agent).toEqual({
-          model: route.model,
-          maxTokens: route.maxTokens,
-          ...(route.disableThinking ? { disableThinking: true } : {}),
-          ...(route.effort ? { effort: route.effort } : {}),
-        })
-      }
+      expect(o.config, agent).toEqual({
+        model: route.model,
+        maxTokens: route.maxTokens,
+        ...(route.temperature !== undefined ? { temperature: route.temperature } : {}),
+        ...(route.disableThinking ? { disableThinking: true } : {}),
+        ...(route.effort ? { effort: route.effort } : {}),
+      })
       if (route.callTimeoutMs !== undefined) expect(o.timeoutMs, agent).toBe(route.callTimeoutMs)
       if (route.callMaxRetries !== undefined) expect(o.maxRetries, agent).toBe(route.callMaxRetries)
     }
     const providerOf = (agent: string) => h.calls.find((c) => c.agent === agent)?.provider
-    expect(providerOf('registration/pdp-image-gate')).toBe('gemini')
-    expect(providerOf('registration/pdp-image-identity')).toBe('gemini')
-    expect(providerOf('registration/pdp-research')).toBe('openai')
-    // R06 5차(오너 11-08 14:4x) — 설계② Sol medium. J34(통합 decide 15 ③) — 원문 카피 3단 Gemini argon
-    expect(providerOf('registration/pdp-copy-stage1')).toBe('gemini')
-    expect(providerOf('registration/pdp-copy-stage2')).toBe('gemini')
-    expect(providerOf('registration/pdp-copy-stage3')).toBe('gemini')
-    expect(providerOf('registration/pdp-design-prompt')).toBe('openai')
+    for (const [agent] of EXPECTED) expect(providerOf(agent), agent).toBe('codex')
   })
 
   it('감싸지 않으면 지금 표 그대로(지금 배치 — 같은 에이전트 호출)', async () => {
     await runAllAgents()
     const gate = h.calls.find((c) => c.agent === 'registration/pdp-image-gate')!
-    expect(gate.provider).toBe('anthropic')
+    expect(gate.provider).toBe('codex')
     expect(gate.options.config).toEqual({ model: 'claude-sonnet-5-5', maxTokens: 500, disableThinking: true })
     const research = h.calls.find((c) => c.agent === 'registration/pdp-research')!
     expect(research.options.timeoutMs).toBe(90_000)
@@ -248,7 +224,7 @@ describe('새 배치(R03) — 잡 배치로 감싸면 같은 에이전트가 새
 
   it('GIF 검사는 게이트와 route가 나뉜다 — 새 배치는 Opus xhigh 4,000·잘림 감지, 지금 배치는 게이트와 같은 값', async () => {
     await runWithPdpBatch('new', () => judgeImageGate(IMAGE, 'motion', IMAGE, RUN, { timeoutMs: 40_000, maxRetries: 0 }, undefined, 'images/gif-gate'))
-    expect(h.calls[0].provider).toBe('anthropic')
+    expect(h.calls[0].provider).toBe('codex')
     // 기록 이름도 게이트와 나뉜다(model-trace 단계별 집계)
     expect(h.calls[0].agent).toBe('registration/pdp-image-gif-gate')
     expect(h.calls[0].options).toMatchObject({
@@ -262,9 +238,9 @@ describe('새 배치(R03) — 잡 배치로 감싸면 같은 에이전트가 새
     expect(h.calls[0].options.config).toEqual(PDP_MODEL_ROUTES['images/gate'] as unknown as Record<string, unknown>)
   })
 
-  it('단계 기한(새 배치 설계·리서치 280초)은 받으면 공급자 요청까지 간다 — 안 받으면 칸이 없다', async () => {
+  it('단계 기한(새 배치 설계·리서치 30분)은 받으면 Codex 요청까지 간다 — 안 받으면 칸이 없다', async () => {
     const job = h.job
-    const deadlineAt = Date.now() + 280_000
+    const deadlineAt = Date.now() + 30 * 60_000
     const designInput = { analysis: job.analysis, research: job.research_result, strategyContract: {}, specSheet: job.spec_sheet, runContext: RUN }
     await runWithPdpBatch('new', async () => {
       await runPdpResearch({ specSheet: job.spec_sheet, analysis: job.analysis, strategyContract: {}, runContext: RUN, deadlineAt })

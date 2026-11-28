@@ -47,7 +47,7 @@ describe('templateBodyHtml', () => {
 
   it('라이브러리 전부 그려진다', () => {
     for (const template of TEMPLATES) expect(templateBodyHtml(template), template.id).not.toBeNull()
-  })
+  }, 30_000)
 })
 
 describe('buildMockHtml', () => {

@@ -184,7 +184,7 @@ function manualClock(advanceMs: number) {
 }
 
 describe('images 단계 동시 생성 — 상한·hero 선행', () => {
-  it('hero가 먼저 끝나고 나서 제품 컷이 시작한다(효과 전용 컷은 함께), 동시 상한 4를 넘지 않고 실제로 겹친다', async () => {
+  it('hero가 먼저 끝나고 나서 제품 컷이 시작한다(효과 전용 컷은 함께), 라이트 동시 상한 2를 지키며 실제로 겹친다', async () => {
     const job = imagesJob()
     const tasks = buildImageTasks(job)
     const out = await run(job)
@@ -194,8 +194,7 @@ describe('images 단계 동시 생성 — 상한·hero 선행', () => {
     expect(productCuts.length).toBeGreaterThan(4)
     for (const c of h.calls.filter((c) => productCuts.includes(c.section)))
       expect(c.start).toBeGreaterThanOrEqual(heroEnd)
-    expect(h.maxInflight).toBeLessThanOrEqual(4)
-    expect(h.maxInflight).toBeGreaterThan(1)
+    expect(h.maxInflight).toBe(2)
     // 예산이 넉넉하면 한 run에 전부 — compose로 넘어간다
     expect(new Set(h.calls.map((c) => c.section))).toEqual(new Set(tasks.map((t) => t.section)))
     expect(out.current_step).toBe('compose')
@@ -332,7 +331,7 @@ describe('images 단계 동시 생성 — 예산', () => {
     expect(out.section_images.filter((e) => e.url)).toHaveLength(h.calls.length)
   })
 
-  it('지출 예약: 남은 월 한도만큼만 시작한다 — 동시 4건이 한꺼번에 예산 검사를 통과하지 않는다', async () => {
+  it('지출 예약: 남은 월 한도만큼만 시작한다 — 동시 2건이 한꺼번에 예산 검사를 통과하지 않는다', async () => {
     const job = imagesJob()
     h.budgetUsd = estimateImageCostUsd('gpt-image-2', 'medium') * 3 + 0.0001
     const out = await run(job)
@@ -364,36 +363,36 @@ describe('images 단계 동시 생성 — 게이트 시간 상한', () => {
   })
 
   it('빠듯하면 남은 시간에 맞춰 재시도 없이 한 번만, 그보다 적으면 이번 run에는 보지 않고 게이트 대기로 남긴다 — 다음 생성도 시작하지 않는다', async () => {
-    // hero 생성에 165초 — 남은 115초는 기본 최악(약 208초)보다 짧고, 다음 생성의 최악 소요(135초)도 들어가지 않는다
-    manualClock(165_000)
+    // hero 생성 뒤 115초만 남긴다. 기본 게이트 최악과 다음 생성 최악 소요가 들어가지 않는다.
+    manualClock(RUN_TIME_BUDGET_MS - 115_000)
     await run(imagesJob(), { concurrency: 1 })
     expect(h.gateCalls).toEqual([{ cut: 'hero', limits: { timeoutMs: 60_000, maxRetries: 0 } }])
     expect(h.calls.map((c) => c.section)).toEqual(['hero'])
 
-    // hero 생성에 210초 — 남은 70초에서 받기 25초를 빼고 채점 시도 상한 45초
+    // 남은 70초에서 받기 25초를 빼고 채점 시도 상한 45초
     h.calls = []
     h.gateCalls = []
-    manualClock(210_000)
+    manualClock(RUN_TIME_BUDGET_MS - 70_000)
     await run(imagesJob(), { concurrency: 1 })
     expect(h.gateCalls).toEqual([{ cut: 'hero', limits: { timeoutMs: 45_000, maxRetries: 0 } }])
 
-    // hero 생성에 245초 — 남은 35초로는 받기 + 채점 1회도 어렵다(통과로 치지 않는다)
+    // 남은 35초로는 받기 + 채점 1회도 어렵다(통과로 치지 않는다)
     h.calls = []
     h.gateCalls = []
-    manualClock(245_000)
+    manualClock(RUN_TIME_BUDGET_MS - 35_000)
     const out = await run(imagesJob(), { concurrency: 1 })
     expect(h.gateCalls).toHaveLength(0)
     expect(out.section_images.find((e) => e.section === 'hero')).toMatchObject({
       url: expect.stringContaining('hero'),
       gatePending: true,
     })
-    expect(RUN_TIME_BUDGET_MS).toBe(280_000)
+    expect(RUN_TIME_BUDGET_MS).toBe(30 * 60_000)
   })
 })
 
 describe('images 단계 — 게이트 대기(시간이 모자라 판정하지 못한 게이트)', () => {
-  /** 코덱스처럼 컷 1장에 260초 — 생성이 끝나면 남은 20초라 그 컷의 게이트는 이번 run에 못 본다 */
-  const CODEX_CUT_MS = 260_000
+  /** 생성이 끝나면 20초만 남겨 그 컷의 게이트를 이번 run에 못 보게 한다. */
+  const CODEX_CUT_MS = RUN_TIME_BUDGET_MS - 20_000
   const heroOf = (job: PdpJobRow) => job.section_images.find((e) => e.section === 'hero')!
   const pendingOf = (job: PdpJobRow) => job.section_images.filter((e) => e.gatePending).map((e) => e.section)
 

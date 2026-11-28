@@ -110,7 +110,7 @@ describe('K 칸 카피 뒤 사실 감사', () => {
   })
 
   it('run에 콜 시간이 모자라면 부르지 않고 저장해 잠금을 푼다 — 컷도 만들지 않는다', async () => {
-    // 콜 시간 200초 + 저장 여유 20초 = 220초가 필요하다(R11d — 150초 때는 210초 run이면 불렀다)
+    // 라이트 콜 시간 30분 + 저장 여유 20초가 필요하므로 210초 예산에서는 시작하지 않는다.
     const out = await run(imagesJob('new', { designcut: DESIGNCUT } as never), 210_000)
     expect(h.llm).toHaveLength(0)
     expect(h.generate).not.toHaveBeenCalled()

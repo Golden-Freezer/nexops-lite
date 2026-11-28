@@ -1,5 +1,5 @@
 /**
- * POST /api/registration/pdp — 새 잡의 이미지 모델은 PDP 선택지만 받는다(pdp-model-refresh: Claude·GPT만, Gemini 없음).
+ * POST /api/registration/pdp — 라이트 새 잡은 요청 모델과 무관하게 codex-image로 고정한다.
  * W2a 입력 필드는 저장 전에 계약 한도로 정리한다. 잡 저장·초안 연결은 모의(DB 0).
  */
 
@@ -38,32 +38,22 @@ beforeEach(() => {
 })
 
 describe('POST /api/registration/pdp — 이미지 모델', () => {
-  it.each(['gemini-3-pro-image', 'gemini-3.1-flash-image', 'codex-image', undefined])(
-    '%s는 새 잡으로 받지 않는다(400, 저장 없음)',
+  it.each(['gpt-image-2', 'gpt-image-2.5-sunburst', 'gemini-3-pro-image', 'gemini-3.1-flash-image', 'codex-image', undefined])(
+    '요청 모델 %s와 무관하게 codex-image 잡을 만든다',
     async (model) => {
       const res = await post(model)
-      expect(res.status).toBe(400)
-      expect(h.createPdpJob).not.toHaveBeenCalled()
+      expect(res.status).toBe(202)
+      expect(h.createPdpJob).toHaveBeenCalledWith({}, 'user-1', expect.objectContaining({ imageModel: 'codex-image' }))
     }
   )
 
-  it('gpt-image-2는 받는다', async () => {
-    const res = await post('gpt-image-2')
-    expect(res.status).toBe(202)
-    expect(h.createPdpJob).toHaveBeenCalledWith({}, 'user-1', expect.objectContaining({ imageModel: 'gpt-image-2' }))
-  })
-
-  it('GPT-Image 2.5(sunburst — 상세페이지 기본)는 받고 품질 기본 high, 하네스 전용 flare는 400', async () => {
-    const res = await post('gpt-image-2.5-sunburst')
-    expect(res.status).toBe(202)
+  it('품질 기본은 high이고 하네스 전용 모델 요청도 원격 경로를 열지 않는다', async () => {
+    expect((await post('gpt-image-2.5-flare')).status).toBe(202)
     expect(h.createPdpJob).toHaveBeenCalledWith(
       {},
       'user-1',
-      expect.objectContaining({ imageModel: 'gpt-image-2.5-sunburst', imageQuality: 'high' })
+      expect.objectContaining({ imageModel: 'codex-image', imageQuality: 'high' })
     )
-    h.createPdpJob.mockClear()
-    expect((await post('gpt-image-2.5-flare')).status).toBe(400)
-    expect(h.createPdpJob).not.toHaveBeenCalled()
   })
 })
 

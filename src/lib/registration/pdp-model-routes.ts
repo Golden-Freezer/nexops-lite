@@ -36,7 +36,8 @@ export type PdpModelRoute = LlmRoute & {
   callMaxRetries?: number
 }
 
-const LOCAL_CODEX_STAGE_TIMEOUT_MS = 30 * 60_000
+// 단계 콜 한도 — run 기한(30분) 안에 콜과 저장 여유(20초)가 들어가도록 25분으로 둔다
+const LOCAL_CODEX_STAGE_TIMEOUT_MS = 25 * 60_000
 
 export const PDP_MODEL_ROUTES = {
   // 분석 — 원본 premium_analysis_model(Gemini) 대응, 구조화 추출은 Haiku로 충분(설계문서 결정 C). Haiku 5.5는 temperature를
