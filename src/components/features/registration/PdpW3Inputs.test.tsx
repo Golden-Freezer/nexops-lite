@@ -97,7 +97,7 @@ describe('PdpAutoFillButton', () => {
     const html = render('스테인리스 식기')
     expect(html).not.toContain('disabled=""')
     expect(html).toContain('AI로 페르소나·톤 채우기')
-    expect(html).toContain('빈 칸만 채웁니다. API 과금(월 예산 안)')
+    expect(html).toContain('빈 칸만 채웁니다. 이 PC의 Codex로 만들어 API 요금은 0원')
   })
 
   it('requestAutoFill — /api/registration/pdp/auto-fill에 JSON POST, 실패는 서버 문구로 던진다', async () => {

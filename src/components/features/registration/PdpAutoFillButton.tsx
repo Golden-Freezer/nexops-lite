@@ -103,7 +103,7 @@ export function PdpAutoFillButton({
           {busy ? '작성 중…' : 'AI로 페르소나·톤 채우기'}
         </button>
         <span className="text-[11px] text-slate-400">
-          빈 칸만 채웁니다. API 과금(월 예산 안){cost !== null ? ` · 이번 비용 $${cost.toFixed(4)}` : ''}
+          빈 칸만 채웁니다. 이 PC의 Codex로 만들어 API 요금은 0원{cost !== null ? ` · 이번 비용 $${cost.toFixed(4)}` : ''}
         </span>
       </div>
       {conflicts.length > 0 && (

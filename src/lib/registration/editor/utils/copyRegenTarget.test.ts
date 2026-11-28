@@ -121,7 +121,7 @@ describe('copyRegenCostLines', () => {
   it('모델과 한 번 받을 때 상한을 보여 준다', () => {
     expect(copyRegenCostLines({ model: 'claude-sonnet-5', billed: true, maxUsd: 0.0456 })).toEqual([
       '모델 claude-sonnet-5 · 후보 최대 3개를 한 번에 받습니다',
-      '한 번 받을 때 최대 약 $0.046(API 과금, 월 예산 안에서만 실행)',
+      '이 PC의 Codex로 받습니다(API 요금 0원) — 배포 주소에서는 PC에서 npm run dev를 켠 주소로 열어 주세요',
     ])
   })
 })

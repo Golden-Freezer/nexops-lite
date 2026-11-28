@@ -116,6 +116,6 @@ export const formatUsd = (n: number) => `$${n < 0.01 ? n.toFixed(4) : n.toFixed(
 export function copyRegenCostLines(estimate: CopyRegenEstimate): string[] {
   return [
     `모델 ${estimate.model} · 후보 최대 ${COPY_REGEN_MAX_CANDIDATES}개를 한 번에 받습니다`,
-    `한 번 받을 때 최대 약 ${formatUsd(estimate.maxUsd)}(API 과금, 월 예산 안에서만 실행)`,
+    `이 PC의 Codex로 받습니다(API 요금 0원) — 배포 주소에서는 PC에서 npm run dev를 켠 주소로 열어 주세요`,
   ]
 }
