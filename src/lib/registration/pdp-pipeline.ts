@@ -1073,7 +1073,7 @@ export async function runPdpStep(jobId: string, userId: string): Promise<PdpJobR
 
   // 잡 진행 잠금 — 다른 곳(탭 두 개·작업자)이 이 잡을 진행 중이면 아무것도 하지 않고 지금 상태를 돌려준다(지출 두 배 방지).
   // 잠금은 각 단계의 마지막 저장이 푼다(images 단계 중간 저장만 기한을 유지 — pdp-jobs claimPdpJobRun)
-  const claimed = await claimPdpJobRun(db, userId, job)
+  const claimed = await claimPdpJobRun(db, userId, job, Date.now() + RUN_TIME_BUDGET_MS)
   // 쥐지 못했다 — 그사이 다른 곳이 쥐었거나 저장했다. 다시 읽은 지금 상태를 돌려준다(읽어 둔 값을 돌려주면 잠금이 안 보여
   // 화면이 busy 대신 정체로 보고 멈춘다)
   if (!claimed) return (await getPdpJob(db, userId, jobId)) ?? job

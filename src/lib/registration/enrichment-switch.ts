@@ -245,7 +245,7 @@ export const ENRICHMENT_DEFAULTS: Readonly<Record<EnrichmentFeature, boolean>> =
   // 움직이는 칸(오너 2026-11-05 22:45 GIF 칸, 11-06 21:57 '최상단 gif 1개 필수 + 담당 AI가 고른 자리'). K 라인 위의 하위 갈래다 — templatelib과 함께일 때만
   // 기록한다. 오너 2026-11-06 23:2x 'GPT GIF로 사용 승인'(엔진 블라인드 뒤)으로 K4 운영 기본값에 넣는다(K4_SWITCHED_ON). 엔진은 2.6 GIF 시트 고정.
   // 꺼진 잡은 섹션·컷·내보내기가 그대로다
-  motionband: true,
+  motionband: false,
   // K가 읽는 기획 1장(결정 카드 c10, 하네스 J28 — 오너 11-07 승인 카드 '리서치 → K 앞 기획 1장', 통합 11-10 decide 2) — 새 단계 기획(research_result.page_plan)이
   // 끝난 K 잡만 섹션 구성 콜에 설득 순서를, 칸 카피 콜에 약속·고객·첫 화면 약속과 섹션마다 할 말을 싣는다. designcut·templatelib과 함께일 때만 기록한다.
   // 구성·칸 글이 바뀌므로 기본 off(I1-1, 확인 판 J32 켬 갈래 뒤 켬 — 로컬은 EXTRA로만). 기획이 없는 잡·꺼진 잡은 프롬프트가 바이트까지 같다
@@ -370,7 +370,6 @@ export const K4_SWITCHED_ON: readonly EnrichmentFeature[] = [
   'shotvary',
   'infocells',
   // 움직이는 칸(오너 2026-11-06 23:2x 'GPT GIF로 사용 승인') — 대표 칸 필수 + 계획 AI가 고른 칸(대표 포함 상한 3), 엔진 2.6 GIF 시트 고정
-  'motionband',
   // J34 켜기(오너 위임 I6-2, 통합 decide 15·17 — 확인 판 J32) — 쓰는 법 재료·사용 판정 끝 처리 한 쌍(K 라인 잡에서만 기록)
   'usefacts',
   'usegate',

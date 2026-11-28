@@ -4,8 +4,8 @@
  * 공급자가 자기 형식으로 바꾼다.
  */
 
-import type Anthropic from '@anthropic-ai/sdk'
 import type { RunContext } from '../types'
+import type { MessageParam } from './message-types'
 
 /**
  * 추론 수준 — Anthropic API는 output_config.effort, OpenAI API는 reasoning_effort, codex 구독은 model_reasoning_effort로
@@ -59,7 +59,7 @@ export interface LlmRoute {
 
 export interface LlmRequest {
   system: string
-  messages: Anthropic.MessageParam[]
+  messages: MessageParam[]
   /** 사용량 로그·월 예산(에이전트 한도)의 호출 주체 — 필수 */
   agentName: string
   runContext?: RunContext

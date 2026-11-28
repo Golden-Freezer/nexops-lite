@@ -4,7 +4,7 @@
  */
 
 import { billedCostOf } from '../billed-usage'
-import type Anthropic from '@anthropic-ai/sdk'
+import type { ImageBlockParam } from '@/lib/agents/llm/message-types'
 import { callLlm } from '../llm'
 import type { RunContext } from '@/lib/agents/types'
 import type { VisionImage } from './thumbnail-vision-agent'
@@ -38,7 +38,7 @@ export async function judgeCompositeEligibility(
   image: VisionImage,
   runContext?: RunContext
 ): Promise<{ eligibility: CompositeEligibility; costUsd: number }> {
-  const imageBlock: Anthropic.ImageBlockParam = {
+  const imageBlock: ImageBlockParam = {
     type: 'image',
     source: { type: 'base64', media_type: image.mediaType, data: image.data },
   }

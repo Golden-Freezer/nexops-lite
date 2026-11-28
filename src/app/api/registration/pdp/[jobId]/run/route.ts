@@ -4,7 +4,7 @@
 // 시간 예산 280초 안에 들 때만 새 컷을 시작한다(pdp-image-stage RUN_TIME_BUDGET_MS·GENERATION_WORST_MS).
 // 응답은 언랩 형태({ job, busy? }) — pdp-client.ts 계약. busy: 다른 곳(탭·작업자)이 이 잡을 진행 중이라 이번 호출은 아무것도
 // 하지 않았다(잡 진행 잠금) — 화면은 잠시 뒤 다시 부른다.
-// codex-image 잡은 로컬 실행기만 진행한다(C1, 설계 §4.9) — 웹이 대신 돌다 백엔드 미등록으로 실패하지 않게 409.
+// 라이트는 로컬 Next 개발 서버가 Codex CLI를 직접 실행하므로 codex-image 잡도 이 경로에서 진행한다.
 // 구독 표지 잡(R13)은 Railway 구독 작업자가 진행한다 — 작업자가 살아 있으면 아무것도 하지 않고 busy(+worker)로 돌려주고, 5분 동안 아무도
 // 저장하지 않았으면 표지를 API로 바꾸고 웹이 이어서 진행한다(pdp-subscription webRunTurn). 화면은 busy를 잠금과 같이 기다린다.
 // 구독 멈춤 표지 잡(AX-CT-29)은 웹이 절대 진행하지 않는다(runPdpStep·takeOver 없음) — 읽기만: 멈춤 기록이 있으면 { job, halted: true },
@@ -32,12 +32,6 @@ export async function POST(_req: NextRequest, { params }: { params: Promise<{ jo
     const { jobId } = await params
     const db = createAdminClient()
     const current = await getPdpJob(db, userId, jobId)
-    if (current?.image_model === 'codex-image') {
-      return NextResponse.json(
-        { error: '코덱스 구독(로컬) 이미지 잡은 웹에서 진행하지 않습니다. 이 PC의 로컬 실행기가 진행합니다.', job: current },
-        { status: 409 },
-      )
-    }
     if (current) {
       // 구독 멈춤 표지 잡의 작업자 생존 판정 재료 — 이 잡이 조용할 때만 다른 구독 잡을 읽는다(읽기 실패는 작업자가 살아 있는 것으로 본다)
       let others: Awaited<ReturnType<typeof listOtherSubscriptionJobs>> = []

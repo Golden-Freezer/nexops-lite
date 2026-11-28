@@ -44,8 +44,8 @@ import {
   softStopReasonOf,
   type LocalImageModel,
 } from './local-backend'
-import { checkMonthlyBudget, logUsage } from '@/lib/agents/budget'
-import { variableBlockMessage } from '@/lib/cost/variable-guard-core'
+import { logUsage } from '@/lib/agents/budget'
+import { codexImage, RateLimitedError } from '@/lib/local-codex/image'
 
 const OPENAI_GENERATIONS_URL = 'https://api.openai.com/v1/images/generations'
 const OPENAI_EDITS_URL = 'https://api.openai.com/v1/images/edits'
@@ -416,64 +416,34 @@ async function generateLocal(input: GenImageInput, agentName: string): Promise<G
  */
 export async function generateImage(input: GenImageInput): Promise<GenImageResult> {
   if (!input.prompt?.trim()) throw new Error('프롬프트가 필요합니다.')
-  const info = ALL_IMAGE_MODELS.find((m) => m.id === input.model)
-  if (!info) throw new Error(`지원하지 않는 이미지 모델: ${input.model}`)
-  // 넘으면 도구가 거부하고 재시도까지 낭비한다(R13 P01) — 부르기 전에 막는다. 상세페이지 컷은 조립할 때 이미 맞춘다(fitSourceRefs)
-  const refCount = input.referenceImages?.length ?? 0
-  if (refCount > maxReferencesOf(input.model)) {
-    throw new Error(`참조 이미지 ${refCount}장 — ${input.model} 상한 ${maxReferencesOf(input.model)}장을 넘어 생성하지 않습니다.`)
-  }
-  // 움직이는 출력은 2.6(OpenAI)만 — 다른 모델·로컬 백엔드는 부르기 전에 막는다(예산 조회·기록 없음)
   if (input.animation) {
-    const reason = animationRequestError(input.model, input.animation, input.size)
-    if (reason) throw new Error(reason)
+    throw new Error('라이트에서는 움직이는 이미지(GIF)를 만들지 않습니다.')
   }
   const agentName = input.agentName ?? 'image/generate'
-  if (info.provider === 'local') return generateLocal(input, agentName)
   const start = Date.now()
-
-  // 이어 받기(resume)는 앞 run이 제출할 때 이미 예산을 통과했다 — 그사이 한도에 닿아도 이미 돈 요청의 결과는 받는다
-  const budget = input.resume
-    ? { allowed: true as const, degraded: false, budgetUsd: 0, spentUsd: 0 }
-    : await checkMonthlyBudget(agentName, input.model, input.runContext?.costPool)
-  if (!budget.allowed) {
-    // 월 변동비 가드(AX-PL-17)가 막은 글 — 가드 밖 막힘이면 null 이라 아래 지금 글 그대로다
-    const variableMessage = variableBlockMessage(budget)
-    if (variableMessage) throw new Error(variableMessage)
-    if (budget.degraded) {
-      throw new Error(
-        `월 AI 예산 조회 실패로 degraded 모드가 적용되어 이미지 모델 ${input.model} 호출이 차단됩니다.`,
-      )
-    }
-    throw new Error(
-      `월 AI 예산($${budget.budgetUsd}) 소진 — 당월 지출 $${budget.spentUsd.toFixed(2)}. 이미지 생성이 차단됩니다.`
-    )
-  }
-
   try {
-    const { result, attempts } =
-      info.provider === 'openai'
-        ? await generateOpenAI(input)
-        : info.provider === 'higgsfield'
-          ? await generateHiggsfield(input)
-          : await generateGemini(input)
-    // 이미 받아 사용량을 적은 요청을 다시 받기만 했다(R08a — 앞 run이 받은 뒤 저장에 실패) — 사용량·비용 알림을 다시 적지 않는다(비용 0)
-    if (input.resume?.billed) return { ...result, costUsd: 0 }
-    // 실비용 모델(2.5·2.6·Nano Banana 2.1)은 usage로, 그 밖은 지금처럼 단가표로 — usage가 없으면 단가표로 돌아간다(과소 계상 방지)
-    const costUsd =
-      USAGE_PRICED_MODELS.has(input.model) && result.usage
-        ? imageCostFromUsage(result.usage, input.model)
-        : estimateImageCostUsd(input.model, input.quality ?? 'high')
+    const generated = await codexImage({
+      prompt: input.prompt,
+      size: input.size ?? '1024x1024',
+      referenceImages: (input.referenceImages ?? []).slice(0, 5),
+      timeoutMs: 30 * 60_000,
+    })
+    const result: GenImageResult = {
+      base64: generated.base64,
+      mimeType: generated.mimeType,
+      model: input.model,
+      costUsd: 0,
+    }
     const usageLogged = await logUsage({
       agent: agentName,
       model: input.model,
-      inputTokens: result.usage?.inputTokens ?? 0,
-      outputTokens: result.usage?.outputTokens ?? 0,
-      costUsd,
+      inputTokens: 0,
+      outputTokens: 0,
+      costUsd: 0,
       runContext: input.runContext,
       success: true,
       durationMs: Date.now() - start,
-      attempts,
+      attempts: 1,
     })
     if (!usageLogged) {
       console.error('이미지 사용량 기록 실패 — 이미지 생성 호출은 재시도하지 않습니다.', {
@@ -485,17 +455,15 @@ export async function generateImage(input: GenImageInput): Promise<GenImageResul
       model: input.model,
       quality: input.quality,
       size: input.size ?? '1024x1024',
-      costUsd,
-      usage: result.usage ?? null,
+      costUsd: 0,
+      usage: null,
       agentName,
       durationMs: Date.now() - start,
       ...(input.runContext?.stage ? { stage: input.runContext.stage } : {}),
     }
     for (const listener of costListeners) listener(event)
-    return { ...result, costUsd }
+    return result
   } catch (error) {
-    // 기한 안에 받지 못한 비동기 요청은 실패가 아니다 — 기록 없이 돌려주고, 다음 run이 이어 받아 완료 때 한 번 기록한다
-    if (error instanceof ImagePendingError) throw error
     const usageLogged = await logUsage({
       agent: agentName,
       model: input.model,
@@ -513,6 +481,8 @@ export async function generateImage(input: GenImageInput): Promise<GenImageResul
         model: input.model,
       })
     }
+    // 호출부가 RateLimitedError 이름으로 재개 가능한 한도 실패를 구분할 수 있게 원형을 보존한다.
+    if (error instanceof RateLimitedError) throw error
     throw error
   }
 }

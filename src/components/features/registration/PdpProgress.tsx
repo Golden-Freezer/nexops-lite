@@ -29,6 +29,7 @@ import {
   type PdpRunResponse,
 } from '@/lib/registration/pdp-run-driver'
 import { PdpProgressView, driveEndMessage, requestPdpResume } from './PdpProgressView'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
 // run 반복 규칙(호출 수 상한·busy 대기·정체 감지·401 다시 보내기)은 pdp-run-driver.ts에 있다 — 이 화면은 상태만 그린다
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
@@ -41,6 +42,7 @@ export function PdpProgress({
   onJobChange?: (job: PdpJobRow) => void
 }) {
   const { getToken } = useAuth()
+  const localCodexAvailable = useLocalCodexAvailable()
   const [job, setJob] = useState<PdpJobRow | null>(null)
   const [running, setRunning] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -78,6 +80,10 @@ export function PdpProgress({
   )
 
   const drive = useCallback(() => {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     void flight.run(async () => {
       setRunning(true)
       setError(null)
@@ -106,7 +112,7 @@ export function PdpProgress({
         }
       }
     })
-  }, [flight, authDeps, jobId, showJob])
+  }, [flight, authDeps, jobId, localCodexAvailable, showJob])
 
   // 탭 재진입 시 GET으로 복원 후, 미완료 잡이면 이어서 run
   useEffect(() => {
@@ -119,17 +125,22 @@ export function PdpProgress({
         if (cancelled) return
         showJob(loaded)
         // 멈춤 기록이 있으면 대기하지 않는다 — 멈춤 상자의 '이어 하기'가 다시 시작한다
-        if (!isTerminalStep(loaded.current_step) && !subscriptionHaltOf(loaded)) drive()
+        if (localCodexAvailable && !isTerminalStep(loaded.current_step) && !subscriptionHaltOf(loaded)) drive()
       })
       .catch((e) => !cancelled && setError(e instanceof Error ? e.message : '잡 로드 실패'))
     return () => {
       cancelled = true
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- jobId 변경 시에만 재실행, drive는 jobId에 종속
-  }, [jobId])
+    // localhost 판정이 끝나면 한 번 다시 불러 자동 진행한다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- drive는 jobId와 localhost 판정에 종속
+  }, [jobId, localCodexAvailable])
 
   // 이어 하기(구독 멈춤 표지 잡, AX-CT-29) — 멈춤 기록·오류를 지우고(실패면 다시 돌릴 단계로) 작업자 대기로 돌아간다
   const resume = useCallback(async () => {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     setResuming(true)
     setError(null)
     try {
@@ -142,16 +153,16 @@ export function PdpProgress({
     } finally {
       if (aliveRef.current) setResuming(false)
     }
-  }, [authDeps, jobId, showJob, drive])
+  }, [authDeps, jobId, localCodexAvailable, showJob, drive])
 
   // 탭이 다시 보이면 미완료 잡을 바로 이어 간다(R12a) — 도는 drive가 있으면 그대로 두고, 실패 잡 재시도는 사람이 누른다
   useEffect(
     () =>
       onTabVisible(document, window, () => {
         const latest = jobRef.current?.id === jobId ? jobRef.current : null
-        if (shouldResumeOnVisible(latest, flight.running())) drive()
+        if (localCodexAvailable && shouldResumeOnVisible(latest, flight.running())) drive()
       }),
-    [flight, drive, jobId]
+    [flight, drive, jobId, localCodexAvailable]
   )
 
   if (!job) {
@@ -163,14 +174,21 @@ export function PdpProgress({
   }
 
   return (
-    <PdpProgressView
-      job={job}
-      running={running}
-      resuming={resuming}
-      workerActive={workerActive}
-      error={error}
-      onDrive={() => void drive()}
-      onResume={() => void resume()}
-    />
+    <div className="space-y-3">
+      {!localCodexAvailable && (
+        <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
+          {LOCAL_CODEX_NOTICE}
+        </div>
+      )}
+      <PdpProgressView
+        job={job}
+        running={running}
+        resuming={resuming}
+        workerActive={workerActive}
+        error={error}
+        onDrive={() => void drive()}
+        onResume={() => void resume()}
+      />
+    </div>
   )
 }

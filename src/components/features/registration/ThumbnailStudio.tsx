@@ -8,7 +8,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ImagePlus, Loader2, Play, X } from 'lucide-react'
-import { IMAGE_MODELS, type ImageModel, type ImageQuality } from '@/lib/agents/image/types'
+import { PDP_IMAGE_MODELS, type ImageModel, type ImageQuality } from '@/lib/agents/image/types'
 import {
   THUMBNAIL_CATEGORIES,
   THUMBNAIL_CATEGORY_LABELS,
@@ -18,6 +18,7 @@ import {
 import { draftSourceImageUrls, type DraftSourceContent } from '@/lib/sourcing/registration/draft-source-images'
 import { ImageModelSelect } from './ImageModelSelect'
 import { ThumbnailResults } from './ThumbnailResults'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
 const STATUS_LABELS: Record<string, string> = {
   pending: '대기',
@@ -51,7 +52,7 @@ export function ThumbnailStudio({
   const [sourceUrls, setSourceUrls] = useState<string[]>([])
   const [productName, setProductName] = useState(initialName ?? '')
   const [categoryHint, setCategoryHint] = useState('')
-  const [model, setModel] = useState<ImageModel>(IMAGE_MODELS[0].id)
+  const [model, setModel] = useState<ImageModel>(PDP_IMAGE_MODELS[0].id)
   const [quality, setQuality] = useState<ImageQuality>('medium')
   const [uploading, setUploading] = useState(false)
   const [running, setRunning] = useState(false)
@@ -60,6 +61,7 @@ export function ThumbnailStudio({
   const [error, setError] = useState<string | null>(null)
   const aliveRef = useRef(true)
   const fileRef = useRef<HTMLInputElement>(null)
+  const localCodexAvailable = useLocalCodexAvailable()
 
   useEffect(() => {
     aliveRef.current = true
@@ -73,7 +75,7 @@ export function ThumbnailStudio({
     api<ThumbnailJob[]>('/api/registration/thumbnail')
       .then((jobs) => {
         if (!aliveRef.current || jobs.length === 0) return
-        setModel(jobs[0].imageModel)
+        setModel('codex-image')
         setQuality(jobs[0].imageQuality === 'high' ? 'high' : 'medium')
       })
       .catch(() => {}) // 기본값 유지 — 프리셀렉트 실패는 치명적이지 않음
@@ -96,6 +98,10 @@ export function ThumbnailStudio({
 
   // run 드라이버 — done/failed까지 순차 호출 (2초 간격은 불필요: run 자체가 스텝 완료까지 대기)
   const drive = useCallback(async (jobId: string) => {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     setRunning(true)
     setError(null)
     try {
@@ -113,7 +119,7 @@ export function ThumbnailStudio({
     } finally {
       if (aliveRef.current) setRunning(false)
     }
-  }, [])
+  }, [localCodexAvailable])
 
   // 재개 모드 — 히스토리에서 진입 (?jobId=)
   useEffect(() => {
@@ -123,14 +129,14 @@ export function ThumbnailStudio({
         if (!aliveRef.current) return
         setJob(loaded)
         if (loaded.draftId) setLinkedDraftId(loaded.draftId)
-        setModel(loaded.imageModel)
+        setModel('codex-image')
         setQuality(loaded.imageQuality === 'high' ? 'high' : 'medium')
         if (loaded.productName) setProductName(loaded.productName)
         setSourceUrls(loaded.sourceImages)
-        if (loaded.status !== 'done' && loaded.status !== 'failed') void drive(loaded.id)
+        if (localCodexAvailable && loaded.status !== 'done' && loaded.status !== 'failed') void drive(loaded.id)
       })
       .catch((e) => setError(e instanceof Error ? e.message : '잡 로드 실패'))
-  }, [resumeJobId, drive])
+  }, [resumeJobId, drive, localCodexAvailable])
 
   async function uploadFiles(files: FileList | null) {
     if (!files || files.length === 0) return
@@ -156,6 +162,10 @@ export function ThumbnailStudio({
   }
 
   async function start() {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     setError(null)
     setJob(null)
     try {
@@ -274,6 +284,7 @@ export function ThumbnailStudio({
           </select>
         </div>
         <ImageModelSelect
+          models={PDP_IMAGE_MODELS}
           model={model}
           quality={quality}
           imageCount={3}
@@ -283,7 +294,8 @@ export function ThumbnailStudio({
         />
         <button
           onClick={start}
-          disabled={running || uploading || sourceUrls.length === 0}
+          disabled={!localCodexAvailable || running || uploading || sourceUrls.length === 0}
+          title={!localCodexAvailable ? LOCAL_CODEX_NOTICE : undefined}
           className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs px-4 py-2 rounded-full bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50"
         >
           {running ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5" />}

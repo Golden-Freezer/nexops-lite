@@ -4,29 +4,21 @@ import type { AgentConfig, AgentOutput, AgentError, RunContext } from './types'
 import { agentLogger } from '@/lib/monitoring/logger'
 import { logUsage } from './budget'
 import { codexText, DEFAULT_CODEX_TIMEOUT_MS, type CodexTextImage } from '@/lib/local-codex/llm'
+import {
+  attemptTimeoutWithin,
+  backoffWithin,
+  deadlineExhaustedMessage,
+  localCodexDeadlineAt,
+} from './deadline'
+import type { MessageParam } from './llm/message-types'
 
-export interface TextBlockParam {
-  type: 'text'
-  text: string
-}
+export type { ContentBlockParam, ImageBlockParam, MessageParam, TextBlockParam } from './llm/message-types'
 
-export interface ImageBlockParam {
-  type: 'image'
-  source: {
-    type: 'base64'
-    media_type: string
-    data: string
-  }
-}
-
-export type MessageBlockParam = TextBlockParam | ImageBlockParam
-
-export interface MessageParam {
-  role: 'user' | 'assistant'
-  content: string | MessageBlockParam[]
-}
+/** 원본 SDK 비스트리밍 요청 상한. 단계 표·시험의 호환 기준으로 유지한다. */
+export const SDK_NON_STREAMING_MAX_TOKENS = 21_333
 
 const MAX_RETRIES = 1
+const LOCAL_CODEX_CALL_TIMEOUT_MS = 30 * 60_000
 
 export interface CallOptions {
   config: AgentConfig
@@ -36,6 +28,9 @@ export interface CallOptions {
   timeoutMs?: number
   agentName: string
   runContext?: RunContext
+  deadlineAt?: number
+  failOnTruncation?: boolean
+  retryTruncated?: boolean
 }
 
 function formatMessages(messages: MessageParam[]): { user: string; images: CodexTextImage[] } {
@@ -46,8 +41,11 @@ function formatMessages(messages: MessageParam[]): { user: string; images: Codex
       : message.content
     const text = blocks.map((block) => {
       if (block.type === 'text') return block.text
-      images.push({ base64: block.source.data, mediaType: block.source.media_type })
-      return `(첨부 이미지 ${images.length})`
+      if (block.type === 'image') {
+        images.push({ base64: block.source.data, mediaType: block.source.media_type })
+        return `(첨부 이미지 ${images.length})`
+      }
+      return `(첨부 문서 ${block.source.media_type} — 로컬 Codex 이미지 첨부 형식이 아니므로 본문 메타데이터만 전달)`
     }).join('\n')
     return `[${message.role === 'assistant' ? '이전 응답' : '사용자'}]\n${text}`
   })
@@ -91,17 +89,28 @@ export async function callAgent<T>(
     timeoutMs: requestedTimeoutMs = DEFAULT_CODEX_TIMEOUT_MS,
     agentName,
     runContext,
+    deadlineAt: requestedDeadlineAt,
   } = options
-  const timeoutMs = Math.max(requestedTimeoutMs, DEFAULT_CODEX_TIMEOUT_MS)
+  const timeoutMs = Math.max(requestedTimeoutMs, LOCAL_CODEX_CALL_TIMEOUT_MS)
   const start = Date.now()
+  const deadlineAt = localCodexDeadlineAt(requestedDeadlineAt, start)
   const zeroUsage = { inputTokens: 0, outputTokens: 0, cost: 0 }
   const prompt = formatMessages(messages)
   let lastError: AgentError = { message: 'Unknown error', stage: 'api', attempts: 0 }
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     const attempts = attempt + 1
+    const attemptTimeout = attemptTimeoutWithin(deadlineAt, timeoutMs)
+    if (attemptTimeout === null) {
+      lastError = {
+        message: deadlineExhaustedMessage(attempt, lastError.message),
+        stage: 'timeout',
+        attempts: attempt,
+      }
+      break
+    }
     try {
-      const text = await codexText({ system, user: prompt.user, images: prompt.images, timeoutMs })
+      const text = await codexText({ system, user: prompt.user, images: prompt.images, timeoutMs: attemptTimeout })
       let data: T
       try {
         data = parser(text)
@@ -111,7 +120,7 @@ export async function callAgent<T>(
         await recordUsage({ agentName, model: config.model, runContext, success: false, durationMs: Date.now() - start, attempts })
         agentLogger.warn(`Agent parse failed (attempt ${attempts})`, { error: message, agentName })
         if (attempt < maxRetries) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * attempts))
+          await new Promise((resolve) => setTimeout(resolve, backoffWithin(deadlineAt, 1000 * attempts)))
           continue
         }
         break
@@ -127,7 +136,9 @@ export async function callAgent<T>(
       lastError = { message, stage, attempts }
       await recordUsage({ agentName, model: config.model, runContext, success: false, durationMs: Date.now() - start, attempts })
       agentLogger.warn(`Local Codex agent attempt ${attempts} failed`, { error: message, stage, agentName })
-      if (attempt < maxRetries) await new Promise((resolve) => setTimeout(resolve, 1000 * attempts))
+      if (attempt < maxRetries) {
+        await new Promise((resolve) => setTimeout(resolve, backoffWithin(deadlineAt, 1000 * attempts)))
+      }
     }
   }
 

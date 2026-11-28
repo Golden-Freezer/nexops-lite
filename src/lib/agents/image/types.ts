@@ -139,7 +139,7 @@ export function maxReferencesOf(model: ImageModel): number {
 
 /** 사용자 선택 검증 — 내부 전용 모델은 통과시키지 않는다(잡 단위 모델 선택지는 IMAGE_MODELS만) */
 export function isImageModel(v: unknown): v is Exclude<ImageModel, 'gemini-3.1-flash-image'> {
-  return typeof v === 'string' && IMAGE_MODELS.some((m) => m.id === v)
+  return v === 'codex-image' || (typeof v === 'string' && IMAGE_MODELS.some((m) => m.id === v))
 }
 
 /**
@@ -148,8 +148,8 @@ export function isImageModel(v: unknown): v is Exclude<ImageModel, 'gemini-3.1-f
  * 새 잡 생성(POST /api/registration/pdp)과 PdpForm만 이 목록을 쓴다. 이미 만든 Gemini 잡의 읽기·표시·이미지 재생성은
  * ALL_IMAGE_MODELS로 그대로 동작한다(하위 호환). 썸네일 스튜디오·소싱 이미지 생성은 IMAGE_MODELS 그대로다.
  */
-export type PdpImageModel = 'gpt-image-2.6-sunburst' | 'gpt-image-2.5-sunburst' | 'gpt-image-2'
-const PDP_IMAGE_MODEL_IDS: readonly PdpImageModel[] = ['gpt-image-2.6-sunburst', 'gpt-image-2.5-sunburst', 'gpt-image-2']
+export type PdpImageModel = 'codex-image'
+const PDP_IMAGE_MODEL_IDS: readonly PdpImageModel[] = ['codex-image']
 
 export const PDP_IMAGE_MODELS: ImageModelInfo[] = PDP_IMAGE_MODEL_IDS.flatMap((id) => ALL_IMAGE_MODELS.filter((m) => m.id === id))
 

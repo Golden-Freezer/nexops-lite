@@ -11,6 +11,7 @@ import { Header } from '@/components/layout/Header'
 import { PdpForm } from '@/components/features/registration/PdpForm'
 import { PdpProgress } from '@/components/features/registration/PdpProgress'
 import { PdpPreview } from '@/components/features/registration/PdpPreview'
+import { LocalCodexNotice } from '@/components/features/registration/LocalCodexNotice'
 import type { PdpJobRow } from '@/lib/registration/pdp-state'
 import { ENRICHMENT_DEFAULTS } from '@/lib/registration/enrichment-switch'
 
@@ -37,6 +38,7 @@ function DetailPageContent() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 lg:px-6 py-6">
+      <LocalCodexNotice />
       {!jobId && <PdpForm draftId={draftId} initialName={initialName} showPhotoRoles={showPhotoRoles} onCreated={handleCreated} />}
       {jobId && !showPreview && <PdpProgress jobId={jobId} onJobChange={setJob} />}
       {jobId && showPreview && job && <PdpPreview job={job} />}

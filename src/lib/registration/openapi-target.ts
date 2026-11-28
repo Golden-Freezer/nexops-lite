@@ -6,7 +6,6 @@
 
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { getVendorIdForBusiness } from '@/lib/sourcing/registration/businesses'
-import { loadOpenApiEnv } from '../../../scripts/coupang-openapi/env.mjs'
 
 export interface OpenApiEnv {
   host: string
@@ -19,6 +18,29 @@ export type OpenApiEnvLoader = (
   rootDir: string,
   options: { vendorId: string; requireApiKeys: boolean; requireDb: boolean }
 ) => OpenApiEnv
+
+function envValue(...names: string[]): string {
+  for (const name of names) {
+    const value = process.env[name]?.trim()
+    if (value) return value
+  }
+  return ''
+}
+
+const loadOpenApiEnv: OpenApiEnvLoader = (_rootDir, options) => {
+  const suffix = options.vendorId.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase()
+  const accessKey = envValue(`COUPANG_ACCESS_KEY_${suffix}`, 'COUPANG_ACCESS_KEY', 'COUPANG_API_ACCESS_KEY')
+  const secretKey = envValue(`COUPANG_SECRET_KEY_${suffix}`, 'COUPANG_SECRET_KEY', 'COUPANG_API_SECRET_KEY')
+  if (options.requireApiKeys && (!accessKey || !secretKey)) {
+    throw new Error('쿠팡 OpenAPI 키가 설정되지 않았습니다.')
+  }
+  return {
+    host: envValue('COUPANG_OPENAPI_HOST', 'COUPANG_API_HOST') || 'https://api-gateway.coupang.com',
+    accessKey,
+    secretKey,
+    vendorId: options.vendorId,
+  }
+}
 
 /** 사업장에 벤더코드가 없을 때 — 호출부가 400 으로 바꿀 수 있게 구분한다 */
 export class MissingVendorError extends Error {
@@ -42,7 +64,7 @@ export async function openApiEnvForBusiness(
   db: SupabaseClient,
   userId: string,
   businessId: string | null | undefined,
-  loadEnv: OpenApiEnvLoader = loadOpenApiEnv as unknown as OpenApiEnvLoader
+  loadEnv: OpenApiEnvLoader = loadOpenApiEnv
 ): Promise<OpenApiEnv> {
   if (!businessId) throw new MissingVendorError('등록 대상 사업장이 없습니다.')
   const vendorId = await getVendorIdForBusiness(db, userId, businessId)

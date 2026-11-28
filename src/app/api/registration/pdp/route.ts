@@ -8,11 +8,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireOwner } from '@/lib/auth/clerk'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { ALL_IMAGE_MODELS, isPdpImageModel, type ImageModel } from '@/lib/agents/image/types'
+import { isPdpImageModel, type ImageModel } from '@/lib/agents/image/types'
 import { createPdpJob, listPdpJobs } from '@/lib/registration/pdp-jobs'
 import {
   isPdpModelBatch,
-  resolveNewBatchImageModel,
   splitModelBatchKeys,
   type PdpModelBatch,
 } from '@/lib/registration/pdp-model-batch'
@@ -72,9 +71,10 @@ export async function POST(req: NextRequest) {
     if (sourceImages.some((u) => !/^https?:\/\//i.test(u))) {
       return NextResponse.json({ error: '참조 이미지는 http(s) URL이어야 합니다.' }, { status: 400 })
     }
-    // 새 잡은 PDP 선택지만(Claude·GPT — Gemini 없음, pdp-model-refresh). 기존 잡은 저장된 모델 그대로 이어 돈다
-    if (!isPdpImageModel(body.imageModel)) {
-      return NextResponse.json({ error: '지원하지 않는 이미지 모델입니다.' }, { status: 400 })
+    // 라이트 새 잡은 요청값·배치와 무관하게 로컬 Codex 이미지 모델로 저장한다.
+    const imageModel: ImageModel = 'codex-image'
+    if (!isPdpImageModel(imageModel)) {
+      return NextResponse.json({ error: '로컬 Codex 이미지 모델 설정이 올바르지 않습니다.' }, { status: 500 })
     }
     // 개정 4(단가 제한 해제): 품질 기본값 high
     const imageQuality = body.imageQuality === 'medium' ? 'medium' : 'high'
@@ -94,13 +94,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'modelBatch는 now 또는 new여야 합니다.' }, { status: 400 })
     }
     const modelBatch: PdpModelBatch = body.modelBatch === 'new' ? 'new' : 'now'
-    // 새 배치 이미지 모델(MS 2k) — 공급자가 아직 없으면 조용히 다른 모델로 넘어가지 않고 400(R05 전)
-    let imageModel: ImageModel = body.imageModel
-    if (modelBatch === 'new') {
-      const resolved = resolveNewBatchImageModel(ALL_IMAGE_MODELS.map((m) => m.id))
-      if (!resolved.ok) return NextResponse.json({ error: resolved.error }, { status: 400 })
-      imageModel = resolved.model as ImageModel
-    }
     // W2a 입력 필드(무게·원산지·추가 스펙·인용 카드·초안 표시)는 계약 한도로 정리한다 — 없으면 그대로(spec-inputs.ts)
     const normalizedSpecSheet = withSourcePhotoRoles(normalizeSpecInputs(stripGenerationTrackKey(specSheet)), sourceImages)
 

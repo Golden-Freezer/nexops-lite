@@ -175,7 +175,7 @@ import {
  * 20초를 뺐다. 새 생성·재생성·장식은 최악 소요가 예산 안에 들 때만 시작하고(품질 무관 — 마지막 생성 시작은 145초), 게이트는
  * 남은 시간만큼만 기다린다. 풀은 끝나는 대로 이어 꺼내므로 느린 한 건이 다른 칸을 붙잡지 않는다.
  */
-export const RUN_TIME_BUDGET_MS = 280_000
+export const RUN_TIME_BUDGET_MS = 30 * 60_000
 
 /** 강조 장식 1콜의 최악 소요(이미지 받기 25초 + 판독 2시도 × 25초 + 백오프·여유, pdp-annotation-agent) — 예산 안에 들 때만 시작한다 */
 const ANNOTATION_ESTIMATE_MS = 80_000

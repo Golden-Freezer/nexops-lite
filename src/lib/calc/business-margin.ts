@@ -14,10 +14,10 @@ import { calculateMargin } from './margin'
 import type { MarginResult } from '@/types/calc'
 import type { BusinessSettings } from '@/types/settings'
 
-export type BusinessMarginSettings = Pick<
-  BusinessSettings,
-  'businessId' | 'defaultCommissionRate' | 'defaultReturnRate' | 'defaultFulfillmentFee' | 'fulfillmentFeeWaivedUntil'
->
+export type BusinessMarginSettings = Pick<BusinessSettings, 'businessId' | 'defaultCommissionRate' | 'defaultReturnRate'> & {
+  defaultFulfillmentFee?: number | null
+  fulfillmentFeeWaivedUntil?: string | null
+}
 
 export interface BusinessMarginInput {
   sellingPrice: number

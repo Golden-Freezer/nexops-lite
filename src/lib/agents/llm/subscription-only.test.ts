@@ -123,44 +123,34 @@ describe('subscriptionOnlyRoute — 같은 모델·상한·등급, CLI가 못 �
   })
 })
 
-describe('callLlm — 구독 전용 모드', () => {
-  it('모드가 꺼져 있으면 지금 그대로 API 공급자(운영 바이트 불변)', async () => {
+describe('callLlm — 라이트의 단일 Codex 경로', () => {
+  it('모드가 꺼져 있어도 공급자별 래퍼 없이 공통 callAgent를 쓴다', async () => {
     registerFakes()
     expect(isSubscriptionOnly()).toBe(false)
     await callLlm({ model: 'claude-sonnet-5-5', maxTokens: 10, disableThinking: true }, REQ, (t) => t)
     await callLlm({ model: 'gpt-6.1-sol', maxTokens: 10, effort: 'low' }, REQ, (t) => t)
-    expect(h.agent).toHaveBeenCalledTimes(1)
-    expect(h.openai).toHaveBeenCalledTimes(1)
+    expect(h.agent).toHaveBeenCalledTimes(2)
+    expect(h.openai).not.toHaveBeenCalled()
     expect(seen).toHaveLength(0)
   })
 
-  it('켜면 Claude·GPT는 구독 CLI(콜 시간 하한 적용·비용 0 기록), Gemini는 API — Claude·GPT API 0', async () => {
+  it('구독 전용 플래그·공급자와 무관하게 공통 callAgent만 쓴다', async () => {
     registerFakes()
     disable = enableSubscriptionOnly()
     const claude = await callLlm({ model: 'claude-sonnet-5-5', maxTokens: 900, disableThinking: true }, { ...REQ, timeoutMs: 40_000 }, (t) => t)
     const gpt = await callLlm({ model: 'gpt-6.1-sol', maxTokens: 800, effort: 'medium' }, REQ, (t) => t)
     const gemini = await callLlm({ model: 'gemini-4-argon', maxTokens: 500, effort: 'high' }, REQ, (t) => t)
     expect([claude.success, gpt.success, gemini.success]).toEqual([true, true, true])
-    expect(claude.success && claude.data).toBe('cli')
-    expect(h.agent).not.toHaveBeenCalled()
+    expect(claude.success && claude.data).toBe('api')
+    expect(h.agent).toHaveBeenCalledTimes(3)
     expect(h.openai).not.toHaveBeenCalled()
-    expect(h.gemini).toHaveBeenCalledTimes(1)
-    expect(seen.map((s) => [s.backend, s.request.model, s.request.effort ?? null])).toEqual([
-      ['claude-cli', 'claude-sonnet-5-5', 'low'],
-      ['codex-cli', 'gpt-6.1-sol', 'medium'],
-    ])
-    expect(seen[0].request.timeoutMs).toBe(SUBSCRIPTION_ONLY_MIN_TIMEOUT_MS)
-    expect(seen[1].request.timeoutMs).toBeUndefined()
-    // 구독 콜 기록은 비용 0, 단계 표지 #claude-cli·#codex
-    const logged = h.logUsage.mock.calls.map((c) => (c as unknown as [{ costUsd: number; runContext?: { stage?: string } }])[0])
-    expect(logged.map((l) => [l.costUsd, l.runContext?.stage])).toEqual([
-      [0, '#claude-cli'],
-      [0, '#codex'],
-    ])
-    expect(subscriptionOnlyAdjustments()).toEqual([{ agent: 'test/sub-only', model: 'claude-sonnet-5-5', adjustment: 'thinking-off', count: 1 }])
+    expect(h.gemini).not.toHaveBeenCalled()
+    expect(seen).toHaveLength(0)
+    expect(h.logUsage).not.toHaveBeenCalled()
+    expect(subscriptionOnlyAdjustments()).toEqual([])
   })
 
-  it('review-faq(J43): 다리에 상한 9,500을 넘기고, 답 없이 잘린 콜(빈 글·CLI 안내 글)은 파서에 넘기지 않고 잘린 답으로 센다', async () => {
+  it('레거시 CLI 백엔드가 등록돼도 callLlm은 그 백엔드를 우회한다', async () => {
     const answers = [
       { text: '', usage: { inputTokens: 19_792, outputTokens: 6_000 }, truncated: true },
       { text: "API Error: Claude's response exceeded the 1500 output token maximum.", usage: null, truncated: true },
@@ -172,37 +162,35 @@ describe('callLlm — 구독 전용 모드', () => {
     disable = enableSubscriptionOnly()
     const parser = vi.fn((t: string) => t)
     const out = await callLlm(pdpRoute('design/review-faq'), { ...REQ, timeoutMs: 60_000 }, parser)
-    expect(seen.map((s) => s.request.maxTokens)).toEqual([9_500, 9_500])
+    expect(seen).toHaveLength(0)
+    expect(h.agent).toHaveBeenCalledTimes(1)
     expect(parser).not.toHaveBeenCalled()
-    expect(out).toMatchObject({
-      success: false,
-      error: { stage: 'parse', attempts: 2, stopReason: 'max_tokens', message: expect.stringContaining('출력 상한(9500)에서 답 없이 잘림') },
-    })
+    expect(out).toMatchObject({ success: true, data: 'api' })
     // 부분 답(잘렸지만 글이 있음)은 지금처럼 파서가 받는다
     answers.push({ text: '{"items":[{"worry":"a"}', usage: null, truncated: true })
     const partial = await callLlm(pdpRoute('design/review-faq'), REQ, parser)
     expect(partial.success).toBe(true)
-    expect(parser).toHaveBeenCalledWith('{"items":[{"worry":"a"}')
+    expect(h.agent).toHaveBeenCalledTimes(2)
   })
 
-  it('작업자 잇기 route(subscriptionFallback api)도 켠 동안은 API로 잇지 않는다 — 백엔드가 없으면 LlmSoftStopError', async () => {
+  it('subscriptionFallback 메타데이터도 사전 거부 없이 공통 경로로 보낸다', async () => {
     disable = enableSubscriptionOnly()
     const route: LlmRoute = { model: 'claude-opus-5-5', maxTokens: 100, effort: 'low', backend: 'subscription', subscriptionFallback: 'api' }
-    await expect(callLlm(route, REQ, (t) => t)).rejects.toMatchObject({ name: 'LlmSoftStopError' })
-    await expect(callLlm({ model: 'gpt-6.1-sol', maxTokens: 10 }, REQ, (t) => t)).rejects.toMatchObject({ name: 'LlmSoftStopError' })
-    expect(h.agent).not.toHaveBeenCalled()
+    expect((await callLlm(route, REQ, (t) => t)).success).toBe(true)
+    expect((await callLlm({ model: 'gpt-6.1-sol', maxTokens: 10 }, REQ, (t) => t)).success).toBe(true)
+    expect(h.agent).toHaveBeenCalledTimes(2)
     expect(h.openai).not.toHaveBeenCalled()
   })
 
-  it('끄면 다시 지금 그대로 — 조정 기록은 켤 때 비운다', async () => {
+  it('구독 전용 플래그를 켜고 꺼도 callLlm 경로와 조정 기록은 바뀌지 않는다', async () => {
     registerFakes()
     disable = enableSubscriptionOnly()
     await callLlm({ model: 'claude-sonnet-5-5', maxTokens: 9, json: true }, REQ, (t) => t)
-    expect(subscriptionOnlyAdjustments()).toHaveLength(1)
+    expect(subscriptionOnlyAdjustments()).toEqual([])
     disable()
     disable = null
     await callLlm({ model: 'claude-sonnet-5-5', maxTokens: 9 }, REQ, (t) => t)
-    expect(h.agent).toHaveBeenCalledTimes(1)
+    expect(h.agent).toHaveBeenCalledTimes(2)
     disable = enableSubscriptionOnly()
     expect(subscriptionOnlyAdjustments()).toEqual([])
   })

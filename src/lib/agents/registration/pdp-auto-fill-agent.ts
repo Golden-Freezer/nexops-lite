@@ -6,7 +6,7 @@
  */
 
 import { billedCostOf } from '../billed-usage'
-import type Anthropic from '@anthropic-ai/sdk'
+import type { ImageBlockParam } from '@/lib/agents/llm/message-types'
 import { callLlm } from '../llm'
 import type { AgentError, RunContext } from '@/lib/agents/types'
 import type { VisionImage } from './thumbnail-vision-agent'
@@ -59,7 +59,7 @@ export async function callAutoFillModel(
   images: readonly VisionImage[],
   runContext?: RunContext
 ): Promise<AutoFillModelResult> {
-  const imageBlocks: Anthropic.ImageBlockParam[] = images.map((image) => ({
+  const imageBlocks: ImageBlockParam[] = images.map((image) => ({
     type: 'image',
     source: { type: 'base64', media_type: image.mediaType, data: image.data },
   }))

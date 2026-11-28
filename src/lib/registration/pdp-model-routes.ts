@@ -36,6 +36,8 @@ export type PdpModelRoute = LlmRoute & {
   callMaxRetries?: number
 }
 
+const LOCAL_CODEX_STAGE_TIMEOUT_MS = 30 * 60_000
+
 export const PDP_MODEL_ROUTES = {
   // 분석 — 원본 premium_analysis_model(Gemini) 대응, 구조화 추출은 Haiku로 충분(설계문서 결정 C). Haiku 5.5는 temperature를
   // 받지 않고(기본값이 아니면 400) adaptive thinking이 기본이라 끈다(effort 미지정 = 기본 medium, 끄기 조건 high 이하)
@@ -126,9 +128,9 @@ export const PDP_NEW_BATCH_OVERRIDES = {
     maxTokens: 8000,
     maxTokensSteps: [8000, 16000],
     effort: 'medium',
-    callTimeoutMs: 150_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
   },
-  'design/section-planning': { model: 'claude-opus-5-5', maxTokens: 8000, effort: 'high', callTimeoutMs: 120_000 },
+  'design/section-planning': { model: 'claude-opus-5-5', maxTokens: 8000, effort: 'high', callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS },
   // R06 5차(오너 14:4x) — Sol medium: 생각 포함 출력 최대 4,294토큰이라 지금 상한·단계 [12000, 16000] 그대로 안에 든다(스트리밍 불필요).
   // GPT 경로라 잘림 감지(failOnTruncation)는 두지 않는다(callLlm이 OpenAI 경로에서 막는다) — 잘리면 단계 목록으로 한 번 더 부른다
   'design/prompt': {
@@ -136,7 +138,7 @@ export const PDP_NEW_BATCH_OVERRIDES = {
     maxTokens: 12_000,
     maxTokensSteps: [12_000, 16_000],
     effort: 'medium',
-    callTimeoutMs: 150_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
   },
   // R06 5차(오너 14:4x) — Opus medium: 생각 포함 출력 최대 10,176토큰(상한 8,000이면 4콜 중 3콜 잘림) → 12,000, 잘림 감지(R02).
   // R11d(오너 2026-11-09 13:2x '16,000으로 올리기') — R11 P07 출력이 12,000의 86~100%(ff8b9c85 첫 시도 12,000/110초 잘림, 다시 11,384/103초)
@@ -155,14 +157,14 @@ export const PDP_NEW_BATCH_OVERRIDES = {
     maxTokens: 16_000,
     effort: 'medium',
     failOnTruncation: true,
-    callTimeoutMs: 165_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
     callMaxRetries: 1,
   },
-  'copy/stage2': { model: 'gemini-4-argon', maxTokens: 16000, effort: 'low', callTimeoutMs: 150_000 },
-  'copy/stage3': { model: 'gemini-4-argon', maxTokens: 8000, effort: 'low', callTimeoutMs: 150_000 },
-  'design/template-guideline': { model: 'claude-opus-5-5', maxTokens: 1500, effort: 'medium', callTimeoutMs: 90_000 },
-  'design/template-compose': { model: 'claude-opus-5-5', maxTokens: 2000, effort: 'medium', callTimeoutMs: 90_000 },
-  'design/template-select': { model: 'claude-opus-5-5', maxTokens: 4000, effort: 'medium', callTimeoutMs: 90_000 },
+  'copy/stage2': { model: 'gemini-4-argon', maxTokens: 16000, effort: 'low', callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS },
+  'copy/stage3': { model: 'gemini-4-argon', maxTokens: 8000, effort: 'low', callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS },
+  'design/template-guideline': { model: 'claude-opus-5-5', maxTokens: 1500, effort: 'medium', callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS },
+  'design/template-compose': { model: 'claude-opus-5-5', maxTokens: 2000, effort: 'medium', callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS },
+  'design/template-select': { model: 'claude-opus-5-5', maxTokens: 4000, effort: 'medium', callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS },
   // J34b(오너 위임 I6-2, 통합 decide 25 — c21 칸 글 잡 입력 판 1c8a6658c5 Gemini argon 5승 1패 > Opus 3승 1무 2패 > Sol 0승 1무 5패,
   // 잘림·오류 0) — 칸 글 모델 gpt-6.1-sol low → gemini-4-argon low. 상한 8,000·등급·잘림 감지 없음은 c21 후보(hook-models-repro
   // HOOK_MODEL_ROUTES.argon)와 같다. c21 잡 입력 argon 칸 글 잡당 0.024~0.031달러(12-01부터 단가 두 배). Gemini는 구독이 없어 구독 표지 잡도 API다
@@ -172,7 +174,7 @@ export const PDP_NEW_BATCH_OVERRIDES = {
     maxTokens: 2000,
     effort: 'high',
     failOnTruncation: true,
-    callTimeoutMs: 90_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
   },
   // R12e — 4차 중간 19.5초였지만 R13 운영 잡 96872abb에서 성공 콜이 18.5~58.8초, 28콜 중 3콜이 60초 시간 초과(시도 1)였다 → 콜 시간
   // 60초 → 90초(성공 최대의 1.5배), 재시도 2 → 1. 최악 소요 = 받기 25초 + 2시도 × 90초 + 백오프 1초 = 206초로 지금(25 + 3 × 60 + 3 = 208초)
@@ -183,7 +185,7 @@ export const PDP_NEW_BATCH_OVERRIDES = {
     effort: 'high',
     json: true,
     failOnTruncation: true,
-    callTimeoutMs: 90_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
     callMaxRetries: 1,
   },
   // GIF 검사는 부르는 쪽이 늘 40초·재시도 0을 준다(motion/stage-deps SHEET_GATE_LIMITS, 실측 8.4초) — R12e에서 그대로
@@ -197,7 +199,7 @@ export const PDP_MODEL_ROUTES_NEW: Readonly<Record<PdpModelStage, PdpModelRoute>
 }
 
 /** 설계·리서치 단계 기한(새 배치만) — run 300초 안에서 단계가 끝나게(PRD 2.1 설계 280초 기한, 리서치도 같은 run 상한) */
-export const PDP_NEW_BATCH_STAGE_DEADLINE_MS = 280_000
+export const PDP_NEW_BATCH_STAGE_DEADLINE_MS = 30 * 60_000
 
 /**
  * 새 단계 5개(R10, 새 배치 + newstages 기록 잡만 — pdp-new-stages-stage) — 지금 표에는 없다(지금 배치 잡은 부르지 않는다).
@@ -222,7 +224,7 @@ export const PDP_NEW_STAGE_ROUTES = {
     maxTokens: 20_000,
     effort: 'xhigh',
     failOnTruncation: true,
-    callTimeoutMs: 240_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
     callMaxRetries: 0,
   },
   'copy/fact-audit': {
@@ -230,7 +232,7 @@ export const PDP_NEW_STAGE_ROUTES = {
     maxTokens: 20_000,
     effort: 'xhigh',
     failOnTruncation: true,
-    callTimeoutMs: 200_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
     callMaxRetries: 1,
   },
   'images/director': {
@@ -238,7 +240,7 @@ export const PDP_NEW_STAGE_ROUTES = {
     maxTokens: 8000,
     effort: 'low',
     failOnTruncation: true,
-    callTimeoutMs: 120_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
     callMaxRetries: 1,
   },
   'compose/first-screen': {
@@ -246,7 +248,7 @@ export const PDP_NEW_STAGE_ROUTES = {
     maxTokens: 2000,
     effort: 'low',
     failOnTruncation: true,
-    callTimeoutMs: 60_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
     callMaxRetries: 1,
   },
   'compose/final-review': {
@@ -254,7 +256,7 @@ export const PDP_NEW_STAGE_ROUTES = {
     maxTokens: 12_000,
     effort: 'xhigh',
     failOnTruncation: true,
-    callTimeoutMs: 150_000,
+    callTimeoutMs: LOCAL_CODEX_STAGE_TIMEOUT_MS,
     callMaxRetries: 1,
   },
 } as const satisfies Record<NewStageRouteName, PdpModelRoute>

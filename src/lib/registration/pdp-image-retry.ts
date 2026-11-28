@@ -39,7 +39,8 @@ export function getRateLimitWaitUntil(
     const entry = entryFor(sectionImages, task.section)
     if (!entry) return null
     if (!entry.pendingRegen) continue
-    const retryAt = entry.retryAfter ? Date.parse(entry.retryAfter) : Number.NaN
+    const retryAfter = (entry as SectionImage & { retryAfter?: string }).retryAfter
+    const retryAt = retryAfter ? Date.parse(retryAfter) : Number.NaN
     if (!Number.isFinite(retryAt) || retryAt <= nowMs) return null
     waiting.push(retryAt)
   }

@@ -7,7 +7,7 @@
  */
 
 import { billedCostOf } from '../billed-usage'
-import type Anthropic from '@anthropic-ai/sdk'
+import type { ImageBlockParam } from '@/lib/agents/llm/message-types'
 import type { RunContext } from '../types'
 import { callLlm } from '../llm'
 import { pdpRoute } from '@/lib/registration/pdp-model-routes'
@@ -26,7 +26,7 @@ import {
 } from './prompts/pdp-image-gate-prompts'
 import type { VisionImage } from './thumbnail-vision-agent'
 
-function imageBlock(image: VisionImage): Anthropic.ImageBlockParam {
+function imageBlock(image: VisionImage): ImageBlockParam {
   return { type: 'image', source: { type: 'base64', media_type: image.mediaType, data: image.data } }
 }
 

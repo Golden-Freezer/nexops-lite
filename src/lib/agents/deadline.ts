@@ -10,8 +10,18 @@
  * Stage 1 21~31초)라 15초 미만 시도는 거의 시간 초과로 끝난다(검수 지적)
  */
 export const DEADLINE_MIN_ATTEMPT_MS = 15_000
+/** 로컬 Codex 한 단계가 여러 긴 호출을 끝낼 수 있게 보장하는 최소 run 창. */
+export const LOCAL_CODEX_MIN_RUN_MS = 30 * 60_000
 
 export const DEADLINE_EXHAUSTED_MESSAGE = 'run 시간 예산 소진 — 더 부르지 않습니다'
+
+/** 짧은 공급자용 기한을 로컬 Codex 최소 창까지 늘린다. 기한이 없으면 그대로 둔다. */
+export function localCodexDeadlineAt(
+  deadlineAt: number | undefined,
+  now = Date.now(),
+): number | undefined {
+  return deadlineAt === undefined ? undefined : Math.max(deadlineAt, now + LOCAL_CODEX_MIN_RUN_MS)
+}
 
 /** 이번 시도의 시간 제한 — 기한이 없으면 지정값, 남은 시간이 최소보다 적으면 null(부르지 않음) */
 export function attemptTimeoutWithin(

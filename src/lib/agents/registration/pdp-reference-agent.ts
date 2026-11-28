@@ -5,7 +5,7 @@
  */
 
 import { billedUsageOf } from '../billed-usage'
-import type Anthropic from '@anthropic-ai/sdk'
+import type { ContentBlockParam } from '@/lib/agents/llm/message-types'
 import type { AgentOutput, AgentUsage, RunContext } from '../types'
 import { callLlm } from '../llm'
 import { parseLlmJson } from '../json-parser'
@@ -26,7 +26,7 @@ const addUsage = (a: AgentUsage, b: AgentUsage): AgentUsage => ({
 })
 const ZERO: AgentUsage = { inputTokens: 0, outputTokens: 0, cost: 0 }
 
-function callOnce(content: Anthropic.ContentBlockParam[], runContext?: RunContext) {
+function callOnce(content: ContentBlockParam[], runContext?: RunContext) {
   return callLlm<ReferenceBatch>(
     pdpRoute('analysis/reference'),
     {
@@ -52,7 +52,7 @@ export async function analyzeReferenceStrips(
   const batches: ReferenceBatch[] = []
   let usage = ZERO
   for (const [index, group] of groups.entries()) {
-    const content: Anthropic.ContentBlockParam[] = [
+    const content: ContentBlockParam[] = [
       ...group.map((s) => ({ type: 'image' as const, source: { type: 'base64' as const, media_type: s.mediaType, data: s.data } })),
       {
         type: 'text',

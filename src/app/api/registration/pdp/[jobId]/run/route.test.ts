@@ -40,17 +40,16 @@ describe('POST /api/registration/pdp/[jobId]/run', () => {
     vi.clearAllMocks()
   })
 
-  it('codex-image 잡은 진행하지 않고 409와 안내를 돌려준다', async () => {
+  it('codex-image 잡도 로컬 웹 경로에서 진행한다', async () => {
     const job = { id: 'job-1', image_model: 'codex-image', current_step: 'images' }
     vi.mocked(getPdpJob).mockResolvedValue(job as never)
+    vi.mocked(runPdpStep).mockResolvedValue({ ...job, current_step: 'done' } as never)
 
     const res = await call()
 
-    expect(res.status).toBe(409)
-    const body = await res.json()
-    expect(body.error).toContain('로컬 실행기')
-    expect(body.job).toEqual(job)
-    expect(runPdpStep).not.toHaveBeenCalled()
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ job: { ...job, current_step: 'done' } })
+    expect(runPdpStep).toHaveBeenCalledWith('job-1', 'user-1')
     expect(getPdpJob).toHaveBeenCalledWith(expect.anything(), 'user-1', 'job-1')
   })
 

@@ -5,7 +5,7 @@
  * sharp는 함수 안에서 불러온다(바이너리 로드 실패가 이 모듈을 쓰는 라우트 전체를 죽이지 않게).
  */
 
-import type Anthropic from '@anthropic-ai/sdk'
+import type { ImageBlockParam } from '@/lib/agents/llm/message-types'
 import { billedCostOf } from '../billed-usage'
 import { callLlm } from '../llm'
 import type { RunContext } from '../types'
@@ -19,7 +19,7 @@ const TIMEOUT_MS = 45_000
 
 export type PalettePick = { index: number; reason: string } | null
 
-function imageBlock(image: VisionImage): Anthropic.ImageBlockParam {
+function imageBlock(image: VisionImage): ImageBlockParam {
   return { type: 'image', source: { type: 'base64', media_type: image.mediaType, data: image.data } }
 }
 

@@ -14,10 +14,10 @@
  *   기록은 백엔드별이라 코덱스 한도가 Claude 구독을 멈추지 않는다.
  */
 
-import type Anthropic from '@anthropic-ai/sdk'
 import type { RunContext } from '@/lib/agents/types'
 import type { LlmProvider } from './registry'
 import type { LlmEffort } from './types'
+import type { MessageParam } from './message-types'
 
 export type LocalLlmBackendId = 'codex-cli' | 'claude-cli'
 
@@ -32,7 +32,7 @@ export interface LocalLlmRequest {
   model: string
   effort?: LlmEffort
   system: string
-  messages: Anthropic.MessageParam[]
+  messages: MessageParam[]
   agentName: string
   runContext?: RunContext
   timeoutMs?: number

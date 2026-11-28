@@ -17,7 +17,6 @@
 import { billedCostOf, billedUsageOf } from '../billed-usage'
 import type { AgentOutput, AgentUsage, RunContext } from '../types'
 import { callLlm } from '../llm'
-import { assertSubscriptionReady } from '../llm/providers/codex-cli'
 import { pdpRoute, type PdpModelRoute } from '@/lib/registration/pdp-model-routes'
 import type { SlotCopyCallTrace } from './pdp-template-copy-agent'
 import { parseLlmJson, parseLlmJsonArray } from '../json-parser'
@@ -709,10 +708,6 @@ export async function runPdpCopywriting(input: RunPdpCopywritingInput): Promise<
   const warnings: string[] = []
   const essenceType = input.essenceType || 'convenience'
   let usage = zeroUsage()
-
-  // Stage 2가 구독 백엔드인데 부를 수 없으면(미등록·소프트 종료 기록) 유료 Stage 1 전에 멈춘다 — 멈춘 뒤 재개 때 Stage 1을 두 번
-  // 사지 않게(pdp-llm-subscription-backend, 검수 지적). API 라우트면 아무것도 하지 않는다
-  if (input.mode === 'pro') assertSubscriptionReady(copyRoute('copy/stage2', input.call))
 
   const structuralPrompt = appendBlock(
     appendGroundingBlock(buildStructuralPrompt(input, essenceType), input.groundingBlock),

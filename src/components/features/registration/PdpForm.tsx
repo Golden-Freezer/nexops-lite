@@ -30,6 +30,7 @@ import { PdpFormPro } from './PdpFormPro'
 import { EMPTY_OWN_SALES, PdpOwnSales, ownSalesSpecFields, useOwnSalesBusinessId, type OwnSalesValue } from './PdpOwnSales'
 import { PdpFormProductInfo } from './PdpFormProductInfo'
 import { SectionTitle } from './PdpFormFields'
+import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
 // POST /api/registration/pdp의 검증 상한과 공유하는 SSOT — pdp-state.ts에서 임포트한다.
 const MAX_SOURCE_IMAGES = PDP_MAX_SOURCE_IMAGES
@@ -64,7 +65,7 @@ export function PdpForm({
   const [track, setTrack] = useState<GenerationTrack>('internalized')
   // 모델 배치(R03) — 켜기(R09, 오너 승인 2026-11-08 21:0x) 뒤 새 잡 기본은 새 배치. 지금 배치는 잡마다 고를 수 있다.
   // 새 배치는 서버가 이미지 모델도 새 배치 값으로 정한다. 서버는 값이 없으면 지금처럼 now(다른 호출 경로 호환)
-  const [batch, setBatch] = useState<PdpModelBatch>('new')
+  const [batch, setBatch] = useState<PdpModelBatch>('now')
   const [spec, setSpec] = useState<PdpSpecSheet>({ productName: initialName ?? '' })
   const [categoryMode, setCategoryMode] = useState<'select' | 'custom'>('select')
   const [sourceUrls, setSourceUrls] = useState<string[]>([])
@@ -83,6 +84,7 @@ export function PdpForm({
   const [imageDims, setImageDims] = useState<Record<string, ImageDimensions>>({})
   const aliveRef = useRef(true)
   const fileRef = useRef<HTMLInputElement>(null)
+  const localCodexAvailable = useLocalCodexAvailable()
 
   useEffect(() => {
     aliveRef.current = true
@@ -147,6 +149,10 @@ export function PdpForm({
   }
 
   async function submit() {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
     if (!spec.productName.trim()) {
       setError('상품명을 입력하세요.')
       return
@@ -295,7 +301,8 @@ export function PdpForm({
 
       <button
         onClick={submit}
-        disabled={busy}
+        disabled={busy || !localCodexAvailable}
+        title={!localCodexAvailable ? LOCAL_CODEX_NOTICE : undefined}
         className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs px-4 py-2 rounded-full bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50"
       >
         {busy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5" />}

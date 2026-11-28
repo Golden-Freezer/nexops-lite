@@ -9,7 +9,7 @@ import { ALL_IMAGE_MODELS, estimateImageCostUsd, type ImageModel, type ImageQual
 import { GATE_RESERVE_USD } from './job-cost-cap'
 
 /** 제공자(OpenAI·Gemini) 동시 생성 상한 — NEXFIT은 12, 처음은 4(429 한도 미확인, planner 1차 권장) */
-export const IMAGE_CONCURRENCY = 4
+export const IMAGE_CONCURRENCY = 2
 /** 로컬 백엔드(codex-image) — 실행기의 동시 2 상한(codex-image-backend.mjs)과 같게. 더 보내면 실행기 안에서 기다린다 */
 export const LOCAL_IMAGE_CONCURRENCY = 2
 

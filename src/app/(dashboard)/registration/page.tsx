@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Image as ImageIcon, FileText, History, PenLine } from 'lucide-react'
 import { Header } from '@/components/layout/Header'
 import { RegistrationDraftList } from '@/components/features/registration/RegistrationDraftList'
+import { LocalCodexNotice } from '@/components/features/registration/LocalCodexNotice'
 
 const SHORTCUTS = [
   { href: '/naming', icon: PenLine, title: '상품명 작명' },
@@ -20,6 +21,7 @@ export default function RegistrationPage() {
     <>
       <Header title="등록 대기" />
       <div className="max-w-5xl mx-auto px-4 lg:px-6 py-6 space-y-4">
+        <LocalCodexNotice />
         <div className="flex items-center gap-1.5 flex-wrap">
           {SHORTCUTS.map((s) => (
             <Link

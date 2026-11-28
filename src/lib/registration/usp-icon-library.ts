@@ -43,6 +43,8 @@ export function iconLibraryPrefix(userId: string, dir: string = ICON_LIBRARY_DIR
  * 개별 존재 확인 왕복은 하지 않는다. env 미설정(테스트 등)이면 null(우아한 생략 → 폴백 생성).
  */
 export function getUspIconLibrary(userId: string): UspIconManifest | null {
+  // 라이트: 아이콘 묶음은 NEXOPS 스토리지에만 있다 — 직접 올린 경우(NEXOPS_LITE_ICON_LIBRARY=1)만 쓰고, 아니면 Codex로 그린다(깨진 그림 방지)
+  if (process.env.NEXOPS_LITE_ICON_LIBRARY !== '1') return null
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL
   if (!base || !userId) return null
   const prefix = `${base}/storage/v1/object/public/${BUCKET}/${iconLibraryPrefix(userId)}`

@@ -4,7 +4,7 @@
  */
 
 import { billedCostOf } from '../billed-usage'
-import type Anthropic from '@anthropic-ai/sdk'
+import type { ImageBlockParam } from '@/lib/agents/llm/message-types'
 import type { AgentConfig, AgentOutput, RunContext } from '../types'
 import { callAgent } from '../_base'
 import { parseLlmJson } from '../json-parser'
@@ -64,7 +64,7 @@ export async function fetchImageAsBase64(url: string, timeoutMs = IMAGE_FETCH_TI
   }
 }
 
-function imageBlock(image: VisionImage): Anthropic.ImageBlockParam {
+function imageBlock(image: VisionImage): ImageBlockParam {
   return {
     type: 'image',
     source: { type: 'base64', media_type: image.mediaType, data: image.data },
