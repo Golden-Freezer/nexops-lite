@@ -1,0 +1,1431 @@
+[
+  {
+    "id": "how_to.side-rows",
+    "section": "how_to",
+    "name": "제목 + 옆 사진·글 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 296,
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "photo"
+                  }
+                ]
+              },
+              {
+                "w": 420,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "H3",
+                    "gapAfter": "tightGap"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "note",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "action",
+              "state"
+            ],
+            "composition": [
+              "in_hand",
+              "in_use",
+              "worn"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 395
+          },
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 10,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          },
+          "note": {
+            "type": "text",
+            "required": false,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 24,
+            "maxLines": 4,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "usage"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 3,
+        "max": 7
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "how_to.side-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/how_to.side-rows.html",
+    "estimatedHeight": {
+      "min": 1460,
+      "max": 3260
+    },
+    "height": 2360
+  },
+  {
+    "id": "how_to.lead-checks",
+    "section": "how_to",
+    "name": "가운데 제목 + 큰 사진 + 체크 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "worn"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "usage"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "how_to.lead-checks"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/how_to.lead-checks.html",
+    "estimatedHeight": {
+      "min": 1940,
+      "max": 2640
+    },
+    "height": 2290
+  },
+  {
+    "id": "how_to.zigzag",
+    "section": "how_to",
+    "name": "제목 + 사진·글 교대 3줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo1"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "title1",
+                "token": "H3",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "note1",
+                "token": "BODY"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "title2",
+                "token": "H3",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "note2",
+                "token": "BODY"
+              }
+            ]
+          },
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo2"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo3"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "title3",
+                "token": "H3",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "note3",
+                "token": "BODY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo1": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "worn"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "title1": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 8,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "note1": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 4,
+        "claimRisk": "effect"
+      },
+      "photo2": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "worn"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "title2": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 8,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "note2": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 4,
+        "claimRisk": "effect"
+      },
+      "photo3": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "worn"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "title3": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 8,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "note3": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 4,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "usage"
+      ],
+      "photos": 3,
+      "facts": {
+        "min": 4,
+        "max": 7
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "how_to.zigzag"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/how_to.zigzag.html",
+    "estimatedHeight": {
+      "min": 2230,
+      "max": 3260
+    },
+    "height": 2750
+  },
+  {
+    "id": "how_to.band-grid",
+    "section": "how_to",
+    "name": "연한 띠 + 사진 2×2, 칸마다 이름표",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "emphasis": true,
+            "gapAfter": "photoGap",
+            "align": "center"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "columns": 2,
+            "gap": "blockGap",
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "tags",
+                "slot": "label",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 4,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "action",
+              "state"
+            ],
+            "composition": [
+              "in_hand",
+              "in_use",
+              "worn",
+              "closeup"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 500
+          },
+          "label": {
+            "type": "text",
+            "required": false,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "usage"
+      ],
+      "photos": 4,
+      "facts": {
+        "min": 1,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "how_to.band-grid"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "center",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/how_to.band-grid.html",
+    "estimatedHeight": {
+      "min": 1670,
+      "max": 2110
+    },
+    "height": 1890
+  },
+  {
+    "id": "how_to.input-steps",
+    "section": "how_to",
+    "name": "제목 + 대표 동작 컷 + 번호 붙은 사용 순서 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "steps",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "gap": 24,
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "index"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "BODY_BOLD",
+                    "gapAfter": "tightGap"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "note",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 16,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "worn"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "steps": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "usage.steps",
+        "min": 2,
+        "max": 5,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "usage.step.title",
+            "facts": 0,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "note": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "usage.step.note",
+            "facts": 0,
+            "maxChars": 26,
+            "maxLines": 3,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "usage"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "how_to.input-steps",
+        "how_to.side-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/how_to.input-steps.html",
+    "estimatedHeight": {
+      "min": 1760,
+      "max": 4260
+    },
+    "height": 3010
+  },
+  {
+    "id": "how_to.schedule-rows",
+    "section": "how_to",
+    "name": "풀폭 사용 장면 + 제목 + 연한 카드 안 이름·기간 주기 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": true,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "period",
+                "token": "BODY_BOLD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 16,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "worn"
+        ],
+        "aspect": [
+          "4:3"
+        ],
+        "minHeight": 420
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "schedule.rows",
+        "min": 2,
+        "max": 6,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "schedule.label",
+            "facts": 0,
+            "maxChars": 16,
+            "maxLines": 1,
+            "claimRisk": "none"
+          },
+          "period": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "schedule.period",
+            "facts": 0,
+            "maxChars": 20,
+            "maxLines": 2,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "usage"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "how_to.schedule-rows",
+        "how_to.input-steps"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/how_to.schedule-rows.html",
+    "estimatedHeight": {
+      "min": 1490,
+      "max": 3030
+    },
+    "height": 2260
+  },
+  {
+    "id": "how_to.flow-steps",
+    "section": "how_to",
+    "name": "가운데 제목 + 대표 동작 컷 + 화살표로 잇는 번호 순서 도식",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "steps",
+        "connector": "arrow",
+        "nodes": [
+          {
+            "kind": "mark",
+            "value": "index",
+            "align": "center",
+            "gapAfter": "itemGap"
+          },
+          {
+            "kind": "text",
+            "slot": "title",
+            "token": "BODY_BOLD",
+            "align": "center",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "note",
+            "token": "BODY",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 16,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "worn"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "steps": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "usage.steps",
+        "min": 2,
+        "max": 5,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "usage.step.title",
+            "facts": 0,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "note": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "usage.step.note",
+            "facts": 0,
+            "maxChars": 26,
+            "maxLines": 3,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "usage",
+        "infocells"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "how_to.flow-steps",
+        "how_to.input-steps",
+        "motion_band.caption-top",
+        "motion_band.caption-bottom"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/how_to.flow-steps.html",
+    "estimatedHeight": {
+      "min": 2060,
+      "max": 5030
+    },
+    "height": 3550
+  }
+]

@@ -45,7 +45,7 @@ const CONTAINER_RULES: { pattern: RegExp; children: (idx: string) => string[] }[
     pattern: /^review_card_bg_(\d+)$/,
     children: (i) => [
       `review_avatar_${i}`, `review_initial_${i}`, `review_author_${i}`,
-      `review_stars_${i}`, `review_text_${i}`, `review_badge_${i}`,
+      `review_stars_${i}`, `review_option_${i}`, `review_text_${i}`, `review_badge_${i}`,
     ],
   },
   { pattern: /^step_(?:bg|border)_(\d+)$/, children: (i) => [`step_num_${i}`, `step_text_${i}`] },

@@ -18,7 +18,8 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ job
     const db = createAdminClient()
     const job = await getPdpJob(db, userId, jobId)
     if (!job) return NextResponse.json({ error: '잡을 찾을 수 없습니다.' }, { status: 404 })
-    if (job.current_step !== 'done' || !job.copy_sections?.final) {
+    // 한 번 완료된 잡(final_html)은 편집기 재생성으로 images 단계에 돌아가 있어도 연다(pdp-image-regen-api)
+    if ((job.current_step !== 'done' && !job.final_html) || !job.copy_sections?.final) {
       return NextResponse.json(
         { error: '생성이 완료된 잡만 에디터로 열 수 있습니다.' },
         { status: 409 }

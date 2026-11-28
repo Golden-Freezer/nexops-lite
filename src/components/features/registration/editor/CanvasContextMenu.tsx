@@ -90,15 +90,16 @@ export default function CanvasContextMenu({ menu, onClose, onImageReplace, onIma
     ? [
         { label: '이미지 교체', action: () => { onImageReplace?.(); onClose(); } },
         { label: '이미지 다운로드', action: () => { onImageDownload?.(); onClose(); } },
-        // AI 재생성 항목은 핸들러가 배선된 경우에만 노출 (재생성 백엔드는 Phase 4)
+        // AI 재생성 항목은 핸들러가 배선된 경우에만 노출 — Canvas가 생성 컷(잡 section_images의 url)일 때만 넘긴다(묶음 5 ③)
         ...(onImageRegenerate ? [{ label: 'AI 재생성', action: () => { onImageRegenerate(); onClose(); } } as MenuEntry] : []),
         { type: 'divider' },
       ]
     : [];
 
+  // AI 카피 다시 쓰기 — Canvas가 대상 글자 요소(잠기지 않음·1~300자)일 때만 핸들러를 넘긴다(묶음 5 카피)
   const textEntries: MenuEntry[] = isTextElement && onTextRegenerate
     ? [
-        { label: '카피 재생성', action: () => { onTextRegenerate(); onClose(); } },
+        { label: 'AI 카피 다시 쓰기', action: () => { onTextRegenerate(); onClose(); } },
         { type: 'divider' },
       ]
     : [];

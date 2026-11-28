@@ -1,0 +1,927 @@
+{
+  "_source": "registration_pdp_jobs f2d72bd0 (R1, 2026-10-27) — 계획·태스크·편집기 조립에 필요한 필드만. URL·사용자 ID는 자리표시",
+  "id": "fixture-p03-f2d72bd0",
+  "user_id": "user-fixture",
+  "business_id": null,
+  "mode": "pro",
+  "image_quality": "medium",
+  "image_model": "codex-image",
+  "generation_track": "internalized",
+  "current_step": "images",
+  "progress": 0,
+  "error": null,
+  "cost_usd": 0,
+  "spec_sheet": {
+    "category": "beauty",
+    "brandName": "페어넥스",
+    "productName": "페어넥스 스칼프 마사지 두피 샴푸 브러쉬",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ]
+  },
+  "source_images": [
+    "https://img.test/p03-source-0.png",
+    "https://img.test/p03-source-1.png",
+    "https://img.test/p03-source-2.png"
+  ],
+  "analysis": {
+    "cons": [
+      "리뷰 데이터 부재로 인한 단점 추출 불가"
+    ],
+    "pros": [
+      "리뷰 데이터 부재로 인한 장점 추출 불가"
+    ],
+    "keywords": [
+      "두피 마사지",
+      "스칼프 브러쉬",
+      "샴푸 브러쉬",
+      "두피 케어",
+      "마사지 도구",
+      "페어넥스",
+      "세이지 그린",
+      "두피 건강",
+      "혈액순환",
+      "스트레스 완화",
+      "홈케어",
+      "뷰티 도구",
+      "헤어 케어",
+      "두피 마사지기",
+      "셀프 마사지"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ]
+    },
+    "raw_summary": "페어넥스의 스칼프 마사지 두피 샴푸 브러쉬는 샴푸 시 두피 마사지를 동시에 할 수 있는 멀티펑셔널 뷰티 도구입니다. 세이지 그린 색상으로 감각적인 디자인을 갖추고 있으며, 일상적인 홈케어를 통해 두피 건강과 혈액순환을 개선할 수 있습니다.",
+    "pain_clusters": [
+      {
+        "pain": "일상적인 두피 관리의 번거로움",
+        "urgency": "medium"
+      },
+      {
+        "pain": "두피 혈액순환 부족으로 인한 건강 악화",
+        "urgency": "medium"
+      }
+    ],
+    "usp_candidates": [
+      "두피 마사지와 샴푸를 동시에 수행하는 멀티펑셔널 브러쉬",
+      "세이지 그린 컬러의 감각적인 디자인",
+      "페어넥스 브랜드의 두피 케어 전문성"
+    ],
+    "benefit_clusters": [
+      {
+        "name": "두피 건강 개선",
+        "weight": 0.35
+      },
+      {
+        "name": "편의성 및 효율성",
+        "weight": 0.3
+      },
+      {
+        "name": "감각적 디자인",
+        "weight": 0.2
+      },
+      {
+        "name": "스트레스 완화",
+        "weight": 0.15
+      }
+    ],
+    "decision_profile": {
+      "giftability": "medium",
+      "repeatability": "repeat",
+      "urgency_level": "low",
+      "price_resistance": "medium",
+      "visual_hook_need": "high",
+      "explanation_depth": "standard",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "comparison_intensity": "medium"
+    },
+    "detected_category": "beauty",
+    "objection_priority": [
+      "단순 브러쉬 대비 실제 효과의 차별성",
+      "사용 편의성 및 내구성"
+    ],
+    "recommended_strategy_contract": {
+      "hook_mode": "empathy",
+      "page_goal": "standard",
+      "persuasion_axis": "balanced",
+      "frame_style_pack": "editorial_mix",
+      "purchase_context": "self_use",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "visual_style_pack": "clean_proof",
+      "objection_priority": [
+        "단순 브러쉬 대비 실제 효과의 차별성",
+        "사용 편의성 및 내구성"
+      ],
+      "page_length_target": "standard",
+      "comparison_intensity": "medium",
+      "review_position_strategy": "dynamic",
+      "soldout_position_strategy": "dynamic"
+    }
+  },
+  "section_plan": {
+    "reasoning": "골격이 8개 섹션으로 고정되어 있어 저관여 전략에 맞게 각 섹션을 압축적으로 설계했다. 리뷰·완판 데이터가 없으므로 사회적 증거 블록(perf_*) 없이 공감(problem_raise)→해결(solution_guide)→근거(point_div, product_exposure, sub_div)의 짧은 서사로 전환을 유도한다. hook_3step에서 image_hooking을 true로 설정해 텍스트보다 강한 공감 이미지를 활용했고, main_cut은 oval 프레임으로 뷰티 제품의 정제된 이미지를 강조했다. key_message 섹션이 골격에 없으므로 point_div의 summary성 헤드라인으로 시선 정지 역할을 일부 대체했다.",
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ],
+      "vocabHash": "73b757bbdea4"
+    },
+    "font_scheme": {
+      "usp": {
+        "body": "Pretendard",
+        "heading": "GmarketSansBold"
+      },
+      "hook": {
+        "body": "Pretendard",
+        "heading": "Noto Serif KR"
+      },
+      "modules": {
+        "body": "Pretendard",
+        "heading": "GmarketSansBold"
+      },
+      "problem": {
+        "body": "Pretendard",
+        "heading": "Noto Serif KR"
+      }
+    },
+    "hook_strategy": {
+      "reasoning": "완판 이력과 리뷰가 전무해 실적증거는 사용 불가. 저관여 뷰티 소품이지만 '손가락 두피 마사지의 한계'라는 일상적 불편은 공감대 형성이 쉽고, hook_mode=empathy·persuasion_axis=balanced 전략과 정확히 부합한다. 시각적 충격(세이지그린 디자인)은 보조 무기로 main_cut에서 활용하되, 첫 진입은 공감형 후킹으로 열어 저관여 고객의 3초 이탈을 막는다.",
+      "hero_frame": "oval",
+      "image_hooking": true,
+      "first_3_seconds": "샤워 중 손가락으로 두피를 벅벅 긁다 지친 손, 혹은 손톱 자국이 남은 두피 클로즈업 이미지 위에 '손가락으로는 한계가 있어요' 공감형 질문 카피가 떠 있는 화면",
+      "strongest_weapon": "문제공감"
+    },
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "section_specs": {
+      "cta": {
+        "has_image": false,
+        "image_role": "풀 컬러 배경 행동 촉구 문구",
+        "body_max_chars": 30,
+        "headline_max_chars": 18
+      },
+      "sub_div": {
+        "has_image": true,
+        "image_role": "페어넥스 브랜드 신뢰감 및 두피케어 전문성 전달, 욕실 인테리어와 어울리는 연출컷",
+        "body_max_chars": 60,
+        "headline_max_chars": 22
+      },
+      "main_cut": {
+        "has_image": true,
+        "image_role": "세이지 그린 브러쉬 Hero 컷(oval 프레임) + 두피마사지/멀티펑셔널/감각디자인 아이콘 USP 3~4개",
+        "body_max_chars": 40,
+        "headline_max_chars": 20
+      },
+      "point_div": {
+        "has_image": true,
+        "image_role": "내구성 좋은 모, 그립감 있는 손잡이 등 핵심 포인트 3개 아이콘/이미지 카드",
+        "body_max_chars": 45,
+        "headline_max_chars": 18
+      },
+      "hook_3step": {
+        "has_image": true,
+        "image_role": "손가락으로 두피를 긁는 듯한 답답한 샤워 장면 이미지로 공감 유발 (image_hooking)",
+        "body_max_chars": 50,
+        "headline_max_chars": 24
+      },
+      "problem_raise": {
+        "has_image": false,
+        "image_role": "텍스트 중심 — 상단 accent line과 좌측 bar로 강한 질문형 카피 강조",
+        "body_max_chars": 60,
+        "headline_max_chars": 26
+      },
+      "solution_guide": {
+        "has_image": true,
+        "image_role": "브러쉬 모가 두피에 닿아 일정한 압력으로 마사지하는 장면, 손 마사지 대비 해결책 제시",
+        "body_max_chars": 70,
+        "headline_max_chars": 24
+      },
+      "product_exposure": {
+        "has_image": true,
+        "image_role": "제품 추가 앵글 — 손잡이 그립, 모 디테일, 세이지그린 컬러감 노출",
+        "body_max_chars": 40,
+        "headline_max_chars": 20
+      }
+    },
+    "design_direction": "저관여 뷰티 소품이지만 감각적 세이지그린 컬러와 공감형 스토리를 결합해 짧고 속결감 있게 설계. Hook은 공감 이미지로 열고, Hero는 oval 프레임으로 뷰티 제품다운 정제된 느낌을 주며, 문제-해결 흐름을 빠르게 전개한 뒤 포인트·제품노출·브랜드 서브텍스트로 마무리. 전체적으로 파스텔톤이 아닌 세이지그린+화이트 배경의 차분하고 신뢰감 있는 톤앤매너를 유지하되, 본문 텍스트는 모바일 14px 이상 가독성 기준을 철저히 준수.",
+    "layout_selections": {
+      "cta": "minimal",
+      "sub_div": "minimal",
+      "main_cut": "minimal",
+      "point_div": "minimal",
+      "hook_3step": "image_first",
+      "problem_raise": "minimal",
+      "solution_guide": "image_first",
+      "product_exposure": "minimal"
+    },
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "internalized_skeleton": {
+      "roles": [
+        {
+          "role": "hook",
+          "reason": "v2 hookDefault"
+        },
+        {
+          "role": "product_intro",
+          "reason": "필수(main_cut)"
+        },
+        {
+          "role": "problem",
+          "reason": "공감 신호(고통 긴급도·축·후킹 방식) + hook_gate"
+        },
+        {
+          "role": "usp_feature",
+          "reason": "필수(첫 가치)"
+        }
+      ],
+      "excluded": [
+        {
+          "role": "brand_story",
+          "reason": "감성·브랜드 신호 없음"
+        },
+        {
+          "role": "social_proof",
+          "reason": "리뷰 데이터 없음 — 근거 없는 후기 섹션 금지"
+        },
+        {
+          "role": "certification_evidence",
+          "reason": "certificationInfo 없음 — 근거 없는 인증 섹션 금지"
+        },
+        {
+          "role": "promotion_offer",
+          "reason": "eventBannerInfo 없음 — 근거 없는 이벤트 섹션 금지"
+        },
+        {
+          "role": "size_spec",
+          "reason": "spec_sheet에 치수 없음 — 환각 치수 금지"
+        },
+        {
+          "role": "option_catalog",
+          "reason": "옵션 수 < 4 — 옵션 카탈로그 성립 불가"
+        },
+        {
+          "role": "how_to_guide",
+          "reason": "사용 순서 근거 없음"
+        },
+        {
+          "role": "target_recommendation",
+          "reason": "대상·활용 신호 없음"
+        },
+        {
+          "role": "faq",
+          "reason": "FAQ 렌더러 없음 — 고민은 미응답 기록"
+        },
+        {
+          "role": "shipping_cs",
+          "reason": "플랫폼 영역 — 생성 제외"
+        },
+        {
+          "role": "legal_notice",
+          "reason": "플랫폼 영역 — 생성 제외"
+        },
+        {
+          "role": "authenticity",
+          "reason": "certificationInfo 없음 — 근거 없는 정품 보장 금지"
+        },
+        {
+          "role": "problem",
+          "reason": "[일부 섹션 — 역할 유지] R1(첫 가치 5번째 이내) 유지 — 공감 확장 생략(problem_empathy)"
+        }
+      ],
+      "persuasion": {
+        "rules": [
+          {
+            "id": "R1",
+            "pass": true
+          },
+          {
+            "id": "R2",
+            "pass": true
+          },
+          {
+            "id": "R3",
+            "pass": true
+          },
+          {
+            "id": "R4",
+            "pass": true
+          },
+          {
+            "id": "R5",
+            "pass": true
+          },
+          {
+            "id": "R6",
+            "pass": false,
+            "detail": "섹션 8개, 목표 10~14 — 목표 분량 미달(근거 없는 섹션은 만들지 않음 · 제외 사유는 excluded 참조)"
+          },
+          {
+            "id": "R7",
+            "pass": true
+          },
+          {
+            "id": "R8",
+            "pass": true
+          }
+        ],
+        "stages": [
+          {
+            "role": "hook",
+            "stage": "ATTENTION",
+            "reason": "v2 hookDefault",
+            "section": "hook_3step"
+          },
+          {
+            "role": "product_intro",
+            "stage": "ATTENTION",
+            "reason": "필수 — 첫 화면 상품",
+            "section": "main_cut"
+          },
+          {
+            "role": "problem",
+            "stage": "RELEVANCE",
+            "reason": "공감 신호(고통 긴급도·축·후킹 방식) + hook_gate",
+            "section": "problem_raise"
+          },
+          {
+            "role": "problem",
+            "stage": "RELEVANCE",
+            "reason": "문제-해결 짝(PAS)",
+            "section": "solution_guide"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "첫 가치 — 가치 단계를 연다",
+            "section": "point_div"
+          },
+          {
+            "role": "product_intro",
+            "stage": "VALUE",
+            "reason": "상품 노출(생성 예정 컷)",
+            "section": "product_exposure"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "가치 군집 3개 이상",
+            "section": "sub_div"
+          },
+          {
+            "role": "cta",
+            "stage": "ACTION",
+            "reason": "필수 — 마지막 행동",
+            "section": "cta"
+          }
+        ],
+        "grammar": "G1",
+        "layouts": [
+          {
+            "llm": "image_first",
+            "reason": "LLM 선택이 실측 후보 안",
+            "source": "llm",
+            "section": "hook_3step",
+            "category": "image_first"
+          },
+          {
+            "llm": "overlay",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "main_cut",
+            "category": "minimal"
+          },
+          {
+            "llm": "minimal",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "problem_raise",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "실측 1순위 후보(LLM split는 후보 밖)",
+            "source": "vocab",
+            "section": "solution_guide",
+            "category": "image_first"
+          },
+          {
+            "llm": "card",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "point_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "image_first",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "product_exposure",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "sub_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "bold",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "cta",
+            "category": "minimal"
+          }
+        ],
+        "vocabHash": "73b757bbdea4",
+        "priorSource": "v2:beauty",
+        "lengthTarget": [
+          10,
+          14
+        ],
+        "objectionCoverage": [
+          {
+            "note": "유형 미분류 — 미응답 기록",
+            "type": "other",
+            "objection": "단순 브러쉬 대비 실제 효과의 차별성",
+            "answeredBy": null
+          },
+          {
+            "note": "클로즈업 증거 컷 — 수치 주장 금지",
+            "type": "quality_durability",
+            "objection": "사용 편의성 및 내구성",
+            "answeredBy": "sub_div"
+          }
+        ]
+      }
+    }
+  },
+  "copy_sections": {
+    "final": {
+      "howTo": [
+        {
+          "step": "샴푸 전, 젖은 두피에 올리기",
+          "description": "브러쉬를 두피에 가볍게 대고 원을 그리듯 움직여요"
+        },
+        {
+          "step": "샴푸 거품 낼 때 함께 사용",
+          "description": "거품을 낸 상태로 두피 전체를 천천히 문질러요"
+        },
+        {
+          "step": "헹군 뒤 제자리에 걸어두기",
+          "description": "물기를 털고 통풍 잘 되는 곳에 보관해요"
+        }
+      ],
+      "title": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+      "problem": {
+        "empathy": "거품을 내는 동안 손가락은 금방 저리고, 힘은 들어가는데 개운함은 느껴지지 않아요",
+        "question": "손가락만으로 두피까지 닿고 계신가요?",
+        "empathyLines": [
+          "손가락이 금방 아파요",
+          "힘 조절이 안 돼요",
+          "두피까진 안 닿아요",
+          "매번 대충 끝내요"
+        ],
+        "empathyDeepLines": [
+          "개운한 적이 별로 없어요",
+          "씻어도 찝찝함이 남아요",
+          "제대로 하는지 모르겠어요",
+          "샤워가 그냥 일이 돼요"
+        ]
+      },
+      "summary": "매일 샴푸, 두피는 그대로였다",
+      "sections": [
+        {
+          "headline": "두피가 개운해지는\n3분 샤워 습관",
+          "sub_copy": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+          "section_type": "hook",
+          "image_direction": "제품 중심의 프리미엄 스튜디오 촬영, 따뜻한 조명"
+        },
+        {
+          "headline": "손가락만으로 두피까지 닿고 계신가요?",
+          "sub_copy": "거품을 내는 동안 손가락은 금방 저리고, 힘은 들어가는데 개운함은 느껴지지 않아요",
+          "section_type": "problem",
+          "image_direction": "문제 상황을 보여주는 공감 가는 이미지, 밝은 톤 유지"
+        },
+        {
+          "headline": "손끝 대신 돌기로, 두피 전체를 한 번에 꾹 눌러주는 구조",
+          "sub_copy": "실리콘 돌기가 손가락보다 넓고 균일하게 압력을 전달해 샴푸하면서 마사지까지 끝나요",
+          "section_type": "benefit",
+          "image_direction": "제품 사용 중인 밝고 긍정적인 라이프스타일 이미지"
+        },
+        {
+          "headline": "이런 점이 다릅니다",
+          "sub_copy": "",
+          "detail_items": [
+            {
+              "icon": "✦",
+              "text": "넓은 자극 면적: 돌기 구조가 두피 전체에 퍼져\n손끝보다 넓게 닿아요"
+            },
+            {
+              "icon": "◆",
+              "text": "안정적 그립: 거품 묻은 손에도 착 잡혀요\n미끄럼 걱정 줄여요"
+            },
+            {
+              "icon": "●",
+              "text": "세이지 그린: 욕실 분위기에 자연스럽게\n소품처럼 어울려요"
+            }
+          ],
+          "section_type": "detail_points",
+          "image_direction": "제품 디테일 클로즈업 샷"
+        },
+        {
+          "headline": "이렇게 사용하세요",
+          "sub_copy": "샴푸 전, 젖은 두피에 올리기: 브러쉬를 두피에 가볍게 대고 원을 그리듯 움직여요",
+          "section_type": "usage",
+          "image_direction": "자연스러운 사용 장면, 한국인 모델"
+        },
+        {
+          "headline": "이런 분께 추천합니다",
+          "sub_copy": "손 마사지가 번거로운 분, 두피 세정감을 더 원하는 분, 욕실 소품도 예쁘게 두고 싶은 분",
+          "section_type": "trust",
+          "image_direction": "신뢰감을 주는 깔끔한 제품 이미지"
+        },
+        {
+          "headline": "오늘 샤워부터 만나보세요",
+          "sub_copy": "한정 수량 / 빠른 배송",
+          "section_type": "cta",
+          "image_direction": ""
+        }
+      ],
+      "solution": {
+        "summary": "실리콘 돌기가 손가락보다 넓고 균일하게 압력을 전달해 샴푸하면서 마사지까지 끝나요",
+        "declaration": "손끝 대신 돌기로, 두피 전체를 한 번에 꾹 눌러주는 구조"
+      },
+      "hero_copy": {
+        "hook": "두피가 개운해지는\n3분 샤워 습관",
+        "subline": "실리콘 돌기가 손끝보다 넓게 두피를 자극해 개운한 세정감까지 끌어올려요",
+        "benefit_headline": "두피가 개운해지는\n3분 샤워 습관"
+      },
+      "mainIntro": {
+        "hook": "매일 감는 샴푸, 두피까지 닿았나요?",
+        "category": "뷰티 · 두피 케어 도구",
+        "subBenefit": "실리콘 돌기가 손끝보다 넓게 두피를 자극해 개운한 세정감까지 끌어올려요",
+        "brandAndName": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+        "benefitHeadline": "두피가 개운해지는\n3분 샤워 습관"
+      },
+      "closingCta": {
+        "subtext": "매일 쓰는 도구라 한 번 구매로 오래 함께해요",
+        "headline": "오늘 샤워부터 만나보세요"
+      },
+      "pointCards": [
+        {
+          "title": "넓은 자극 면적",
+          "description": "돌기 구조가 두피 전체에 퍼져\n손끝보다 넓게 닿아요"
+        },
+        {
+          "title": "안정적 그립",
+          "description": "거품 묻은 손에도 착 잡혀요\n미끄럼 걱정 줄여요"
+        },
+        {
+          "title": "세이지 그린",
+          "description": "욕실 분위기에 자연스럽게\n소품처럼 어울려요"
+        },
+        {
+          "title": "루틴화 가능",
+          "description": "매일 샤워에 바로 추가\n별도 시간 필요 없어요"
+        }
+      ],
+      "conceptCopy": {
+        "subCopy": "소품 하나로 욕실 분위기가 차분히 정돈돼요",
+        "headline": "욕실에 놓는 세이지 그린"
+      },
+      "mainCutCopy": {
+        "subCopy": "촘촘한 돌기가 두피 전체를 꾹 눌러줘요",
+        "headline": "손끝이 닿지 못한 곳까지"
+      },
+      "colorOptions": {
+        "title": "컬러 옵션",
+        "options": [
+          "세이지 그린"
+        ],
+        "description": "차분한 세이지 그린 하나로 욕실 분위기에 자연스럽게 어울려요"
+      },
+      "compareItems": [
+        {
+          "cons": "힘 조절 쉽게 지쳐요",
+          "name": "손가락 마사지",
+          "pros": "도구 없이 바로 가능"
+        },
+        {
+          "cons": "모가 금방 뻣뻣해져요",
+          "name": "일반 샴푸빗",
+          "pros": "저렴하고 구하기 쉬워요"
+        },
+        {
+          "cons": "",
+          "name": "본 상품",
+          "pros": "세정과 마사지 동시에 해결"
+        }
+      ],
+      "cta_variants": [
+        {
+          "copy": "오늘 샤워부터 만나보세요",
+          "type": "emotion"
+        },
+        {
+          "copy": "매일 쓰는 도구라 한 번 구매로 오래 함께해요",
+          "type": "rational"
+        }
+      ],
+      "detailPoints": [
+        {
+          "claim": "샴푸하며 마사지, 한 번에 끝나요",
+          "proof": "세정과 마사지를 동시에 수행하는 멀티펑셔널 구조",
+          "benefit": "따로 시간 들이지 않고 두피 관리 완료",
+          "imageHint": "[샴푸하며 마사지] — 거품 속 브러쉬로 두피 문지르는 장면"
+        },
+        {
+          "claim": "거품이 보글보글 올라오는 걸 느껴요",
+          "proof": "돌기 사이로 공기와 물이 섞여 세정감 상승",
+          "benefit": "씻는 내내 개운한 느낌이 유지돼요",
+          "imageHint": "[풍성한 거품컷] — 브러쉬 돌기 사이로 올라오는 거품 클로즈업"
+        },
+        {
+          "claim": "손목에 힘을 덜 줘도 괜찮아요",
+          "proof": "인체공학적 그립 설계로 일정한 압력 유지",
+          "benefit": "오래 문질러도 손목이 편안해요",
+          "imageHint": "[가벼운 손목컷] — 자연스럽게 쥔 손 모양 클로즈업"
+        },
+        {
+          "claim": "젖은 손에서도 미끄러지지 않아요",
+          "proof": "그립 디자인이 물기 머금은 손에서도 밀착",
+          "benefit": "거품 낀 상태로도 끝까지 편하게 사용",
+          "imageHint": "[미끄럼 없는 그립] — 물방울 맺힌 손잡이를 쥔 모습"
+        },
+        {
+          "claim": "단순 브러쉬와는 구조부터 달라요",
+          "proof": "실리콘 돌기 배열이 두피 전체에 균일하게 닿도록 설계",
+          "benefit": "같은 시간, 더 꼼꼼하게 닿는 느낌",
+          "imageHint": "[돌기 구조컷] — 브러쉬 돌기 배열을 위에서 촬영한 클로즈업"
+        },
+        {
+          "claim": "욕실 선반 위, 소품처럼 자리해요",
+          "proof": "세이지 그린 단일 컬러로 색감 통일감 제공",
+          "benefit": "쓰지 않을 때도 보기 좋은 욕실 풍경",
+          "imageHint": "[욕실 선반컷] — 타일 배경 위 브러쉬 단독 연출"
+        }
+      ],
+      "designPalette": {
+        "bgSub": "#E8EDE5",
+        "bgMain": "#F5F7F3",
+        "primary": "#6B8E6B",
+        "textMain": "#232823",
+        "secondary": "#4A6B4A",
+        "textHighlight": "#C2410C"
+      },
+      "directionHint": {
+        "subCopy": "손끝 대신 브러쉬로\n두피 마사지 시작",
+        "headline": "오늘 샤워부터 바꿔보세요"
+      },
+      "soldOutBanner": {
+        "headline": "재입고 3일 만에 품절",
+        "subtitle": "매일 쓰는 분들이 먼저 선택했어요"
+      },
+      "compareSummary": "손끝 대신 돌기로, 닿는 면적부터 달라요",
+      "convertDivCopy": {
+        "subCopy": "샤워 루틴에 끼워 넣기만 하면 끝",
+        "headline": "오늘부터 바로 시작하세요"
+      },
+      "keyMessageCopy": {
+        "subCopy": "따로 시간 내지 않아도 두피가 관리돼요",
+        "headline": "샴푸 시간, 마사지 시간"
+      },
+      "usageSceneTags": [
+        "#매일샤워루틴",
+        "#두피마사지",
+        "#퇴근후셀프케어",
+        "#욕실소품"
+      ],
+      "eventBundleCopy": {
+        "subCopy": "욕실 한 자리, 매일 쓰는 도구",
+        "headline": "세이지 그린 1개 구성"
+      },
+      "productExposure": {
+        "subCopy": "거품 낀 손에서도 미끄럼 없이 착 잡혀요",
+        "headline": "그립 하나로 달라진 손맛"
+      },
+      "review_strategy": {
+        "position": "dynamic",
+        "why_here": "strategy_contract.review_position_strategy=dynamic 기반 배치"
+      },
+      "reviewHighlights": [],
+      "objection_handlers": [
+        {
+          "answer": "세정과 마사지를 동시에 수행하는 멀티펑셔널 구조 — 따로 시간 들이지 않고 두피 관리 완료",
+          "objection": "단순 브러쉬 대비 실제 효과의 차별성"
+        },
+        {
+          "answer": "돌기 사이로 공기와 물이 섞여 세정감 상승 — 씻는 내내 개운한 느낌이 유지돼요",
+          "objection": "사용 편의성 및 내구성"
+        },
+        {
+          "answer": "합리적인 가격에 최고의 품질을 제공합니다.",
+          "objection": "가격이 비싸지 않나요?"
+        }
+      ],
+      "recommendedTargets": [
+        "손 마사지가 번거로운 분",
+        "두피 세정감을 더 원하는 분",
+        "욕실 소품도 예쁘게 두고 싶은 분",
+        "퇴근 후 샤워로 긴장 풀고 싶은 분"
+      ],
+      "section_copy_blocks": [
+        {
+          "body": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+          "role": "proof",
+          "section": "hook",
+          "headline": "두피가 개운해지는\n3분 샤워 습관"
+        },
+        {
+          "body": "거품을 내는 동안 손가락은 금방 저리고, 힘은 들어가는데 개운함은 느껴지지 않아요",
+          "role": "proof",
+          "section": "problem",
+          "headline": "손가락만으로 두피까지 닿고 계신가요?"
+        },
+        {
+          "body": "실리콘 돌기가 손가락보다 넓고 균일하게 압력을 전달해 샴푸하면서 마사지까지 끝나요",
+          "role": "proof",
+          "section": "benefit",
+          "headline": "손끝 대신 돌기로, 두피 전체를 한 번에 꾹 눌러주는 구조"
+        },
+        {
+          "body": "",
+          "role": "proof",
+          "section": "detail_points",
+          "headline": "이런 점이 다릅니다"
+        },
+        {
+          "body": "샴푸 전, 젖은 두피에 올리기: 브러쉬를 두피에 가볍게 대고 원을 그리듯 움직여요",
+          "role": "proof",
+          "section": "usage",
+          "headline": "이렇게 사용하세요"
+        },
+        {
+          "body": "손 마사지가 번거로운 분, 두피 세정감을 더 원하는 분, 욕실 소품도 예쁘게 두고 싶은 분",
+          "role": "proof",
+          "section": "trust",
+          "headline": "이런 분께 추천합니다"
+        },
+        {
+          "body": "한정 수량 / 빠른 배송",
+          "role": "proof",
+          "section": "cta",
+          "headline": "오늘 샤워부터 만나보세요"
+        }
+      ],
+      "keyMessageVariations": {
+        "mid": "돌기 구조로 두피 전체를 자극해요",
+        "top": "매일 샴푸, 두피는 그대로였다",
+        "bottom": "오늘 샤워부터 바로 시작하세요"
+      },
+      "sizeComparisonObject": "iphone"
+    }
+  },
+  "design_prompts": {
+    "lighting_params": {
+      "direction": "top-left",
+      "intensity": 0.85,
+      "shadow_angle": 45,
+      "ambient_level": 0.35,
+      "color_temperature": "warm"
+    }
+  },
+  "section_images": [
+    {
+      "section": "hero",
+      "url": "https://img.test/p03-hero.png"
+    },
+    {
+      "section": "problem",
+      "url": "https://img.test/p03-problem.png"
+    },
+    {
+      "section": "solution",
+      "url": "https://img.test/p03-solution.png"
+    },
+    {
+      "section": "usage",
+      "url": "https://img.test/p03-usage.png"
+    },
+    {
+      "section": "cta",
+      "url": "https://img.test/p03-cta.png"
+    },
+    {
+      "section": "features:0",
+      "url": "https://img.test/p03-features-0.png"
+    },
+    {
+      "section": "features:1",
+      "url": "https://img.test/p03-features-1.png"
+    },
+    {
+      "section": "features:2",
+      "url": "https://img.test/p03-features-2.png"
+    },
+    {
+      "section": "features:3",
+      "url": "https://img.test/p03-features-3.png"
+    },
+    {
+      "section": "howto:0",
+      "url": "https://img.test/p03-howto-0.png"
+    },
+    {
+      "section": "howto:1",
+      "url": "https://img.test/p03-howto-1.png"
+    },
+    {
+      "section": "howto:2",
+      "url": "https://img.test/p03-howto-2.png"
+    },
+    {
+      "section": "usp_icons:0",
+      "url": "https://img.test/p03-usp_icons-0.png"
+    },
+    {
+      "section": "usp_icons:1",
+      "url": "https://img.test/p03-usp_icons-1.png"
+    },
+    {
+      "section": "usp_icons:2",
+      "url": "https://img.test/p03-usp_icons-2.png"
+    },
+    {
+      "section": "usp_icons:3",
+      "url": "https://img.test/p03-usp_icons-3.png"
+    },
+    {
+      "section": "product_exposure",
+      "url": "https://img.test/p03-product_exposure.png"
+    },
+    {
+      "section": "empathy_scene",
+      "url": "https://img.test/p03-empathy_scene.png"
+    },
+    {
+      "section": "direction_hint",
+      "url": "https://img.test/p03-direction_hint.png"
+    },
+    {
+      "section": "key_benefit_visual",
+      "url": "https://img.test/p03-key_benefit_visual.png"
+    },
+    {
+      "section": "premium_hero",
+      "url": "https://img.test/p03-premium_hero.png"
+    },
+    {
+      "section": "concept_mood",
+      "url": "https://img.test/p03-concept_mood.png"
+    },
+    {
+      "section": "comparison_scene",
+      "url": "https://img.test/p03-comparison_scene.png"
+    },
+    {
+      "section": "rating_bg",
+      "url": "https://img.test/p03-rating_bg.png"
+    }
+  ]
+}

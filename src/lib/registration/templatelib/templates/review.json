@@ -1,0 +1,3031 @@
+[
+  {
+    "id": "review.stack-cards",
+    "section": "review",
+    "name": "요약 + 쌓은 후기 카드",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "rating",
+        "slot": "rating",
+        "value": true,
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "count",
+        "token": "BODY_BOLD",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "C",
+            "nodes": [
+              {
+                "kind": "rating",
+                "slot": "stars",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "quote",
+                "token": "BODY",
+                "gapAfter": "rowGap"
+              },
+              {
+                "kind": "text",
+                "slot": "name",
+                "token": "CAPTION"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "rating": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "count": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.count"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 5,
+        "fields": {
+          "stars": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 3,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.stars"
+          },
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 7
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.stack-cards"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.stack-cards.html",
+    "estimatedHeight": {
+      "min": 1300,
+      "max": 5090
+    },
+    "height": 3200
+  },
+  {
+    "id": "review.big-quote",
+    "section": "review",
+    "name": "큰 후기 한 줄 + 나머지 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "text",
+        "slot": "top",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "topName",
+        "token": "CAPTION",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "align": "center",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "top": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 28,
+        "maxLines": 4,
+        "claimRisk": "effect",
+        "input": "review.quote"
+      },
+      "topName": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 8,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.name"
+      },
+      "items": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "review.items",
+        "min": 1,
+        "max": 4,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 40,
+            "maxLines": 4,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.big-quote"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.big-quote.html",
+    "estimatedHeight": {
+      "min": 660,
+      "max": 2880
+    },
+    "height": 1770
+  },
+  {
+    "id": "review.photo-cards",
+    "section": "review",
+    "name": "사진 후기 — 사진 위 + 글 아래 쌓기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo",
+            "w": 440,
+            "gapAfter": "rowGap"
+          },
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 2,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "scene"
+            ],
+            "composition": [
+              "in_use",
+              "in_hand"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 500
+          },
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 33,
+            "maxLines": 3,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 2,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.photo-cards"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.photo-cards.html",
+    "estimatedHeight": {
+      "min": 2210,
+      "max": 2960
+    },
+    "height": 2590
+  },
+  {
+    "id": "review.dark-band",
+    "section": "review",
+    "name": "어두운 띠 후기",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "REVIEW",
+            "gapAfter": "rowGap"
+          },
+          {
+            "kind": "rating",
+            "slot": "rating",
+            "value": true,
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "count",
+            "token": "BODY_BOLD",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "rule": true,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "quote",
+                "token": "BODY",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "name",
+                "token": "CAPTION"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rating": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "count": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.count"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 6
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "pro-navy"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.dark-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.dark-band.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 2900
+    },
+    "height": 2020
+  },
+  {
+    "id": "review.keywords",
+    "section": "review",
+    "name": "큰 평점 + 키워드 + 짧은 후기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "score",
+        "token": "DISPLAY",
+        "align": "center",
+        "color": "accent",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "rating",
+        "slot": "rating",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "count",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "tags",
+        "slot": "keywords",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "align": "center",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "score": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "rating": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "count": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.count"
+      },
+      "keywords": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "review.keywords",
+        "min": 1,
+        "max": 6,
+        "fields": {}
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 40,
+            "maxLines": 4,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review",
+        "rating"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 3,
+        "max": 7
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.keywords"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.keywords.html",
+    "estimatedHeight": {
+      "min": 990,
+      "max": 3120
+    },
+    "height": 2060
+  },
+  {
+    "id": "review.bubbles",
+    "section": "review",
+    "name": "말풍선 후기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "T",
+            "radius": "bubble",
+            "tail": "bl",
+            "w": 680,
+            "gapAfter": "tightGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "quote",
+                "token": "BODY"
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 5,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 8,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.bubbles"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "bubble"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.bubbles.html",
+    "estimatedHeight": {
+      "min": 1440,
+      "max": 5480
+    },
+    "height": 3460
+  },
+  {
+    "id": "review.center-cards",
+    "section": "review",
+    "name": "가운데 요약 + 가운데 후기 상자",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "align": "center",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "C",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "quote",
+                "token": "BODY",
+                "align": "center",
+                "gapAfter": "rowGap"
+              },
+              {
+                "kind": "text",
+                "slot": "name",
+                "token": "CAPTION",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.center-cards"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.center-cards.html",
+    "estimatedHeight": {
+      "min": 1280,
+      "max": 3510
+    },
+    "height": 2400
+  },
+  {
+    "id": "review.photo-grid",
+    "section": "review",
+    "name": "왼쪽 제목 + 사용 사진 2×2 + 후기 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "shots",
+        "columns": 2,
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo"
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 4,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "scene"
+            ],
+            "composition": [
+              "in_use",
+              "in_hand",
+              "closeup",
+              "top"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 500
+          }
+        }
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 4,
+      "facts": {
+        "min": 1,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.photo-grid"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.photo-grid.html",
+    "estimatedHeight": {
+      "min": 1860,
+      "max": 3750
+    },
+    "height": 2810
+  },
+  {
+    "id": "review.rule-rows",
+    "section": "review",
+    "name": "왼쪽 제목 + 줄로 나눈 후기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.rule-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.rule-rows.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 3230
+    },
+    "height": 2180
+  },
+  {
+    "id": "review.bars-quotes",
+    "section": "review",
+    "name": "왼쪽 제목 + 별점 분포 막대 + 후기 두 개",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "bars",
+        "slot": "bars",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "bars": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.ratingBars",
+        "min": 5,
+        "max": 5,
+        "fields": {
+          "star": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 1,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.ratingBars.star"
+          },
+          "count": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.ratingBars.count"
+          },
+          "share": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.ratingBars.share"
+          }
+        }
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 2,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 7,
+        "max": 7
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.bars-quotes"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.bars-quotes.html",
+    "estimatedHeight": {
+      "min": 1600,
+      "max": 2530
+    },
+    "height": 2070
+  },
+  {
+    "id": "review.tint-band",
+    "section": "review",
+    "name": "옅은 띠 가운데 후기",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "REVIEW",
+            "align": "center",
+            "gapAfter": "rowGap"
+          },
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "align": "center",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "gap": "itemGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "quote",
+                "token": "BODY",
+                "align": "center",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "name",
+                "token": "CAPTION",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.tint-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.tint-band.html",
+    "estimatedHeight": {
+      "min": 1110,
+      "max": 3180
+    },
+    "height": 2150
+  },
+  {
+    "id": "review.photo-top",
+    "section": "review",
+    "name": "풀폭 사진 먼저 + 줄로 나눈 후기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.photo-top"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.photo-top.html",
+    "estimatedHeight": {
+      "min": 2240,
+      "max": 3760
+    },
+    "height": 3000
+  },
+  {
+    "id": "review.bleed-center",
+    "section": "review",
+    "name": "가운데 후기 + 풀폭 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "align": "center",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "itemGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "align": "center",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.bleed-center"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.bleed-center.html",
+    "estimatedHeight": {
+      "min": 2220,
+      "max": 3720
+    },
+    "height": 2970
+  },
+  {
+    "id": "review.inset-card",
+    "section": "review",
+    "name": "후기 상자 쌓기 + 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "C",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "quote",
+                "token": "BODY",
+                "gapAfter": "rowGap"
+              },
+              {
+                "kind": "text",
+                "slot": "name",
+                "token": "CAPTION"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.inset-card"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.inset-card.html",
+    "estimatedHeight": {
+      "min": 2360,
+      "max": 3940
+    },
+    "height": 3150
+  },
+  {
+    "id": "review.plate-quote",
+    "section": "review",
+    "name": "판 위 사진 + 큰 후기 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "top",
+        "token": "H2",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "topName",
+        "token": "CAPTION"
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "top": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 28,
+        "maxLines": 4,
+        "claimRisk": "effect",
+        "input": "review.quote"
+      },
+      "topName": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 8,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.name"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.plate-quote"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.plate-quote.html",
+    "estimatedHeight": {
+      "min": 1630,
+      "max": 1850
+    },
+    "height": 1740
+  },
+  {
+    "id": "review.side-rule",
+    "section": "review",
+    "name": "사진 옆 줄로 나눈 후기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T",
+      "D"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "repeat",
+                "slot": "items",
+                "rule": true,
+                "gap": "rowGap",
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "quote",
+                    "token": "BODY",
+                    "gapAfter": "tightGap"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "name",
+                    "token": "CAPTION"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 1,
+        "max": 2,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 24,
+            "maxLines": 5,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.side-rule"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.side-rule.html",
+    "estimatedHeight": {
+      "min": 900,
+      "max": 2260
+    },
+    "height": 1580
+  },
+  {
+    "id": "review.dark-cards",
+    "section": "review",
+    "name": "짙은 띠 위 흰 후기 카드 줄 + 풀폭 사진",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "REVIEW",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "gap": "tightGap",
+            "nodes": [
+              {
+                "kind": "panel",
+                "fill": "C",
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "quote",
+                    "token": "BODY",
+                    "gapAfter": "tightGap"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "name",
+                    "token": "CAPTION"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 48,
+            "maxLines": 5,
+            "claimRisk": "none",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "dark-performance",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.dark-cards"
+      ]
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.dark-cards.html",
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "band"
+    },
+    "estimatedHeight": {
+      "min": 1810,
+      "max": 2710
+    },
+    "height": 2260
+  }
+]

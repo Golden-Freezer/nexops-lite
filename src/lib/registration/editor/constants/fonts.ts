@@ -1,7 +1,12 @@
 // ─── 폰트 옵션 (TextToolbar / RightPanel 공유) ──────────────────────────────
-// 전 폰트 무료 상업용 라이선스 확인본만 등록한다 (트랙 7).
-// license: OFL = SIL Open Font License / 무료상업 = 배포처 무료 상업용 고지
-// 로딩: Google Fonts link 또는 CDN @font-face — frontend/src/app/layout.tsx 참조
+// 라이선스 원문(SIL OFL 1.1)을 확인한 글꼴만 등록한다 — 출처·예약 이름·가공 내역은 public/fonts/pdp/NOTICE.md.
+// license: OFL = SIL Open Font License 1.1(원문 확인) / 확인 못 함 = 원문을 확인하지 못해 파일을 보관하지 않음
+// 로딩: 자체 보관 /fonts/pdp/fonts.css(루트 layout — 앱 전체·편집기·미리보기, 내보내기 HTML). 목록을 바꾸면 fonts.css도 함께 바꾼다(fonts-selfhost.test).
+
+/** 자체 보관 글꼴 스타일시트 — 루트 layout(src/app/layout.tsx)이 같은 출처 경로로 싣는다(편집기·미리보기 포함) */
+export const PDP_FONT_CSS_PATH = '/fonts/pdp/fonts.css';
+/** 앱 출처가 없는 단독 HTML(내보내기·평가 캡처)용 운영 출처 주소 — next.config가 /fonts/pdp에 교차 출처 허용을 붙인다 */
+export const PDP_FONT_CSS_URL = `https://nexops-one.vercel.app${PDP_FONT_CSS_PATH}`;
 
 export interface FontOption {
   label: string;
@@ -19,7 +24,7 @@ export const BRAND_FONTS: FontOption[] = [
   { label: 'Pretendard Medium',   fontFamily: 'Pretendard', fontWeight: 500, group: 'brand', license: 'OFL' },
   { label: 'Pretendard Bold',     fontFamily: 'Pretendard', fontWeight: 700, group: 'brand', license: 'OFL' },
   { label: 'Pretendard Black',    fontFamily: 'Pretendard', fontWeight: 900, group: 'brand', license: 'OFL' },
-  { label: 'GmarketSans Bold',    fontFamily: 'GmarketSansBold', fontWeight: 700, group: 'brand', license: '무료상업(G마켓 고지)' },
+  { label: 'GmarketSans Bold',    fontFamily: 'GmarketSansBold', fontWeight: 700, group: 'brand', license: 'OFL' },
 ];
 
 /** 추가 폰트 — 고딕 계열 */
@@ -39,8 +44,11 @@ export const GOTHIC_FONTS: FontOption[] = [
   { label: 'SUIT Bold',             fontFamily: 'SUIT Variable', fontWeight: 700, group: 'gothic', license: 'OFL' },
   { label: 'Wanted Sans',           fontFamily: 'Wanted Sans Variable', fontWeight: 400, group: 'gothic', license: 'OFL' },
   { label: 'Wanted Sans Bold',      fontFamily: 'Wanted Sans Variable', fontWeight: 700, group: 'gothic', license: 'OFL' },
-  { label: 'LINE Seed',             fontFamily: 'LINE Seed Sans KR', fontWeight: 400, group: 'gothic', license: '무료상업(LINE OFL)' },
-  { label: 'LINE Seed Bold',        fontFamily: 'LINE Seed Sans KR', fontWeight: 700, group: 'gothic', license: '무료상업(LINE OFL)' },
+  { label: 'Paperlogy',             fontFamily: 'Paperlogy', fontWeight: 400, group: 'gothic', license: 'OFL' },
+  { label: 'Paperlogy Bold',        fontFamily: 'Paperlogy', fontWeight: 700, group: 'gothic', license: 'OFL' },
+  { label: 'Paperlogy ExtraBold',   fontFamily: 'Paperlogy', fontWeight: 800, group: 'gothic', license: 'OFL' },
+  { label: 'LINE Seed',             fontFamily: 'LINE Seed Sans KR', fontWeight: 400, group: 'gothic', license: 'OFL' },
+  { label: 'LINE Seed Bold',        fontFamily: 'LINE Seed Sans KR', fontWeight: 700, group: 'gothic', license: 'OFL' },
 ];
 
 /** 추가 폰트 — 명조/세리프 계열 */
@@ -60,7 +68,6 @@ export const DISPLAY_FONTS: FontOption[] = [
   { label: 'Black Han Sans',   fontFamily: 'Black Han Sans', fontWeight: 400, group: 'display', license: 'OFL' },
   { label: 'Do Hyeon',         fontFamily: 'Do Hyeon', fontWeight: 400, group: 'display', license: 'OFL' },
   { label: 'Jua',              fontFamily: 'Jua', fontWeight: 400, group: 'display', license: 'OFL' },
-  { label: 'Cafe24 Ssurround', fontFamily: 'Cafe24 Ssurround', fontWeight: 700, group: 'display', license: '무료상업(카페24 고지)' },
   { label: 'Gugi',             fontFamily: 'Gugi', fontWeight: 400, group: 'display', license: 'OFL' },
 ];
 
@@ -68,6 +75,14 @@ export const DISPLAY_FONTS: FontOption[] = [
 export const HANDWRITING_FONTS: FontOption[] = [
   { label: 'Nanum Pen Script', fontFamily: 'Nanum Pen Script', fontWeight: 400, group: 'handwriting', license: 'OFL' },
   { label: 'Gaegu',            fontFamily: 'Gaegu', fontWeight: 400, group: 'handwriting', license: 'OFL' },
+];
+
+/**
+ * 예전 문서·생성 계획에만 남은 글꼴 — 선택지에는 없다. 라이선스 원문을 확인하지 못해 파일을 보관하지 않고
+ * fonts.css가 같은 이름을 Jua(OFL, 둥근 제목체)로 그린다. 허용 목록에는 남겨 저장 문서·생성 계획의 글꼴 이름을 그대로 둔다.
+ */
+export const LEGACY_FONTS: FontOption[] = [
+  { label: 'Cafe24 Ssurround (Jua로 표시)', fontFamily: 'Cafe24 Ssurround', fontWeight: 700, group: 'display', license: '확인 못 함' },
 ];
 
 /** 추가 폰트 전체 (하위 호환 — 기존 EXTRA_FONTS 소비처용) */
@@ -90,7 +105,7 @@ export const FONT_GROUPS: Array<{ key: FontOption['group']; label: string; fonts
   { key: 'handwriting', label: '손글씨',      fonts: HANDWRITING_FONTS },
 ];
 
-const ALLOWED_FAMILY_SET = new Set(FONT_OPTIONS.map((f) => f.fontFamily));
+const ALLOWED_FAMILY_SET = new Set([...FONT_OPTIONS, ...LEGACY_FONTS].map((f) => f.fontFamily));
 
 /** 생성 파이프라인(font_scheme 등)이 지정한 폰트가 에디터에서 로드 가능한지 검증 */
 export const isAllowedEditorFont = (fontFamily: string): boolean =>

@@ -15,6 +15,8 @@ import SnapGuides from './SnapGuides';
 import MobilePreview from './MobilePreview';
 import CanvasContextMenu from './CanvasContextMenu';
 import type { ContextMenuState } from './CanvasContextMenu';
+import { useEditorRegen } from './regen/useEditorRegen';
+import { useEditorCopyRegen } from './regen/useEditorCopyRegen';
 import { useKeyboardShortcuts } from '@/lib/registration/editor/hooks/useKeyboardShortcuts';
 import { Z_INDEX, MIN_FONT_SIZES } from '@/lib/registration/editor/constants/designTokens';
 import { measureTextBlock } from '@/lib/registration/editor/utils/sectionConverter/measure';
@@ -226,6 +228,11 @@ export default function Canvas() {
   const selectedElementIds = useEditorStore(selectSelectedElementIds);
   const derivativePreview = useEditorStore(selectDerivativePreview);
   const showGrid = useEditorStore(selectShowGrid);
+  // 묶음 5 ③: 생성 컷이면 컨텍스트 메뉴에 'AI 재생성'(잡 section_images의 url과 src가 같을 때만)
+  const pdpId = useEditorStore((s) => s.document?.pdpId ?? '');
+  const regen = useEditorRegen(pdpId);
+  // 묶음 5 카피: 잠기지 않은 글자 요소(1~300자)면 컨텍스트 메뉴에 'AI 카피 다시 쓰기'
+  const copyRegen = useEditorCopyRegen(pdpId);
   const selectSection = useEditorStore((s) => s.selectSection);
   const clearSelection = useEditorStore((s) => s.clearSelection);
   const updateElement = useEditorStore((s) => s.updateElement);
@@ -251,9 +258,6 @@ export default function Canvas() {
   const [isPanning, setIsPanning] = useState(false);
   const isPanningRef = useRef(false);
   const panStartRef = useRef({ x: 0, y: 0, scrollLeft: 0, scrollTop: 0 });
-
-  // ── 마퀴 선택 ──
-  const marqueeStartRef = useRef<{ x: number; y: number } | null>(null);
 
   // 컨텍스트 메뉴 이미지 교체용 hidden file input
   const contextFileInputRef = useRef<HTMLInputElement>(null);
@@ -325,8 +329,6 @@ export default function Canvas() {
       window.open(src, '_blank');
     }
   }, [contextMenu]);
-
-  // AI 재생성(이미지·카피) 모달은 Phase 4 — 백엔드 재생성 API와 함께 이식 예정
 
   // ── localStorage 스크롤 위치 복원 ────
   useEffect(() => {
@@ -1058,8 +1060,19 @@ export default function Canvas() {
           onClose={() => setContextMenu(null)}
           onImageReplace={handleContextImageReplace}
           onImageDownload={handleContextImageDownload}
+          onImageRegenerate={(() => {
+            const src = contextMenu.imageSrc ?? null;
+            const section = regen.sectionForSrc(src);
+            return section && src ? () => regen.open(section, src) : undefined;
+          })()}
+          onTextRegenerate={copyRegen.handlerFor(contextMenu.sectionId, contextMenu.elementId)}
         />
       )}
+
+      {/* AI 재생성 모달·반영 안내(묶음 5 ③) */}
+      {regen.node}
+      {/* AI 카피 다시 쓰기 모달(묶음 5 카피) */}
+      {copyRegen.node}
     </div>
   );
 }

@@ -1,0 +1,2468 @@
+[
+  {
+    "id": "faq.rule-rows",
+    "section": "faq",
+    "name": "FAQ 캡슐 + 제목 + Q·A 표식 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "gapAfter": "tightGap",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "capsule",
+                    "label": "Q"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "question",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "capsule",
+                    "label": "A",
+                    "outline": true
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "answer",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 19,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 27,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance",
+        "pro-navy"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.rule-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.rule-rows.html",
+    "estimatedHeight": {
+      "min": 1070,
+      "max": 3190
+    },
+    "height": 2130
+  },
+  {
+    "id": "faq.card-stack",
+    "section": "faq",
+    "name": "FAQ 캡슐 + Q 상자 쌓기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "C",
+            "nodes": [
+              {
+                "kind": "capsule",
+                "label": "Q",
+                "gapAfter": "rowGap"
+              },
+              {
+                "kind": "text",
+                "slot": "question",
+                "token": "BODY_BOLD",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "answer",
+                "token": "BODY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "dark-performance",
+        "pro-navy"
+      ],
+      "density": "high",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.card-stack"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.card-stack.html",
+    "estimatedHeight": {
+      "min": 1360,
+      "max": 3080
+    },
+    "height": 2220
+  },
+  {
+    "id": "faq.bubbles",
+    "section": "faq",
+    "name": "질문 말풍선 + 답 글",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "T",
+            "radius": "bubble",
+            "tail": "bl",
+            "w": 680,
+            "gapAfter": "rowGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "question",
+                "token": "BODY_BOLD"
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 18,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance",
+        "pro-navy"
+      ],
+      "density": "high",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.bubbles"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "bubble"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.bubbles.html",
+    "estimatedHeight": {
+      "min": 1230,
+      "max": 2860
+    },
+    "height": 2050
+  },
+  {
+    "id": "faq.center-rule",
+    "section": "faq",
+    "name": "가운데 FAQ + 줄로 나눈 질문·답",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "align": "center",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.center-rule"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.center-rule.html",
+    "estimatedHeight": {
+      "min": 1070,
+      "max": 2580
+    },
+    "height": 1830
+  },
+  {
+    "id": "faq.light-band",
+    "section": "faq",
+    "name": "옅은 띠 안 제목 + 질문·답",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "FAQ",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "rule": true,
+            "gap": "itemGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "question",
+                "token": "BODY_BOLD",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "answer",
+                "token": "BODY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.light-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.light-band.html",
+    "estimatedHeight": {
+      "min": 1070,
+      "max": 3190
+    },
+    "height": 2130
+  },
+  {
+    "id": "faq.photo-first",
+    "section": "faq",
+    "name": "풀폭 사진 먼저 + 질문·답",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.photo-first"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.photo-first.html",
+    "estimatedHeight": {
+      "min": 2190,
+      "max": 3690
+    },
+    "height": 2940
+  },
+  {
+    "id": "faq.center-card",
+    "section": "faq",
+    "name": "가운데 FAQ + 가운데 상자 쌓기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "C",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "question",
+                "token": "BODY_BOLD",
+                "align": "center",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "answer",
+                "token": "BODY",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "high",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.center-card"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.center-card.html",
+    "estimatedHeight": {
+      "min": 1160,
+      "max": 2700
+    },
+    "height": 1930
+  },
+  {
+    "id": "faq.center-bubble",
+    "section": "faq",
+    "name": "가운데 질문 말풍선 + 답",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "T",
+            "radius": "bubble",
+            "tail": "bl",
+            "gapAfter": "rowGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "question",
+                "token": "BODY_BOLD",
+                "align": "center"
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.center-bubble"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "bubble"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.center-bubble.html",
+    "estimatedHeight": {
+      "min": 1210,
+      "max": 2810
+    },
+    "height": 2010
+  },
+  {
+    "id": "faq.center-band",
+    "section": "faq",
+    "name": "옅은 띠 가운데 질문·답",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "FAQ",
+            "align": "center",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "gap": "itemGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "question",
+                "token": "BODY_BOLD",
+                "align": "center",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "answer",
+                "token": "BODY",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.center-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.center-band.html",
+    "estimatedHeight": {
+      "min": 1020,
+      "max": 2430
+    },
+    "height": 1730
+  },
+  {
+    "id": "faq.inset-rule",
+    "section": "faq",
+    "name": "Q·A 표식 줄 + 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "gapAfter": "tightGap",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "capsule",
+                    "label": "Q"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "question",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "capsule",
+                    "label": "A",
+                    "outline": true
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "answer",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo"
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 19,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 27,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.inset-rule"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.inset-rule.html",
+    "estimatedHeight": {
+      "min": 2150,
+      "max": 3080
+    },
+    "height": 2620
+  },
+  {
+    "id": "faq.bleed-bottom",
+    "section": "faq",
+    "name": "줄로 나눈 질문·답 + 풀폭 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY"
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.bleed-bottom"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.bleed-bottom.html",
+    "estimatedHeight": {
+      "min": 2190,
+      "max": 3120
+    },
+    "height": 2660
+  },
+  {
+    "id": "faq.inset-card",
+    "section": "faq",
+    "name": "상자 쌓기 질문·답 + 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "C",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "question",
+                "token": "BODY_BOLD",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "answer",
+                "token": "BODY"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo"
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.inset-card"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.inset-card.html",
+    "estimatedHeight": {
+      "min": 2240,
+      "max": 3180
+    },
+    "height": 2710
+  },
+  {
+    "id": "faq.band-head-rows",
+    "section": "faq",
+    "name": "짙은 머리 띠 이름표 + Q 표식 옆 질문·답 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "pad": "blockGap",
+        "gapAfter": "blockGap",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "FAQ",
+            "gapAfter": "rowGap"
+          },
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2"
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "gapAfter": "tightGap",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "capsule",
+                    "label": "Q"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "question",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "capsule",
+                    "label": "A",
+                    "outline": true
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "answer",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 16,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 19,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 27,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "clean-trust",
+        "cool-white-blue",
+        "mono-minimal",
+        "dark-performance",
+        "pro-navy"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.band-head-rows",
+        "spec_table.band-head-rows",
+        "certification.band-head-rows"
+      ]
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.band-head-rows.html",
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "left",
+      "container": "band"
+    },
+    "estimatedHeight": {
+      "min": 1080,
+      "max": 2840
+    },
+    "height": 1960
+  },
+  {
+    "id": "faq.review-quotes",
+    "section": "faq",
+    "name": "후기 질문 FAQ + 구매 고객 답",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "source",
+            "token": "CAPTION",
+            "color": "accent"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "faq.reviews",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "faq.question",
+            "facts": 0,
+            "maxChars": 32,
+            "maxLines": 3,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "faq.answer",
+            "facts": 0,
+            "maxChars": 72,
+            "maxLines": 6,
+            "claimRisk": "effect"
+          },
+          "source": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "faq.source",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance",
+        "pro-navy",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형",
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.review-quotes"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.review-quotes.html",
+    "estimatedHeight": {
+      "min": 1390,
+      "max": 3240
+    },
+    "height": 2320
+  },
+  {
+    "id": "faq.review-center",
+    "section": "faq",
+    "name": "가운데 후기 질문 FAQ + 구매 고객 답",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "FAQ",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "align": "center",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY",
+            "align": "center",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "source",
+            "token": "CAPTION",
+            "color": "accent",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "faq.reviews",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "faq.question",
+            "facts": 0,
+            "maxChars": 32,
+            "maxLines": 3,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "faq.answer",
+            "facts": 0,
+            "maxChars": 72,
+            "maxLines": 6,
+            "claimRisk": "effect"
+          },
+          "source": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "faq.source",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance",
+        "pro-navy",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형",
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.review-center"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.review-center.html",
+    "estimatedHeight": {
+      "min": 1390,
+      "max": 3240
+    },
+    "height": 2320
+  }
+]

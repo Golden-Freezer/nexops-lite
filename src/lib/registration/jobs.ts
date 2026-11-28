@@ -111,15 +111,16 @@ export async function getThumbnailJob(
   return data && data.length > 0 ? toJob(data[0] as JobRow) : null
 }
 
+/** 최근 생성순 목록. before(created_at ISO)를 주면 그보다 앞선 잡만 — 생성 히스토리 페이지 넘김 커서. */
 export async function listThumbnailJobs(
   db: SupabaseClient,
   userId: string,
-  limit = 30
+  limit = 30,
+  before?: string | null
 ): Promise<ThumbnailJob[]> {
-  const { data, error } = await db
-    .from(TABLE)
-    .select(SELECT)
-    .eq('user_id', userId)
+  let query = db.from(TABLE).select(SELECT).eq('user_id', userId)
+  if (before) query = query.lt('created_at', before)
+  const { data, error } = await query
     .order('created_at', { ascending: false })
     .limit(limit)
   if (error) throw new Error(`썸네일 잡 목록 조회 실패: ${error.message}`)

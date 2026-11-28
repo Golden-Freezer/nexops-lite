@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ThinTopBar from './ThinTopBar';
 import FloatingPill from './FloatingPill';
 import LeftPanel from './LeftPanel';
@@ -8,6 +8,7 @@ import MainCanvas from './MainCanvas';
 import RightPanel from './RightPanel';
 import ZoomControl from './ZoomControl';
 import ShortcutHelpModal from './ShortcutHelpModal';
+import MobileEditorViewer from './MobileEditorViewer';
 import { useEditorStore, selectDocument } from '@/lib/registration/editor/stores/editorStore';
 import { useAutoSave } from '@/lib/registration/editor/hooks/useAutoSave';
 import { useIsDesktopViewport } from '@/lib/registration/editor/hooks/useIsDesktopViewport';
@@ -18,7 +19,7 @@ interface ProEditorPageProps {
 
 /**
  * 캔버스 에디터는 3패널 데스크탑 전용 레이아웃 — 모바일(<1024px)에서는
- * PC 접속 안내를 표시한다(모바일 읽기 전용 뷰어는 Phase 4).
+ * 읽기 전용 뷰어(MobileEditorViewer, 묶음 5 ①)를 띄운다 — 편집기 스토어·자동 저장을 쓰지 않는다.
  * 데스크탑 셸(DesktopEditorShell)은 분리된 컴포넌트라야 useAutoSave 등
  * 편집 전용 훅이 모바일에서 조건부로 호출되는 일(훅 규칙 위반)이 없다.
  */
@@ -26,11 +27,7 @@ export default function ProEditorPage({ pdpId }: ProEditorPageProps) {
   const isDesktop = useIsDesktopViewport();
 
   if (isDesktop === false) {
-    return (
-      <div className="h-screen flex items-center justify-center px-6 text-center text-sm text-[var(--text-secondary)]">
-        상세페이지 에디터는 PC(1024px 이상) 화면에서 사용할 수 있습니다.
-      </div>
-    );
+    return <MobileEditorViewer pdpId={pdpId} />;
   }
 
   // isDesktop === null(SSR/최초 프레임, 미결정)에서도 빈 배경만 그려 서버 렌더와

@@ -1,0 +1,4872 @@
+[
+  {
+    "id": "hook_3step.stationery-applied-set",
+    "section": "hook_3step",
+    "name": "붙인 컷·구성 컷 먼저 + 큰 제목 + 보조",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "left",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "HOOK",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "hero"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "front"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "hook_3step.stationery-applied-set"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hook_3step.stationery-applied-set.html",
+    "estimatedHeight": {
+      "min": 1670,
+      "max": 1900
+    },
+    "height": 1790
+  },
+  {
+    "id": "main_cut.stationery-set-tags",
+    "section": "main_cut",
+    "name": "풀폭 구성 컷 + 가운데 제목 + 2장 이름표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "lead",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "shots",
+        "columns": 2,
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "shot",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "tags",
+            "slot": "label",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 2,
+        "fields": {
+          "shot": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "group",
+              "quantity",
+              "state",
+              "feature_proof"
+            ],
+            "composition": [
+              "flatlay",
+              "group",
+              "top",
+              "closeup"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 500
+          },
+          "label": {
+            "type": "text",
+            "required": false,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "lead": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group",
+          "quantity",
+          "state",
+          "feature_proof"
+        ],
+        "composition": [
+          "flatlay",
+          "group",
+          "top",
+          "closeup"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.stationery-set-tags"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.stationery-set-tags.html",
+    "estimatedHeight": {
+      "min": 1720,
+      "max": 2070
+    },
+    "height": 1900
+  },
+  {
+    "id": "sub2_div_page.stationery-applied-mosaic",
+    "section": "sub2_div_page",
+    "name": "붙인 컷 큰 1장 + 작은 2장 + 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "first"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "second",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "third"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD"
+      }
+    ],
+    "slots": {
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "second": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "group"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "third": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.stationery-applied-mosaic"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub2_div_page.stationery-applied-mosaic.html",
+    "estimatedHeight": {
+      "min": 830,
+      "max": 1060
+    },
+    "height": 950
+  },
+  {
+    "id": "product_exposure.stationery-scale-trio",
+    "section": "product_exposure",
+    "name": "크기 컷 크게 + 근접·구성 나란히, 가운데 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "size",
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "size": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale"
+        ],
+        "composition": [
+          "in_hand",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "quantity",
+          "group"
+        ],
+        "composition": [
+          "flatlay",
+          "group"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "product_exposure.stationery-scale-trio"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/product_exposure.stationery-scale-trio.html",
+    "estimatedHeight": {
+      "min": 1440,
+      "max": 1680
+    },
+    "height": 1560
+  },
+  {
+    "id": "solution_guide.stationery-stick-checks",
+    "section": "solution_guide",
+    "name": "해결 선언 + 붙이는 컷·붙인 컷 나란히 + 체크 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "solution_guide.stationery-stick-checks"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/solution_guide.stationery-stick-checks.html",
+    "estimatedHeight": {
+      "min": 1560,
+      "max": 2250
+    },
+    "height": 1910
+  },
+  {
+    "id": "spec_table.stationery-pair-center-rows",
+    "section": "spec_table",
+    "name": "가운데 머리표 + 구성 크게·크기 좁게 + 가운데 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "quantity",
+          "group",
+          "package"
+        ],
+        "composition": [
+          "flatlay",
+          "group"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_hand",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 588
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.stationery-pair-center-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.stationery-pair-center-rows.html",
+    "estimatedHeight": {
+      "min": 1190,
+      "max": 4440
+    },
+    "height": 2820
+  },
+  {
+    "id": "option_gallery.stationery-lead-tags",
+    "section": "option_gallery",
+    "name": "제목 + 모음 컷 + 구분선 + 옵션 2열, 사진마다 이름표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "image",
+        "slot": "lead",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "divider",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "swatches",
+        "columns": 2,
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "tags",
+            "slot": "name"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "lead": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group"
+        ],
+        "composition": [
+          "group",
+          "flatlay"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "swatches": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "option.images",
+        "min": 2,
+        "max": 6,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "color"
+            ],
+            "composition": [
+              "front",
+              "flatlay"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 500
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "option.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "option"
+      ],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "option_gallery.stationery-lead-tags"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/option_gallery.stationery-lead-tags.html",
+    "estimatedHeight": {
+      "min": 1720,
+      "max": 3240
+    },
+    "height": 2480
+  },
+  {
+    "id": "hook_3step.sticker-center-applied-sub",
+    "section": "hook_3step",
+    "name": "스티커 첫 화면 — 가운데 큰 제목 + 붙인 모습 큰 컷 + 가운데 보조",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "HOOK",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "applied",
+        "bleed": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      },
+      "applied": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "hero"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "front"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ],
+      "productFamilies": [
+        "sticker_deco"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "hook_3step.sticker-center-applied-sub"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hook_3step.sticker-center-applied-sub.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 1880
+    },
+    "height": 1700
+  },
+  {
+    "id": "main_cut.sticker-title-mosaic-bleed",
+    "section": "main_cut",
+    "name": "스티커 메인 — 가운데 제목·보조 + 붙인 컷 크게·시트·카드 작게 + 구성 풀폭",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "set",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "applied"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "sheet",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "card"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "applied": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "sheet": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "group"
+        ],
+        "composition": [
+          "front",
+          "flatlay"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "card": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "quantity"
+        ],
+        "composition": [
+          "in_use",
+          "group"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "set": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group",
+          "quantity",
+          "state"
+        ],
+        "composition": [
+          "flatlay",
+          "group",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 4,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ],
+      "productFamilies": [
+        "sticker_deco"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.sticker-title-mosaic-bleed"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.sticker-title-mosaic-bleed.html",
+    "estimatedHeight": {
+      "min": 1810,
+      "max": 2400
+    },
+    "height": 2110
+  },
+  {
+    "id": "sub2_div_page.sticker-plate-wide-narrow-caption",
+    "section": "sub2_div_page",
+    "name": "스티커 사진 막 — 판 깐 붙인 컷 + 붙인 장면 크게·근접 좁게 + 가운데 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "applied",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "scene"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "close"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "applied": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "scene": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "group"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "close": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_use"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 588
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ],
+      "productFamilies": [
+        "sticker_deco"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.sticker-plate-wide-narrow-caption"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub2_div_page.sticker-plate-wide-narrow-caption.html",
+    "estimatedHeight": {
+      "min": 1470,
+      "max": 1710
+    },
+    "height": 1590
+  },
+  {
+    "id": "problem_raise.stationery-center-question-plate",
+    "section": "problem_raise",
+    "name": "가운데 큰 질문 + 판 깐 고민 컷 + 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        }
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "item",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_raise.stationery-center-question-plate"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_raise.stationery-center-question-plate.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 2210
+    },
+    "height": 1870
+  },
+  {
+    "id": "problem_empathy.stationery-band-first-offset",
+    "section": "problem_empathy",
+    "name": "연한 띠 안 왼쪽 제목·글 먼저 + 어긋난 고민 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2",
+            "gapAfter": "titleGap"
+          },
+          {
+            "kind": "text",
+            "slot": "sub",
+            "token": "BODY"
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 24,
+        "maxLines": 5,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_empathy.stationery-band-first-offset"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_empathy.stationery-band-first-offset.html",
+    "estimatedHeight": {
+      "min": 1370,
+      "max": 1710
+    },
+    "height": 1540
+  },
+  {
+    "id": "key_message.stationery-line-first-plate",
+    "section": "key_message",
+    "name": "가운데 제목·글 먼저 + 판 깐 붙인 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        }
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "scene"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "key_message.stationery-line-first-plate"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/key_message.stationery-line-first-plate.html",
+    "estimatedHeight": {
+      "min": 1560,
+      "max": 2150
+    },
+    "height": 1860
+  },
+  {
+    "id": "point_div.stationery-plate-texture-note",
+    "section": "point_div",
+    "name": "표준 머리 + 판 깐 재질 근접 컷 + 사진 설명 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "note",
+        "token": "CAPTION",
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "angle45"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 560
+      },
+      "note": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 20,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.stationery-plate-texture-note"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "offset",
+      "align": "left",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.stationery-plate-texture-note.html",
+    "estimatedHeight": {
+      "min": 1300,
+      "max": 2620
+    },
+    "height": 1960
+  },
+  {
+    "id": "sub_div.stationery-scale-pair-between",
+    "section": "sub_div",
+    "name": "제목 + 근접·크기 컷 나란히 + 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "wide"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "narrow"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "desc",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "desc": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "wide": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "narrow": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub_div.stationery-scale-pair-between"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub_div.stationery-scale-pair-between.html",
+    "estimatedHeight": {
+      "min": 1140,
+      "max": 1610
+    },
+    "height": 1380
+  },
+  {
+    "id": "hidden_page.stationery-title-plate-rows",
+    "section": "hidden_page",
+    "name": "제목 먼저 + 판 깐 근접 컷 + 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        }
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "item",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof",
+          "state"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "hidden_page.stationery-title-plate-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hidden_page.stationery-title-plate-rows.html",
+    "estimatedHeight": {
+      "min": 1860,
+      "max": 2400
+    },
+    "height": 2130
+  },
+  {
+    "id": "petit_div.stationery-line-first-pair",
+    "section": "petit_div",
+    "name": "왼쪽 한 줄 먼저 + 넓은 책상 컷·좁은 붙인 컷, 사실 없음",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "line",
+        "token": "H2",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "line": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "petit_div.stationery-line-first-pair"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/petit_div.stationery-line-first-pair.html",
+    "estimatedHeight": {
+      "min": 1140,
+      "max": 1250
+    },
+    "height": 1200
+  },
+  {
+    "id": "direction_suggest.stationery-scene-stack",
+    "section": "direction_suggest",
+    "name": "제목 + 장면마다 사진 위·한 줄 아래(다꾸·노트·선물)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "scenes",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "note",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "scenes": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "action",
+              "scene"
+            ],
+            "composition": [
+              "in_use",
+              "in_hand"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 395
+          },
+          "note": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "direction_suggest.stationery-scene-stack"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/direction_suggest.stationery-scene-stack.html",
+    "estimatedHeight": {
+      "min": 2870,
+      "max": 4570
+    },
+    "height": 3720
+  },
+  {
+    "id": "point_list_div.stationery-photo-note-rows",
+    "section": "point_list_div",
+    "name": "왼쪽 제목 + 사진|굵은 한 줄 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 296,
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "photo"
+                  }
+                ]
+              },
+              {
+                "w": 420,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 4,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          },
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "texture",
+              "color"
+            ],
+            "composition": [
+              "closeup",
+              "top",
+              "angle45"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 395
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_list_div.stationery-photo-note-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_list_div.stationery-photo-note-rows.html",
+    "estimatedHeight": {
+      "min": 1700,
+      "max": 2340
+    },
+    "height": 2020
+  },
+  {
+    "id": "concept_desc.stationery-title-plate-story",
+    "section": "concept_desc",
+    "name": "제목 + 판 깐 구성 컷 + 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "story",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "story": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group",
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "concept_desc.stationery-title-plate-story"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/concept_desc.stationery-title-plate-story.html",
+    "estimatedHeight": {
+      "min": 1430,
+      "max": 2060
+    },
+    "height": 1750
+  },
+  {
+    "id": "cta.stationery-text-first-pair",
+    "section": "cta",
+    "name": "왼쪽 제목·글 먼저 + 넓은 구성 컷·좁은 포장 컷으로 끝",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "tightGap",
+        "emphasis": true
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "group"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "cta.stationery-text-first-pair"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/cta.stationery-text-first-pair.html",
+    "estimatedHeight": {
+      "min": 1190,
+      "max": 1750
+    },
+    "height": 1470
+  },
+  {
+    "id": "convert_div.stationery-inset-center-close",
+    "section": "convert_div",
+    "name": "본문 폭 붙이는 컷 먼저 + 가운데 제목·글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "tightGap",
+        "emphasis": true,
+        "align": "center"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "convert_div.stationery-inset-center-close"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/convert_div.stationery-inset-center-close.html",
+    "estimatedHeight": {
+      "min": 1590,
+      "max": 2150
+    },
+    "height": 1870
+  },
+  {
+    "id": "compare.stationery-title-first-checks",
+    "section": "compare",
+    "name": "제목 먼저 + 넓은·좁은 컷 + 체크 줄, 우리 장점만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "row",
+        "gapAfter": "photoGap",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "wide"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "narrow"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "wide": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "narrow": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.stationery-title-first-checks"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.stationery-title-first-checks.html",
+    "estimatedHeight": {
+      "min": 1530,
+      "max": 2200
+    },
+    "height": 1870
+  },
+  {
+    "id": "review.stationery-offset-between-quotes",
+    "section": "review",
+    "name": "머리표·제목 + 어긋난 붙인 컷 + 후기(구분선 없음), 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.stationery-offset-between-quotes"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.stationery-offset-between-quotes.html",
+    "estimatedHeight": {
+      "min": 2020,
+      "max": 3520
+    },
+    "height": 2770
+  },
+  {
+    "id": "faq.stationery-rows-offset-end",
+    "section": "faq",
+    "name": "제목 + 질문·답 + 끝에 어긋난 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY"
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.stationery-rows-offset-end"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.stationery-rows-offset-end.html",
+    "estimatedHeight": {
+      "min": 1980,
+      "max": 3640
+    },
+    "height": 2810
+  },
+  {
+    "id": "perf_metric.stationery-score-plate-end",
+    "section": "perf_metric",
+    "name": "큰 평점·별·후기 수 먼저 + 판 깐 붙인 컷, 수치는 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "score",
+        "token": "DISPLAY",
+        "color": "accent",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "rating",
+        "slot": "stars",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "count",
+        "token": "BODY_BOLD",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        }
+      }
+    ],
+    "slots": {
+      "score": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "stars": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "count": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "none",
+        "input": "review.count"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "hero"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "rating"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "perf_metric.stationery-score-plate-end"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/perf_metric.stationery-score-plate-end.html",
+    "estimatedHeight": {
+      "min": 1410,
+      "max": 1640
+    },
+    "height": 1530
+  },
+  {
+    "id": "certification.stationery-center-offset-names",
+    "section": "certification",
+    "name": "가운데 제목 + 어긋난 포장 컷 + 인증 줄(구분선 없음), 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "regulated"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "certification.items",
+        "min": 1,
+        "max": 4,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none",
+            "input": "certification.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "certification"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "certification.stationery-center-offset-names"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/certification.stationery-center-offset-names.html",
+    "estimatedHeight": {
+      "min": 1430,
+      "max": 2390
+    },
+    "height": 1910
+  },
+  {
+    "id": "event_offer.stationery-offer-first-plate",
+    "section": "event_offer",
+    "name": "가운데 혜택 먼저 + 판 깐 구성 컷, 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "offer",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        }
+      }
+    ],
+    "slots": {
+      "offer": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none",
+        "input": "offer.info"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group",
+          "quantity"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 560
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "offer"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "nordic-light",
+        "simple-life",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "stationery"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "event_offer.stationery-offer-first-plate"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/event_offer.stationery-offer-first-plate.html",
+    "estimatedHeight": {
+      "min": 1170,
+      "max": 1390
+    },
+    "height": 1280
+  }
+]

@@ -3,8 +3,10 @@
  * Vision은 속성 추출만 한다(프롬프트 저작 금지 — 원본 P4 교훈). callAgent 경유(재시도·예산·로그).
  */
 
+import { billedCostOf } from '../billed-usage'
+import type { ImageBlockParam } from '@/lib/agents/llm/message-types'
 import type { AgentConfig, AgentOutput, RunContext } from '../types'
-import { callAgent, type ImageBlockParam } from '../_base'
+import { callAgent } from '../_base'
 import { parseLlmJson } from '../json-parser'
 import {
   buildVisionAnalysisPrompt,
@@ -42,10 +44,13 @@ const CONCEPT_CONFIG: AgentConfig = {
   temperature: 0.7,
 }
 
-/** 이미지 URL → base64 (실패 시 null — 호출부가 유효분만 사용, cluster-agent 패턴) */
-export async function fetchImageAsBase64(url: string): Promise<VisionImage | null> {
+/** 참조·생성 이미지 1장 내려받기 상한 — 무응답 URL 하나가 run(maxDuration 120초)을 다 쓰지 않게 한다 */
+export const IMAGE_FETCH_TIMEOUT_MS = 25_000
+
+/** 이미지 URL → base64 (실패·시간 초과 시 null — 호출부가 유효분만 사용, cluster-agent 패턴) */
+export async function fetchImageAsBase64(url: string, timeoutMs = IMAGE_FETCH_TIMEOUT_MS): Promise<VisionImage | null> {
   try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(timeoutMs) })
     if (!res.ok) return null
     const buf = await res.arrayBuffer()
     const data = Buffer.from(buf).toString('base64')
@@ -173,8 +178,8 @@ export async function planImpactConcept(
       return concept.slice(0, 600)
     }
   )
-  if (result.success) return { concept: result.data, costUsd: result.usage.cost }
+  if (result.success) return { concept: result.data, costUsd: billedCostOf(result) }
   // 폴백 경로 — 조용히 삼키지 않고 원인은 남긴다(원본 logger.warning 대응)
   console.warn('[registration/thumbnail] 임팩트 컨셉 계획 실패 — 결정론 폴백 사용:', result.error.message)
-  return { concept: null, costUsd: result.usage.cost }
+  return { concept: null, costUsd: billedCostOf(result) }
 }

@@ -1,0 +1,3013 @@
+[
+  {
+    "id": "compare.marks-table",
+    "section": "compare",
+    "name": "항목 + 우리·기존 표식 열 + 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "VS",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "row",
+        "gapAfter": "rowGap",
+        "columns": [
+          {
+            "w": 380,
+            "nodes": []
+          },
+          {
+            "w": 156,
+            "nodes": [
+              {
+                "kind": "label",
+                "label": "우리 제품",
+                "align": "center",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 156,
+            "nodes": [
+              {
+                "kind": "label",
+                "label": "기존 제품",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 380,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY"
+                  }
+                ]
+              },
+              {
+                "w": 156,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check",
+                    "align": "center"
+                  }
+                ]
+              },
+              {
+                "w": 156,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "dash",
+                    "align": "center"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "compare.rows",
+        "min": 3,
+        "max": 5,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "compare.item",
+            "facts": 1,
+            "maxChars": 24,
+            "maxLines": 4,
+            "claimRisk": "compare"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "front",
+          "group"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "compare_basis"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.marks-table"
+      ]
+    },
+    "signature": {
+      "columns": 3,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.marks-table.html",
+    "estimatedHeight": {
+      "min": 2370,
+      "max": 4640
+    },
+    "height": 3510
+  },
+  {
+    "id": "compare.tile-duel",
+    "section": "compare",
+    "name": "기존 제품 · 이 상품 상자 두 칸 + 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "valign": "stretch",
+        "gapAfter": "blockGap",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "panel",
+                "fill": "N",
+                "nodes": [
+                  {
+                    "kind": "label",
+                    "label": "기존 제품",
+                    "token": "BODY_BOLD",
+                    "align": "center",
+                    "gapAfter": "rowGap"
+                  },
+                  {
+                    "kind": "image",
+                    "slot": "left"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "panel",
+                "fill": "C",
+                "nodes": [
+                  {
+                    "kind": "label",
+                    "label": "우리 제품",
+                    "token": "BODY_BOLD",
+                    "align": "center",
+                    "color": "accent",
+                    "gapAfter": "rowGap"
+                  },
+                  {
+                    "kind": "image",
+                    "slot": "right"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 380
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 380
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "compare_basis"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.tile-duel"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "tile"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.tile-duel.html",
+    "estimatedHeight": {
+      "min": 1200,
+      "max": 1800
+    },
+    "height": 1500
+  },
+  {
+    "id": "compare.vs-cards",
+    "section": "compare",
+    "name": "기존 제품 상자 · VS · 이 상품 상자 + 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "gapAfter": "tightGap",
+        "nodes": [
+          {
+            "kind": "label",
+            "label": "기존 제품",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "from",
+            "token": "BODY"
+          }
+        ]
+      },
+      {
+        "kind": "capsule",
+        "label": "VS",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "C",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "label",
+            "label": "우리 제품",
+            "token": "BODY_BOLD",
+            "color": "accent",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "to",
+            "token": "BODY_BOLD"
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "from": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "input": "compare.one.base",
+        "facts": 0,
+        "maxChars": 24,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "to": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "input": "compare.one.ours",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_hand",
+          "angle45"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "compare_basis"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.vs-cards"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.vs-cards.html",
+    "estimatedHeight": {
+      "min": 1910,
+      "max": 2350
+    },
+    "height": 2130
+  },
+  {
+    "id": "compare.dark-band",
+    "section": "compare",
+    "name": "어두운 띠 제목·체크 줄 + 풀폭 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "gapAfter": "blockGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "align": "center",
+            "gapAfter": "blockGap",
+            "emphasis": true
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "row",
+                "columns": [
+                  {
+                    "w": 88,
+                    "nodes": [
+                      {
+                        "kind": "mark",
+                        "value": "check"
+                      }
+                    ]
+                  },
+                  {
+                    "w": 628,
+                    "nodes": [
+                      {
+                        "kind": "text",
+                        "slot": "item",
+                        "token": "BODY_BOLD"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "compare"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "pro-navy",
+        "dark-performance"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.dark-band"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.dark-band.html",
+    "estimatedHeight": {
+      "min": 2020,
+      "max": 2900
+    },
+    "height": 2460
+  },
+  {
+    "id": "compare.side-rows",
+    "section": "compare",
+    "name": "사진 옆 기존 제품 → 이 상품 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "repeat",
+                "slot": "rows",
+                "rule": true,
+                "gap": "rowGap",
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "from",
+                    "token": "BODY",
+                    "gapAfter": "tightGap"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "to",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "from": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 14,
+            "maxLines": 3,
+            "claimRisk": "none"
+          },
+          "to": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 14,
+            "maxLines": 3,
+            "claimRisk": "compare"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 620
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "compare_basis"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.side-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.side-rows.html",
+    "estimatedHeight": {
+      "min": 1230,
+      "max": 2710
+    },
+    "height": 1970
+  },
+  {
+    "id": "compare.cross-check-lists",
+    "section": "compare",
+    "name": "줄표 목록 → 체크 목록 + 풀폭 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "others",
+        "gap": "rowGap",
+        "gapAfter": "blockGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "dash"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "ours",
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "compare"
+      },
+      "others": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "ours": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "compare"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "compare_basis"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.cross-check-lists"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.cross-check-lists.html",
+    "estimatedHeight": {
+      "min": 2220,
+      "max": 3280
+    },
+    "height": 2750
+  },
+  {
+    "id": "compare.checks-card",
+    "section": "compare",
+    "name": "제목 + 상자 안 체크 줄 + 사진(우리 장점만)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "gap": "itemGap",
+            "nodes": [
+              {
+                "kind": "row",
+                "columns": [
+                  {
+                    "w": 88,
+                    "nodes": [
+                      {
+                        "kind": "mark",
+                        "value": "check"
+                      }
+                    ]
+                  },
+                  {
+                    "w": 548,
+                    "nodes": [
+                      {
+                        "kind": "text",
+                        "slot": "item",
+                        "token": "BODY_BOLD"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.checks-card"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.checks-card.html",
+    "estimatedHeight": {
+      "min": 1980,
+      "max": 2900
+    },
+    "height": 2440
+  },
+  {
+    "id": "compare.before-after-photos",
+    "section": "compare",
+    "name": "가운데 제목 + 고민 장면·사용 장면 사진 + 한 줄(고객의 전후)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "gapAfter": "blockGap",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": [
+        "beauty",
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.before-after-photos"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.before-after-photos.html",
+    "estimatedHeight": {
+      "min": 1210,
+      "max": 1810
+    },
+    "height": 1510
+  },
+  {
+    "id": "compare.side-advantages",
+    "section": "compare",
+    "name": "제목 + 장점 줄 옆 사진(우리 장점만)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "repeat",
+                "slot": "rows",
+                "gap": "blockGap",
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 14,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 620
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.side-advantages"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.side-advantages.html",
+    "estimatedHeight": {
+      "min": 1230,
+      "max": 1830
+    },
+    "height": 1530
+  },
+  {
+    "id": "compare.number-stack",
+    "section": "compare",
+    "name": "CHECK + 제목 + 번호 상자 쌓기(사진 없음)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "CHECK",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "gap": "tightGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "N",
+            "nodes": [
+              {
+                "kind": "row",
+                "columns": [
+                  {
+                    "w": 88,
+                    "nodes": [
+                      {
+                        "kind": "mark",
+                        "value": "index"
+                      }
+                    ]
+                  },
+                  {
+                    "w": 548,
+                    "nodes": [
+                      {
+                        "kind": "text",
+                        "slot": "item",
+                        "token": "BODY_BOLD"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 4,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 4,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.number-stack",
+        "point_list_div.number-cards"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.number-stack.html",
+    "estimatedHeight": {
+      "min": 1280,
+      "max": 2090
+    },
+    "height": 1690
+  },
+  {
+    "id": "compare.bleed-rule",
+    "section": "compare",
+    "name": "풀폭 사진 먼저 + 제목 + 체크 줄 표(우리 장점만)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.bleed-rule"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.bleed-rule.html",
+    "estimatedHeight": {
+      "min": 1960,
+      "max": 2910
+    },
+    "height": 2440
+  },
+  {
+    "id": "compare.offset-checks",
+    "section": "compare",
+    "name": "제목 + 판 깔린 사진 + 체크 줄(우리 장점만)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.offset-checks"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "offset",
+      "align": "left",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.offset-checks.html",
+    "estimatedHeight": {
+      "min": 1890,
+      "max": 2810
+    },
+    "height": 2350
+  },
+  {
+    "id": "compare.bubble-points",
+    "section": "compare",
+    "name": "제목 + 말풍선 장점(사진 없음)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "panel",
+            "fill": "C",
+            "radius": "bubble",
+            "w": 680,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "item",
+                "token": "BODY_BOLD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.bubble-points",
+        "point_list_div.bubble-stack"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "bubble"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.bubble-points.html",
+    "estimatedHeight": {
+      "min": 970,
+      "max": 2010
+    },
+    "height": 1490
+  },
+  {
+    "id": "compare.grid-proof",
+    "section": "compare",
+    "name": "가운데 제목 + 컷 3열 + 한 줄(우리 장점만)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "shots",
+        "columns": 3,
+        "gap": "rowGap",
+        "gapAfter": "blockGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo"
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 3,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "action",
+              "feature_proof"
+            ],
+            "composition": [
+              "closeup",
+              "in_hand",
+              "in_use"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 300
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.grid-proof"
+      ]
+    },
+    "signature": {
+      "columns": 3,
+      "photo": "grid",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.grid-proof.html",
+    "estimatedHeight": {
+      "min": 910,
+      "max": 1520
+    },
+    "height": 1220
+  },
+  {
+    "id": "compare.side-center",
+    "section": "compare",
+    "name": "가운데 제목 + 사진 옆 장점 줄(우리 장점만)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "repeat",
+                "slot": "rows",
+                "gap": "blockGap",
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 14,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "front",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 620
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.side-center"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.side-center.html",
+    "estimatedHeight": {
+      "min": 1230,
+      "max": 1830
+    },
+    "height": 1530
+  },
+  {
+    "id": "compare.demo-try",
+    "section": "compare",
+    "name": "가운데 제목 + 직접 해 보는 시연 사진 한 장(AI 시연 컷) + 한 줄(시험 사칭·수치 없이)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형",
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "demo"
+        ],
+        "composition": [
+          "in_hand"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "needs": {
+      "evidence": [
+        "demo"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.demo-try"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.demo-try.html",
+    "estimatedHeight": {
+      "min": 1590,
+      "max": 2220
+    },
+    "height": 1910
+  },
+  {
+    "id": "compare.demo-photo",
+    "section": "compare",
+    "name": "제목 + 판매자 시험 사진 한 장(입력 사진 그대로) + 한 줄, 왼쪽 정렬(시험 사칭·수치 없이)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형",
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "photos",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo"
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photos": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "demo.photos",
+        "min": 1,
+        "max": 1,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "demo"
+            ],
+            "composition": [
+              "in_use"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 600
+          }
+        }
+      }
+    },
+    "needs": {
+      "evidence": [
+        "demo"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.demo-photo"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.demo-photo.html",
+    "estimatedHeight": {
+      "min": 1590,
+      "max": 2220
+    },
+    "height": 1910
+  }
+]

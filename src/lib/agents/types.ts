@@ -2,7 +2,12 @@
 
 /** 에이전트 모델 설정 */
 export interface AgentConfig {
-  model: 'claude-sonnet-5' | 'claude-haiku-4-5-20251001'
+  model:
+    | 'claude-sonnet-5'
+    | 'claude-sonnet-5-5'
+    | 'claude-haiku-4-5-20251001'
+    | 'claude-haiku-5-5'
+    | 'claude-opus-5-5'
   maxTokens: number
   /**
    * Claude 5 계열(claude-sonnet-5)은 sampling 파라미터를 400으로 거부하므로
@@ -15,7 +20,12 @@ export interface AgentConfig {
    * (Haiku 4.5 등 구세대 모델은 thinking 파라미터 미전송이 곧 비활성이므로 설정 불필요.)
    */
   disableThinking?: boolean
+  /** 공급자별 추론 수준. 라이트에서는 Codex CLI가 자체 설정을 사용하므로 호환 메타데이터로만 유지한다. */
+  effort?: 'low' | 'medium' | 'high' | 'xhigh' | 'max'
 }
+
+/** 상세페이지 시험 사용량을 운영 사용량과 구분하는 논리 풀. */
+export type CostPool = 'pdp-test'
 
 /** 업무 실행 원장과 개별 AI 호출을 연결하는 선택 컨텍스트 */
 export interface RunContext {
@@ -23,6 +33,7 @@ export interface RunContext {
   userId?: string
   businessId?: string
   stage?: string
+  costPool?: CostPool
 }
 
 /** 에이전트 입력 */
@@ -37,6 +48,8 @@ export interface AgentError {
   /** budget = 월 AI 예산 소진으로 호출 자체가 차단됨 (budget.ts) */
   stage: 'api' | 'timeout' | 'parse' | 'budget'
   attempts: number
+  /** 공급자가 출력 상한 종료 사유를 알려 준 경우의 호환 필드. */
+  stopReason?: string
 }
 
 /** 에이전트 호출 사용량 */
@@ -48,8 +61,8 @@ export interface AgentUsage {
 
 /** 에이전트 출력 — 판별 유니언(success로 분기, 실패 사유는 error로 전파) */
 export type AgentOutput<T = unknown> =
-  | { success: true; data: T; usage: AgentUsage; duration: number }
-  | { success: false; error: AgentError; usage: AgentUsage; duration: number }
+  | { success: true; data: T; usage: AgentUsage; duration: number; spent?: AgentUsage }
+  | { success: false; error: AgentError; usage: AgentUsage; duration: number; spent?: AgentUsage }
 
 /** OCR 에이전트 입력 */
 export interface OcrAgentInput extends AgentInput {

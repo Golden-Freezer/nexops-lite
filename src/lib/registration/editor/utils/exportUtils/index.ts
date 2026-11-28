@@ -12,7 +12,12 @@ export {
   captureSliced,
   stitchBlobs,
   exportFullPagePngBlob,
+  captureToBlob,
+  captureExportBitmap,
+  captureExportBlob,
+  captureSectionsAsBlob,
 } from './capture';
+export { embeddedFontCss } from './fontEmbed';
 export {
   exportSectionPng,
   exportFullPagePng,

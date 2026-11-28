@@ -6,63 +6,41 @@
  */
 
 import { useState } from 'react'
-import { Download, Loader2, PenSquare, RotateCcw, Smartphone, Rows3 } from 'lucide-react'
+import { Download, PenSquare, Smartphone, Rows3 } from 'lucide-react'
+import { cutFailureNotes, gateWarningNotes } from '@/lib/registration/cut-failures'
 import { resolveGenerationTrack, stripStepFailurePrefix, type PdpJobRow } from '@/lib/registration/pdp-state'
-import { pdpApi } from '@/lib/registration/pdp-client'
 import { PdpEditorPreview } from './PdpEditorPreview'
-import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
-export function PdpPreview({
-  job,
-  onJobChange,
-}: {
-  job: PdpJobRow
-  onJobChange?: (job: PdpJobRow) => void
-}) {
+export function PdpPreview({ job }: { job: PdpJobRow }) {
   const [mobileFrame, setMobileFrame] = useState(true)
-  const [regenerating, setRegenerating] = useState(false)
-  const [regenerateError, setRegenerateError] = useState<string | null>(null)
-  const localCodexAvailable = useLocalCodexAvailable()
   const warnings = job.copy_sections.similarity_warnings ?? []
   const track = resolveGenerationTrack(job)
-  const qualityReport = job.copy_sections.quality_report
+  // quality_report 형태가 다른 잡(구 잡·v2 없는 카테고리·부분 기록)에서도 렌더가 깨지지 않게 trust_gate를 방어적으로 읽는다
+  const trustGate = job.copy_sections.quality_report?.trust_gate
+  const missingRequired = trustGate?.missing_required ?? []
+  const actionHints = trustGate?.user_action_hints ?? []
   const ageCompliance = job.copy_sections.age_compliance
-  const missingImageCount = job.section_images.filter((image) => !image.url).length
-
-  const regenerateMissing = async () => {
-    setRegenerating(true)
-    setRegenerateError(null)
-    try {
-      const { job: updated } = await pdpApi<{ job: PdpJobRow }>(
-        `/api/registration/pdp/${job.id}/regenerate-missing`,
-        { method: 'POST' },
-      )
-      onJobChange?.(updated)
-    } catch (error) {
-      setRegenerateError(error instanceof Error ? error.message : '빠진 이미지 재생성 준비 실패')
-    } finally {
-      setRegenerating(false)
-    }
-  }
+  const failedCuts = cutFailureNotes(job.section_images, job.section_plan?.cuts_failed)
+  const gateWarnings = gateWarningNotes(job.section_images)
 
   return (
     <div className="space-y-4">
+      {/* 사진 없이 끝난 컷 — 잡은 완료지만 페이지에 그 사진이 없다 */}
+      {failedCuts.length > 0 && (
+        <div role="alert" className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
+          사진을 만들지 못한 컷 {failedCuts.length}개: {failedCuts.map((c) => `${c.label}(${c.reason})`).join(', ')}
+        </div>
+      )}
+      {/* 사진은 있지만 원본과 달라 보이는 컷(점검 고침 1) — 첫 화면이라 빼지 않고 나은 쪽을 썼으니 확인이 필요하다 */}
+      {gateWarnings.length > 0 && (
+        <div role="alert" className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
+          확인이 필요한 컷 {gateWarnings.length}개: {gateWarnings.map((c) => `${c.label} — ${c.warning}`).join(', ')}
+        </div>
+      )}
       {/* 완료 잡이라도 경고·폴백 사유(job.error)가 남아있을 수 있다 — 유사도 배너와 별개로 항상 노출(§6.4). */}
-      {(job.error || missingImageCount > 0) && (
-        <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700 space-y-2">
-          <div>경고: {stripStepFailurePrefix(job.error) ?? `이미지 ${missingImageCount}장이 빠졌습니다.`}</div>
-          {missingImageCount > 0 && (
-            <button
-              onClick={() => void regenerateMissing()}
-              disabled={!localCodexAvailable || regenerating}
-              title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
-              className="inline-flex items-center gap-1.5 rounded-full bg-warning-500 px-3 py-1.5 text-xs text-white hover:bg-warning-600 disabled:opacity-50"
-            >
-              {regenerating ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <RotateCcw className="h-3.5 w-3.5" />}
-              빠진 이미지 다시 만들기
-            </button>
-          )}
-          {regenerateError && <div className="text-danger-600">{regenerateError}</div>}
+      {job.error && (
+        <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
+          경고: {stripStepFailurePrefix(job.error)}
         </div>
       )}
       {warnings.length > 0 && (
@@ -87,13 +65,13 @@ export function PdpPreview({
         </div>
       )}
       {/* Track I trust gate(결정 T-6) — 실측 신뢰요소 누락 경고 + 입력 보강 힌트(차단 아님) */}
-      {qualityReport && qualityReport.trust_gate.missing_required.length > 0 && (
+      {missingRequired.length > 0 && (
         <div className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-800 space-y-1">
           <div>
             실측 신뢰요소 누락 — 이 카테고리 베스트셀러의 필수 신뢰 스택 중 미생성:{' '}
-            {qualityReport.trust_gate.missing_required.join(', ')}
+            {missingRequired.join(', ')}
           </div>
-          {qualityReport.trust_gate.user_action_hints.map((hint) => (
+          {actionHints.map((hint) => (
             <div key={hint} className="text-amber-700">
               · {hint}
             </div>
@@ -168,7 +146,10 @@ export function PdpPreview({
                   <img src={img.url} alt={img.section} className="w-full aspect-square object-cover rounded" />
                 ) : (
                   <div className="w-full aspect-square rounded bg-slate-50 flex items-center justify-center text-[11px] text-danger-600 p-2 text-center">
-                    {img.error ?? '생성 실패'}
+                    {/* 편집기에서 새로 만드는 컷(사후 재생성 W5b)은 실패가 아니라 요청 상태를 보인다 */}
+                    {img.error ??
+                      (img.editorRegen?.status === 'pending' ? '편집기 요청 — 만드는 중' : img.editorRegen?.message) ??
+                      '생성 실패'}
                   </div>
                 )}
                 {img.url && (

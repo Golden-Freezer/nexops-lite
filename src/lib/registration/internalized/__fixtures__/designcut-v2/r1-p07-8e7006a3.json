@@ -1,0 +1,876 @@
+{
+  "_source": "registration_pdp_jobs 8e7006a3 (R1, 2026-10-27) — 계획·태스크·편집기 조립에 필요한 필드만. URL·사용자 ID는 자리표시",
+  "id": "fixture-p07-8e7006a3",
+  "user_id": "user-fixture",
+  "business_id": null,
+  "mode": "pro",
+  "image_quality": "medium",
+  "image_model": "codex-image",
+  "generation_track": "internalized",
+  "current_step": "images",
+  "progress": 0,
+  "error": null,
+  "cost_usd": 0,
+  "spec_sheet": {
+    "category": "pet",
+    "brandName": "페어넥스",
+    "productName": "페어넥스 강아지 밥그릇 고양이 식기 2구",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ]
+  },
+  "source_images": [
+    "https://img.test/p07-source-0.png"
+  ],
+  "analysis": {
+    "cons": [
+      "리뷰 데이터 부재로 실제 내구성과 사용감 검증 필요",
+      "가격대 정보 부재로 경쟁제품 대비 가성비 판단 어려움"
+    ],
+    "pros": [
+      "2구 디자인으로 물과 사료를 동시에 제공 가능",
+      "세이지 그린 컬러로 인테리어와 조화로운 디자인",
+      "강아지와 고양이 모두 사용 가능한 범용성"
+    ],
+    "keywords": [
+      "강아지 밥그릇",
+      "고양이 식기",
+      "2구 식기",
+      "페어넥스",
+      "반려동물 식기",
+      "세이지 그린",
+      "애완동물 밥그릇",
+      "이중식기",
+      "반려견 용품",
+      "반려묘 용품",
+      "식기세트",
+      "펫 식기",
+      "반려동물 밥그릇",
+      "고급 식기",
+      "실용적 식기"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ]
+    },
+    "raw_summary": "페어넥스의 2구 반려동물 식기는 강아지와 고양이 모두 사용 가능한 범용 제품입니다. 세이지 그린 컬러로 현대적 인테리어와 조화를 이루며, 물과 사료를 분리 제공할 수 있는 실용적 디자인이 특징입니다.",
+    "pain_clusters": [
+      {
+        "pain": "강아지와 고양이를 함께 키울 때 각각 다른 식기 구비의 번거로움",
+        "urgency": "medium"
+      },
+      {
+        "pain": "반려동물 용품이 인테리어와 어울리지 않는 문제",
+        "urgency": "low"
+      }
+    ],
+    "usp_candidates": [
+      "강아지와 고양이 모두 사용 가능한 범용 2구 식기",
+      "세이지 그린 컬러로 모던한 반려동물 생활용품",
+      "페어넥스 브랜드의 반려동물 식기 솔루션"
+    ],
+    "benefit_clusters": [
+      {
+        "name": "다중 반려동물 관리 편의성",
+        "weight": 0.4
+      },
+      {
+        "name": "인테리어 조화로운 디자인",
+        "weight": 0.35
+      },
+      {
+        "name": "물과 사료 분리 제공",
+        "weight": 0.25
+      }
+    ],
+    "decision_profile": {
+      "giftability": "medium",
+      "repeatability": "repeat",
+      "urgency_level": "low",
+      "price_resistance": "low",
+      "visual_hook_need": "high",
+      "explanation_depth": "quick",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "comparison_intensity": "medium"
+    },
+    "detected_category": "pet",
+    "objection_priority": [
+      "실제 사용 후기와 내구성에 대한 검증 부족",
+      "경쟁 제품 대비 가격 경쟁력 불명확"
+    ],
+    "recommended_strategy_contract": {
+      "hook_mode": "empathy",
+      "page_goal": "standard",
+      "persuasion_axis": "balanced",
+      "frame_style_pack": "editorial_mix",
+      "purchase_context": "self_use",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "visual_style_pack": "clean_proof",
+      "objection_priority": [
+        "실제 사용 후기와 내구성에 대한 검증 부족",
+        "경쟁 제품 대비 가격 경쟁력 불명확"
+      ],
+      "page_length_target": "quick",
+      "comparison_intensity": "medium",
+      "review_position_strategy": "dynamic",
+      "soldout_position_strategy": "dynamic"
+    }
+  },
+  "section_plan": {
+    "reasoning": "골격은 고정되었으므로 6개 섹션 안에서 감성연결 무기를 극대화하는 방향으로 설계했다. hook_3step에서 이미지 후킹으로 다묘·다견 가정의 정서적 번거로움을 해소하는 장면을 먼저 보여주고, main_cut에서 Hero+USP로 범용성과 디자인을 각인시킨다. point_div에서 분리 디자인의 실용적 근거(Pain Points 중 물/사료 분리 니즈)를 보강하고, product_exposure로 소재·내구성 신뢰를 보완, sub_div로 인테리어 조화라는 emotional USP를 재확인한 뒤 cta로 마무리한다. 저관여(low) 전략에 맞춰 비교·스펙 등 증거 섹션은 배제하고 감각·공감 흐름을 유지했다.",
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ],
+      "vocabHash": "73b757bbdea4"
+    },
+    "font_scheme": {
+      "usp": {
+        "body": "Pretendard",
+        "heading": "GmarketSansBold"
+      },
+      "hook": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      },
+      "modules": {
+        "body": "Pretendard",
+        "heading": "GmarketSansBold"
+      },
+      "problem": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      }
+    },
+    "hook_strategy": {
+      "reasoning": "완판 이력 없음, 리뷰 없음으로 실적증거 불가. 반려동물 카테고리+emotional 본질 유형+Pain Points가 다묘/다견 가정의 번거로움, 인테리어 부조화 등 정서적 맥락에 집중되어 있어 무기3(문제공감)보다는 무기4(감성연결)가 더 강하다. 전략계약의 hook_mode=empathy, persuasion_axis=balanced를 반영해 감성 장면으로 열되 기능적 해결(2구 분리, 세이지 그린)을 빠르게 뒤따르는 구성이 최적.",
+      "hero_frame": "cloud",
+      "image_hooking": true,
+      "first_3_seconds": "강아지와 고양이가 세이지 그린 2구 식기 앞에 나란히 앉아 각자의 그릇에서 편안하게 식사하는 따뜻한 생활 장면 + '한 그릇에 담은 두 마리의 평화' 류의 감성 카피",
+      "strongest_weapon": "감성연결"
+    },
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "section_specs": {
+      "cta": {
+        "has_image": false,
+        "image_role": "없음 — 행동 촉구 카피 중심",
+        "body_max_chars": 40,
+        "headline_max_chars": 18
+      },
+      "sub_div": {
+        "has_image": true,
+        "image_role": "거실/주방 인테리어 안에 놓인 세이지 그린 식기 연출컷 — 플라스틱 느낌 없는 모던 톤앤매너로 공간 조화를 강조",
+        "body_max_chars": 65,
+        "headline_max_chars": 24
+      },
+      "main_cut": {
+        "has_image": true,
+        "image_role": "세이지 그린 2구 식기 Hero 컷(cloud 프레임) + 아이콘 USP 3~4개: 범용성(강아지·고양이 공용), 분리 디자인(물/사료), 세이지 그린 인테리어 컬러, 안정적 무게감",
+        "body_max_chars": 60,
+        "headline_max_chars": 24
+      },
+      "point_div": {
+        "has_image": true,
+        "image_role": "물그릇·사료그릇 분리 구조 클로즈업 — 사료가 물에 젖지 않고 그릇이 밀리지 않는 실용적 포인트를 시각적으로 증명",
+        "body_max_chars": 70,
+        "headline_max_chars": 26
+      },
+      "hook_3step": {
+        "has_image": true,
+        "image_role": "강아지와 고양이가 함께 식사하는 감성 라이프스타일 장면 — 다묘·다견 가정의 번거로움을 해소한 평화로운 순간을 이미지로 먼저 전달 (image_hooking)",
+        "body_max_chars": 50,
+        "headline_max_chars": 22
+      },
+      "product_exposure": {
+        "has_image": true,
+        "image_role": "제품 추가 앵글(상단뷰, 측면뷰, 질감 디테일) — 소재감과 내구성에 대한 신뢰를 시각적으로 보완",
+        "body_max_chars": 50,
+        "headline_max_chars": 20
+      }
+    },
+    "design_direction": "세이지 그린 톤의 차분하고 따뜻한 반려동물 라이프스타일 무드. 클라우드 프레임으로 부드러운 곡선감을 살려 감성 연결을 강조하고, 과도한 정보량 대신 장면 중심의 소수 정예 섹션으로 저관여 고객의 빠른 공감과 결정을 유도한다. 텍스트는 간결하게, 이미지가 서사를 주도하는 구성.",
+    "layout_selections": {
+      "cta": "minimal",
+      "sub_div": "minimal",
+      "main_cut": "minimal",
+      "point_div": "minimal",
+      "hook_3step": "image_first",
+      "product_exposure": "minimal"
+    },
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "internalized_skeleton": {
+      "roles": [
+        {
+          "role": "hook",
+          "reason": "pooled hookDefault — problem 출현율 0.31 ≥ 0.15"
+        },
+        {
+          "role": "product_intro",
+          "reason": "필수(main_cut)"
+        },
+        {
+          "role": "usp_feature",
+          "reason": "필수(첫 가치)"
+        }
+      ],
+      "excluded": [
+        {
+          "role": "problem",
+          "reason": "공감 신호 부족"
+        },
+        {
+          "role": "brand_story",
+          "reason": "감성·브랜드 신호 없음"
+        },
+        {
+          "role": "social_proof",
+          "reason": "리뷰 데이터 없음 — 근거 없는 후기 섹션 금지"
+        },
+        {
+          "role": "certification_evidence",
+          "reason": "certificationInfo 없음 — 근거 없는 인증 섹션 금지"
+        },
+        {
+          "role": "promotion_offer",
+          "reason": "eventBannerInfo 없음 — 근거 없는 이벤트 섹션 금지"
+        },
+        {
+          "role": "size_spec",
+          "reason": "spec_sheet에 치수 없음 — 환각 치수 금지"
+        },
+        {
+          "role": "option_catalog",
+          "reason": "옵션 수 < 4 — 옵션 카탈로그 성립 불가"
+        },
+        {
+          "role": "how_to_guide",
+          "reason": "사용법 신호 없음"
+        },
+        {
+          "role": "target_recommendation",
+          "reason": "대상·활용 신호 없음"
+        },
+        {
+          "role": "faq",
+          "reason": "FAQ 렌더러 없음 — 고민은 미응답 기록"
+        },
+        {
+          "role": "shipping_cs",
+          "reason": "플랫폼 영역 — 생성 제외"
+        },
+        {
+          "role": "legal_notice",
+          "reason": "플랫폼 영역 — 생성 제외"
+        },
+        {
+          "role": "authenticity",
+          "reason": "certificationInfo 없음 — 근거 없는 정품 보장 금지"
+        }
+      ],
+      "persuasion": {
+        "rules": [
+          {
+            "id": "R1",
+            "pass": true
+          },
+          {
+            "id": "R2",
+            "pass": true
+          },
+          {
+            "id": "R3",
+            "pass": true
+          },
+          {
+            "id": "R4",
+            "pass": true
+          },
+          {
+            "id": "R5",
+            "pass": true
+          },
+          {
+            "id": "R6",
+            "pass": false,
+            "detail": "섹션 6개, 목표 7~10 — 목표 분량 미달(근거 없는 섹션은 만들지 않음 · 제외 사유는 excluded 참조)"
+          },
+          {
+            "id": "R7",
+            "pass": true
+          },
+          {
+            "id": "R8",
+            "pass": true
+          }
+        ],
+        "stages": [
+          {
+            "role": "hook",
+            "stage": "ATTENTION",
+            "reason": "pooled hookDefault — problem 출현율 0.31 ≥ 0.15",
+            "section": "hook_3step"
+          },
+          {
+            "role": "product_intro",
+            "stage": "ATTENTION",
+            "reason": "필수 — 첫 화면 상품",
+            "section": "main_cut"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "첫 가치 — 가치 단계를 연다",
+            "section": "point_div"
+          },
+          {
+            "role": "product_intro",
+            "stage": "VALUE",
+            "reason": "상품 노출(생성 예정 컷)",
+            "section": "product_exposure"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "가치 군집 3개 이상",
+            "section": "sub_div"
+          },
+          {
+            "role": "cta",
+            "stage": "ACTION",
+            "reason": "필수 — 마지막 행동",
+            "section": "cta"
+          }
+        ],
+        "grammar": "G3",
+        "layouts": [
+          {
+            "llm": "image_first",
+            "reason": "LLM 선택이 실측 후보 안",
+            "source": "llm",
+            "section": "hook_3step",
+            "category": "image_first"
+          },
+          {
+            "llm": "overlay",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "main_cut",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "point_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "card",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "product_exposure",
+            "category": "minimal"
+          },
+          {
+            "llm": "image_first",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "sub_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "bold",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "cta",
+            "category": "minimal"
+          }
+        ],
+        "vocabHash": "73b757bbdea4",
+        "priorSource": "coupang:pooled",
+        "lengthTarget": [
+          7,
+          10
+        ],
+        "objectionCoverage": [
+          {
+            "note": "클로즈업 증거 컷 — 수치 주장 금지",
+            "type": "quality_durability",
+            "objection": "실제 사용 후기와 내구성에 대한 검증 부족",
+            "answeredBy": "sub_div"
+          },
+          {
+            "note": "구성·가치 컷 — 가격 비교 수치 금지",
+            "type": "price_value",
+            "objection": "경쟁 제품 대비 가격 경쟁력 불명확",
+            "answeredBy": "point_div"
+          }
+        ]
+      }
+    }
+  },
+  "copy_sections": {
+    "final": {
+      "howTo": [
+        {
+          "step": "거실이나 주방 한편에 배치",
+          "description": "평평한 바닥에 올려두면 바로 사용할 수 있어요"
+        },
+        {
+          "step": "물과 사료 나눠 담기",
+          "description": "2구 중 한쪽엔 물, 한쪽엔 사료를 담아주세요"
+        },
+        {
+          "step": "강아지 고양이 함께 사용",
+          "description": "두 마리를 키운다면 교차로 사용해도 좋아요"
+        }
+      ],
+      "title": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+      "problem": {
+        "empathy": "강아지 그릇 따로, 고양이 그릇 따로, 자리도 두 배, 치우는 손도 두 배예요",
+        "question": "밥그릇 두 개, 매번 꺼내고 치우시나요?",
+        "empathyLines": [
+          "식기 두 개 사는 게 번거로",
+          "색깔이 거실과 안 어울려요",
+          "사료가 물그릇에 자꾸 빠져요",
+          "밥 먹을 때 그릇이 밀려다녀"
+        ],
+        "empathyDeepLines": [
+          "정리할 때마다 손이 많이 가",
+          "플라스틱 느낌이라 괜히 눈에",
+          "매번 닦고 나르는 게 지쳐요",
+          "예쁜 그릇 찾기가 쉽지 않아"
+        ]
+      },
+      "summary": "밥그릇 두 개, 이제 하나로",
+      "sections": [
+        {
+          "headline": "식기 두 개를\n하나로 끝내세요",
+          "sub_copy": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+          "section_type": "hook",
+          "image_direction": "제품 중심의 프리미엄 스튜디오 촬영, 따뜻한 조명"
+        },
+        {
+          "headline": "밥그릇 두 개, 매번 꺼내고 치우시나요?",
+          "sub_copy": "강아지 그릇 따로, 고양이 그릇 따로, 자리도 두 배, 치우는 손도 두 배예요",
+          "section_type": "problem",
+          "image_direction": "문제 상황을 보여주는 공감 가는 이미지, 밝은 톤 유지"
+        },
+        {
+          "headline": "2구 구조 하나로 강아지와 고양이 식사를 동시에 해결해요",
+          "sub_copy": "물과 사료를 나눠 담는 구조로 중복 구매와 뒤섞임 걱정을 줄였어요",
+          "section_type": "benefit",
+          "image_direction": "제품 사용 중인 밝고 긍정적인 라이프스타일 이미지"
+        },
+        {
+          "headline": "이런 점이 다릅니다",
+          "sub_copy": "",
+          "detail_items": [
+            {
+              "icon": "✦",
+              "text": "식기 하나로 끝: 강아지 고양이 공용\n따로 살 필요 없어요"
+            },
+            {
+              "icon": "◆",
+              "text": "물 사료 분리: 2구 구조로 나눠 담아\n섞일 걱정 없어요"
+            },
+            {
+              "icon": "●",
+              "text": "인테리어 조화: 세이지 그린 컬러로\n거실에도 자연스럽게"
+            }
+          ],
+          "section_type": "detail_points",
+          "image_direction": "제품 디테일 클로즈업 샷"
+        },
+        {
+          "headline": "이렇게 사용하세요",
+          "sub_copy": "거실이나 주방 한편에 배치: 평평한 바닥에 올려두면 바로 사용할 수 있어요",
+          "section_type": "usage",
+          "image_direction": "자연스러운 사용 장면, 한국인 모델"
+        },
+        {
+          "headline": "이런 분께 추천합니다",
+          "sub_copy": "강아지 고양이 함께 키우는 집, 식기 인테리어 신경 쓰는 분, 밥그릇 자리 줄이고 싶은 분",
+          "section_type": "trust",
+          "image_direction": "신뢰감을 주는 깔끔한 제품 이미지"
+        },
+        {
+          "headline": "지금 식사 환경을 정리해보세요",
+          "sub_copy": "한정 수량 / 빠른 배송",
+          "section_type": "cta",
+          "image_direction": ""
+        }
+      ],
+      "solution": {
+        "summary": "물과 사료를 나눠 담는 구조로 중복 구매와 뒤섞임 걱정을 줄였어요",
+        "declaration": "2구 구조 하나로 강아지와 고양이 식사를 동시에 해결해요"
+      },
+      "hero_copy": {
+        "hook": "식기 두 개를\n하나로 끝내세요",
+        "subline": "물과 사료를 한 번에, 세이지 그린으로 공간까지 챙겼어요",
+        "benefit_headline": "식기 두 개를\n하나로 끝내세요"
+      },
+      "mainIntro": {
+        "hook": "강아지도 고양이도, 이 식기 하나로 끝",
+        "category": "반려동물 식기",
+        "subBenefit": "물과 사료를 한 번에, 세이지 그린으로 공간까지 챙겼어요",
+        "brandAndName": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+        "benefitHeadline": "식기 두 개를\n하나로 끝내세요"
+      },
+      "closingCta": {
+        "subtext": "세이지 그린 2구 식기, 빠르게 받아보세요",
+        "headline": "지금 식사 환경을 정리해보세요"
+      },
+      "pointCards": [
+        {
+          "title": "식기 하나로 끝",
+          "description": "강아지 고양이 공용\n따로 살 필요 없어요"
+        },
+        {
+          "title": "물 사료 분리",
+          "description": "2구 구조로 나눠 담아\n섞일 걱정 없어요"
+        },
+        {
+          "title": "인테리어 조화",
+          "description": "세이지 그린 컬러로\n거실에도 자연스럽게"
+        },
+        {
+          "title": "안정적인 사용감",
+          "description": "식사 중 밀림을 줄인\n안정적인 구조예요"
+        }
+      ],
+      "conceptCopy": {
+        "subCopy": "두 마리 식사, 한 공간에서 끝",
+        "headline": "그릇 하나의 여유"
+      },
+      "mainCutCopy": {
+        "subCopy": "강아지 고양이 둘 다 쓰는 식기",
+        "headline": "밥그릇 고민 끝"
+      },
+      "colorOptions": {
+        "title": "컬러 옵션",
+        "options": [
+          "세이지 그린"
+        ],
+        "description": "거실과 주방 어디든 무난하게 어울리는 톤으로 준비했어요"
+      },
+      "compareItems": [
+        {
+          "cons": "자리 차지하고 번거로워요",
+          "name": "식기 두 개 따로 구매",
+          "pros": "각 동물 전용 디자인"
+        },
+        {
+          "cons": "인테리어와 안 어울려요",
+          "name": "플라스틱 일반 식기",
+          "pros": "가격이 저렴해요"
+        },
+        {
+          "cons": "",
+          "name": "본 상품",
+          "pros": "2구 공용 구조로 한 번에 해결"
+        }
+      ],
+      "cta_variants": [
+        {
+          "copy": "지금 식사 환경을 정리해보세요",
+          "type": "emotion"
+        },
+        {
+          "copy": "세이지 그린 2구 식기, 빠르게 받아보세요",
+          "type": "rational"
+        }
+      ],
+      "detailPoints": [
+        {
+          "claim": "식기 교체 없이 두 아이 모두 사용",
+          "proof": "강아지·고양이 공용으로 설계된 2구 구조",
+          "benefit": "식기 중복 구매 부담이 줄어요",
+          "imageHint": "[둘이 함께 식사] — 강아지와 고양이가 나란히 식사하는 장면"
+        },
+        {
+          "claim": "물과 사료, 한 그릇에 안전하게",
+          "proof": "좌우 분리된 2구 구성으로 내용물 섞임 방지",
+          "benefit": "사료가 눅눅해지지 않아요",
+          "imageHint": "[젖지 않은 사료] — 분리된 구조 클로즈업 컷"
+        },
+        {
+          "claim": "거실에 둬도 어색하지 않은 톤",
+          "proof": "세이지 그린 단일 컬러로 구성",
+          "benefit": "인테리어와 자연스럽게 어울려요",
+          "imageHint": "[거실 속 그릇] — 세이지 그린 식기가 놓인 거실 전경"
+        },
+        {
+          "claim": "식사 중에도 흔들림 적게",
+          "proof": "안정적인 바닥 설계로 밀림 최소화",
+          "benefit": "급하게 먹어도 덜 밀려요",
+          "imageHint": "[흔들림 없이] — 식사 중인 반려동물과 고정된 그릇"
+        },
+        {
+          "claim": "소재, 숨기지 않고 보여드려요",
+          "proof": "구조와 마감을 그대로 공개한 디자인",
+          "benefit": "사용 전 느낌을 미리 확인해요",
+          "imageHint": "[가까이 본 소재] — 식기 표면과 테두리 클로즈업"
+        },
+        {
+          "claim": "한 번 두면 계속 쓰는 자리",
+          "proof": "거실·주방 어디에나 배치 가능한 구성",
+          "benefit": "매일 같은 자리에서 편하게 급여해요",
+          "imageHint": "[늘 그 자리] — 주방 한편에 상시 놓인 식기"
+        }
+      ],
+      "designPalette": {
+        "bgSub": "#E8E6DC",
+        "bgMain": "#F5F3EC",
+        "primary": "#5C7A5C",
+        "textMain": "#262626",
+        "secondary": "#8FA888",
+        "textHighlight": "#2563eb"
+      },
+      "directionHint": {
+        "subCopy": "거실이든 주방이든\n자연스럽게 어울려요",
+        "headline": "자리부터 정해보세요"
+      },
+      "soldOutBanner": {
+        "headline": "다묘다견 가정 선택",
+        "subtitle": "두 마리 식사를 한 그릇으로 해결해요"
+      },
+      "compareSummary": "따로 두 개 살 필요 없이 하나로 끝나요",
+      "convertDivCopy": {
+        "subCopy": "번거로운 식기 정리, 오늘 끝내요",
+        "headline": "지금 하나로 바꿔보세요"
+      },
+      "keyMessageCopy": {
+        "subCopy": "섞이지 않게 나눠 담아요",
+        "headline": "물과 사료 따로따로"
+      },
+      "usageSceneTags": [
+        "#다묘다견가정",
+        "#거실인테리어",
+        "#매일급여",
+        "#식기정리"
+      ],
+      "eventBundleCopy": {
+        "subCopy": "2구 식기 하나로 준비 끝",
+        "headline": "세이지 그린 단일 구성"
+      },
+      "productExposure": {
+        "subCopy": "분리된 2구 구조, 한눈에 또렷해요",
+        "headline": "위에서 봐도 깔끔해요"
+      },
+      "review_strategy": {
+        "position": "dynamic",
+        "why_here": "strategy_contract.review_position_strategy=dynamic 기반 배치"
+      },
+      "reviewHighlights": [],
+      "objection_handlers": [
+        {
+          "answer": "강아지·고양이 공용으로 설계된 2구 구조 — 식기 중복 구매 부담이 줄어요",
+          "objection": "실제 사용 후기와 내구성에 대한 검증 부족"
+        },
+        {
+          "answer": "따로 두 개 살 필요 없이 하나로 끝나요",
+          "objection": "경쟁 제품 대비 가격 경쟁력 불명확"
+        },
+        {
+          "answer": "합리적인 가격에 최고의 품질을 제공합니다.",
+          "objection": "가격이 비싸지 않나요?"
+        }
+      ],
+      "recommendedTargets": [
+        "강아지 고양이 함께 키우는 집",
+        "식기 인테리어 신경 쓰는 분",
+        "밥그릇 자리 줄이고 싶은 분",
+        "물 사료 분리 급여하고 싶은 분"
+      ],
+      "section_copy_blocks": [
+        {
+          "body": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+          "role": "proof",
+          "section": "hook",
+          "headline": "식기 두 개를\n하나로 끝내세요"
+        },
+        {
+          "body": "강아지 그릇 따로, 고양이 그릇 따로, 자리도 두 배, 치우는 손도 두 배예요",
+          "role": "proof",
+          "section": "problem",
+          "headline": "밥그릇 두 개, 매번 꺼내고 치우시나요?"
+        },
+        {
+          "body": "물과 사료를 나눠 담는 구조로 중복 구매와 뒤섞임 걱정을 줄였어요",
+          "role": "proof",
+          "section": "benefit",
+          "headline": "2구 구조 하나로 강아지와 고양이 식사를 동시에 해결해요"
+        },
+        {
+          "body": "",
+          "role": "proof",
+          "section": "detail_points",
+          "headline": "이런 점이 다릅니다"
+        },
+        {
+          "body": "거실이나 주방 한편에 배치: 평평한 바닥에 올려두면 바로 사용할 수 있어요",
+          "role": "proof",
+          "section": "usage",
+          "headline": "이렇게 사용하세요"
+        },
+        {
+          "body": "강아지 고양이 함께 키우는 집, 식기 인테리어 신경 쓰는 분, 밥그릇 자리 줄이고 싶은 분",
+          "role": "proof",
+          "section": "trust",
+          "headline": "이런 분께 추천합니다"
+        },
+        {
+          "body": "한정 수량 / 빠른 배송",
+          "role": "proof",
+          "section": "cta",
+          "headline": "지금 식사 환경을 정리해보세요"
+        }
+      ],
+      "keyMessageVariations": {
+        "mid": "물 사료 분리해 한 번에 급여",
+        "top": "밥그릇 두 개, 이제 하나로",
+        "bottom": "지금 식기 정리, 하나로 끝내요"
+      },
+      "sizeComparisonObject": "iphone"
+    }
+  },
+  "design_prompts": {
+    "lighting_params": {
+      "direction": "top-left",
+      "intensity": 0.85,
+      "shadow_angle": 45,
+      "ambient_level": 0.35,
+      "color_temperature": "warm"
+    }
+  },
+  "section_images": [
+    {
+      "section": "hero",
+      "url": "https://img.test/p07-hero.png"
+    },
+    {
+      "section": "problem",
+      "url": "https://img.test/p07-problem.png"
+    },
+    {
+      "section": "solution",
+      "url": "https://img.test/p07-solution.png"
+    },
+    {
+      "section": "usage",
+      "url": "https://img.test/p07-usage.png"
+    },
+    {
+      "section": "cta",
+      "url": "https://img.test/p07-cta.png"
+    },
+    {
+      "section": "features:0",
+      "url": "https://img.test/p07-features-0.png"
+    },
+    {
+      "section": "features:1",
+      "url": "https://img.test/p07-features-1.png"
+    },
+    {
+      "section": "features:2",
+      "url": "https://img.test/p07-features-2.png"
+    },
+    {
+      "section": "features:3",
+      "url": "https://img.test/p07-features-3.png"
+    },
+    {
+      "section": "howto:0",
+      "url": "https://img.test/p07-howto-0.png"
+    },
+    {
+      "section": "howto:1",
+      "url": "https://img.test/p07-howto-1.png"
+    },
+    {
+      "section": "howto:2",
+      "url": "https://img.test/p07-howto-2.png"
+    },
+    {
+      "section": "usp_icons:0",
+      "url": "https://img.test/p07-usp_icons-0.png"
+    },
+    {
+      "section": "usp_icons:1",
+      "url": "https://img.test/p07-usp_icons-1.png"
+    },
+    {
+      "section": "usp_icons:2",
+      "url": "https://img.test/p07-usp_icons-2.png"
+    },
+    {
+      "section": "usp_icons:3",
+      "url": "https://img.test/p07-usp_icons-3.png"
+    },
+    {
+      "section": "product_exposure",
+      "url": "https://img.test/p07-product_exposure.png"
+    },
+    {
+      "section": "empathy_scene",
+      "url": "https://img.test/p07-empathy_scene.png"
+    },
+    {
+      "section": "direction_hint",
+      "url": "https://img.test/p07-direction_hint.png"
+    },
+    {
+      "section": "key_benefit_visual",
+      "url": "https://img.test/p07-key_benefit_visual.png"
+    },
+    {
+      "section": "premium_hero",
+      "url": "https://img.test/p07-premium_hero.png"
+    },
+    {
+      "section": "concept_mood",
+      "url": "https://img.test/p07-concept_mood.png"
+    },
+    {
+      "section": "comparison_scene",
+      "url": "https://img.test/p07-comparison_scene.png"
+    },
+    {
+      "section": "rating_bg",
+      "url": "https://img.test/p07-rating_bg.png"
+    }
+  ]
+}

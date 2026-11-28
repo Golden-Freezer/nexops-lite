@@ -6,7 +6,8 @@
  * 호출하지 않는다(CLAUDE.md "AI 호출 로직과 순수 비즈니스 로직 분리" 원칙).
  */
 
-import type { CopywritingResult, DetailSection, StrategyContract } from './pdp-state'
+import type { CopywritingResult, DetailSection, PdpSpecSheet, StrategyContract } from './pdp-state'
+import { THUMBNAIL_CATEGORIES } from './thumbnail-types'
 
 function isPlainObject(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v)
@@ -60,6 +61,15 @@ export function validatePointCards(cards: unknown, targetCount = 4): PointCardVa
   return { cards: valid, deficit: Math.max(0, targetCount - valid.length) }
 }
 
+/**
+ * 대체 문구(공감 줄·포인트 카드)에 넣는 말 — 소재, 없으면 사람이 직접 쓴 카테고리. 판정 코드(food·pet 등)는 영어 그대로 고객 글에 나오므로 넣지 않는다.
+ * 코드뿐이면 '' — 카테고리 자동 감지 잡과 같은 문구가 된다
+ */
+export function fallbackCopyTerm(spec: Pick<PdpSpecSheet, 'material' | 'category'>): string {
+  const isCode = (THUMBNAIL_CATEGORIES as readonly string[]).includes(spec.category?.trim() ?? '')
+  return spec.material || (isCode ? '' : spec.category) || ''
+}
+
 /** 제품 데이터 기반 동적 pointCard 로컬 폴백 — copywriting_agent.py:807-846 1:1 */
 export function generateFallbackPointcards(
   productName: string,
@@ -73,16 +83,14 @@ export function generateFallbackPointcards(
   }
   if (category) keywords.push(category.slice(0, 10))
 
+  // 근거 없는 주장(시험 통과·재구매 통계·소재 품질·효과 약속)은 채우지 않는다 — 모자라면 모자란 대로 둔다(2026-10-30 오너 지시)
   const patterns: PointCard[] = [
     { title: `${productName.slice(0, 7)} 핵심 효과`, description: `${productName}만의 특별한 차이를 경험하세요` },
     { title: '간편한 사용법', description: '누구나 쉽게 사용할 수 있는\n직관적인 디자인' },
-    { title: '검증된 품질', description: '까다로운 테스트를 통과한\n믿을 수 있는 품질' },
-    { title: '높은 만족도', description: '사용자 10명 중 9명이\n재구매를 선택합니다' },
-    { title: '프리미엄 소재', description: '엄선된 원재료로 만든\n차원이 다른 완성도' },
-    { title: '빠른 체감 효과', description: '사용 직후부터 느껴지는\n확실한 변화' },
   ]
 
-  const result: PointCard[] = keywords.slice(0, count).map((kw) => ({ title: kw, description: `${kw}의 효과를 직접 확인하세요` }))
+  // 설명은 특징을 그대로 말한다 — 효과를 확인하라고 안내하지 않는다(P1-1a)
+  const result: PointCard[] = keywords.slice(0, count).map((kw) => ({ title: kw, description: `${kw}, 이 상품이 가진 특징이에요` }))
   for (const p of patterns) {
     if (result.length >= count) break
     if (!result.some((r) => r.title === p.title)) result.push(p)
@@ -100,47 +108,77 @@ export interface Stage3IntegrityResult {
   /** changedTop.size / totalFields — CopySectionsPayload.stage3_changed_ratio 그대로 저장.
    *  > 0.6이면 전면 재작성 의심(원본은 로그만 남김, 이식판은 호출부가 warnings로 표면화) */
   changedRatio: number
+  /** object = 객체 응답, other = 객체가 아니라 Stage 2를 그대로 씀 */
+  parsed: 'object' | 'other'
+  /** 모델이 신고한 `_changed_fields` 그대로 — null이면 미신고(응답을 그대로 쓰고 비율은 0) */
+  reported: string[] | null
+  /** 신고 없이 바뀌었지만 keep(고칠 곳이 가리킨 칸)이라 되돌리지 않고 신고로 센 최상위 칸 */
+  keptFields: string[]
+  /** 무결성 뒤 Stage 2와 실제로 다른 최상위 칸(더해지거나 빠진 칸 포함) */
+  changedTopLevel: string[]
 }
 
 function jsonEqual(a: unknown, b: unknown): boolean {
   return JSON.stringify(a) === JSON.stringify(b)
 }
 
+/** 두 카피에서 값이 다른 최상위 칸 — 한쪽에만 있는 칸도 다르다고 본다 */
+function changedKeys(before: Record<string, unknown>, after: Record<string, unknown>): string[] {
+  return [...new Set([...Object.keys(before), ...Object.keys(after)])].filter((k) => !jsonEqual(before[k], after[k]))
+}
+
 /**
  * Stage 3의 `_changed_fields` 신고를 이용한 전면 재출력 드리프트 감지·복원.
  * 신고되지 않은 최상위 필드가 Stage 2(enhanced)와 다르면 드리프트로 판단해 Stage 2 값을 복원한다.
  * `_changed_fields`는 반환 전 제거한다.
+ * keep(flow·rhythm 잡의 '고칠 곳'이 가리킨 최상위 칸)은 신고가 없어도 되돌리지 않고 신고로 센다 — 모델이 고쳐 놓고 신고를 빠뜨려 고친
+ * 것이 버려지지 않게(R10-L-P02 비율 0). keep이 없으면 예전과 같다
  */
-export function enforceStage3FieldIntegrity(enhanced: CopywritingResult, final: unknown): Stage3IntegrityResult {
+export function enforceStage3FieldIntegrity(
+  enhanced: CopywritingResult,
+  final: unknown,
+  opts: { keep?: ReadonlySet<string> } = {}
+): Stage3IntegrityResult {
+  const enhancedRecord = enhanced as unknown as Record<string, unknown>
   if (!isPlainObject(final)) {
-    return { result: enhanced, driftRestoredFields: [], changedRatio: 0 }
+    return { result: enhanced, driftRestoredFields: [], changedRatio: 0, parsed: 'other', reported: null, keptFields: [], changedTopLevel: [] }
   }
   const finalObj: Record<string, unknown> = { ...final }
   const changedFieldsRaw = finalObj._changed_fields
   delete finalObj._changed_fields
+  const reported = Array.isArray(changedFieldsRaw) ? changedFieldsRaw.map((p) => String(p)) : null
+  const outcome = (driftRestoredFields: string[], changedRatio: number, keptFields: string[] = []) => ({
+    result: finalObj as CopywritingResult,
+    driftRestoredFields,
+    changedRatio,
+    parsed: 'object' as const,
+    reported,
+    keptFields,
+    changedTopLevel: isPlainObject(enhanced) ? changedKeys(enhancedRecord, finalObj) : [],
+  })
 
-  const enhancedRecord = enhanced as unknown as Record<string, unknown>
-  if (!isPlainObject(enhanced)) {
-    return { result: finalObj as CopywritingResult, driftRestoredFields: [], changedRatio: 0 }
-  }
-  if (!Array.isArray(changedFieldsRaw)) {
-    // 미신고 — 드리프트 감지 불가, 결과 그대로 사용(원본 :1168 경고 로그와 동일 취급)
-    return { result: finalObj as CopywritingResult, driftRestoredFields: [], changedRatio: 0 }
-  }
+  if (!isPlainObject(enhanced)) return outcome([], 0)
+  // 미신고 — 드리프트 감지 불가, 결과 그대로 사용(원본 :1168 경고 로그와 동일 취급)
+  if (!reported) return outcome([], 0)
 
-  const changedTop = new Set(changedFieldsRaw.map((p) => String(p).split('.')[0].split('[')[0]))
+  const changedTop = new Set(reported.map((p) => p.split('.')[0].split('[')[0]))
   const driftRestored: string[] = []
+  const kept: string[] = []
   for (const key of Object.keys(enhancedRecord)) {
     if (changedTop.has(key) || !(key in finalObj)) continue
     if (!jsonEqual(finalObj[key], enhancedRecord[key])) {
+      if (opts.keep?.has(key)) {
+        kept.push(key)
+        continue
+      }
       finalObj[key] = enhancedRecord[key]
       driftRestored.push(key)
     }
   }
   const totalFields = Object.keys(enhancedRecord).length || 1
-  const changedRatio = changedTop.size / totalFields
+  const changedRatio = (changedTop.size + kept.length) / totalFields
 
-  return { result: finalObj as CopywritingResult, driftRestoredFields: driftRestored, changedRatio }
+  return outcome(driftRestored, changedRatio, kept)
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -207,7 +245,7 @@ export function buildLegacySections(copy: CopywritingResult): DetailSection[] {
     {
       section_type: 'cta',
       headline: ctaHeadline.length <= 30 ? ctaHeadline : ctaHeadline.slice(0, 30),
-      sub_copy: '한정 수량 / 빠른 배송',
+      sub_copy: '',
       image_direction: '',
     },
   ]
@@ -224,10 +262,13 @@ export interface V43DerivedFields {
 
 const REVIEW_POSITION_MAP: Record<string, string> = { front: 'front', middle: 'middle', back: 'back', dynamic: 'dynamic' }
 
+/** 기본 답은 안내만 — 품질·후기 수·배송·반품을 약속하지 않는다(2026-10-30 오너 지시, 근거 없는 기본값 제거) */
+const NO_SHIPPING_PROMISE = '배송 일정과 교환·반품 조건은 상품 페이지의 배송 안내를 확인해 주세요.'
+const PRICE_GUIDE = '구성별 가격은 옵션 선택 화면에서 바로 비교할 수 있어요.'
 const DEFAULT_OBJECTIONS: ReadonlyArray<readonly [string, string]> = [
-  ['가격이 비싸지 않나요?', '합리적인 가격에 최고의 품질을 제공합니다.'],
-  ['품질이 좋은가요?', '수많은 검증된 후기와 품질로 신뢰할 수 있습니다.'],
-  ['배송은 빠른가요?', '빠른 배송 및 30일 무료 반품을 보장합니다.'],
+  ['가격이 비싸지 않나요?', PRICE_GUIDE],
+  ['품질이 좋은가요?', '소재와 구조는 위 상세 설명에서 확인할 수 있어요.'],
+  ['배송은 빠른가요?', NO_SHIPPING_PROMISE],
 ]
 
 /** LLM 재호출 없이 기존 copy에서 V4.3 파생 필드를 규칙 기반으로 도출 — copywriting_agent.py:1576-1675 1:1 */
@@ -273,13 +314,13 @@ export function deriveV43Fields(
   if (compareSummary) answerPool.push(compareSummary)
   const solutionSummary = (solution.summary ?? '').trim()
   if (solutionSummary) answerPool.push(solutionSummary)
-  const baseAnswer = copy.summary || '우리 제품이 최적의 해결책입니다.'
+  const baseAnswer = copy.summary || '위 상세 설명에서 자세히 확인할 수 있어요.'
 
   const objection_handlers: Array<{ objection: string; answer: string }> = []
   objectionPriority.slice(0, 5).forEach((objText, i) => {
     let answer = answerPool.length > 0 ? answerPool[i % answerPool.length] : baseAnswer
-    if (/가격|비싸|비용/.test(objText)) answer = compareSummary || '합리적인 가격에 검증된 품질을 제공합니다.'
-    else if (/배송|언제 와|도착/.test(objText)) answer = '빠른 배송 및 30일 무료 반품을 보장합니다.'
+    if (/가격|비싸|비용/.test(objText)) answer = compareSummary || PRICE_GUIDE
+    else if (/배송|언제 와|도착/.test(objText)) answer = NO_SHIPPING_PROMISE
     objection_handlers.push({ objection: objText, answer })
   })
   for (const [objText, ansText] of DEFAULT_OBJECTIONS) {
@@ -288,10 +329,11 @@ export function deriveV43Fields(
   }
 
   const ctaMain = closingCta.headline || '지금 바로 경험해보세요'
-  const ctaSub = closingCta.subtext || '빠른 배송 · 30일 무료 반품'
+  // 이성 변형은 카피 부제가 있을 때만 — 배송·반품 약속을 기본값으로 만들지 않는다
+  const ctaSub = closingCta.subtext || ''
   const cta_variants = [
     { type: 'emotion', copy: ctaMain },
-    { type: 'rational', copy: ctaSub || '지금 구매하고 무료 반품 혜택받기' },
+    ...(ctaSub ? [{ type: 'rational', copy: ctaSub }] : []),
   ]
 
   return { hero_copy, review_strategy, section_copy_blocks, objection_handlers, cta_variants, sections }

@@ -13,7 +13,6 @@ import {
   selectDocument,
   selectSelectedElementId,
 } from '@/lib/registration/editor/stores/editorStore';
-import type { CanvasElement } from '@/lib/registration/editor/types/canvas';
 import { EmptyState } from './primitives';
 
 function LayerTab() {

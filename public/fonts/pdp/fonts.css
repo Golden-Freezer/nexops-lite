@@ -1,0 +1,43 @@
+/* 상세페이지 편집기 글꼴 — 자체 보관본(SIL Open Font License 1.1). 저작권·출처·가공 내역: NOTICE.md, 라이선스 전문: licenses/
+   scripts/fonts/build-pdp-fonts.py가 만든다 — 손으로 고치지 않는다. */
+@font-face{font-family:'Pretendard';src:url('./Pretendard-Thin.woff2') format('woff2');font-weight:100;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-ExtraLight.woff2') format('woff2');font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('./Pretendard-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Pretendard Variable';src:url('./PretendardVariable.woff2') format('woff2');font-weight:45 920;font-style:normal;font-display:swap}
+@font-face{font-family:'GmarketSansBold';src:url('./GmarketSansTTFBold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Noto Sans KR';src:url('./NotoSansKR-wght.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Nanum Gothic';src:url('./NanumGothic-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Nanum Gothic';src:url('./NanumGothic-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Nanum Gothic';src:url('./NanumGothic-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Sans KR';src:url('./IBMPlexSansKR-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Sans KR';src:url('./IBMPlexSansKR-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Gothic A1';src:url('./GothicA1-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Gothic A1';src:url('./GothicA1-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Gothic A1';src:url('./GothicA1-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Gowun Dodum';src:url('./GowunDodum-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SUIT Variable';src:url('./SUIT-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Wanted Sans Variable';src:url('./WantedSansVariable.woff2') format('woff2');font-weight:400 1000;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('./Paperlogy-4Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('./Paperlogy-7Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('./Paperlogy-8ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'LINE Seed Sans KR';src:url('./LINESeedKR-Rg.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'LINE Seed Sans KR';src:url('./LINESeedKR-Bd.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Nanum Myeongjo';src:url('./NanumMyeongjo-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Nanum Myeongjo';src:url('./NanumMyeongjo-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Noto Serif KR';src:url('./NotoSerifKR-wght.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Gowun Batang';src:url('./GowunBatang-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Hahmlet';src:url('./Hahmlet-wght.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Song Myung';src:url('./SongMyung-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Black Han Sans';src:url('./BlackHanSans-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Do Hyeon';src:url('./DoHyeon-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Jua';src:url('./Jua-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Gugi';src:url('./Gugi-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Nanum Pen Script';src:url('./NanumPenScript-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Gaegu';src:url('./Gaegu-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Cafe24 Ssurround';src:url('./Jua-Regular.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}

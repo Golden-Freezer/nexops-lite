@@ -8,13 +8,14 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ImagePlus, Loader2, Play, X } from 'lucide-react'
-import { IMAGE_MODELS, type ImageModel, type ImageQuality } from '@/lib/agents/image/types'
+import { PDP_IMAGE_MODELS, type ImageModel, type ImageQuality } from '@/lib/agents/image/types'
 import {
   THUMBNAIL_CATEGORIES,
   THUMBNAIL_CATEGORY_LABELS,
   type ThumbnailCut,
   type ThumbnailJob,
 } from '@/lib/registration/thumbnail-types'
+import { draftSourceImageUrls, type DraftSourceContent } from '@/lib/sourcing/registration/draft-source-images'
 import { ImageModelSelect } from './ImageModelSelect'
 import { ThumbnailResults } from './ThumbnailResults'
 import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
@@ -35,12 +36,23 @@ async function api<T>(url: string, init?: RequestInit): Promise<T> {
   return json.data as T
 }
 
-export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; resumeJobId?: string }) {
-  const localCodexAvailable = useLocalCodexAvailable()
+export function ThumbnailStudio({
+  draftId,
+  resumeJobId,
+  initialName,
+}: {
+  draftId?: string
+  resumeJobId?: string
+  /** 작명 결과에서 넘어온 상품명(?name=) — 초안이 없을 때 상품명 칸 기본값 */
+  initialName?: string
+}) {
+  // 연결된 등록 초안 — ?draftId= 또는 재개한 잡의 draftId. 새 잡도 같은 초안에 묶여 초안 사업장을 물려받고
+  // 채택 컷이 초안 대표이미지로 들어간다(서버 resolveJobDraftLink).
+  const [linkedDraftId, setLinkedDraftId] = useState<string | undefined>(draftId)
   const [sourceUrls, setSourceUrls] = useState<string[]>([])
-  const [productName, setProductName] = useState('')
+  const [productName, setProductName] = useState(initialName ?? '')
   const [categoryHint, setCategoryHint] = useState('')
-  const [model, setModel] = useState<ImageModel>(IMAGE_MODELS[0].id)
+  const [model, setModel] = useState<ImageModel>(PDP_IMAGE_MODELS[0].id)
   const [quality, setQuality] = useState<ImageQuality>('medium')
   const [uploading, setUploading] = useState(false)
   const [running, setRunning] = useState(false)
@@ -49,6 +61,7 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
   const [error, setError] = useState<string | null>(null)
   const aliveRef = useRef(true)
   const fileRef = useRef<HTMLInputElement>(null)
+  const localCodexAvailable = useLocalCodexAvailable()
 
   useEffect(() => {
     aliveRef.current = true
@@ -62,25 +75,22 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
     api<ThumbnailJob[]>('/api/registration/thumbnail')
       .then((jobs) => {
         if (!aliveRef.current || jobs.length === 0) return
-        setModel(jobs[0].imageModel)
+        setModel('codex-image')
         setQuality(jobs[0].imageQuality === 'high' ? 'high' : 'medium')
       })
       .catch(() => {}) // 기본값 유지 — 프리셀렉트 실패는 치명적이지 않음
   }, [])
 
-  // 드래프트 프리로드 — 상품명·기존 이미지
+  // 드래프트 프리로드 — 상품명·기존 이미지(원본 대표 사진 먼저, 생성 컷·채택 썸네일은 빼고 — 결정 카드 c01)
   useEffect(() => {
     if (!draftId) return
     api<{
-      form: { productName?: string; content?: { heroImages?: string[]; detailImages?: string[] } }
+      form: { productName?: string; content?: DraftSourceContent }
     }>(`/api/sourcing/registration-drafts/${draftId}`)
       .then((draft) => {
         if (!aliveRef.current) return
         if (draft.form.productName) setProductName(draft.form.productName)
-        const images = [
-          ...(draft.form.content?.heroImages ?? []),
-          ...(draft.form.content?.detailImages ?? []),
-        ].filter(Boolean)
+        const images = draftSourceImageUrls(draft.form.content)
         if (images.length > 0) setSourceUrls(images.slice(0, 3))
       })
       .catch((e) => setError(e instanceof Error ? e.message : '드래프트 로드 실패'))
@@ -118,7 +128,8 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
       .then((loaded) => {
         if (!aliveRef.current) return
         setJob(loaded)
-        setModel(loaded.imageModel)
+        if (loaded.draftId) setLinkedDraftId(loaded.draftId)
+        setModel('codex-image')
         setQuality(loaded.imageQuality === 'high' ? 'high' : 'medium')
         if (loaded.productName) setProductName(loaded.productName)
         setSourceUrls(loaded.sourceImages)
@@ -162,7 +173,7 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          draftId,
+          draftId: linkedDraftId,
           sourceImages: sourceUrls,
           productName: productName.trim() || undefined,
           categoryHint: categoryHint || undefined,
@@ -200,7 +211,14 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
     <div className="space-y-4">
       {/* 입력 — 참조 이미지 */}
       <section className="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
-        <div className="text-sm font-semibold text-slate-700">참조 이미지 (1~3장)</div>
+        <div className="flex items-center gap-2 flex-wrap">
+          <div className="text-sm font-semibold text-slate-700">참조 이미지 (1~3장)</div>
+          {linkedDraftId && (
+            <span className="text-[10px] border border-brand-200 bg-brand-50 text-brand-700 rounded-full px-1.5 py-0.5">
+              등록 초안 연결 — 초안 사업장으로 생성, 채택 컷은 초안 대표이미지로
+            </span>
+          )}
+        </div>
         <div className="flex items-center gap-2 flex-wrap">
           {sourceUrls.map((url) => (
             <div key={url} className="relative">
@@ -266,6 +284,7 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
           </select>
         </div>
         <ImageModelSelect
+          models={PDP_IMAGE_MODELS}
           model={model}
           quality={quality}
           imageCount={3}
@@ -276,7 +295,7 @@ export function ThumbnailStudio({ draftId, resumeJobId }: { draftId?: string; re
         <button
           onClick={start}
           disabled={!localCodexAvailable || running || uploading || sourceUrls.length === 0}
-          title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
+          title={!localCodexAvailable ? LOCAL_CODEX_NOTICE : undefined}
           className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs px-4 py-2 rounded-full bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50"
         >
           {running ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5" />}

@@ -2,12 +2,18 @@
 
 import { createAdminClient } from '@/lib/supabase/admin'
 import { agentLogger } from '@/lib/monitoring/logger'
-import type { RunContext } from './types'
+import type { CostPool, RunContext } from './types'
 
 const KST_OFFSET_MS = 9 * 3_600_000
+const UNLIMITED_BUDGET_USD = Number.MAX_SAFE_INTEGER
+export const PDP_TEST_POOL: CostPool = 'pdp-test'
 
 export function monthlyBudgetUsd(): number {
-  return 0
+  return UNLIMITED_BUDGET_USD
+}
+
+export function pdpTestBudgetUsd(): number {
+  return UNLIMITED_BUDGET_USD
 }
 
 export function currentMonthKey(now = new Date()): string {
@@ -15,7 +21,7 @@ export function currentMonthKey(now = new Date()): string {
 }
 
 export function agentMonthlyBudgetUsd(agentName?: string): number | null {
-  return agentName ? 0 : null
+  return agentName ? UNLIMITED_BUDGET_USD : null
 }
 
 export interface BudgetStatus {
@@ -25,21 +31,34 @@ export interface BudgetStatus {
   agentName?: string
   agentSpentUsd?: number
   agentBudgetUsd?: number
-  limitReason?: 'global' | 'agent'
+  limitReason?: 'global' | 'agent' | 'pool' | 'variable_cap' | 'variable_unreadable'
+  costPool?: CostPool
   degraded?: boolean
   degradedReason?: string
 }
 
-export function isDegradedModelAllowed(): boolean {
+export function isDegradedModelAllowed(_model?: string): boolean {
   return true
 }
 
-export async function checkMonthlyBudget(agentName?: string, _model?: string): Promise<BudgetStatus> {
+export interface MonthlyBudgetOptions {
+  variableGuard?: boolean
+}
+
+export async function checkMonthlyBudget(
+  agentName?: string,
+  _model?: string,
+  costPool?: CostPool,
+  _options: MonthlyBudgetOptions = {},
+): Promise<BudgetStatus> {
   return {
     allowed: true,
     spentUsd: 0,
-    budgetUsd: 0,
-    ...(agentName ? { agentName, agentSpentUsd: 0, agentBudgetUsd: 0 } : {}),
+    budgetUsd: UNLIMITED_BUDGET_USD,
+    ...(agentName
+      ? { agentName, agentSpentUsd: 0, agentBudgetUsd: UNLIMITED_BUDGET_USD }
+      : {}),
+    ...(costPool ? { costPool } : {}),
   }
 }
 

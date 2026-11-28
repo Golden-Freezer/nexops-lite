@@ -1,0 +1,4465 @@
+[
+  {
+    "id": "hook_3step.food-plated-ingredient",
+    "section": "hook_3step",
+    "name": "가운데 제목 + 담은 컷·재료 모자이크 + 보조",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "HOOK",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "plated",
+        "bleed": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "plated": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "scene"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "hook_3step.food-plated-ingredient"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hook_3step.food-plated-ingredient.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 1880
+    },
+    "height": 1700
+  },
+  {
+    "id": "main_cut.food-plated-package-note",
+    "section": "main_cut",
+    "name": "가운데 제목 + 담은 컷 크게·포장 컷 좁게 + 짧은 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "plated",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "note",
+        "token": "BODY",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "package",
+        "x": 200,
+        "w": 460
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "plated": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "package": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package",
+          "hero"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 588
+      },
+      "note": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 2,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.food-plated-package-note"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.food-plated-package-note.html",
+    "estimatedHeight": {
+      "min": 2410,
+      "max": 3000
+    },
+    "height": 2710
+  },
+  {
+    "id": "sub2_div_page.food-scene-pair",
+    "section": "sub2_div_page",
+    "name": "가운데 한 줄 + 장면 풀폭 + 근접 2장",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "wide",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "wide": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "angle45"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "ingredient"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.food-scene-pair"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub2_div_page.food-scene-pair.html",
+    "estimatedHeight": {
+      "min": 1450,
+      "max": 1850
+    },
+    "height": 1650
+  },
+  {
+    "id": "product_exposure.food-portion-lead",
+    "section": "product_exposure",
+    "name": "양 큰 컷 + 가운데 한 줄 + 묶음·포장 2장",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "portion",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "portion": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale",
+          "quantity"
+        ],
+        "composition": [
+          "top",
+          "group",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "quantity",
+          "group"
+        ],
+        "composition": [
+          "group",
+          "flatlay",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package",
+          "texture"
+        ],
+        "composition": [
+          "front",
+          "closeup"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "product_exposure.food-portion-lead"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/product_exposure.food-portion-lead.html",
+    "estimatedHeight": {
+      "min": 1480,
+      "max": 1760
+    },
+    "height": 1620
+  },
+  {
+    "id": "solution_guide.food-cook-lead-pair",
+    "section": "solution_guide",
+    "name": "해결 선언 + 조리 큰 컷 + 보관·활용 2열, 이름표 + 짧은 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "cook",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "shots",
+        "columns": 2,
+        "gap": "blockGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "shot",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "tags",
+            "slot": "label",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "note",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "cook": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 2,
+        "fields": {
+          "shot": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "state",
+              "action"
+            ],
+            "composition": [
+              "top",
+              "closeup",
+              "in_use"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 500
+          },
+          "label": {
+            "type": "text",
+            "required": false,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "note": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "solution_guide.food-cook-lead-pair"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/solution_guide.food-cook-lead-pair.html",
+    "estimatedHeight": {
+      "min": 1750,
+      "max": 2470
+    },
+    "height": 2110
+  },
+  {
+    "id": "spec_table.food-package-card",
+    "section": "spec_table",
+    "name": "머리표 + 카드 안 포장 컷·표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "C",
+        "radius": "card",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo",
+            "gapAfter": "photoGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": true,
+            "gap": "tableGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": true,
+            "joinRule": true,
+            "even": true,
+            "gap": "tableGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package",
+          "hero"
+        ],
+        "composition": [
+          "front",
+          "flatlay",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.food-package-card"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.food-package-card.html",
+    "estimatedHeight": {
+      "min": 1260,
+      "max": 4430
+    },
+    "height": 2850
+  },
+  {
+    "id": "option_gallery.food-portion-card",
+    "section": "option_gallery",
+    "name": "카드 안 제목 + 양별 2열, 사진마다 이름표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "C",
+        "radius": "card",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2",
+            "align": "center",
+            "gapAfter": "photoGap",
+            "emphasis": true
+          },
+          {
+            "kind": "repeat",
+            "slot": "swatches",
+            "columns": 2,
+            "gap": "blockGap",
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "tags",
+                "slot": "name",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "swatches": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "option.images",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "quantity",
+              "package"
+            ],
+            "composition": [
+              "group",
+              "front",
+              "top"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 500
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 6,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "option.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "option"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "option_gallery.food-portion-card"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/option_gallery.food-portion-card.html",
+    "estimatedHeight": {
+      "min": 1220,
+      "max": 1980
+    },
+    "height": 1600
+  },
+  {
+    "id": "problem_raise.food-worry-bleed-band",
+    "section": "problem_raise",
+    "name": "풀폭 고민 컷 + 연한 띠 안 제목·줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      },
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "rule": true,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "item",
+                "token": "BODY_BOLD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_raise.food-worry-bleed-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_raise.food-worry-bleed-band.html",
+    "estimatedHeight": {
+      "min": 1830,
+      "max": 2480
+    },
+    "height": 2160
+  },
+  {
+    "id": "problem_empathy.food-side-title-note",
+    "section": "problem_empathy",
+    "name": "사진 옆 가운데 제목·글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H2",
+                "align": "center",
+                "gapAfter": "titleGap"
+              },
+              {
+                "kind": "text",
+                "slot": "sub",
+                "token": "BODY",
+                "align": "center"
+              }
+            ]
+          },
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 24,
+        "maxLines": 5,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 560
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_empathy.food-side-title-note"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_empathy.food-side-title-note.html",
+    "estimatedHeight": {
+      "min": 800,
+      "max": 1160
+    },
+    "height": 980
+  },
+  {
+    "id": "key_message.food-plated-plate-line",
+    "section": "key_message",
+    "name": "판 깐 담은 컷 + 가운데 제목·글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "scene"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "key_message.food-plated-plate-line"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/key_message.food-plated-plate-line.html",
+    "estimatedHeight": {
+      "min": 1560,
+      "max": 2150
+    },
+    "height": 1860
+  },
+  {
+    "id": "point_div.food-closeup-mosaic",
+    "section": "point_div",
+    "name": "표준 머리 + 큰 컷·근접 모자이크",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "big"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "top",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "bottom"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "big": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "hero"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "top": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "ingredient"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "bottom": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "angle45"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.food-closeup-mosaic"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.food-closeup-mosaic.html",
+    "estimatedHeight": {
+      "min": 1160,
+      "max": 1750
+    },
+    "height": 1460
+  },
+  {
+    "id": "sub_div.food-cut-stagger",
+    "section": "sub_div",
+    "name": "제목 + 어긋난 근접 2장 + 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "image",
+        "slot": "first",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "second",
+        "x": 60,
+        "w": 600,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "desc",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "desc": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "second": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "ingredient",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub_div.food-cut-stagger"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub_div.food-cut-stagger.html",
+    "estimatedHeight": {
+      "min": 2200,
+      "max": 2670
+    },
+    "height": 2440
+  },
+  {
+    "id": "hidden_page.food-cut-bleed-rows",
+    "section": "hidden_page",
+    "name": "풀폭 근접 컷 + 제목 + 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "item",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "state"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "hidden_page.food-cut-bleed-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hidden_page.food-cut-bleed-rows.html",
+    "estimatedHeight": {
+      "min": 1930,
+      "max": 2470
+    },
+    "height": 2200
+  },
+  {
+    "id": "petit_div.food-line-between-insets",
+    "section": "petit_div",
+    "name": "사진 2장 사이 가운데 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "first",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "line",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "second"
+      }
+    ],
+    "slots": {
+      "line": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "second": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "top",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "petit_div.food-line-between-insets"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/petit_div.food-line-between-insets.html",
+    "estimatedHeight": {
+      "min": 2620,
+      "max": 2720
+    },
+    "height": 2670
+  },
+  {
+    "id": "direction_suggest.food-eat-zigzag",
+    "section": "direction_suggest",
+    "name": "가운데 제목 + 사진·글 지그재그 2줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "gapAfter": "photoGap",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "first"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "firstNote",
+                "token": "BODY_BOLD"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "secondNote",
+                "token": "BODY_BOLD"
+              }
+            ]
+          },
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "second"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "firstNote": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 14,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "second": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand",
+          "angle45"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "secondNote": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 14,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 2,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "direction_suggest.food-eat-zigzag"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/direction_suggest.food-eat-zigzag.html",
+    "estimatedHeight": {
+      "min": 1700,
+      "max": 1970
+    },
+    "height": 1840
+  },
+  {
+    "id": "concept_desc.food-scene-overlay-story",
+    "section": "concept_desc",
+    "name": "풀폭 장면 + 위쪽 사진 위 제목 + 아래 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap",
+        "overlay": {
+          "anchor": "top",
+          "ink": "light",
+          "nodes": [
+            {
+              "kind": "text",
+              "slot": "headline",
+              "token": "H1"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "text",
+        "slot": "story",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "story": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "선물 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "concept_desc.food-scene-overlay-story"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "overlay"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/concept_desc.food-scene-overlay-story.html",
+    "estimatedHeight": {
+      "min": 1290,
+      "max": 1770
+    },
+    "height": 1530
+  },
+  {
+    "id": "point_list_div.food-note-photo-rows",
+    "section": "point_list_div",
+    "name": "가운데 제목 + 줄마다 글과 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 420,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              },
+              {
+                "w": 296,
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "photo"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 4,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          },
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "texture",
+              "ingredient",
+              "state"
+            ],
+            "composition": [
+              "closeup",
+              "top",
+              "angle45"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 395
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_list_div.food-note-photo-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_list_div.food-note-photo-rows.html",
+    "estimatedHeight": {
+      "min": 1760,
+      "max": 2440
+    },
+    "height": 2100
+  },
+  {
+    "id": "cta.food-package-wide-close",
+    "section": "cta",
+    "name": "가운데 제목·짧은 글 + 담은 컷 좁게·포장 컷 넓게",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "plated"
+              }
+            ]
+          },
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "package"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "plated": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "scene"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 588
+      },
+      "package": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package",
+          "hero"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "cta.food-package-wide-close"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/cta.food-package-wide-close.html",
+    "estimatedHeight": {
+      "min": 1190,
+      "max": 1780
+    },
+    "height": 1490
+  },
+  {
+    "id": "convert_div.food-pair-first-close",
+    "section": "convert_div",
+    "name": "사진 2장 먼저 + 가운데 제목·글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "gapAfter": "photoGap",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "action"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "hero"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "선물 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "convert_div.food-pair-first-close"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/convert_div.food-pair-first-close.html",
+    "estimatedHeight": {
+      "min": 1210,
+      "max": 1800
+    },
+    "height": 1510
+  },
+  {
+    "id": "compare.food-pair-first-checks",
+    "section": "compare",
+    "name": "사진 2장 먼저 + 제목 + 체크 줄(우리 장점만)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "gapAfter": "photoGap",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.food-pair-first-checks"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.food-pair-first-checks.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 2190
+    },
+    "height": 1860
+  },
+  {
+    "id": "review.food-inset-rows",
+    "section": "review",
+    "name": "제목 + 사진 + 줄로 나눈 후기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.food-inset-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.food-inset-rows.html",
+    "estimatedHeight": {
+      "min": 2230,
+      "max": 3740
+    },
+    "height": 2990
+  },
+  {
+    "id": "faq.food-plate-rows",
+    "section": "faq",
+    "name": "판 깐 사진 + 제목 + 질문·답",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package",
+          "state"
+        ],
+        "composition": [
+          "top",
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.food-plate-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.food-plate-rows.html",
+    "estimatedHeight": {
+      "min": 2170,
+      "max": 3890
+    },
+    "height": 3030
+  },
+  {
+    "id": "perf_metric.food-score-side",
+    "section": "perf_metric",
+    "name": "큰 평점·별·후기 수 옆 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "score",
+                "token": "DISPLAY",
+                "color": "accent",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "rating",
+                "slot": "stars",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "count",
+                "token": "BODY_BOLD"
+              }
+            ]
+          },
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "score": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "stars": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "count": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "none",
+        "input": "review.count"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "rating"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "perf_metric.food-score-side"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/perf_metric.food-score-side.html",
+    "estimatedHeight": {
+      "min": 740,
+      "max": 780
+    },
+    "height": 760
+  },
+  {
+    "id": "certification.food-plate-names",
+    "section": "certification",
+    "name": "제목 + 판 깐 사진 + 인증 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "regulated"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "certification.items",
+        "min": 1,
+        "max": 4,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none",
+            "input": "certification.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package",
+          "feature_proof"
+        ],
+        "composition": [
+          "front",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "certification"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "certification.food-plate-names"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/certification.food-plate-names.html",
+    "estimatedHeight": {
+      "min": 1590,
+      "max": 2650
+    },
+    "height": 2120
+  },
+  {
+    "id": "event_offer.food-bleed-first-offer",
+    "section": "event_offer",
+    "name": "풀폭 사진 먼저 + 가운데 혜택",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "offer",
+        "token": "H2",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "offer": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none",
+        "input": "offer.info"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "in_use",
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "offer"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "honest-kraft",
+        "jelly-soft",
+        "candy-pop",
+        "cozy-beige",
+        "natural-wood",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "food"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "event_offer.food-bleed-first-offer"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/event_offer.food-bleed-first-offer.html",
+    "estimatedHeight": {
+      "min": 1470,
+      "max": 1690
+    },
+    "height": 1580
+  }
+]

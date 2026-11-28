@@ -158,14 +158,19 @@ function renderSectionExtras(section: ComposedSection): string {
     parts.push(renderListBlock('스펙', rows.map((r) => `${r.label}: ${r.value}`)))
   }
   if (Array.isArray(section.compare_items)) {
-    const items = section.compare_items as Array<{ name?: string; pros?: string; cons?: string }>
-    parts.push(renderListBlock('비교', items.map((r) => `${r.name ?? ''} — ${r.pros ?? ''} / ${r.cons ?? ''}`)))
+    const items = section.compare_items as Array<{ name?: string; pros?: string }>
+    parts.push(renderListBlock('비교', items.map((r) => `${r.name ?? ''} — ${r.pros ?? ''}`)))
   }
   if (Array.isArray(section.highlights)) {
-    const highlights = section.highlights as Array<{ text?: string; author?: string }>
-    parts.push(renderListBlock('리뷰', highlights.map((h) => (h.author ? `${h.text ?? ''} — ${h.author}` : h.text ?? ''))))
+    // 인용 카드(평점이 있는 카드, R6)는 작성자를 붙이지 않는다 — 편집기 카드도 작성자 줄 없이 별점·옵션만
+    const highlights = section.highlights as Array<{ text?: string; author?: string; rating?: number }>
+    const line = (h: (typeof highlights)[number]) =>
+      h.author && typeof h.rating !== 'number' ? `${h.text ?? ''} — ${h.author}` : h.text ?? ''
+    parts.push(renderListBlock('리뷰', highlights.map(line)))
   }
   if (Array.isArray(section.empathy_lines)) parts.push(renderListBlock('공감 포인트', section.empathy_lines as string[]))
+  // bullet_points는 인증 섹션만 가진다 — 입력 인증 항목의 둘째부터(첫 항목은 제목)
+  if (Array.isArray(section.bullet_points)) parts.push(renderListBlock('인증', section.bullet_points as string[]))
   return parts.join('')
 }
 

@@ -1,0 +1,1907 @@
+[
+  {
+    "id": "main_cut.bleed-rows",
+    "section": "main_cut",
+    "name": "풀폭 대표 컷 + 제목 + 특징 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "facts",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "fact",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "facts": {
+        "type": "list",
+        "required": false,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "fact": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.bleed-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.bleed-rows.html",
+    "estimatedHeight": {
+      "min": 1630,
+      "max": 2660
+    },
+    "height": 2150
+  },
+  {
+    "id": "main_cut.bubble-note",
+    "section": "main_cut",
+    "name": "제목 + 풀폭 대표 컷 + 말풍선 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "blockGap",
+        "bleed": true
+      },
+      {
+        "kind": "panel",
+        "fill": "T",
+        "radius": "bubble",
+        "w": 680,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "note",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "note": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.bubble-note"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "bubble"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.bubble-note.html",
+    "estimatedHeight": {
+      "min": 1630,
+      "max": 2440
+    },
+    "height": 2040
+  },
+  {
+    "id": "main_cut.tile-angles",
+    "section": "main_cut",
+    "name": "가운데 제목 + 큰 컷 + 상자 두 칸 각도 컷",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "row",
+        "valign": "stretch",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "panel",
+                "fill": "N",
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "left"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "panel",
+                "fill": "T",
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "right"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "side"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 340
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "top",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 340
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.tile-angles"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "tile"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.tile-angles.html",
+    "estimatedHeight": {
+      "min": 1650,
+      "max": 1910
+    },
+    "height": 1780
+  },
+  {
+    "id": "main_cut.card-grid",
+    "section": "main_cut",
+    "name": "제목 + 큰 컷 + 상자 안 3열 컷",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "repeat",
+            "slot": "shots",
+            "columns": 3,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "shot"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 3,
+        "fields": {
+          "shot": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "texture"
+            ],
+            "composition": [
+              "closeup",
+              "side",
+              "top"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 270
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 4,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.card-grid"
+      ]
+    },
+    "signature": {
+      "columns": 3,
+      "photo": "grid",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.card-grid.html",
+    "estimatedHeight": {
+      "min": 2050,
+      "max": 2640
+    },
+    "height": 2350
+  },
+  {
+    "id": "main_cut.band-left",
+    "section": "main_cut",
+    "name": "어두운 띠 왼쪽 제목 + 풀폭 컷",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "gapAfter": "blockGap",
+        "edge": {
+          "side": "bottom",
+          "shape": "slant"
+        },
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "gapAfter": "titleGap",
+            "emphasis": true
+          },
+          {
+            "kind": "text",
+            "slot": "sub",
+            "token": "BODY"
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "pro-navy",
+        "dark-performance"
+      ],
+      "density": "low",
+      "personaTags": [
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.band-left"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.band-left.html",
+    "estimatedHeight": {
+      "min": 1730,
+      "max": 2320
+    },
+    "height": 2030
+  },
+  {
+    "id": "main_cut.scale-plate",
+    "section": "main_cut",
+    "name": "가운데 제목 + 판 위 크기 컷 + 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "badge": {
+          "slot": "badge",
+          "corner": "tr"
+        },
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "badge": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "input": "badge.rating",
+        "facts": 0,
+        "maxChars": 6,
+        "maxLines": 1,
+        "claimRisk": "none"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.scale-plate"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.scale-plate.html",
+    "estimatedHeight": {
+      "min": 1630,
+      "max": 2220
+    },
+    "height": 1930
+  },
+  {
+    "id": "main_cut.bottom-center",
+    "section": "main_cut",
+    "name": "가운데 제목 + 풀폭 대표 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.bottom-center"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.bottom-center.html",
+    "estimatedHeight": {
+      "min": 1630,
+      "max": 2220
+    },
+    "height": 1930
+  },
+  {
+    "id": "main_cut.plate-note",
+    "section": "main_cut",
+    "name": "판 위 대표 컷 + 왼쪽 제목",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "titleGap",
+        "badge": {
+          "slot": "badge",
+          "corner": "tr"
+        }
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "badge": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "input": "badge.rating",
+        "facts": 0,
+        "maxChars": 6,
+        "maxLines": 1,
+        "claimRisk": "none"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.plate-note"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.plate-note.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 2110
+    },
+    "height": 1820
+  },
+  {
+    "id": "main_cut.offset-right",
+    "section": "main_cut",
+    "name": "왼쪽 제목 + 오른쪽으로 비킨 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "badge": {
+          "slot": "badge",
+          "corner": "tl"
+        },
+        "bleed": true
+      },
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "emphasis": true,
+            "gapAfter": "titleGap"
+          },
+          {
+            "kind": "text",
+            "slot": "sub",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "badge": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "input": "badge.rating",
+        "facts": 0,
+        "maxChars": 6,
+        "maxLines": 1,
+        "claimRisk": "none"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.offset-right"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.offset-right.html",
+    "estimatedHeight": {
+      "min": 1660,
+      "max": 2260
+    },
+    "height": 1960
+  },
+  {
+    "id": "main_cut.package-pair",
+    "section": "main_cut",
+    "name": "가운데 제목 + 구성·내용물 2장",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "left",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "align": "center",
+            "emphasis": true,
+            "gapAfter": "titleGap"
+          },
+          {
+            "kind": "text",
+            "slot": "sub",
+            "token": "BODY",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "right",
+        "x": 200,
+        "w": 460
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group",
+          "quantity"
+        ],
+        "composition": [
+          "group",
+          "flatlay"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.package-pair"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.package-pair.html",
+    "estimatedHeight": {
+      "min": 2630,
+      "max": 3220
+    },
+    "height": 2930
+  },
+  {
+    "id": "main_cut.grid-center",
+    "section": "main_cut",
+    "name": "가운데 제목 + 큰 컷 + 3열 각도 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "shots",
+        "columns": 3,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "shot"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 3,
+        "fields": {
+          "shot": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "texture"
+            ],
+            "composition": [
+              "side",
+              "top",
+              "closeup"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 300
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 4,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.grid-center"
+      ]
+    },
+    "signature": {
+      "columns": 3,
+      "photo": "grid",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.grid-center.html",
+    "estimatedHeight": {
+      "min": 1500,
+      "max": 1770
+    },
+    "height": 1640
+  },
+  {
+    "id": "main_cut.card-bleed",
+    "section": "main_cut",
+    "name": "상자 안 가운데 제목 + 풀폭 대표 컷",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H1",
+            "align": "center",
+            "emphasis": true,
+            "gapAfter": "titleGap"
+          },
+          {
+            "kind": "text",
+            "slot": "sub",
+            "token": "BODY",
+            "align": "center"
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 14,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.card-bleed"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.card-bleed.html",
+    "estimatedHeight": {
+      "min": 1710,
+      "max": 2170
+    },
+    "height": 1940
+  }
+]

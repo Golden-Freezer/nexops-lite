@@ -6,6 +6,7 @@
  * cutout 미적용 · 3컷 올-오어-낫싱 · 게이트는 차단이 아니라 신호(재판정 실패여도 잡 성공).
  */
 
+import { billedCostOf } from '@/lib/agents/billed-usage'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { generateImage } from '@/lib/agents/image/generate'
 import { estimateImageCostUsd } from '@/lib/agents/image/types'
@@ -163,7 +164,7 @@ async function stepAnalyze(db: SupabaseClient, userId: string, job: ThumbnailJob
     job.categoryHint,
     buildRunContext(userId, job, 'analyze'),
   )
-  let costUsd = job.costUsd + analysisResult.usage.cost
+  let costUsd = job.costUsd + billedCostOf(analysisResult)
   if (!analysisResult.success) {
     return failJob(db, userId, job.id, `Vision 분석 실패: ${analysisResult.error.message}`, costUsd)
   }
@@ -231,9 +232,10 @@ async function stepGenerate(db: SupabaseClient, userId: string, job: ThumbnailJo
   }
 
   const prompts = buildThumbnailPrompts(analysis, analysis.category, analysis.impact_concept)
-  const refs = await loadReferences(job, cut)
 
   try {
+    // 참조 로드 실패도 이 컷의 실패로 기록한다 — 잡 전체를 failJob으로 보내지 않고 다음 run의 컷 재시도가 흡수(loadReferences 주석)
+    const refs = await loadReferences(job, cut)
     const result = await generateImage({
       prompt: prompts[cut],
       model: job.imageModel,
@@ -276,8 +278,9 @@ async function stepGate(db: SupabaseClient, userId: string, job: ThumbnailJob): 
     const analysis = job.visionAnalysis
     if (!analysis) return failJob(db, userId, job.id, '분석 산출이 없습니다 — 잡 상태 불일치')
     const prompts = buildThumbnailPrompts(analysis, analysis.category, analysis.impact_concept)
-    const refs = await loadReferences(job, regenTarget)
     try {
+      // 참조 로드 실패도 재생성 실패로 흡수 — 이미 배달된 3컷을 잡 실패로 뒤집지 않는다
+      const refs = await loadReferences(job, regenTarget)
       const result = await generateImage({
         prompt: prompts[regenTarget],
         model: job.imageModel,

@@ -20,9 +20,7 @@ import {
   Diamond,
   ArrowRight,
   MessageCircle,
-  Hexagon,
   Minus,
-  ChevronDown,
   ChevronRight,
   GripVertical,
 } from 'lucide-react';

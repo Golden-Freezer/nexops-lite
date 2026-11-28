@@ -31,8 +31,8 @@ export interface CopywritingResult {
   keyMessageVariations?: { top?: string; mid?: string; bottom?: string };
   productExposure?: { headline?: string; subCopy?: string };
   keyMessageCopy?: { headline?: string; subCopy?: string };
-  /** 비교 섹션용 — 경쟁 대안 대비 3-way 비교 (마지막 항목 = 본 상품) */
-  compareItems?: Array<{ name: string; pros: string; cons: string }>;
+  /** 비교 섹션용 — 기존 제품·우리 제품 두 칸. 옛 저장본은 3자 비교·단점 칸이 남아 있어 normalizeCompareItems를 지나 그린다 */
+  compareItems?: Array<{ name: string; pros: string; cons?: string }>;
   compareSummary?: string;
   colorOptions: { title: string; options: string[]; description: string };
   usageSceneTags: string[];
@@ -67,6 +67,17 @@ export interface InitialBaseline {
   sections: CanvasSection[];
 }
 
+/**
+ * GIF 칸(움직이는 띠) 한 칸 — 편집기 응답 motion_clips의 값(포스터 URL 키). 편집기는 포스터를 그리고, 상세 이미지 굽기가
+ * 그 포스터 자리를 이 움직이는 WebP로 바꿔 전체 이미지 목록(IMAGE_NO_SPACE)에 섞는다(세션 B ③ P4). 크기는 WebP의 가로·세로·바이트다.
+ */
+export interface MotionClip {
+  webpUrl: string;
+  width: number;
+  height: number;
+  bytes: number;
+}
+
 // ─────────────────────────────────────────────
 // Pro 에디터 문서 (캔버스 전체 상태, 명세서 8.1)
 // ─────────────────────────────────────────────
@@ -90,6 +101,8 @@ export interface ProEditorDocument {
     generatedImages: Record<string, string | string[]>;  // imageType → URL(s)
     designPalette: DesignPalette;
     specSheet: Record<string, unknown>;
+    /** GIF 칸 — 움직이는 WebP가 있는 잡만(포스터 URL 키). 없으면 키가 없다 */
+    motionClips?: Record<string, MotionClip>;
   };
 
   sections: CanvasSection[];

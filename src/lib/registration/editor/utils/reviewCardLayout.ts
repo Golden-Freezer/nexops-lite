@@ -1,6 +1,12 @@
 import type { CanvasSection, ReviewCardParams } from '@/lib/registration/editor/types/canvas';
 import { REVIEW_CARD_DEFAULTS } from '@/lib/registration/editor/constants/designTokens';
 import { estimateWrappedLines } from '@/lib/registration/editor/utils/sectionConverter';
+import {
+  QUOTE_CARD_OPTION_GAP,
+  QUOTE_CARD_OPTION_ROW_H,
+  QUOTE_CARD_STAR_ROW_H,
+  quoteCardHeaderH,
+} from '@/lib/registration/editor/utils/sectionConverter/sections';
 
 // ─── 리뷰 카드 재배치 (트랙 4 D-2) ───────────────────────────────────────────
 // StyleTab에서 카드 간격/패딩/본문 크기 변경 시, 기존 요소의 텍스트 내용을
@@ -36,6 +42,17 @@ export function relayoutReviewCards(
     const initial = byId.get(`review_initial_${i}`);
     const author = byId.get(`review_author_${i}`);
     const stars = byId.get(`review_stars_${i}`);
+    const option = byId.get(`review_option_${i}`);
+    // 인용 카드 작성 정보 줄(P1-6) — 별점 아래, 옵션 줄 위
+    const meta = byId.get(`review_meta_${i}`);
+    // 인용 카드(R6) — 작성자 줄(아바타·이니셜·이름) 없이 별점, 옵션이 있으면 그 아래 옵션 줄
+    const quoteCard = !avatar && !initial && !author;
+    // 평점 없는 기존 카드는 별 줄이 없다(converter와 같은 머리 행 — 아바타·이름만)
+    const headerRowH = quoteCard
+      ? quoteCardHeaderH(Boolean(option), Boolean(meta))
+      : stars
+        ? HEADER_ROW_H
+        : Math.max(AVATAR_SIZE, 42);
 
     const bodyText = text?.textProps?.content ?? '';
     const lineH = text?.textProps?.lineHeight ?? bodyLineHeight;
@@ -43,12 +60,12 @@ export function relayoutReviewCards(
     const textH = Math.ceil(textLines * params.bodyFontSize * lineH);
     const badgeH = badge ? BADGE_H : 0;
     const cardH =
-      params.padding + HEADER_ROW_H + 16 + textH + (badgeH > 0 ? 12 + badgeH : 0) + params.padding;
+      params.padding + headerRowH + 16 + textH + (badgeH > 0 ? 12 + badgeH : 0) + params.padding;
 
     const avatarX = CARD_MX + params.padding;
     const avatarY = cardY + params.padding;
     const nameX = avatarX + AVATAR_SIZE + 16;
-    const textY = cardY + params.padding + HEADER_ROW_H + 16;
+    const textY = cardY + params.padding + headerRowH + 16;
 
     bg.transform.y = cardY;
     bg.transform.height = cardH;
@@ -66,8 +83,19 @@ export function relayoutReviewCards(
       author.transform.width = CARD_W - params.padding * 2 - AVATAR_SIZE - 16;
     }
     if (stars) {
-      stars.transform.x = nameX;
-      stars.transform.y = avatarY + 42;
+      stars.transform.x = quoteCard ? avatarX : nameX;
+      stars.transform.y = quoteCard ? avatarY : avatarY + 42;
+    }
+    const metaRowY = avatarY + QUOTE_CARD_STAR_ROW_H + QUOTE_CARD_OPTION_GAP;
+    if (meta) {
+      meta.transform.x = avatarX;
+      meta.transform.y = metaRowY;
+      meta.transform.width = CARD_W - params.padding * 2;
+    }
+    if (option) {
+      option.transform.x = avatarX;
+      option.transform.y = metaRowY + (meta ? QUOTE_CARD_OPTION_ROW_H + QUOTE_CARD_OPTION_GAP : 0);
+      option.transform.width = CARD_W - params.padding * 2;
     }
     if (text) {
       text.transform.x = CARD_MX + params.padding;

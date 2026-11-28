@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "P04",
+  "sourceFolder": "볼륨업 벤트 헤어브러쉬",
+  "categoryKey": "beauty",
+  "evidencePath": "v2",
+  "sellerProductId": "16134739884",
+  "specSheet": {
+    "productName": "페어넥스 엉킨 머리 브러쉬 뿌리볼륨 빗 벤트",
+    "brandName": "페어넥스",
+    "category": "beauty",
+    "colorOptions": [
+      "2개 블랙+라벤더"
+    ],
+    "size": "57mm x 168mm",
+    "material": "ABS",
+    "origin": "중국",
+    "extraSpecs": [
+      {
+        "key": "구성",
+        "value": "2개(블랙+라벤더)"
+      },
+      {
+        "key": "방수",
+        "value": "방수"
+      },
+      {
+        "key": "기능",
+        "value": "엉킴 방지"
+      },
+      {
+        "key": "휴대",
+        "value": "휴대용"
+      },
+      {
+        "key": "구조",
+        "value": "통기성 벤트"
+      }
+    ]
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "colorOptions": "products.option_name",
+    "size": "현행 상세 표(product-page 1768952604848)",
+    "material": "openapi.attributes 핸들 재질(플라스틱)을 현행 상세 표 소재 ABS가 좁힘(통합 규칙)",
+    "origin": "openapi.notices 제조국(원산지)",
+    "extraSpecs": "openapi.attributes 수량·색상(2개 블랙+라벤더)·방수 수준·특별한 기능·휴대용 여부 + 현행 상세 표 주요 특징(통기성 벤트 구조)"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "targetPersona",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "other",
+      "path": "벤트 헤어브러쉬.png",
+      "note": "블랙+라벤더 2개 세트(등록 옵션 일치). 좌상단 '1+1' 배지 문구 있음"
+    }
+  ],
+  "optionLabels": [
+    "2개 블랙+라벤더"
+  ],
+  "currentPagePaths": [
+    "product-page-페어넥스 뿌리 볼륨 벤트 헤어 브러쉬-1768952604848.jpeg",
+    "product-page-페어넥스 뿌리 볼륨 벤트 헤어 브러쉬-1768952608647.png",
+    "이미지/product-page-페어넥스 뿌리 볼륨 벤트 헤어 브러쉬-1768951236266.png",
+    "이미지/product-page-페어넥스 뿌리 볼륨 벤트 헤어 브러쉬-1768952548755.png",
+    "이미지/product-page-페어넥스 뿌리 볼륨 벤트 헤어 브러쉬-1768952554201.jpeg"
+  ],
+  "searchTags": [
+    "헤어브러쉬",
+    "벤트브러쉬",
+    "벤트스타일",
+    "스타일링빗",
+    "벤트브러시",
+    "드라이벤트빗",
+    "뿌리볼륨 헤어브러쉬",
+    "뿌리볼륨 드라이빗",
+    "엉킴방지머리빗",
+    "여성헤어 머리빗",
+    "엉킴방지파마빗",
+    "머리빗브러쉬",
+    "헤어빗",
+    "뿌리볼륨빗",
+    "볼륨빗",
+    "머리 엉킴방지 브러쉬",
+    "머리 엉킴방지 헤어빗",
+    "머리 엉킴 헤어 빗",
+    "여성헤어머리빗 엉킴방지",
+    "휴대용 엉킴방지 머리빗"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P04-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "실물 후보가 이 1장뿐 — '1+1' 배지를 생성 이미지가 따라 그리지 않는지 실 테스트에서 확인(NO_TEXT 규칙 유지)",
+    "OpenAPI 상품 상세 401로 등록 이미지 대체 불가",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] 관리 방법은 어느 출처에도 없어 비움",
+    "[오너 답 11-01] 판매 사진(벤트 헤어브러쉬.png)이 실물이다. 오너 샘플 폴더 두 장은 모양이 달라 owner-photos.ts OWNER_PHOTO_NOT_REAL로 뺀다(폴더 파일은 그대로)",
+    "[확인 11-01] '1+1' 배지: 이 사진으로 만든 R5·R6 잡 3건 화면에 나오지 않음(눈 확인). 가린 사본은 만들지 않음. 다만 D2 컷으로는 아직 만들어 본 적이 없어 다음 P04 잡에서 다시 본다"
+  ]
+}

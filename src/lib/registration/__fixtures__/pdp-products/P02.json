@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "id": "P02",
+  "sourceFolder": "구디백 파우치(데이지)",
+  "categoryKey": "packaging",
+  "evidencePath": "pooled",
+  "sellerProductId": "16051528015",
+  "specSheet": {
+    "productName": "페어넥스 구디백 포장봉투 선물 파우치 반투명",
+    "brandName": "페어넥스",
+    "category": "packaging",
+    "colorOptions": [
+      "20개 데이지(S)",
+      "20개 체리(L)"
+    ],
+    "size": "16.5cm x 20.7cm(데이지 S)",
+    "origin": "중국",
+    "targetPersona": "어린이집에 아이를 보내는 20~30대 엄마(어린이집 답례·선물 포장)",
+    "extraSpecs": [
+      {
+        "key": "구성",
+        "value": "20개"
+      },
+      {
+        "key": "입구",
+        "value": "조임끈"
+      },
+      {
+        "key": "투명도",
+        "value": "반투명"
+      },
+      {
+        "key": "무늬",
+        "value": "데이지 꽃무늬(데이지 옵션)"
+      },
+      {
+        "key": "접착",
+        "value": "비접착식"
+      },
+      {
+        "key": "포장 형태",
+        "value": "낱개 포장"
+      }
+    ],
+    "material": "PE"
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "colorOptions": "products.option_name",
+    "size": "openapi.attributes 사이즈·가로길이·세로길이(품목 20개 데이지(S)) — 현행 상세 ver.1 표 165mm x 207mm와 같음",
+    "origin": "openapi.notices 제조국(원산지)",
+    "targetPersona": "오너 말씀(어린이집 보내는 젊은 엄마, 10-31 통합·C 전달) + 현행 상세 ver.1 표 주요 특징(어린이집 선물용 구디백) + nexfit.pdp_records.106c1139.user_input.target_persona(20대~30대 여성)",
+    "extraSpecs": "openapi.attributes 수량·끈 포함여부·투명 여부·패턴/프린트·접착/비접착식·포장지 형태(품목 20개 데이지(S))",
+    "material": "owner 확인 2026-10-31(반투명 구디백 PE) — OpenAPI 포장지 재질·현행 상세 ver.2 표 PE와 같음"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "self_photo",
+      "path": "상세이미지/더 선명해진 데이지 프린트 굿디백.png",
+      "note": "데이지 파우치 정면 실물 사진(1254px, 과자를 담은 연출). 오너가 직접 찍은 사진으로 확인(2026-10-27, 통합 경유)",
+      "edits": [
+        {
+          "kind": "inpaint",
+          "box": [
+            897,
+            46,
+            334,
+            206
+          ],
+          "note": "오른쪽 위 '20매' 글자 배지를 둘레에서 이어 채운다(NO_TEXT — 단색 사각형이 남지 않게)"
+        },
+        {
+          "kind": "inpaint",
+          "box": [
+            815,
+            562,
+            55,
+            130
+          ],
+          "note": "과자 포장의 작은 붉은 로고(흰 테두리 글자)를 둘레에서 이어 채운다(브랜드 비노출 — 데이지 무늬 밖)"
+        },
+        {
+          "kind": "blur",
+          "box": [
+            660,
+            520,
+            215,
+            390
+          ],
+          "feather": 28,
+          "keepWhite": true,
+          "note": "과자 포장의 타사 브랜드 글자를 흐린다(브랜드 비노출) — 가장자리로 갈수록 약하게 섞어 사각형이 남지 않게, 파우치 데이지 꽃잎은 흐리지 않는다"
+        }
+      ]
+    }
+  ],
+  "optionLabels": [
+    "20개 데이지(S)",
+    "20개 체리(L)"
+  ],
+  "optionImages": {
+    "데이지": {
+      "origin": "self_photo",
+      "path": "상세이미지/더 선명해진 데이지 프린트 굿디백.png",
+      "note": "데이지 옵션 카드용 — 원천 사진과 같은 오너 촬영본(같은 편집)",
+      "edits": [
+        {
+          "kind": "inpaint",
+          "box": [
+            897,
+            46,
+            334,
+            206
+          ],
+          "note": "오른쪽 위 '20매' 글자 배지를 둘레에서 이어 채운다(NO_TEXT — 단색 사각형이 남지 않게)"
+        },
+        {
+          "kind": "inpaint",
+          "box": [
+            815,
+            562,
+            55,
+            130
+          ],
+          "note": "과자 포장의 작은 붉은 로고(흰 테두리 글자)를 둘레에서 이어 채운다(브랜드 비노출 — 데이지 무늬 밖)"
+        },
+        {
+          "kind": "blur",
+          "box": [
+            660,
+            520,
+            215,
+            390
+          ],
+          "feather": 28,
+          "keepWhite": true,
+          "note": "과자 포장의 타사 브랜드 글자를 흐린다(브랜드 비노출) — 가장자리로 갈수록 약하게 섞어 사각형이 남지 않게, 파우치 데이지 꽃잎은 흐리지 않는다"
+        }
+      ]
+    }
+  },
+  "currentPagePaths": [
+    "260108 상세페이지 페어넥스 ver.1.jpeg",
+    "260302 상세페이지 페어넥스 ver.2.png",
+    "product-page-페어넥스 구디백 반투명 선물 봉투 파우치-1767835847124.png",
+    "product-page-페어넥스 구디백 반투명 선물 봉투 파우치-1767835848233.png",
+    "product-page-페어넥스 구디백 반투명 선물 봉투 파우치-1767835850719.jpeg",
+    "product-page-페어넥스 구디백 반투명 선물 봉투 파우치-1767865285406.png",
+    "product-page-페어넥스 구디백 반투명 선물 봉투 파우치-1767865315319.png",
+    "product-page-페어넥스 구디백 반투명 선물 봉투 파우치-1767865384309.png"
+  ],
+  "searchTags": [
+    "구디백",
+    "선물포장봉투",
+    "어린이집구디백",
+    "구디백비닐",
+    "구디백포장봉투",
+    "어린이집생일선물",
+    "생일답례품구디백",
+    "유치원구디백",
+    "유치원답례품",
+    "구디백어린이집",
+    "생일구디백",
+    "구디백투명봉투",
+    "포장봉투",
+    "구디백파우치",
+    "구디백포장",
+    "구디백포장봉투소형",
+    "구디백포장봉투20개",
+    "어린이집구디백포장봉투",
+    "선물포장파우치",
+    "어린이집답례품구디백"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P02-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "원천 사진은 오너 확인(2026-10-27)으로 '더 선명해진 데이지 프린트 굿디백.png'로 교체. 이전 후보 스크린샷(356px, 출처 미확인)은 쓰지 않는다",
+    "생성 컷에 타사 과자 브랜드가 재현되지 않는지 T5 캡처에서 확인한다(참조 사진은 흐림 처리)",
+    "데이지·체리 디자인별 실물 사진 중 체리는 없음 → 옵션 카드는 이름 칩",
+    "폴더의 나머지 사진은 AI 생성물·현행 판매 페이지라 제외(원천 사진은 오너 확인으로 쓴다). 공급처 견적 PDF는 대화 캡처라 사용 불가",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] size 다른 값: NEXFIT P02a(106c1139) 17.5cm x 21.5cm, 현행 상세 ver.2(AI 생성 표시) S (165cm x 207cm) — 단위 오기라 고치지 않고 기록만. 체리(L) 크기는 어느 출처에도 없어 넣지 않음",
+    "[사실 10-31] material: 오너 확인(10-31)으로 PE. 원래 후보 — OpenAPI 안에서 포장지 재질=PE, 제형·복주머니 소재=폴리에스테르로 갈렸고, 후보 PE(OpenAPI·상세 ver.2)·폴리에스테르(OpenAPI)·EVA(상세 ver.1)·PVC(NEXFIT P02a \"PCV\")·PP(NEXFIT P02b, 페어홈 판매 목록)",
+    "[사실 10-31] 관리 방법은 어느 출처에도 없어 비움. 주의사항은 현행 상세 ver.1 \"본 제품은 용도 외 사용을 금합니다\"뿐",
+    "[오너 답 11-01] 끈은 옆면을 따라 내려와 아래 모서리에서 묶인다(A). 끈이 입구에서 끝나는 featured-image-1 (19)·image-detail-3(…5836084)은 owner-photos.ts OWNER_PHOTO_NOT_REAL로 뺀다(폴더 파일은 그대로)"
+  ]
+}

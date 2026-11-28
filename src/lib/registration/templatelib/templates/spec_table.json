@@ -1,0 +1,3952 @@
+[
+  {
+    "id": "spec_table.line-rows",
+    "section": "spec_table",
+    "name": "이름 위·값 아래 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.line-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.line-rows.html",
+    "estimatedHeight": {
+      "min": 530,
+      "max": 3910
+    },
+    "height": 2220
+  },
+  {
+    "id": "spec_table.card-panel",
+    "section": "spec_table",
+    "name": "상자 안 표",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": false,
+            "gap": "rowGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": false,
+            "gap": "rowGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.card-panel"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.card-panel.html",
+    "estimatedHeight": {
+      "min": 670,
+      "max": 3790
+    },
+    "height": 2230
+  },
+  {
+    "id": "spec_table.photo-top",
+    "section": "spec_table",
+    "name": "풀폭 사진 + 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "flatlay",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.photo-top"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.photo-top.html",
+    "estimatedHeight": {
+      "min": 1140,
+      "max": 4520
+    },
+    "height": 2830
+  },
+  {
+    "id": "spec_table.dark-band",
+    "section": "spec_table",
+    "name": "어두운 띠 표",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": true,
+            "gap": "tableGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": true,
+            "joinRule": true,
+            "even": true,
+            "gap": "tableGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "pro-navy",
+        "dark-performance"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.dark-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.dark-band.html",
+    "estimatedHeight": {
+      "min": 520,
+      "max": 3770
+    },
+    "height": 2150
+  },
+  {
+    "id": "spec_table.dimension",
+    "section": "spec_table",
+    "name": "치수 도면 + 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "dimension",
+        "slot": "photo",
+        "widthSlot": "width",
+        "heightSlot": "height",
+        "gapAfter": "photoGap",
+        "side": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale"
+        ],
+        "composition": [
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "width": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 10,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "spec.size.width"
+      },
+      "height": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 10,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "spec.size.height"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "size"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 12
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "lab-white",
+        "pro-navy"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.dimension"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.dimension.html",
+    "estimatedHeight": {
+      "min": 560,
+      "max": 4670
+    },
+    "height": 2620
+  },
+  {
+    "id": "spec_table.dimension-center",
+    "section": "spec_table",
+    "name": "치수 사진 + 가운데 줄 표",
+    "version": 2,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "dimension",
+        "slot": "photo",
+        "widthSlot": "width",
+        "heightSlot": "height",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale"
+        ],
+        "composition": [
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "width": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 10,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "spec.size.width"
+      },
+      "height": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 10,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "spec.size.height"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "size"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 12
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.dimension-center"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.dimension-center.html",
+    "estimatedHeight": {
+      "min": 540,
+      "max": 5020
+    },
+    "height": 2780
+  },
+  {
+    "id": "spec_table.center-card",
+    "section": "spec_table",
+    "name": "상자 안 가운데 표",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "align": "center",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": false,
+            "gap": "rowGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "align": "center",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE",
+                "align": "center"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": false,
+            "gap": "rowGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "align": "center",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.center-card"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.center-card.html",
+    "estimatedHeight": {
+      "min": 670,
+      "max": 3790
+    },
+    "height": 2230
+  },
+  {
+    "id": "spec_table.center-lines",
+    "section": "spec_table",
+    "name": "가운데 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.center-lines"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.center-lines.html",
+    "estimatedHeight": {
+      "min": 520,
+      "max": 3770
+    },
+    "height": 2150
+  },
+  {
+    "id": "spec_table.tint-band",
+    "section": "spec_table",
+    "name": "옅은 띠 가운데 표",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "align": "center",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": true,
+            "gap": "tableGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "align": "center",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE",
+                "align": "center"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": true,
+            "joinRule": true,
+            "even": true,
+            "gap": "tableGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "align": "center",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "high",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.tint-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.tint-band.html",
+    "estimatedHeight": {
+      "min": 520,
+      "max": 3770
+    },
+    "height": 2150
+  },
+  {
+    "id": "spec_table.pair-top",
+    "section": "spec_table",
+    "name": "사진 2장 + 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "gapAfter": "photoGap",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "flatlay",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "side"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.pair-top"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.pair-top.html",
+    "estimatedHeight": {
+      "min": 1220,
+      "max": 4590
+    },
+    "height": 2910
+  },
+  {
+    "id": "spec_table.photo-card-rows",
+    "section": "spec_table",
+    "name": "비킨 사진 + 연한 띠 안 좌우 표",
+    "version": 2,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "bleed": true,
+        "pad": "blockGap",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": true,
+            "gap": "tableGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "row",
+                "box": true,
+                "gap": 24,
+                "columns": [
+                  {
+                    "w": 216,
+                    "nodes": [
+                      {
+                        "kind": "text",
+                        "slot": "label",
+                        "token": "LABEL",
+                        "color": "accent",
+                        "nameTag": true
+                      }
+                    ]
+                  },
+                  {
+                    "w": 500,
+                    "nodes": [
+                      {
+                        "kind": "text",
+                        "slot": "value",
+                        "token": "TABLE"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": true,
+            "joinRule": true,
+            "even": true,
+            "gap": "tableGap",
+            "nodes": [
+              {
+                "kind": "row",
+                "box": true,
+                "gap": 24,
+                "columns": [
+                  {
+                    "w": 216,
+                    "nodes": [
+                      {
+                        "kind": "text",
+                        "slot": "label",
+                        "token": "LABEL",
+                        "color": "accent",
+                        "nameTag": true
+                      }
+                    ]
+                  },
+                  {
+                    "w": 500,
+                    "nodes": [
+                      {
+                        "kind": "text",
+                        "slot": "value",
+                        "token": "TABLE"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "flatlay",
+          "angle45"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.photo-card-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "offset",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.photo-card-rows.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 4500
+    },
+    "height": 2820
+  },
+  {
+    "id": "spec_table.photo-card",
+    "section": "spec_table",
+    "name": "사진 + 상자 안 표",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": false,
+            "gap": "rowGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": false,
+            "gap": "rowGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "flatlay",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.photo-card"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.photo-card.html",
+    "estimatedHeight": {
+      "min": 1320,
+      "max": 4430
+    },
+    "height": 2880
+  },
+  {
+    "id": "spec_table.band-head-rows",
+    "section": "spec_table",
+    "name": "짙은 머리 띠 + 좌우 표",
+    "version": 2,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "pad": "blockGap",
+        "gapAfter": "blockGap",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "gapAfter": "rowGap"
+          },
+          {
+            "kind": "text",
+            "slot": "title",
+            "token": "H2"
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 8,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "high",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.band-head-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.band-head-rows.html",
+    "estimatedHeight": {
+      "min": 540,
+      "max": 4060
+    },
+    "height": 2300
+  },
+  {
+    "id": "spec_table.top-center",
+    "section": "spec_table",
+    "name": "풀폭 사진 + 가운데 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "align": "center",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "flatlay",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.top-center"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.top-center.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 4380
+    },
+    "height": 2760
+  },
+  {
+    "id": "spec_table.tint-band-photo",
+    "section": "spec_table",
+    "name": "풀폭 사진 + 옅은 띠 표",
+    "version": 2,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      },
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "SPEC",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": true,
+            "gap": "tableGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": true,
+            "joinRule": true,
+            "even": true,
+            "gap": "tableGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "flatlay",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.tint-band-photo"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.tint-band-photo.html",
+    "estimatedHeight": {
+      "min": 1160,
+      "max": 4410
+    },
+    "height": 2790
+  },
+  {
+    "id": "spec_table.dimension-box",
+    "section": "spec_table",
+    "name": "3축 치수(사진 옆 치수 글) + 왼쪽 줄 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "dimension",
+        "slot": "photo",
+        "widthSlot": "width",
+        "heightSlot": "height",
+        "gapAfter": "photoGap",
+        "depthSlot": "depth",
+        "side": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE"
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale"
+        ],
+        "composition": [
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "width": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 10,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "spec.size.width"
+      },
+      "height": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 10,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "spec.size.height"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      },
+      "depth": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 10,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "spec.size.depth"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "size"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 13
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "lab-white",
+        "pro-navy"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.dimension-box"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.dimension-box.html",
+    "estimatedHeight": {
+      "min": 1110,
+      "max": 4620
+    },
+    "height": 2870
+  },
+  {
+    "id": "spec_table.scale-set",
+    "section": "spec_table",
+    "name": "가운데 제목 + 같은 축척 윤곽(사이즈마다 사각형) + 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap",
+        "align": "center"
+      },
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "align": "center",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "scaleSet",
+        "slot": "scale",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "special",
+        "rule": true,
+        "joinRule": true,
+        "even": true,
+        "gap": "tableGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "box": true,
+            "gap": 24,
+            "columns": [
+              {
+                "w": 216,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "label",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "nameTag": true
+                  }
+                ]
+              },
+              {
+                "w": 500,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "value",
+                    "token": "TABLE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 16,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "scale": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "option.sizeScale",
+        "min": 2,
+        "max": 5,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "size.scale.label",
+            "facts": 0,
+            "maxChars": 3,
+            "maxLines": 1,
+            "claimRisk": "none"
+          },
+          "width": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "size.scale.width",
+            "facts": 0,
+            "maxChars": 12,
+            "maxLines": 1,
+            "claimRisk": "none"
+          },
+          "height": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "size.scale.height",
+            "facts": 0,
+            "maxChars": 12,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 5,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "size"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "lab-white",
+        "pro-navy"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.scale-set"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.scale-set.html",
+    "estimatedHeight": {
+      "min": 1400,
+      "max": 4940
+    },
+    "height": 3170
+  }
+]

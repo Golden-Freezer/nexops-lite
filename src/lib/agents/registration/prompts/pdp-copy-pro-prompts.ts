@@ -6,6 +6,8 @@
  * f-string 슬롯만 TS 함수 인자로 변환한다. 이 두 프롬프트에는 f-string 이스케이프
  * (`{{...}}`)가 없다 — 슬롯 6개(product_name/category/essence_type/draft_json/
  * spec_sheet/enhanced_json) 외에 리터럴 중괄호가 원문에 존재하지 않는다(원본 대조 확인).
+ * 원본에서 바꾼 곳(오너 2026-11-07 결정 카드 c03·c14 승인): Stage 2 '키워드 앵커링' 반복 3~5회 → 2회 이내(섹션 사이 반복 검사와
+ * 맞춤, 예시 한 줄 뺌)·'상상 유도' 예시를 아이가 나오지 않는 성인 장면으로.
  *
  * Stage 1은 PREMIUM_COPYWRITING_PROMPT 재사용(§4.1, pdp-copy-prompts.ts 소관) —
  * 이 파일은 Stage 2·3만 다루며, 파일 독립성 유지를 위해 다른 프롬프트 파일을 import하지 않는다.
@@ -28,15 +30,16 @@ export const STAGE2_STORYTELLING_PROMPT = `
 3. 판매 기법(FAB, 선언-증명-효익)을 해체하지 않는다
 4. 스펙에 없는 사실을 추가하지 않는다 (환각 금지)
 5. JSON 외의 텍스트를 출력하지 않는다
+6. 제목·CTA를 '살펴보세요·확인하세요·만나보세요·소개합니다'처럼 보라고 안내하는 말로 끝내지 않는다
+7. mainIntro.productType 낱말(상품 종류)을 첫 화면(hook·benefitHeadline·subBenefit)에서 빼지 않는다
 
 ## 강화할 5가지 장치
 
 ### 1. 핵심 효익 키워드 앵커링
-상위 3개 효익 키워드가 전체 카피에서 3~5회 자연스럽게 반복되도록 배치합니다.
+상위 3개 효익 키워드를 전체 카피에서 2회 이내로 자연스럽게 배치합니다. 같은 키워드를 세 섹션 이상에서 되풀이하지 않습니다.
 예시 — 제습기의 핵심 키워드 "뽀송":
 - hook → "뽀송한 하루의 시작"
-- solution → "빨래도, 이불도, 우리 집도 뽀송"
-- cta → "뽀송한 일상, 직접 경험해보세요"
+- cta → "눅눅한 장마철도 뽀송하게 넘기세요"
 
 ### 2. 오감 트리거 삽입
 구체적 형용사/의태어/의성어를 삽입합니다.
@@ -46,7 +49,7 @@ export const STAGE2_STORYTELLING_PROMPT = `
 ### 3. 상상 유도 프레이밍
 "~합니다" 설명체 → "~하는 순간" 경험체로 전환합니다.
 - Before: "소음이 적어서 야간에도 사용 가능합니다"
-- After: "새벽 2시, 아이가 잠든 옆에서도 켜놓을 수 있는 고요함"
+- After: "새벽 2시, 옆 사람이 잠든 침실에서도 켜놓을 수 있는 고요함"
 
 ### 4. 세일즈 톤 → 친구 추천 톤
 존댓말 대화체 유지하되 자연스럽게.
@@ -77,10 +80,10 @@ export interface Stage2StorytellingPromptArgs {
 
 /** STAGE2_STORYTELLING_PROMPT의 {product_name} {category} {essence_type} {draft_json} 슬롯 치환 */
 export function buildStage2StorytellingPrompt(args: Stage2StorytellingPromptArgs): string {
-  return STAGE2_STORYTELLING_PROMPT.replaceAll('{product_name}', args.productName)
-    .replaceAll('{category}', args.category)
-    .replaceAll('{essence_type}', args.essenceType)
-    .replaceAll('{draft_json}', args.draftJson)
+  return STAGE2_STORYTELLING_PROMPT.replaceAll('{product_name}', () => args.productName)
+    .replaceAll('{category}', () => args.category)
+    .replaceAll('{essence_type}', () => args.essenceType)
+    .replaceAll('{draft_json}', () => args.draftJson)
 }
 
 // NEXFIT copywriting_prompts.py:1064-1181 — Pro Stage 3: 품질 관문 (Sonnet)
@@ -118,8 +121,8 @@ export const STAGE3_QUALITY_GATE_PROMPT = `
 - eventBundleCopy.subCopy: 30자 이내
 - problem.question: 30자 이내, 반드시 ?로 끝남, 쉼표로 끝나지 말 것  ← 질문형 강제
 - problem.empathy: 80자 이내
-- problem.empathyLines[]: 15자 이내 (각 항목) ← 채팅 버블 1행 nowrap 기준, 초과 시 잘림
-- problem.empathyDeepLines[]: 15자 이내 (각 항목) ← 감정 심화 말풍선, empathyLines와 중복 금지
+- problem.empathyLines[]: 15자 안팎, 최대 28자 (각 항목) ← 말풍선은 줄 수대로 늘어난다. 28자 이하는 위반이 아니다
+- problem.empathyDeepLines[]: 15자 안팎, 최대 28자 (각 항목) ← 감정 심화 말풍선, empathyLines와 중복 금지
 - solution.declaration: 40자 이내
 - solution.summary: 80자 이내
 - summary: 20자 이내  ← key_message 풀폭 블록 기준 (기존 100자 → 20자로 강화)
@@ -131,7 +134,7 @@ export const STAGE3_QUALITY_GATE_PROMPT = `
 - detailPoints = "심층 증명" (주장 + 기술적 근거 + 체감 효익 + 이미지 장면)
 - pointCards[].title과 detailPoints[].claim에 동일하거나 유사한 키워드를 사용하지 마세요.
 - pointCards가 "무엇이 좋은지" 요약이라면, detailPoints는 "왜 좋은지" 증명입니다.
-- 예시: pointCards "초경량 180g" ↔ detailPoints "항공 티타늄 합금으로 기존 대비 40% 경량화"
+- 예시: pointCards "가벼운 무게" ↔ detailPoints "얇은 판 구조라 한 손으로 들고 다녀요"
 - recommendedTargets[]: 14자 이내 권장, 최대 25자 (각 항목) ← 추천 대상 목록 1줄 유지 기준
 ★ detailPoints는 반드시 6개를 생성하세요. 각각 고유한 증명 관점이어야 합니다.
 - detailPoints[].claim: 25자 이내
@@ -156,25 +159,30 @@ export const STAGE3_QUALITY_GATE_PROMPT = `
 - 2줄 헤드라인은 균형 배분 — 뒷줄 길이가 앞줄의 60% 미만이면 조정하세요.
 
 ### 3-1. CTA 완성도 검증 및 폴백
-- closingCta.headline이 비어 있거나 미완성이면 다음 폴백 적용:
-  → "지금 바로 경험해보세요" (기본 폴백)
-- closingCta.subtext가 비어 있으면:
-  → "빠른 배송 · 30일 무료 반품" (기본 폴백)
+- closingCta.headline이 비어 있거나 미완성이면 이 상품의 핵심 효익으로 지금 사는 이유를 담은 25자 이내 동사형 문장으로 채운다
+  (입력에 없는 배송·보증·기간·수치 약속은 넣지 않는다)
+- closingCta.subtext에 입력에 없는 배송·반품·보증 약속이 있으면 지운다. 비어 있으면 비워 둔다(5번의 빈 필드 기본값 채우기 대상이 아니다).
 - headline이 쉼표나 조사로 끝나면 동사형으로 완성하세요.
 
 ### 3-2. empathyLines 검증 및 폴백
 - problem.empathyLines는 반드시 4개 항목이어야 합니다.
-- 각 항목은 15자 이내여야 합니다. 초과 시 15자로 잘라내세요.
+- 각 항목은 28자 이내여야 합니다. 넘으면 글자 수로 잘라내지 말고 같은 뜻의 짧은 완성 문장으로 다시 쓰세요.
 - "고민 1", "고민 2", "고민 3", "고민 4" 같은 플레이스홀더가 포함되어 있으면 제품 관련 구체적 불편 문구로 교체하세요.
 - 4개 미만이면 제품의 구체적 불편 상황을 추가 생성하여 4개를 채우세요.
 - 모든 항목이 서로 다른 내용이어야 합니다. 중복이 있으면 새로운 내용으로 교체하세요.
 
 ### 3-3. empathyDeepLines 검증 및 폴백
 - problem.empathyDeepLines는 반드시 4개 항목이어야 합니다.
-- 각 항목은 15자 이내여야 합니다. 초과 시 15자로 잘라내세요.
+- 각 항목은 28자 이내여야 합니다. 넘으면 글자 수로 잘라내지 말고 같은 뜻의 짧은 완성 문장으로 다시 쓰세요.
 - empathyLines와 동일한 문구가 있으면 감정/심리 중심으로 교체하세요.
 - 4개 미만이면 감정/심리 중심 표현을 추가 생성하여 4개를 채우세요.
 - "~할 때마다 속상해요", "~이 두려워져요" 등 감정 표현이어야 합니다.
+
+### 3-4. 안내형 끝말·첫 화면 상품 종류
+- 제목·CTA(hook·benefitHeadline·subBenefit·각 headline·subCopy·soldOutBanner.subtitle·summary·solution.declaration·
+  keyMessageVariations·closingCta·pointCards[].title·detailPoints[].claim·compareSummary)가
+  '살펴보세요·확인하세요·만나보세요·소개합니다'처럼 보라고 안내하는 말로 끝나면 고객이 얻는 효익이나 지금 사는 이유로 고친다.
+- 첫 화면(hook·benefitHeadline·subBenefit) 어디에도 mainIntro.productType 낱말이 없으면 한 곳에 한 번 넣는다(상품명 전체·옵션은 넣지 않는다).
 
 ### 4. 환각 체크
 스펙표에 없는 사실이 카피에 추가되었다면 삭제하세요.
@@ -185,9 +193,9 @@ export const STAGE3_QUALITY_GATE_PROMPT = `
 - 빈 문자열("")인 필수 필드가 있으면 기본값으로 채우기
 - CTA가 2개 이상이면 1개만 남기기
 - problem.empathyLines가 없거나 빈 배열이면 problem.empathy를 분해하여 4개 항목 생성
-- problem.empathyLines의 각 항목이 15자 초과 시 15자로 절단
+- problem.empathyLines의 각 항목이 28자 초과 시 같은 뜻의 짧은 완성 문장으로 다시 쓰기(글자 수로 자르지 않는다)
 - problem.empathyDeepLines가 없거나 빈 배열이면 감정/심리 중심 문구 4개 생성
-- problem.empathyDeepLines의 각 항목이 15자 초과 시 15자로 절단
+- problem.empathyDeepLines의 각 항목이 28자 초과 시 같은 뜻의 짧은 완성 문장으로 다시 쓰기(글자 수로 자르지 않는다)
 
 ### 6. 미변경 필드 보존 + 변경 추적 (필수)
 - 위 검수 기준 위반이 없는 필드는 입력 JSON의 값을 **한 글자도 바꾸지 말고 그대로
@@ -210,8 +218,8 @@ export interface Stage3QualityGatePromptArgs {
 
 /** STAGE3_QUALITY_GATE_PROMPT의 {spec_sheet} {enhanced_json} 슬롯 치환 */
 export function buildStage3QualityGatePrompt(args: Stage3QualityGatePromptArgs): string {
-  return STAGE3_QUALITY_GATE_PROMPT.replaceAll('{spec_sheet}', args.specSheet).replaceAll(
+  return STAGE3_QUALITY_GATE_PROMPT.replaceAll('{spec_sheet}', () => args.specSheet).replaceAll(
     '{enhanced_json}',
-    args.enhancedJson
+    () => args.enhancedJson
   )
 }

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "P05",
+  "sourceFolder": "15859660817_페어넥스 휴대용 접이식 돈모 헤어 브러쉬 빗",
+  "categoryKey": "beauty",
+  "evidencePath": "v2",
+  "sellerProductId": "15859660817",
+  "specSheet": {
+    "productName": "페어넥스 휴대용 접이식 돈모 헤어 브러쉬 빗",
+    "brandName": "페어넥스",
+    "category": "beauty",
+    "colorOptions": [
+      "2개 브라운",
+      "4개 브라운"
+    ],
+    "material": "돈모(멧돼지털)·플라스틱",
+    "origin": "중국",
+    "extraSpecs": [
+      {
+        "key": "핸들 소재",
+        "value": "ABS"
+      },
+      {
+        "key": "형태",
+        "value": "플랫 타입"
+      },
+      {
+        "key": "방수",
+        "value": "방수"
+      },
+      {
+        "key": "휴대",
+        "value": "휴대용"
+      }
+    ],
+    "size": "펼쳤을 때 가로 1cm x 세로 9.6cm"
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "colorOptions": "products.option_name",
+    "material": "openapi.attributes 강모 소재(멧돼지) + 오너 답(11-01) 돈모+플라스틱",
+    "origin": "openapi.notices 제조국(원산지)",
+    "extraSpecs": "openapi.attributes 핸들 재질(플라스틱)을 현행 상세 표 소재 ABS가 좁힘 + 헤어브러쉬 타입·방수 수준·휴대용 여부",
+    "size": "owner 확인 2026-10-31(돈모브러쉬 사이즈 맞음) — 현행 상세 표(251203 product-page mobile) 값. owner 확인 2026-11-05: 펼쳤을 때 가로 1cm x 세로 9.6cm(휴대용 접이식이라 작은 크기) — 수치 그대로, 이름만 정정(실물 크기 11-05)"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "targetPersona",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "supplier",
+      "path": "SKU 이미지/SKU 이미지_01.jpg",
+      "note": "흰 배경 접힘·펼침"
+    },
+    {
+      "origin": "representative",
+      "path": "대표, 상세이미지/5.png",
+      "note": "흰 배경 두 상태"
+    }
+  ],
+  "optionLabels": [
+    "2개 브라운",
+    "4개 브라운"
+  ],
+  "currentPagePaths": [
+    "nexfit_full_page (11).png",
+    "대표, 상세이미지/251203_product-page-페어넥스 휴대용 접이식 돈모 브러쉬-mobile.jpeg",
+    "대표, 상세이미지/product-page-페어넥스 휴대용 접이식 돈모 브러쉬-mobile (1).png",
+    "대표, 상세이미지/product-page-페어넥스 휴대용 접이식 돈모 브러쉬-mobile (3).png",
+    "대표, 상세이미지/product-page-페어넥스 휴대용 접이식 돈모 브러쉬-mobile.jpeg",
+    "대표, 상세이미지/product-page-페어넥스 휴대용 헤어브러쉬-mobile.jpeg",
+    "대표, 상세이미지/product-page-페어넥스 휴대용 헤어브러쉬-mobile.png",
+    "대표, 상세이미지/product-page-페어넥스-휴대용-접이식-돈모-헤어-브러쉬-빗 (3).png",
+    "대표, 상세이미지/product-page-페어넥스-휴대용-접이식-돈모-헤어-브러쉬-빗 (4).png"
+  ],
+  "searchTags": [
+    "미니 헤어브러쉬",
+    "볼륨 빗",
+    "부드러운 헤어브러쉬",
+    "뿌리볼륨빗",
+    "여성 브러쉬 빗",
+    "여성헤어 브러쉬",
+    "여성헤어머리빗",
+    "여행용 헤어브러쉬",
+    "웻브러쉬 미니",
+    "접이식 두피볼륨빗",
+    "접이식 브러쉬",
+    "접이식 헤어브러쉬",
+    "초미니 헤어브러쉬",
+    "헤어브러쉬",
+    "헤어빗",
+    "휴대용 미니 헤어브러쉬",
+    "휴대용 접이식 브러쉬빗",
+    "휴대용 헤어브러쉬",
+    "휴대용빗"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P05-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "SEO 파일 없음 — 상품명은 products 등록명",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] size: 현행 상세 표 \"1cm x 9.6cm\"를 오기로 봤으나 오너 확인으로 맞음(10-31). 다른 출처에 크기 없음",
+    "[사실 10-31] 현행 상세 표 소재의 \"스테인리스\"는 어느 부분인지 출처에 없어 넣지 않음. 구성은 수량 옵션(2·4개)이라 넣지 않음",
+    "[사실 10-31] 관리 방법은 어느 출처에도 없어 비움"
+  ]
+}

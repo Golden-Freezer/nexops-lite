@@ -1,9 +1,11 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
+import { current } from 'immer';
 import type { ProEditorDocument, ExportWarning } from '@/lib/registration/editor/types/editor';
 import type { CanvasElement, CanvasSection } from '@/lib/registration/editor/types/canvas';
-import { SPACING } from '@/lib/registration/editor/constants/designTokens';
+import { reflowSectionLayout } from '@/lib/registration/editor/utils/reflowSectionLayout';
 import { useCanvasStore } from './canvasStore';
+import { withExpansionsVisible, withoutExpansions } from '@/lib/registration/editor/utils/keepCore';
 
 // ─────────────────────────────────────────────
 // V4.3: 프론트엔드용 StrategyContract 타입
@@ -96,8 +98,11 @@ interface EditorStoreState {
   /** 전략 계약 (에이전트에서 전달받은 값) */
   strategyContract: StrategyContract | null;
 
-  /** 이미지 재생성 대상 (RightPanel/ContextMenu → Canvas 연동) */
-  regenTarget: { elementId: string; sectionId: string } | null;
+  /** 이미지 재생성 대상 (LeftPanel 섹션 행 → Canvas 재생성 훅). elementId가 없으면 그 섹션에 새 컷을 만든다(W5b) */
+  regenTarget: { sectionId: string; elementId?: string } | null;
+
+  /** 사진 없는 섹션 중 새 컷을 만들 수 있는 것 — 섹션 id → 생성 컷 키(Canvas 재생성 훅이 잡 기록으로 계산해 둔다) */
+  regenAddable: Record<string, string>;
 
   /** 텍스트 카피 재생성 대상 */
   textRegenTarget: { elementId: string; sectionId: string } | null;
@@ -189,7 +194,8 @@ interface EditorStoreActions {
   setDerivativePreview: (mode: DerivativePreviewMode) => void;
   setExportWarnings: (warnings: ExportWarning[]) => void;
   setStrategyContract: (contract: StrategyContract) => void;
-  setRegenTarget: (target: { elementId: string; sectionId: string } | null) => void;
+  setRegenTarget: (target: { sectionId: string; elementId?: string } | null) => void;
+  setRegenAddable: (addable: Record<string, string>) => void;
   setTextRegenTarget: (target: { elementId: string; sectionId: string } | null) => void;
   setCropTarget: (target: { elementId: string; sectionId: string } | null) => void;
   setRailTab: (tab: string | null) => void;
@@ -199,6 +205,10 @@ interface EditorStoreActions {
   addSection: (section: CanvasSection, insertAfterSectionId?: string) => void;
   removeSection: (sectionId: string) => void;
   toggleSectionVisibility: (sectionId: string) => void;
+  /** 긴 상세페이지 '핵심만 남기기' — 확장 섹션(과 바로 앞 거터)을 한꺼번에 숨기거나(false) 다시 보인다(true). 되돌리기 한 번 */
+  setExpansionsVisible: (visible: boolean) => void;
+  /** 긴 상세페이지 확장 섹션(과 바로 앞 거터)을 한꺼번에 지운다. 되돌리기 한 번(문서를 다시 열면 되돌릴 수 없다) */
+  removeExpansions: () => void;
 
   /** V4.5: 텍스트 자동 높이 리플로우 — 아래 요소 y 이동 + 섹션 높이 갱신 */
   reflowSection: (sectionId: string) => void;
@@ -253,6 +263,7 @@ const initialState: EditorStoreState = {
   exportWarnings: [],
   strategyContract: null,
   regenTarget: null,
+  regenAddable: {},
   textRegenTarget: null,
   cropTarget: null,
   railTab: 'properties',
@@ -703,6 +714,11 @@ export const useEditorStore = create<EditorStore>()(
         state.regenTarget = target;
       }),
 
+    setRegenAddable: (addable) =>
+      set((state) => {
+        state.regenAddable = addable;
+      }),
+
     setTextRegenTarget: (target) =>
       set((state) => {
         state.textRegenTarget = target;
@@ -770,6 +786,42 @@ export const useEditorStore = create<EditorStore>()(
         if (!section) return;
         section.isVisible = !section.isVisible;
         state.isDirty = true;
+      })),
+
+    setExpansionsVisible: (visible) =>
+      withHistory(visible ? '확장 섹션 다시 보이기' : '핵심만 남기기', () =>
+      set((state) => {
+        if (!state.document) return;
+        const sections = current(state.document.sections) as CanvasSection[];
+        const next = withExpansionsVisible(sections, visible);
+        if (next === sections) return;
+        state.document.sections = next;
+        // 숨긴 섹션을 고르고 있었으면 선택 해제(숨긴 섹션을 계속 편집하지 않게)
+        const selected = next.find((s) => s.id === state.selectedSectionId);
+        if (selected && selected.isVisible === false) {
+          state.selectedSectionId = null;
+          state.selectedElementId = null;
+          state.selectedElementIds = [];
+        }
+        state.isDirty = true;
+      })),
+
+    removeExpansions: () =>
+      withHistory('확장 섹션 지우기', () =>
+      set((state) => {
+        if (!state.document) return;
+        const sections = current(state.document.sections) as CanvasSection[];
+        const next = withoutExpansions(sections);
+        if (next === sections) return;
+        state.document.sections = next;
+        // 지운 섹션을 고르고 있었으면 선택 해제
+        if (state.selectedSectionId && !next.some((s) => s.id === state.selectedSectionId)) {
+          state.selectedSectionId = null;
+          state.selectedElementId = null;
+          state.selectedElementIds = [];
+        }
+        state.isDirty = true;
+        state.layoutDirty = true;
       })),
 
     reorderElements: (sectionId, orderedIds) =>
@@ -870,149 +922,7 @@ export const useEditorStore = create<EditorStore>()(
         const section = state.document.sections.find((s: CanvasSection) => s.id === sectionId);
         if (!section) return;
 
-        // ── 섹션 하단 패딩 보존 (컨테이너 pad와 동일한 멱등 방식) ──────────────
-        // 변환(computeSectionHeight)·프리셋 적용이 부여한 하단 여백이 초기 리플로우
-        // 에서 소거되지 않게, 성장 전 기하 기준 pad를 기록해 최종 높이에 되살린다.
-        // 상한 = 정본 토큰: 프리셋 estimatedHeight의 큰 슬랙은 기존처럼 축소 허용.
-        // 구저장본(pad 0)은 0이 보존되므로 소급 변경 없음.
-        let initialMaxBottom = 0;
-        for (const el of section.elements) {
-          const b = el.transform.y + el.transform.height;
-          if (b > initialMaxBottom) initialMaxBottom = b;
-        }
-        const preservedBottomPad = Math.min(
-          SPACING.sectionBottomPadding,
-          Math.max(0, section.canvas.height - initialMaxBottom),
-        );
-
-        // ── 컨테이너 관계 사전 산출 ─────────────────────────────────────────
-        // 컨테이너의 "하단 패딩"(현재 기하 기준 bottom - 최하단 자식 bottom)을
-        // 미리 기록해 두고, 텍스트 성장 후 fit 패스에서 자식+패딩으로 재계산한다.
-        // (기존 += deltaH 누적 방식은 재로드마다 성장이 중복 적용될 수 있었다)
-        const containers = section.elements.filter(
-          (e: CanvasElement) => e.containerOf && e.containerOf.length > 0,
-        );
-        const elById = new Map(section.elements.map((e: CanvasElement) => [e.id, e]));
-        const containerPad = new Map<string, number>();
-        for (const c of containers) {
-          let maxChildBottom = -Infinity;
-          for (const id of c.containerOf!) {
-            const child = elById.get(id);
-            if (child) maxChildBottom = Math.max(maxChildBottom, child.transform.y + child.transform.height);
-          }
-          if (maxChildBottom > -Infinity) {
-            // 음수 패딩(자식이 이미 컨테이너를 뚫은 구저장본)은 0으로 치유
-            containerPad.set(c.id, Math.max(0, c.transform.y + c.transform.height - maxChildBottom));
-          }
-        }
-
-        // y 기준 오름차순 정렬된 인덱스 배열
-        const sorted = [...section.elements]
-          .map((el, idx) => ({ el, idx }))
-          .sort((a, b) => a.el.transform.y - b.el.transform.y);
-
-        for (const { el } of sorted) {
-          // autoHeight 텍스트 요소만 처리 (undefined도 true로 취급)
-          if (el.type !== 'text' || el.autoHeight === false) continue;
-          const measured = el.measuredHeight;
-          if (!measured || measured <= 0) continue;
-
-          const origH = el.transform.height;
-          const minTextH = 20;
-          const effectiveH = Math.max(measured, minTextH);
-          const deltaH = effectiveH - origH;
-          if (deltaH === 0) continue;
-
-          // 표류 감시 가드 — 대형 delta는 폰트 미로딩 측정/추정기 오차 회귀 신호.
-          // 레이아웃 정확성을 위해 적용은 하되 원인 추적용으로 경고를 남긴다.
-          if (Math.abs(deltaH) > 120) {
-            console.warn(
-              `[reflowSection] 대형 높이 표류 감지: ${el.id} ${origH}→${effectiveH}px (Δ${deltaH})`,
-            );
-          }
-
-          // 높이 갱신
-          el.transform.height = effectiveH;
-
-          const threshold = el.transform.y + origH;
-          const myContainers = containers.filter((c: CanvasElement) => c.containerOf!.includes(el.id));
-
-          if (myContainers.length > 0) {
-            // 컨테이너 내부 텍스트: 밀어내기를 같은 컨테이너의 형제(threshold 이하)로
-            // 한정한다. 컨테이너 밖 전파는 fit 패스가 bottom 변화분으로 1회 수행 —
-            // 이웃 그리드 셀(USP 2×2)·같은 카드 상단(별점/이름)은 건드리지 않는다.
-            const siblings = new Set<string>();
-            for (const c of myContainers) {
-              c.containerOf!.forEach((id: string) => siblings.add(id));
-            }
-            for (const other of section.elements) {
-              if (other.id === el.id || !siblings.has(other.id)) continue;
-              if (other.transform.y >= threshold) {
-                other.transform.y += deltaH;
-              }
-            }
-          } else {
-            // 컨테이너 밖 텍스트(섹션 타이틀 등): 아래 전체를 균등 이동 —
-            // 카드/셀은 통째로 함께 이동하므로 내부 정합이 유지된다
-            for (const other of section.elements) {
-              if (other.id === el.id) continue;
-              if (other.transform.y >= threshold) {
-                other.transform.y += deltaH;
-              }
-            }
-          }
-        }
-
-        // ── 컨테이너 fit 패스 ──────────────────────────────────────────────
-        // 자식 최하단 + 보존된 패딩으로 컨테이너 높이를 재계산한다 (멱등).
-        // bottom 변화분은 컨테이너 아래 요소에 1회 전파 — 동일 자식 집합을
-        // 공유하는 컨테이너(스텝 bg/보더)는 서명으로 중복 전파를 방지한다.
-        const shiftedSignatures = new Set<string>();
-        const containersByY = [...containers].sort((a, b) => a.transform.y - b.transform.y);
-        for (const c of containersByY) {
-          const pad = containerPad.get(c.id);
-          if (pad === undefined) continue;
-          let maxChildBottom = -Infinity;
-          for (const id of c.containerOf!) {
-            const child = elById.get(id);
-            if (child) maxChildBottom = Math.max(maxChildBottom, child.transform.y + child.transform.height);
-          }
-          if (maxChildBottom === -Infinity) continue;
-
-          const oldBottom = c.transform.y + c.transform.height;
-          const newH = Math.max(20, maxChildBottom + pad - c.transform.y);
-          const dBottom = c.transform.y + newH - oldBottom;
-          c.transform.height = newH;
-
-          if (dBottom !== 0) {
-            const signature = [...c.containerOf!].sort().join(',');
-            if (!shiftedSignatures.has(signature)) {
-              shiftedSignatures.add(signature);
-              const children = new Set(c.containerOf!);
-              for (const other of section.elements) {
-                if (other.id === c.id || children.has(other.id)) continue;
-                if (other.transform.y >= oldBottom - 0.5) {
-                  other.transform.y += dBottom;
-                }
-              }
-            }
-          }
-        }
-
-        // 섹션 높이 재계산
-        let maxBottom = 0;
-        for (const el of section.elements) {
-          const bottom = el.transform.y + el.transform.height;
-          if (bottom > maxBottom) maxBottom = bottom;
-        }
-        const MIN_SECTION_HEIGHT = 200;
-        if (!section.userAdjustedHeight) {
-          // 요소 bounds + 보존된 하단 패딩으로 확장 AND 축소
-          section.canvas.height = Math.max(MIN_SECTION_HEIGHT, maxBottom + preservedBottomPad);
-        } else {
-          // 사용자 조정 높이 유지, 단 요소 overflow 방지
-          section.canvas.height = Math.max(section.canvas.height, maxBottom);
-        }
+        reflowSectionLayout(section);
       }),
     };
   })
@@ -1040,6 +950,7 @@ export const selectDerivativePreview = (s: EditorStore) => s.derivativePreview;
 export const selectExportWarnings = (s: EditorStore) => s.exportWarnings;
 export const selectStrategyContract = (s: EditorStore) => s.strategyContract;
 export const selectRegenTarget = (s: EditorStore) => s.regenTarget;
+export const selectRegenAddable = (s: EditorStore) => s.regenAddable;
 export const selectTextRegenTarget = (s: EditorStore) => s.textRegenTarget;
 export const selectCropTarget = (s: EditorStore) => s.cropTarget;
 export const selectRailTab = (s: EditorStore) => s.railTab;

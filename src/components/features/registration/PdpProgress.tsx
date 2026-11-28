@@ -4,23 +4,35 @@
  * 상세페이지(PDP) 잡 run 드라이버 — 브라우저가 드라이버다(§6.3): GET으로 현재 단계를 복원한 뒤
  * current_step이 done/failed가 될 때까지 POST run을 순차 재호출한다(서버 상주 프로세스 없음).
  * 6단계 스텝퍼 + images 단계 서브 진행(section_images 수/예상 총수) + 실패 시 단계 재시도.
+ * 탭이 뒤에 있다 돌아와도 멈추지 않는다(R12a): /run 401은 토큰을 새로 받아 다시 보내고, 탭이 다시 보이면 미완료 잡을 이어 간다.
+ * 구독 작업자 잡(R13)은 작업자가 끝낼 때까지 기다리며 받은 잡을 그린다(R13c, busy + worker — 잠금 busy 상한 밖).
+ * 구독 멈춤 표지 잡(AX-CT-29)이 멈추면(halted) 대기를 멈추고 멈춤 상자를 띄운다 — '이어 하기'(resume API)가 작업자 대기로 되돌린다.
+ * 이 잡의 실패 '다시 시도'도 같은 resume을 부른다(웹은 이 잡을 진행하지 않는다). 그리는 몫은 PdpProgressView(훅 없음, 렌더 시험).
  */
 
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { Check, Loader2, RotateCcw } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useAuth } from '@/lib/auth/clerk-shim'
+import { Loader2 } from 'lucide-react'
 import type { PdpJobRow } from '@/lib/registration/pdp-state'
-import { PDP_STEP_PROGRESS, stripStepFailurePrefix } from '@/lib/registration/pdp-state'
-import { PDP_STATUS_LABELS, PDP_UI_STEPS, PDP_STEP_LABELS, pdpApi } from '@/lib/registration/pdp-client'
+import { pdpApi } from '@/lib/registration/pdp-client'
+import {
+  authGiveUpMessage,
+  bearerHeaders,
+  createSingleFlight,
+  drivePdpJob,
+  isTerminalStep,
+  isUnauthorized,
+  onTabVisible,
+  shouldResumeOnVisible,
+  subscriptionHaltOf,
+  withAuthRetry,
+  type PdpRunResponse,
+} from '@/lib/registration/pdp-run-driver'
+import { PdpProgressView, driveEndMessage, requestPdpResume } from './PdpProgressView'
 import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
-// 순수 상한 고정값으로는 이미지 단계(장당 run 1회)가 완주 전에 잘릴 수 있다 — 최악 경로(단계당
-// 재시도 + Pro 20여 장 이미지)를 감안한 절대 상한. 실제 종료는 아래 스톨 감지가 대부분 담당한다.
-const ABSOLUTE_MAX_RUN_CALLS = 60
-const RATE_LIMIT_POLL_MS = 30_000
-
-function wait(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+// run 반복 규칙(호출 수 상한·busy 대기·정체 감지·401 다시 보내기)은 pdp-run-driver.ts에 있다 — 이 화면은 상태만 그린다
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
 
 export function PdpProgress({
   jobId,
@@ -29,11 +41,21 @@ export function PdpProgress({
   jobId: string
   onJobChange?: (job: PdpJobRow) => void
 }) {
+  const { getToken } = useAuth()
   const localCodexAvailable = useLocalCodexAvailable()
   const [job, setJob] = useState<PdpJobRow | null>(null)
   const [running, setRunning] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // 마지막 run 응답이 구독 작업자 진행(busy + worker)이었는지 — 안내 줄만 바꾼다
+  const [workerActive, setWorkerActive] = useState(false)
+  // 이어 하기(resume) 호출 중
+  const [resuming, setResuming] = useState(false)
   const aliveRef = useRef(true)
+  // 탭 복귀 판정용 최신 잡(state는 이벤트 처리기 안에서 낡은 값을 본다)
+  const jobRef = useRef<PdpJobRow | null>(null)
+  // drive는 잡마다 하나 — 첫 불러오기·버튼·탭 복귀(visibilitychange·pageshow가 겹쳐 와도)가 같은 문을 지난다.
+  // 잡이 바뀌면 새 문이다(옛 잡 drive가 새 잡을 막지 않는다 — 지금까지와 같다)
+  const { flight } = useMemo(() => ({ jobId, flight: createSingleFlight() }), [jobId])
 
   useEffect(() => {
     aliveRef.current = true
@@ -42,62 +64,106 @@ export function PdpProgress({
     }
   }, [])
 
-  const drive = useCallback(async () => {
+  const showJob = useCallback(
+    (next: PdpJobRow) => {
+      jobRef.current = next
+      setJob(next)
+      onJobChange?.(next)
+    },
+    [onJobChange]
+  )
+
+  // 401이면 토큰을 새로 받고 쉬었다 다시 보낸다(R12a) — 탭이 뒤에 있던 사이 낡은 세션 토큰으로 첫 호출이 거절되는 일
+  const authDeps = useMemo(
+    () => ({ refreshToken: () => getToken({ skipCache: true }), sleep, alive: () => aliveRef.current }),
+    [getToken]
+  )
+
+  const drive = useCallback(() => {
     if (!localCodexAvailable) {
       setError(LOCAL_CODEX_NOTICE)
       return
     }
-    setRunning(true)
-    setError(null)
-    try {
-      // 스톨 감지 — 직전 응답과 (단계·section_images 수·progress)가 완전히 동일하면 더 돌려도
-      // 진행되지 않는다는 뜻이므로 즉시 멈춘다(잡 상태 기반 종료, 고정 호출 수 상한 대신).
-      let prevSignature: string | null = null
-      let activeRunCalls = 0
-      while (activeRunCalls < ABSOLUTE_MAX_RUN_CALLS && aliveRef.current) {
-        const { job: updated } = await pdpApi<{ job: PdpJobRow }>(`/api/registration/pdp/${jobId}/run`, {
-          method: 'POST',
+    void flight.run(async () => {
+      setRunning(true)
+      setError(null)
+      try {
+        const end = await drivePdpJob({
+          ...authDeps,
+          runOnce: (token) =>
+            pdpApi<PdpRunResponse>(`/api/registration/pdp/${jobId}/run`, {
+              method: 'POST',
+              headers: bearerHeaders(token),
+            }),
+          onJob: showJob,
+          onWorker: (active) => aliveRef.current && setWorkerActive(active),
         })
+        // 잠금·작업자 대기 상한은 조용히 멈추지 않고 사유를 띄운다. 정체·호출 수 상한은 아래 '계속 실행' 칸이 알린다
         if (!aliveRef.current) return
-        setJob(updated)
-        onJobChange?.(updated)
-        if (updated.current_step === 'done' || updated.current_step === 'failed') return
-        if (updated.current_step === 'waiting_rate_limit') {
-          prevSignature = null
-          await wait(RATE_LIMIT_POLL_MS)
-          continue
+        // 구독 멈춤 표지 잡은 서버가 넘겨받지 않는다 — 차례 대기 문구(표지 없는 잡은 그대로)
+        const message = driveEndMessage(end, jobRef.current?.subscription_stop === true)
+        if (message) setError(message)
+      } catch (e) {
+        if (aliveRef.current) setError(isUnauthorized(e) ? authGiveUpMessage(e) : e instanceof Error ? e.message : '실행 실패')
+      } finally {
+        if (aliveRef.current) {
+          setRunning(false)
+          setWorkerActive(false)
         }
-        activeRunCalls++
-        // cost_usd 포함: 게이트 재생성이 슬롯을 소비한 run은 단계·장수·진행률이 그대로여도
-        // 비용은 증가한다 — 이를 스톨로 오탐하지 않기 위함(E2E 2026-08-10 실측)
-        const signature = `${updated.current_step}:${updated.section_images.length}:${updated.progress}:${updated.cost_usd}`
-        if (signature === prevSignature) return
-        prevSignature = signature
       }
-    } catch (e) {
-      if (aliveRef.current) setError(e instanceof Error ? e.message : '실행 실패')
-    } finally {
-      if (aliveRef.current) setRunning(false)
-    }
-  }, [jobId, onJobChange, localCodexAvailable])
+    })
+  }, [flight, authDeps, jobId, localCodexAvailable, showJob])
 
   // 탭 재진입 시 GET으로 복원 후, 미완료 잡이면 이어서 run
   useEffect(() => {
     let cancelled = false
-    pdpApi<{ job: PdpJobRow }>(`/api/registration/pdp/${jobId}`)
+    withAuthRetry(
+      (token) => pdpApi<{ job: PdpJobRow }>(`/api/registration/pdp/${jobId}`, { headers: bearerHeaders(token) }),
+      { ...authDeps, alive: () => !cancelled && aliveRef.current }
+    )
       .then(({ job: loaded }) => {
         if (cancelled) return
-        setJob(loaded)
-        onJobChange?.(loaded)
-        if (localCodexAvailable && loaded.current_step !== 'done' && loaded.current_step !== 'failed') void drive()
+        showJob(loaded)
+        // 멈춤 기록이 있으면 대기하지 않는다 — 멈춤 상자의 '이어 하기'가 다시 시작한다
+        if (localCodexAvailable && !isTerminalStep(loaded.current_step) && !subscriptionHaltOf(loaded)) drive()
       })
       .catch((e) => !cancelled && setError(e instanceof Error ? e.message : '잡 로드 실패'))
     return () => {
       cancelled = true
     }
-    // localCodexAvailable은 hydration 뒤 확정되므로 localhost에서 한 번 더 복원해 자동 실행한다.
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- onJobChange 변경은 잡 재실행 사유가 아님
+    // localhost 판정이 끝나면 한 번 다시 불러 자동 진행한다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- drive는 jobId와 localhost 판정에 종속
   }, [jobId, localCodexAvailable])
+
+  // 이어 하기(구독 멈춤 표지 잡, AX-CT-29) — 멈춤 기록·오류를 지우고(실패면 다시 돌릴 단계로) 작업자 대기로 돌아간다
+  const resume = useCallback(async () => {
+    if (!localCodexAvailable) {
+      setError(LOCAL_CODEX_NOTICE)
+      return
+    }
+    setResuming(true)
+    setError(null)
+    try {
+      const { job: resumed } = await requestPdpResume(jobId, authDeps)
+      if (!aliveRef.current) return
+      showJob(resumed)
+      drive()
+    } catch (e) {
+      if (aliveRef.current) setError(isUnauthorized(e) ? authGiveUpMessage(e) : e instanceof Error ? e.message : '이어 하기 실패')
+    } finally {
+      if (aliveRef.current) setResuming(false)
+    }
+  }, [authDeps, jobId, localCodexAvailable, showJob, drive])
+
+  // 탭이 다시 보이면 미완료 잡을 바로 이어 간다(R12a) — 도는 drive가 있으면 그대로 두고, 실패 잡 재시도는 사람이 누른다
+  useEffect(
+    () =>
+      onTabVisible(document, window, () => {
+        const latest = jobRef.current?.id === jobId ? jobRef.current : null
+        if (localCodexAvailable && shouldResumeOnVisible(latest, flight.running())) drive()
+      }),
+    [flight, drive, jobId, localCodexAvailable]
+  )
 
   if (!job) {
     return (
@@ -107,111 +173,22 @@ export function PdpProgress({
     )
   }
 
-  const failed = job.current_step === 'failed'
-  const waitingRateLimit = job.current_step === 'waiting_rate_limit'
-  // 실패 시 current_step 자체는 진행 단계명을 잃으므로, progress 값으로 실패 지점을 역추정한다
-  // (PDP_STEP_PROGRESS는 PDP_UI_STEPS와 동일 순서로 오르는 값이므로 매치되는 스텝을 실패 지점으로 본다).
-  const activeIdx = failed
-    ? PDP_UI_STEPS.findIndex((s) => PDP_STEP_PROGRESS[s] === job.progress)
-    : job.current_step === 'done'
-      ? PDP_UI_STEPS.length
-      : waitingRateLimit
-        ? PDP_UI_STEPS.indexOf('images')
-        : PDP_UI_STEPS.indexOf(job.current_step as (typeof PDP_UI_STEPS)[number])
-
-  const expectedImages = Object.keys(job.design_prompts?.section_image_prompts ?? {}).length
-  const generatedImages = job.section_images.filter((image) => image.url).length
-  const nextRetryAt = Math.min(
-    ...job.section_images
-      .filter((image) => image.pendingRegen && image.retryAfter)
-      .map((image) => Date.parse(image.retryAfter!))
-      .filter(Number.isFinite),
-  )
-  const retryMinutes = Number.isFinite(nextRetryAt)
-    ? Math.max(1, Math.ceil((nextRetryAt - Date.now()) / 60_000))
-    : 1
-
   return (
-    <div className="space-y-4">
-      <section className="rounded-lg border border-slate-200 bg-white p-4 space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="text-sm font-semibold text-slate-700">{PDP_STATUS_LABELS[job.current_step]}</div>
-          <div className="text-[11px] text-slate-400">{job.progress}%</div>
-        </div>
-        <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
-          <div
-            className={`h-full transition-all ${failed ? 'bg-danger-500' : 'bg-brand-500'}`}
-            style={{ width: `${job.progress}%` }}
-          />
-        </div>
-
-        <ol className="flex items-center gap-x-1.5 gap-y-2 flex-wrap">
-          {PDP_UI_STEPS.map((step, i) => {
-            const status = i < activeIdx ? 'done' : i === activeIdx ? (failed ? 'failed' : 'active') : 'pending'
-            return (
-              <li key={step} className="flex items-center gap-1">
-                <span
-                  className={`inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded-full border ${
-                    status === 'done'
-                      ? 'border-brand-200 bg-brand-50 text-brand-600'
-                      : status === 'active'
-                        ? 'border-brand-400 bg-brand-500 text-white'
-                        : status === 'failed'
-                          ? 'border-danger-200 bg-danger-50 text-danger-600'
-                          : 'border-slate-200 text-slate-400'
-                  }`}
-                >
-                  {status === 'done' && <Check className="w-3 h-3" />}
-                  {status === 'active' && <Loader2 className="w-3 h-3 animate-spin" />}
-                  {PDP_STEP_LABELS[step]}
-                </span>
-                {i < PDP_UI_STEPS.length - 1 && <span className="text-slate-300">→</span>}
-              </li>
-            )
-          })}
-        </ol>
-
-        {(job.current_step === 'images' || waitingRateLimit) && expectedImages > 0 && (
-          <div className="text-[11px] text-slate-500">
-            섹션 이미지 {generatedImages} / {expectedImages}장 생성됨
-          </div>
-        )}
-        {waitingRateLimit && (
-          <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
-            Codex 이미지 한도 때문에 잠시 쉬는 중 — 약 {retryMinutes}분 뒤 이어서 만듭니다. 창을 닫지 마세요.
-          </div>
-        )}
-      </section>
-
-      {job.current_step !== 'done' && !running && (
-        // 실패 여부와 무관하게 항상 노출 — 스톨 감지·절대 상한으로 루프가 멈춰도(완료 아님) 여기서
-        // 이어갈 수 있어야 한다(§6.4). failed는 위험색, 그 외(스톨·상한 도달)는 경고색으로만 구분한다.
-        <div
-          className={`rounded-lg border px-3 py-2 space-y-2 ${
-            failed ? 'border-danger-200 bg-danger-50' : 'border-warning-500/30 bg-warning-50'
-          }`}
-        >
-          <div className={`text-xs ${failed ? 'text-danger-700' : 'text-warning-700'}`}>
-            {failed
-              ? `생성 실패: ${stripStepFailurePrefix(job.error) ?? '알 수 없는 오류'}`
-              : job.error
-                ? `진행 정체 — ${stripStepFailurePrefix(job.error)}`
-                : '생성이 완료되지 않았습니다. 이어서 실행하세요.'}
-          </div>
-          <button
-            onClick={() => void drive()}
-            disabled={!localCodexAvailable || running}
-            title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
-            className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-white disabled:opacity-50 ${
-              failed ? 'bg-danger-500 hover:bg-danger-600' : 'bg-warning-500 hover:bg-warning-600'
-            }`}
-          >
-            {running ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RotateCcw className="w-3.5 h-3.5" />}
-            {failed ? '이 단계부터 재시도' : '계속 실행'}
-          </button>
+    <div className="space-y-3">
+      {!localCodexAvailable && (
+        <div className="rounded-lg border border-warning-500/30 bg-warning-50 px-3 py-2 text-xs text-warning-700">
+          {LOCAL_CODEX_NOTICE}
         </div>
       )}
-      {error && <div className="rounded-lg border border-danger-200 bg-danger-50 px-3 py-2 text-xs text-danger-700">{error}</div>}
+      <PdpProgressView
+        job={job}
+        running={running}
+        resuming={resuming}
+        workerActive={workerActive}
+        error={error}
+        onDrive={() => void drive()}
+        onResume={() => void resume()}
+      />
     </div>
   )
 }

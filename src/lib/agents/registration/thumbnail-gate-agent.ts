@@ -4,8 +4,10 @@
  * Pillow 점유율 실측은 이식하지 않는다 — VLM의 tight_bbox_occupancy 추정을 그대로 쓴다(설계문서 결정 A).
  */
 
+import { billedCostOf } from '../billed-usage'
+import type { ImageBlockParam } from '@/lib/agents/llm/message-types'
 import type { AgentConfig, RunContext } from '../types'
-import { callAgent, type ImageBlockParam } from '../_base'
+import { callAgent } from '../_base'
 import { parseLlmJson } from '../json-parser'
 import {
   GATE_PROMPT,
@@ -212,6 +214,6 @@ export async function scoreGate(
       return composeGate(parsed)
     }
   )
-  if (result.success) return { gate: result.data, costUsd: result.usage.cost }
-  return { gate: failedGate(`제품 게이트 판정 실패: ${result.error.message}`), costUsd: result.usage.cost }
+  if (result.success) return { gate: result.data, costUsd: billedCostOf(result) }
+  return { gate: failedGate(`제품 게이트 판정 실패: ${result.error.message}`), costUsd: billedCostOf(result) }
 }

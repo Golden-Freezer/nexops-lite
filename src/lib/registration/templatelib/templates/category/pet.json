@@ -1,0 +1,4544 @@
+[
+  {
+    "id": "hook_3step.pet-scene-wide-narrow",
+    "section": "hook_3step",
+    "name": "큰 제목 + 쓰는 장면 크게·대표 좁게 + 아래 보조",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "HOOK",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "scene",
+        "bleed": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "scene": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "action"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "hook_3step.pet-scene-wide-narrow"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hook_3step.pet-scene-wide-narrow.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 1880
+    },
+    "height": 1700
+  },
+  {
+    "id": "main_cut.pet-pair-first-rows",
+    "section": "main_cut",
+    "name": "대표·쓰는 컷 나란히 먼저 + 제목 + 특징 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "left",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "points",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "title",
+            "token": "BODY_BOLD"
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "right",
+        "x": 200,
+        "w": 460
+      }
+    ],
+    "slots": {
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "in_use",
+          "angle45",
+          "group"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "action"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "points": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.pet-pair-first-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.pet-pair-first-rows.html",
+    "estimatedHeight": {
+      "min": 2880,
+      "max": 3580
+    },
+    "height": 3230
+  },
+  {
+    "id": "sub2_div_page.pet-scene-stagger",
+    "section": "sub2_div_page",
+    "name": "가운데 한 줄 + 쓰는 장면 2장 어긋나게",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "image",
+        "slot": "first",
+        "x": 60,
+        "w": 540,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "second",
+        "x": 260,
+        "w": 540
+      }
+    ],
+    "slots": {
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "1:1",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "second": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "state",
+          "action"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "1:1",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.pet-scene-stagger"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub2_div_page.pet-scene-stagger.html",
+    "estimatedHeight": {
+      "min": 780,
+      "max": 1600
+    },
+    "height": 1190
+  },
+  {
+    "id": "product_exposure.pet-caption-scale-pair",
+    "section": "product_exposure",
+    "name": "가운데 글 먼저 + 크기 컷·쓰는 컷 나란히",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale"
+        ],
+        "composition": [
+          "in_hand",
+          "front"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "product_exposure.pet-caption-scale-pair"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/product_exposure.pet-caption-scale-pair.html",
+    "estimatedHeight": {
+      "min": 840,
+      "max": 1080
+    },
+    "height": 960
+  },
+  {
+    "id": "solution_guide.pet-scene-rows",
+    "section": "solution_guide",
+    "name": "해결 선언 + 풀폭 쓰는 장면 + 특징 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "title",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_hand",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "solution_guide.pet-scene-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/solution_guide.pet-scene-rows.html",
+    "estimatedHeight": {
+      "min": 2100,
+      "max": 2800
+    },
+    "height": 2450
+  },
+  {
+    "id": "spec_table.pet-scene-rows-special-card",
+    "section": "spec_table",
+    "name": "풀폭 구성·쓰는 컷 + 머리표 + 줄 표 + 특별한 내용 카드",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "tableGap",
+        "even": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "label",
+            "token": "LABEL",
+            "color": "accent",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "value",
+            "token": "TABLE"
+          }
+        ],
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "C",
+        "radius": "card",
+        "nodes": [
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": true,
+            "gap": "tableGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group",
+          "state"
+        ],
+        "composition": [
+          "group",
+          "flatlay",
+          "in_use"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 500
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.pet-scene-rows-special-card"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.pet-scene-rows-special-card.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 4480
+    },
+    "height": 2810
+  },
+  {
+    "id": "option_gallery.pet-large-rows",
+    "section": "option_gallery",
+    "name": "제목 + 옵션 큰 사진 한 줄씩, 사진마다 이름표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "swatches",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "tags",
+            "slot": "name"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "swatches": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "option.images",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "color"
+            ],
+            "composition": [
+              "front",
+              "angle45"
+            ],
+            "aspect": [
+              "4:3",
+              "1:1"
+            ],
+            "minHeight": 500
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 10,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "option.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "option"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "option_gallery.pet-large-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/option_gallery.pet-large-rows.html",
+    "estimatedHeight": {
+      "min": 1800,
+      "max": 3420
+    },
+    "height": 2610
+  },
+  {
+    "id": "hook_3step.petgoods-center-use-offset-sub",
+    "section": "hook_3step",
+    "name": "반려 용품 첫 화면 — 가운데 큰 제목 + 동물과 쓰는 어긋난 컷 + 가운데 보조",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "HOOK",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "use",
+        "bleed": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      },
+      "use": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ],
+      "productFamilies": [
+        "pet_goods"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "hook_3step.petgoods-center-use-offset-sub"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hook_3step.petgoods-center-use-offset-sub.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 1880
+    },
+    "height": 1700
+  },
+  {
+    "id": "main_cut.petgoods-offset-title-pair",
+    "section": "main_cut",
+    "name": "반려 용품 메인 — 쓰는 장면 어긋난 컷 먼저 + 제목·보조 + 대표·근접 2장",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "use",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "front"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "use": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "front": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ],
+      "productFamilies": [
+        "pet_goods"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.petgoods-offset-title-pair"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.petgoods-offset-title-pair.html",
+    "estimatedHeight": {
+      "min": 2320,
+      "max": 2910
+    },
+    "height": 2620
+  },
+  {
+    "id": "sub2_div_page.petgoods-caption-wide-narrow-bleed",
+    "section": "sub2_div_page",
+    "name": "반려 용품 사진 막 — 가운데 한 줄 + 쓰는 장면 크게·근접 좁게 + 함께 있는 장면 풀폭",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "use"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "close"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "scene",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "use": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "close": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 588
+      },
+      "scene": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "angle45"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ],
+      "productFamilies": [
+        "pet_goods"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.petgoods-caption-wide-narrow-bleed"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub2_div_page.petgoods-caption-wide-narrow-bleed.html",
+    "estimatedHeight": {
+      "min": 1440,
+      "max": 1680
+    },
+    "height": 1560
+  },
+  {
+    "id": "problem_raise.pet-question-plate-rows",
+    "section": "problem_raise",
+    "name": "왼쪽 질문 + 판 깐 고민 컷 + 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        }
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "item",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_raise.pet-question-plate-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_raise.pet-question-plate-rows.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 2210
+    },
+    "height": 1870
+  },
+  {
+    "id": "problem_empathy.pet-center-inset-note",
+    "section": "problem_empathy",
+    "name": "가운데 제목 + 본문 폭 고민 컷 + 가운데 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 24,
+        "maxLines": 5,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "in_use",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_empathy.pet-center-inset-note"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_empathy.pet-center-inset-note.html",
+    "estimatedHeight": {
+      "min": 1430,
+      "max": 1820
+    },
+    "height": 1630
+  },
+  {
+    "id": "key_message.pet-line-wide-narrow",
+    "section": "key_message",
+    "name": "왼쪽 제목·글 먼저 + 쓰는 장면 크게·대표 좁게",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "key_message.pet-line-wide-narrow"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/key_message.pet-line-wide-narrow.html",
+    "estimatedHeight": {
+      "min": 1190,
+      "max": 1780
+    },
+    "height": 1490
+  },
+  {
+    "id": "point_div.pet-head-inset-note",
+    "section": "point_div",
+    "name": "표준 머리 + 본문 폭 쓰는 장면 + 사진 설명 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "note",
+        "token": "CAPTION",
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "angle45"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 560
+      },
+      "note": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 20,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.pet-head-inset-note"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.pet-head-inset-note.html",
+    "estimatedHeight": {
+      "min": 1310,
+      "max": 2640
+    },
+    "height": 1980
+  },
+  {
+    "id": "sub_div.pet-center-scale-plate",
+    "section": "sub_div",
+    "name": "가운데 제목 + 판 깐 크기 컷(동물 옆) + 가운데 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true,
+        "align": "center"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "desc",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "desc": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale",
+          "state"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub_div.pet-center-scale-plate"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub_div.pet-center-scale-plate.html",
+    "estimatedHeight": {
+      "min": 1510,
+      "max": 1980
+    },
+    "height": 1750
+  },
+  {
+    "id": "hidden_page.pet-pair-detail-rows",
+    "section": "hidden_page",
+    "name": "제목 먼저 + 근접 2장 나란히 + 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "item",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "hidden_page.pet-pair-detail-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hidden_page.pet-pair-detail-rows.html",
+    "estimatedHeight": {
+      "min": 1490,
+      "max": 2030
+    },
+    "height": 1760
+  },
+  {
+    "id": "petit_div.pet-pair-first-line",
+    "section": "petit_div",
+    "name": "함께 있는 장면 크게·쓰는 컷 좁게 먼저 + 가운데 한 줄, 사실 없음",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "line",
+        "token": "H2",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "line": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "petit_div.pet-pair-first-line"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/petit_div.pet-pair-first-line.html",
+    "estimatedHeight": {
+      "min": 1140,
+      "max": 1250
+    },
+    "height": 1200
+  },
+  {
+    "id": "direction_suggest.pet-center-side-rows",
+    "section": "direction_suggest",
+    "name": "가운데 제목 + 장면마다 사진|한 줄(구분선 없음)",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap",
+        "emphasis": true,
+        "align": "center"
+      },
+      {
+        "kind": "repeat",
+        "slot": "scenes",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 296,
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "photo"
+                  }
+                ]
+              },
+              {
+                "w": 420,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "note",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "scenes": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "action",
+              "scene"
+            ],
+            "composition": [
+              "in_use",
+              "in_hand"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 395
+          },
+          "note": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "direction_suggest.pet-center-side-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/direction_suggest.pet-center-side-rows.html",
+    "estimatedHeight": {
+      "min": 1430,
+      "max": 2120
+    },
+    "height": 1780
+  },
+  {
+    "id": "concept_desc.pet-left-pair-story",
+    "section": "concept_desc",
+    "name": "왼쪽 제목 + 함께 있는 장면 크게·대표 좁게 + 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "story",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "story": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "concept_desc.pet-left-pair-story"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/concept_desc.pet-left-pair-story.html",
+    "estimatedHeight": {
+      "min": 1060,
+      "max": 1690
+    },
+    "height": 1380
+  },
+  {
+    "id": "point_list_div.pet-stack-center",
+    "section": "point_list_div",
+    "name": "가운데 제목 + 항목마다 사진 위·굵은 한 줄 아래",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "title",
+            "token": "BODY_BOLD",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 3,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          },
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "texture",
+              "action"
+            ],
+            "composition": [
+              "closeup",
+              "top",
+              "angle45"
+            ],
+            "aspect": [
+              "4:3"
+            ],
+            "minHeight": 500
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 3,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_list_div.pet-stack-center"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_list_div.pet-stack-center.html",
+    "estimatedHeight": {
+      "min": 2580,
+      "max": 3060
+    },
+    "height": 2820
+  },
+  {
+    "id": "cta.pet-center-offset-between",
+    "section": "cta",
+    "name": "가운데 제목 + 어긋난 대표 컷 + 가운데 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap",
+        "emphasis": true,
+        "align": "center"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap",
+        "x": 200,
+        "w": 600
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "state"
+        ],
+        "composition": [
+          "front",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "cta.pet-center-offset-between"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/cta.pet-center-offset-between.html",
+    "estimatedHeight": {
+      "min": 1410,
+      "max": 2040
+    },
+    "height": 1730
+  },
+  {
+    "id": "convert_div.pet-text-bleed-close",
+    "section": "convert_div",
+    "name": "왼쪽 제목·글 먼저 + 풀폭 쓰는 장면으로 닫기",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "tightGap",
+        "emphasis": true
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "convert_div.pet-text-bleed-close"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/convert_div.pet-text-bleed-close.html",
+    "estimatedHeight": {
+      "min": 1630,
+      "max": 2190
+    },
+    "height": 1910
+  },
+  {
+    "id": "compare.pet-checks-offset-end",
+    "section": "compare",
+    "name": "제목 + 체크 줄 + 끝에 쓰는 어긋난 컷, 우리 장점만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "blockGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "compare.pet-checks-offset-end"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/compare.pet-checks-offset-end.html",
+    "estimatedHeight": {
+      "min": 1720,
+      "max": 2390
+    },
+    "height": 2060
+  },
+  {
+    "id": "review.pet-pair-between-quotes",
+    "section": "review",
+    "name": "머리표·제목 + 쓰는 장면 크게·대표 좁게 + 후기(구분선 없음), 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "action"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.pet-pair-between-quotes"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.pet-pair-between-quotes.html",
+    "estimatedHeight": {
+      "min": 1810,
+      "max": 3300
+    },
+    "height": 2560
+  },
+  {
+    "id": "faq.pet-center-inset-rows",
+    "section": "faq",
+    "name": "가운데 제목 + 본문 폭 컷 + 질문·답",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "scene"
+        ],
+        "composition": [
+          "top",
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.pet-center-inset-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.pet-center-inset-rows.html",
+    "estimatedHeight": {
+      "min": 2220,
+      "max": 3950
+    },
+    "height": 3090
+  },
+  {
+    "id": "perf_metric.pet-center-score-pair",
+    "section": "perf_metric",
+    "name": "가운데 큰 평점·별·후기 수 먼저 + 쓰는 장면 크게·대표 좁게, 수치는 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "score",
+        "token": "DISPLAY",
+        "color": "accent",
+        "gapAfter": "tightGap",
+        "align": "center"
+      },
+      {
+        "kind": "rating",
+        "slot": "stars",
+        "gapAfter": "tightGap",
+        "align": "center"
+      },
+      {
+        "kind": "text",
+        "slot": "count",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "score": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "stars": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "count": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "none",
+        "input": "review.count"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "action"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "rating"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "perf_metric.pet-center-score-pair"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/perf_metric.pet-center-score-pair.html",
+    "estimatedHeight": {
+      "min": 1040,
+      "max": 1280
+    },
+    "height": 1160
+  },
+  {
+    "id": "certification.pet-names-plate-end",
+    "section": "certification",
+    "name": "제목 + 인증 줄 + 판 깐 포장 컷으로 끝, 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "BODY_BOLD"
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        }
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "regulated"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "certification.items",
+        "min": 1,
+        "max": 4,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none",
+            "input": "certification.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "certification"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "certification.pet-names-plate-end"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/certification.pet-names-plate-end.html",
+    "estimatedHeight": {
+      "min": 1560,
+      "max": 2630
+    },
+    "height": 2100
+  },
+  {
+    "id": "event_offer.pet-offer-pair-left",
+    "section": "event_offer",
+    "name": "왼쪽 혜택 먼저 + 구성 컷 크게·포장 좁게, 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "offer",
+        "token": "H2",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "offer": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none",
+        "input": "offer.info"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group",
+          "quantity"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "offer"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "reassure-care",
+        "cloud-soft",
+        "cozy-beige",
+        "animal-friends",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "forest-green",
+        "outdoor-khaki"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "pet"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "event_offer.pet-offer-pair-left"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/event_offer.pet-offer-pair-left.html",
+    "estimatedHeight": {
+      "min": 1030,
+      "max": 1250
+    },
+    "height": 1140
+  }
+]

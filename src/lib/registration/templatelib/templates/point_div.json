@@ -1,0 +1,5023 @@
+[
+  {
+    "id": "point_div.scene-band",
+    "section": "point_div",
+    "name": "풀폭 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "action"
+        ],
+        "composition": [
+          "in_use",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "dark-performance"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.scene-band"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.scene-band.html",
+    "estimatedHeight": {
+      "min": 1600,
+      "max": 2190
+    },
+    "height": 1900
+  },
+  {
+    "id": "point_div.arch-photo",
+    "section": "point_div",
+    "name": "큰 POINT 머리 + 아치 틀 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "frame": "arch",
+        "x": 150,
+        "w": 560,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "scene"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.arch-photo"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.arch-photo.html",
+    "estimatedHeight": {
+      "min": 1320,
+      "max": 2510
+    },
+    "height": 1920
+  },
+  {
+    "id": "point_div.inset-card",
+    "section": "point_div",
+    "name": "옅은 상자 안 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo"
+          }
+        ],
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "side"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "dark-performance"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.inset-card"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.inset-card.html",
+    "estimatedHeight": {
+      "min": 1530,
+      "max": 2720
+    },
+    "height": 2130
+  },
+  {
+    "id": "point_div.split-photo",
+    "section": "point_div",
+    "name": "사진 + 글 나란히",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "title",
+                "token": "H3",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "text",
+                "slot": "desc",
+                "token": "BODY"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "action",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 620
+      },
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "desc": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 5,
+        "claimRisk": "effect"
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "angle45"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.split-photo"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.split-photo.html",
+    "estimatedHeight": {
+      "min": 1190,
+      "max": 2610
+    },
+    "height": 1900
+  },
+  {
+    "id": "point_div.principle",
+    "section": "point_div",
+    "name": "원리 도해 — 사진 + 번호 단계 화살표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "steps",
+        "connector": "arrow",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "index"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "H3",
+                    "gapAfter": "tightGap"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "desc",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "underside",
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "side",
+          "closeup"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "steps": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "desc": {
+            "type": "text",
+            "required": false,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 24,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 9
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "pro-navy",
+        "lab-white"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.principle"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.principle.html",
+    "estimatedHeight": {
+      "min": 1480,
+      "max": 4600
+    },
+    "height": 3040
+  },
+  {
+    "id": "point_div.compare-marks",
+    "section": "point_div",
+    "name": "비교표 — 항목 + 체크·줄표 열",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "row",
+        "gapAfter": "rowGap",
+        "columns": [
+          {
+            "w": 380,
+            "nodes": []
+          },
+          {
+            "w": 156,
+            "nodes": [
+              {
+                "kind": "label",
+                "label": "우리 제품",
+                "align": "center",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 156,
+            "nodes": [
+              {
+                "kind": "label",
+                "label": "기존 제품",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "rows",
+        "rule": true,
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 380,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY"
+                  }
+                ]
+              },
+              {
+                "w": 156,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check",
+                    "align": "center"
+                  }
+                ]
+              },
+              {
+                "w": 156,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "dash",
+                    "align": "center"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "compare.rows",
+        "min": 3,
+        "max": 5,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "compare.item",
+            "facts": 1,
+            "maxChars": 24,
+            "maxLines": 4,
+            "claimRisk": "compare"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof"
+        ],
+        "composition": [
+          "front",
+          "group"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "compare_basis"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.compare-marks"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 3,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.compare-marks.html",
+    "estimatedHeight": {
+      "min": 2230,
+      "max": 5440
+    },
+    "height": 3840
+  },
+  {
+    "id": "point_div.pair-photos",
+    "section": "point_div",
+    "name": "사진 2장 나란히",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "front",
+          "closeup"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.pair-photos"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.pair-photos.html",
+    "estimatedHeight": {
+      "min": 1170,
+      "max": 1760
+    },
+    "height": 1470
+  },
+  {
+    "id": "point_div.side-card",
+    "section": "point_div",
+    "name": "상자 안 글·사진 나란히",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 380,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "H3",
+                    "gapAfter": "tightGap"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "desc",
+                    "token": "BODY"
+                  }
+                ]
+              },
+              {
+                "w": 256,
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "photo"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "desc": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 5,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 340
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.side-card"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.side-card.html",
+    "estimatedHeight": {
+      "min": 990,
+      "max": 2690
+    },
+    "height": 1840
+  },
+  {
+    "id": "point_div.side-rule",
+    "section": "point_div",
+    "name": "사진 옆 줄로 나눈 세부",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 336,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 380,
+            "nodes": [
+              {
+                "kind": "repeat",
+                "slot": "items",
+                "rule": true,
+                "gap": "rowGap",
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 14,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "action",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 620
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "angle45"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.side-rule"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.side-rule.html",
+    "estimatedHeight": {
+      "min": 1190,
+      "max": 2720
+    },
+    "height": 1960
+  },
+  {
+    "id": "point_div.tile-pair",
+    "section": "point_div",
+    "name": "상자 두 칸 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "valign": "stretch",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "panel",
+                "fill": "N",
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "left"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "panel",
+                "fill": "C",
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "right"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 380
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "scene"
+        ],
+        "composition": [
+          "side",
+          "top"
+        ],
+        "aspect": [
+          "3:4",
+          "1:1"
+        ],
+        "minHeight": 380
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.tile-pair"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "tile"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.tile-pair.html",
+    "estimatedHeight": {
+      "min": 1030,
+      "max": 1620
+    },
+    "height": 1330
+  },
+  {
+    "id": "point_div.grid-three",
+    "section": "point_div",
+    "name": "가까이 본 컷 3열",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "shots",
+        "columns": 3,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 3,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "texture"
+            ],
+            "composition": [
+              "closeup",
+              "side",
+              "top"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 300
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.grid-three"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 3,
+      "photo": "grid",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.grid-three.html",
+    "estimatedHeight": {
+      "min": 880,
+      "max": 1470
+    },
+    "height": 1180
+  },
+  {
+    "id": "point_div.grid-two-card",
+    "section": "point_div",
+    "name": "상자 안 2열 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "repeat",
+            "slot": "shots",
+            "columns": 2,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "action",
+              "texture"
+            ],
+            "composition": [
+              "closeup",
+              "side",
+              "top",
+              "in_hand"
+            ],
+            "aspect": [
+              "2:3",
+              "3:4"
+            ],
+            "minHeight": 500
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.grid-two-card"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.grid-two-card.html",
+    "estimatedHeight": {
+      "min": 1150,
+      "max": 2270
+    },
+    "height": 1710
+  },
+  {
+    "id": "point_div.offset-rule",
+    "section": "point_div",
+    "name": "구분선 + 오른쪽으로 비킨 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "divider",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "scene"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.offset-rule"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "offset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.offset-rule.html",
+    "estimatedHeight": {
+      "min": 1420,
+      "max": 2610
+    },
+    "height": 2020
+  },
+  {
+    "id": "point_div.checks-photo",
+    "section": "point_div",
+    "name": "체크 줄 표 + 풀폭 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "gapAfter": "photoGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "item",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "action"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.checks-photo"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.checks-photo.html",
+    "estimatedHeight": {
+      "min": 1920,
+      "max": 3200
+    },
+    "height": 2560
+  },
+  {
+    "id": "point_div.bubble-note",
+    "section": "point_div",
+    "name": "풀폭 사진 + 말풍선 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "itemGap",
+        "bleed": true
+      },
+      {
+        "kind": "panel",
+        "fill": "C",
+        "radius": "bubble",
+        "w": 680,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "note",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "note": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "action",
+          "texture"
+        ],
+        "composition": [
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.bubble-note"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "bubble"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.bubble-note.html",
+    "estimatedHeight": {
+      "min": 1600,
+      "max": 2710
+    },
+    "height": 2160
+  },
+  {
+    "id": "point_div.center-grid-two-card",
+    "section": "point_div",
+    "name": "가운데 머리 · 상자 안 2열 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "align": "center",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "chapter",
+        "token": "DISPLAY",
+        "format": "two",
+        "color": "accent",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "repeat",
+            "slot": "shots",
+            "columns": 2,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "action",
+              "texture"
+            ],
+            "composition": [
+              "closeup",
+              "side",
+              "top",
+              "in_hand"
+            ],
+            "aspect": [
+              "2:3",
+              "3:4"
+            ],
+            "minHeight": 500
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "y2k-glossy",
+        "spring-blossom",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "학부모 대리 구매형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.center-grid-two-card"
+      ]
+    },
+    "headStyle": "point-center",
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.center-grid-two-card.html",
+    "estimatedHeight": {
+      "min": 1150,
+      "max": 2410
+    },
+    "height": 1780
+  },
+  {
+    "id": "point_div.center-offset-rule",
+    "section": "point_div",
+    "name": "가운데 머리 · 구분선 + 오른쪽으로 비킨 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "align": "center",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "chapter",
+        "token": "DISPLAY",
+        "format": "two",
+        "color": "accent",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "titleGap",
+        "align": "center"
+      },
+      {
+        "kind": "divider",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "scene"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.center-offset-rule"
+      ]
+    },
+    "headStyle": "point-center",
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "center",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.center-offset-rule.html",
+    "estimatedHeight": {
+      "min": 1420,
+      "max": 2750
+    },
+    "height": 2090
+  },
+  {
+    "id": "point_div.center-inset-card",
+    "section": "point_div",
+    "name": "가운데 머리 · 옅은 상자 안 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "align": "center",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "chapter",
+        "token": "DISPLAY",
+        "format": "two",
+        "color": "accent",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo"
+          }
+        ],
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "side"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "dark-performance"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.center-inset-card"
+      ]
+    },
+    "headStyle": "point-center",
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "center",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.center-inset-card.html",
+    "estimatedHeight": {
+      "min": 1530,
+      "max": 2860
+    },
+    "height": 2200
+  },
+  {
+    "id": "point_div.center-pair-photos",
+    "section": "point_div",
+    "name": "가운데 머리 · 사진 2장 나란히",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "align": "center",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "chapter",
+        "token": "DISPLAY",
+        "format": "two",
+        "color": "accent",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "front",
+          "closeup"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof"
+        ],
+        "composition": [
+          "in_use",
+          "in_hand"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care",
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.center-pair-photos"
+      ]
+    },
+    "headStyle": "point-center",
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.center-pair-photos.html",
+    "estimatedHeight": {
+      "min": 1170,
+      "max": 1900
+    },
+    "height": 1540
+  },
+  {
+    "id": "point_div.center-grid-three",
+    "section": "point_div",
+    "name": "가운데 머리 · 가까이 본 컷 3열",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "align": "center",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "chapter",
+        "token": "DISPLAY",
+        "format": "two",
+        "color": "accent",
+        "align": "center",
+        "gapAfter": "tightGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap",
+        "align": "center"
+      },
+      {
+        "kind": "repeat",
+        "slot": "shots",
+        "columns": 3,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "image",
+            "slot": "photo"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "shots": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 3,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "texture"
+            ],
+            "composition": [
+              "closeup",
+              "side",
+              "top"
+            ],
+            "aspect": [
+              "3:4",
+              "1:1"
+            ],
+            "minHeight": 300
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "vivid-energy",
+        "cool-aqua",
+        "outdoor-khaki",
+        "city-pop",
+        "summer-citrus",
+        "gift-redgreen",
+        "neon-sport",
+        "retro-80s",
+        "clean-trust",
+        "cool-white-blue",
+        "lab-white",
+        "honest-kraft",
+        "mono-minimal",
+        "soft-gray",
+        "reassure-care"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.center-grid-three"
+      ]
+    },
+    "headStyle": "point-center",
+    "signature": {
+      "columns": 3,
+      "photo": "grid",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.center-grid-three.html",
+    "estimatedHeight": {
+      "min": 880,
+      "max": 1610
+    },
+    "height": 1250
+  },
+  {
+    "id": "point_div.photo-then-desc",
+    "section": "point_div",
+    "name": "큰 POINT 머리 + 사진 + 구분선 아래 굵은 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "divider",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "text",
+        "slot": "note",
+        "token": "H3",
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "detail"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "scene"
+        ],
+        "composition": [
+          "front",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "note": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "detail": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "in_hand"
+        ],
+        "aspect": [
+          "4:3",
+          "1:1"
+        ],
+        "minHeight": 400
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "deep-wine",
+        "black-gold",
+        "cool-silver",
+        "vintage-film",
+        "lofi-mauve",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "linen-natural",
+        "sea-salt",
+        "white-gallery",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "감성 취향형",
+        "선물 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.photo-then-desc"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.photo-then-desc.html",
+    "estimatedHeight": {
+      "min": 1790,
+      "max": 3080
+    },
+    "height": 2440
+  }
+]

@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireOwner } from '@/lib/auth/clerk'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getThumbnailJob, updateThumbnailJob, deleteThumbnailJob } from '@/lib/registration/jobs'
+import { setDraftHeroImage } from '@/lib/sourcing/registration/drafts'
 import { THUMBNAIL_CUTS, type ThumbnailCut } from '@/lib/registration/thumbnail-types'
 
 export const dynamic = 'force-dynamic'
@@ -48,6 +49,10 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 
     const updated = await updateThumbnailJob(db, userId, jobId, { selectedCut })
 
+    // 드래프트 연결 시 대표이미지 슬롯(form.content.heroImages[0]) 반영
+    if (job.draftId) {
+      await setDraftHeroImage(db, userId, job.draftId, url)
+    }
 
     return NextResponse.json({ data: updated })
   } catch (error: unknown) {

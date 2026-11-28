@@ -1,0 +1,1010 @@
+{
+  "_source": "registration_pdp_jobs d10ea762 (R1, 2026-10-27) — 계획·태스크·편집기 조립에 필요한 필드만. URL·사용자 ID는 자리표시",
+  "id": "fixture-p02-d10ea762",
+  "user_id": "user-fixture",
+  "business_id": null,
+  "mode": "pro",
+  "image_quality": "medium",
+  "image_model": "codex-image",
+  "generation_track": "internalized",
+  "current_step": "images",
+  "progress": 0,
+  "error": null,
+  "cost_usd": 0,
+  "spec_sheet": {
+    "category": "packaging",
+    "brandName": "페어넥스",
+    "optionSpec": {
+      "axes": [
+        {
+          "kind": "design",
+          "name": "디자인",
+          "values": [
+            "데이지",
+            "체리"
+          ]
+        },
+        {
+          "kind": "size",
+          "name": "사이즈",
+          "values": [
+            "S",
+            "L"
+          ]
+        }
+      ],
+      "source": "products",
+      "variants": [
+        {
+          "label": "20개 데이지(S)",
+          "values": {
+            "size": "S",
+            "design": "데이지",
+            "quantity": "20개"
+          },
+          "sourceImage": "https://img.test/p02-option-1.png"
+        },
+        {
+          "label": "20개 체리(L)",
+          "values": {
+            "size": "L",
+            "design": "체리",
+            "quantity": "20개"
+          }
+        }
+      ]
+    },
+    "productName": "페어넥스 구디백 포장봉투 선물 파우치 반투명",
+    "colorOptions": [
+      "20개 데이지(S)",
+      "20개 체리(L)"
+    ]
+  },
+  "source_images": [
+    "https://img.test/p02-source-0.png"
+  ],
+  "analysis": {
+    "cons": [
+      "리뷰 데이터 부재로 실제 내구성과 품질 검증 정보 부족",
+      "사이즈별 상세 치수 정보 미제공으로 선택 시 불확실성 존재"
+    ],
+    "pros": [
+      "반투명 소재로 내용물이 보이면서도 신비로운 분위기 연출",
+      "데이지와 체리 두 가지 색상으로 다양한 선물 스타일 표현 가능",
+      "S, L 사이즈 옵션으로 상품 크기에 맞춘 선택 가능"
+    ],
+    "keywords": [
+      "구디백",
+      "포장봉투",
+      "선물 파우치",
+      "반투명",
+      "페어넥스",
+      "데이지",
+      "체리",
+      "S사이즈",
+      "L사이즈",
+      "20개",
+      "선물포장",
+      "소품봉투",
+      "투명봉투",
+      "패키징",
+      "포장재"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ]
+    },
+    "raw_summary": "페어넥스의 구디백 포장봉투는 반투명 소재의 선물 파우치로, 데이지와 체리 두 가지 색상과 S, L 사이즈 옵션을 제공합니다. 소품 및 선물 포장에 최적화된 패키징 솔루션입니다.",
+    "pain_clusters": [
+      {
+        "pain": "선물 포장 시 적절한 크기와 디자인의 봉투 찾기 어려움",
+        "urgency": "medium"
+      },
+      {
+        "pain": "일반 포장재로는 표현하기 어려운 프리미엄한 선물 이미지 구현",
+        "urgency": "medium"
+      }
+    ],
+    "usp_candidates": [
+      "페어넥스 브랜드의 전문성 있는 포장솔루션",
+      "반투명 소재의 프리미엄한 선물 포장 경험",
+      "S/L 사이즈 옵션으로 다양한 상품 대응 가능",
+      "데이지/체리 컬러로 감성적 선물 연출"
+    ],
+    "benefit_clusters": [
+      {
+        "name": "감성적 선물 표현",
+        "weight": 0.35
+      },
+      {
+        "name": "실용적 포장 솔루션",
+        "weight": 0.35
+      },
+      {
+        "name": "선택의 유연성",
+        "weight": 0.3
+      }
+    ],
+    "decision_profile": {
+      "giftability": "high",
+      "repeatability": "repeat",
+      "urgency_level": "low",
+      "price_resistance": "low",
+      "visual_hook_need": "high",
+      "explanation_depth": "quick",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "comparison_intensity": "medium"
+    },
+    "detected_category": "packaging",
+    "objection_priority": [
+      "실제 상품 품질과 내구성에 대한 검증 정보 부족",
+      "정확한 사이즈 규격 정보 미제공"
+    ],
+    "recommended_strategy_contract": {
+      "hook_mode": "empathy",
+      "page_goal": "standard",
+      "persuasion_axis": "emotion",
+      "frame_style_pack": "pebble_soft",
+      "purchase_context": "gift",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "visual_style_pack": "warm_story",
+      "objection_priority": [
+        "실제 상품 품질과 내구성에 대한 검증 정보 부족",
+        "정확한 사이즈 규격 정보 미제공"
+      ],
+      "page_length_target": "quick",
+      "comparison_intensity": "medium",
+      "review_position_strategy": "dynamic",
+      "soldout_position_strategy": "dynamic"
+    }
+  },
+  "section_plan": {
+    "reasoning": "골격은 고정값을 그대로 사용했다. strongest_weapon은 감성연결로 판단했는데, 완판·리뷰 데이터가 전무해 실적증거가 불가능하고, 포장재라는 카테고리 특성상 '시각적 충격'보다는 '선물 받는 순간의 기분'이라는 감성 가치가 더 강하게 작동하기 때문이다. hook_3step에서 공감 장면 이미지로 시작해 main_cut에서 Hero+USP로 이어지는 필수 순서를 지켰고, review_position_strategy=dynamic이지만 실제 리뷰 데이터가 없어 perf_reviews 자체를 활성화하지 않았다(골격에도 없음). problem_raise는 사이즈 고민·성의 없어 보일 걱정을 질문형으로 띄우고, solution_guide에서 사이즈 가이드와 소재로 해결책을 제시, point_div~petit_div에서 USP를 감성과 함께 풀어내며 cta로 마무리했다. 저관여 상품이므로 복잡한 비교/스펙 섹션은 배제하고 감각적 장면과 압축된 리스트 위주로 구성했다.",
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ],
+      "vocabHash": "73b757bbdea4"
+    },
+    "font_scheme": {
+      "usp": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      },
+      "hook": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      },
+      "modules": {
+        "body": "Pretendard",
+        "heading": "GmarketSansBold"
+      },
+      "problem": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      }
+    },
+    "hook_strategy": {
+      "reasoning": "완판 실적 없음(0회), 리뷰 데이터 부재로 실적증거 무기는 사용 불가. 포장재는 기능 스펙보다 '선물받는 사람의 기분'이라는 감성 가치가 구매 결정 핵심이며, pain point 대부분이 '성의 없어 보일까', '분위기가 맞을까' 등 감성적 불안이다. persuasion_axis=emotion, hook_mode=empathy 계약과도 일치하여 감성 연결을 최우선 무기로 선정했다.",
+      "hero_frame": "petal",
+      "image_hooking": true,
+      "first_3_seconds": "선물을 건네받는 순간의 설렘 있는 장면과 '포장이 선물의 절반이다' 류의 공감 카피가 먼저 보이고, 바로 이어 반투명 파우치 Hero 컷과 데이지/체리 컬러 아이콘 USP가 노출된다.",
+      "strongest_weapon": "감성연결"
+    },
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "point_list_div",
+      "petit_div",
+      "cta"
+    ],
+    "section_specs": {
+      "cta": {
+        "has_image": false,
+        "image_role": "구매 행동 촉구 문구",
+        "body_max_chars": 30,
+        "headline_max_chars": 16
+      },
+      "sub_div": {
+        "has_image": true,
+        "image_role": "S/L 사이즈별 활용 예시(소품용/선물용) 디테일 설명",
+        "body_max_chars": 55,
+        "headline_max_chars": 20
+      },
+      "main_cut": {
+        "has_image": true,
+        "image_role": "반투명 파우치 Hero컷(petal 프레임) + 데이지/체리 컬러, S/L 사이즈, 프리미엄 소재 아이콘 USP 3~4개",
+        "body_max_chars": 50,
+        "headline_max_chars": 18
+      },
+      "petit_div": {
+        "has_image": true,
+        "image_role": "구성품/수량(20개) 안내 및 활용 꿀팁 짧은 정보",
+        "body_max_chars": 35,
+        "headline_max_chars": 16
+      },
+      "point_div": {
+        "has_image": true,
+        "image_role": "페어넥스 브랜드 전문성, 반투명 프리미엄 소재 포인트 강조",
+        "body_max_chars": 50,
+        "headline_max_chars": 20
+      },
+      "hook_3step": {
+        "has_image": true,
+        "image_role": "선물을 건네는/받는 설레는 순간의 감성 장면으로 공감 유도",
+        "body_max_chars": 40,
+        "headline_max_chars": 20
+      },
+      "problem_raise": {
+        "has_image": false,
+        "image_role": "사이즈 가늠 어려움·성의 없어 보일까 하는 선물 포장 고민을 질문형으로 제기",
+        "body_max_chars": 45,
+        "headline_max_chars": 22
+      },
+      "point_list_div": {
+        "has_image": false,
+        "image_role": "핵심 스펙(소재, 사이즈, 컬러, 수량) 리스트 정리",
+        "body_max_chars": 45,
+        "headline_max_chars": 18
+      },
+      "solution_guide": {
+        "has_image": true,
+        "image_role": "S/L 사이즈 가이드와 반투명 소재가 해결하는 방식을 보여주는 비교/설명 이미지",
+        "body_max_chars": 60,
+        "headline_max_chars": 24
+      },
+      "product_exposure": {
+        "has_image": true,
+        "image_role": "데이지/체리 컬러별 추가 앵글, 실제 포장된 선물 연출컷",
+        "body_max_chars": 40,
+        "headline_max_chars": 18
+      }
+    },
+    "design_direction": "반투명 파우치 특유의 은은하고 로맨틱한 선물 분위기를 중심으로, 데이지(화사함)와 체리(발랄함) 두 컬러 무드를 대비시켜 보여준다. 전반적으로 파스텔톤 배경과 꽃잎 실루엣(petal) 프레임을 활용해 '선물의 설렘'을 시각적으로 전달하고, 기능 스펙은 point_list_div에서 압축적으로 처리해 저관여 상품 특성에 맞춰 속결 구성한다.",
+    "layout_selections": {
+      "cta": "minimal",
+      "sub_div": "minimal",
+      "main_cut": "minimal",
+      "petit_div": "minimal",
+      "point_div": "minimal",
+      "hook_3step": "image_first",
+      "problem_raise": "minimal",
+      "point_list_div": "minimal",
+      "solution_guide": "image_first",
+      "product_exposure": "minimal"
+    },
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "point_list_div",
+      "petit_div",
+      "cta"
+    ],
+    "internalized_skeleton": {
+      "roles": [
+        {
+          "role": "hook",
+          "reason": "pooled hookDefault — problem 출현율 0.31 ≥ 0.15"
+        },
+        {
+          "role": "product_intro",
+          "reason": "필수(main_cut)"
+        },
+        {
+          "role": "problem",
+          "reason": "공감 신호(고통 긴급도·축·후킹 방식) + hook_gate"
+        },
+        {
+          "role": "usp_feature",
+          "reason": "필수(첫 가치)"
+        },
+        {
+          "role": "target_recommendation",
+          "reason": "선물·가족·대상·활용도 고민"
+        },
+        {
+          "role": "option_catalog",
+          "reason": "variants ≥ 2(등록 옵션 구조)"
+        }
+      ],
+      "excluded": [
+        {
+          "role": "social_proof",
+          "reason": "리뷰 데이터 없음 — 근거 없는 후기 섹션 금지"
+        },
+        {
+          "role": "certification_evidence",
+          "reason": "certificationInfo 없음 — 근거 없는 인증 섹션 금지"
+        },
+        {
+          "role": "promotion_offer",
+          "reason": "eventBannerInfo 없음 — 근거 없는 이벤트 섹션 금지"
+        },
+        {
+          "role": "size_spec",
+          "reason": "spec_sheet에 치수 없음 — 환각 치수 금지"
+        },
+        {
+          "role": "how_to_guide",
+          "reason": "사용법 신호 없음"
+        },
+        {
+          "role": "faq",
+          "reason": "FAQ 렌더러 없음 — 고민은 미응답 기록"
+        },
+        {
+          "role": "shipping_cs",
+          "reason": "플랫폼 영역 — 생성 제외"
+        },
+        {
+          "role": "legal_notice",
+          "reason": "플랫폼 영역 — 생성 제외"
+        },
+        {
+          "role": "authenticity",
+          "reason": "certificationInfo 없음 — 근거 없는 정품 보장 금지"
+        },
+        {
+          "role": "brand_story",
+          "reason": "길이 상한 10(목표 7~10, 중앙값 12×1.5) — 출현율×신호 점수 하위(concept_desc)"
+        },
+        {
+          "role": "problem",
+          "reason": "[일부 섹션 — 역할 유지] 길이 상한 10(목표 7~10, 중앙값 12×1.5) — 출현율×신호 점수 하위(problem_empathy)"
+        }
+      ],
+      "persuasion": {
+        "rules": [
+          {
+            "id": "R1",
+            "pass": true
+          },
+          {
+            "id": "R2",
+            "pass": true
+          },
+          {
+            "id": "R3",
+            "pass": true
+          },
+          {
+            "id": "R4",
+            "pass": true
+          },
+          {
+            "id": "R5",
+            "pass": true
+          },
+          {
+            "id": "R6",
+            "pass": true
+          },
+          {
+            "id": "R7",
+            "pass": true
+          },
+          {
+            "id": "R8",
+            "pass": true
+          }
+        ],
+        "stages": [
+          {
+            "role": "hook",
+            "stage": "ATTENTION",
+            "reason": "pooled hookDefault — problem 출현율 0.31 ≥ 0.15",
+            "section": "hook_3step"
+          },
+          {
+            "role": "product_intro",
+            "stage": "ATTENTION",
+            "reason": "필수 — 첫 화면 상품",
+            "section": "main_cut"
+          },
+          {
+            "role": "problem",
+            "stage": "RELEVANCE",
+            "reason": "공감 신호(고통 긴급도·축·후킹 방식) + hook_gate",
+            "section": "problem_raise"
+          },
+          {
+            "role": "problem",
+            "stage": "RELEVANCE",
+            "reason": "문제-해결 짝(PAS)",
+            "section": "solution_guide"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "첫 가치 — 가치 단계를 연다",
+            "section": "point_div"
+          },
+          {
+            "role": "product_intro",
+            "stage": "VALUE",
+            "reason": "상품 노출(생성 예정 컷)",
+            "section": "product_exposure"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "가치 군집 3개 이상",
+            "section": "sub_div"
+          },
+          {
+            "role": "target_recommendation",
+            "stage": "ASSURANCE",
+            "reason": "선물·가족·대상·활용도 고민 · R1(첫 가치 5번째 이내) 유지로 단계 이동",
+            "section": "point_list_div"
+          },
+          {
+            "role": "option_catalog",
+            "stage": "ASSURANCE",
+            "reason": "variants ≥ 2(등록 옵션 구조)",
+            "section": "petit_div"
+          },
+          {
+            "role": "cta",
+            "stage": "ACTION",
+            "reason": "필수 — 마지막 행동",
+            "section": "cta"
+          }
+        ],
+        "grammar": "G4",
+        "layouts": [
+          {
+            "llm": "image_first",
+            "reason": "LLM 선택이 실측 후보 안",
+            "source": "llm",
+            "section": "hook_3step",
+            "category": "image_first"
+          },
+          {
+            "llm": "overlay",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "main_cut",
+            "category": "minimal"
+          },
+          {
+            "llm": "minimal",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "problem_raise",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "실측 1순위 후보(LLM split는 후보 밖)",
+            "source": "vocab",
+            "section": "solution_guide",
+            "category": "image_first"
+          },
+          {
+            "llm": "card",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "point_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "image_first",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "product_exposure",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "sub_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "minimal",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "point_list_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "card",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "petit_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "bold",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "cta",
+            "category": "minimal"
+          }
+        ],
+        "vocabHash": "73b757bbdea4",
+        "priorSource": "coupang:pooled",
+        "lengthTarget": [
+          7,
+          10
+        ],
+        "objectionCoverage": [
+          {
+            "note": "클로즈업 증거 컷 — 수치 주장 금지",
+            "type": "quality_durability",
+            "objection": "실제 상품 품질과 내구성에 대한 검증 정보 부족",
+            "answeredBy": "sub_div"
+          },
+          {
+            "note": "등록 옵션 구성 — 옵션명 그대로, 치수 생성 금지",
+            "type": "quantity_size",
+            "objection": "정확한 사이즈 규격 정보 미제공",
+            "answeredBy": "petit_div"
+          }
+        ]
+      }
+    }
+  },
+  "copy_sections": {
+    "final": {
+      "howTo": [
+        {
+          "step": "소품 선물 포장할 때",
+          "description": "S사이즈 파우치에 액세서리나 소품을 넣고 입구를 묶어요"
+        },
+        {
+          "step": "핸드메이드 선물 전달할 때",
+          "description": "L사이즈 파우치에 담아 리본이나 끈으로 마무리해요"
+        },
+        {
+          "step": "답례품 여러 개 준비할 때",
+          "description": "20개 구성을 나눠 써서 여러 개를 한 번에 포장해요"
+        }
+      ],
+      "title": "페어넥스 · 구디백 포장봉투 선물 파우치 반투명",
+      "problem": {
+        "empathy": "봉투 하나 고르는데 크기도 애매하고, 흔해 보일까 걱정되죠, 받는 사람 반응까지 신경 쓰이고요",
+        "question": "선물 포장할 때마다 망설여지나요?",
+        "empathyLines": [
+          "봉투 크기가 안 맞아요",
+          "비닐은 너무 흔해 보여요",
+          "여러 개 포장은 번거로워요",
+          "색깔 고르기가 어려워요"
+        ],
+        "empathyDeepLines": [
+          "매번 포장할 때마다 고민돼요",
+          "성의 없어 보일까 걱정돼요",
+          "제대로 샀나 불안할 때 있어",
+          "받는 반응이 신경 쓰여요"
+        ]
+      },
+      "summary": "포장 고민 없는 선물 준비",
+      "sections": [
+        {
+          "headline": "포장 고민\n한 번에 끝",
+          "sub_copy": "페어넥스 · 구디백 포장봉투 선물 파우치 반투명",
+          "section_type": "hook",
+          "image_direction": "제품 중심의 프리미엄 스튜디오 촬영, 따뜻한 조명"
+        },
+        {
+          "headline": "선물 포장할 때마다 망설여지나요?",
+          "sub_copy": "봉투 하나 고르는데 크기도 애매하고, 흔해 보일까 걱정되죠, 받는 사람 반응까지 신경 쓰이고요",
+          "section_type": "problem",
+          "image_direction": "문제 상황을 보여주는 공감 가는 이미지, 밝은 톤 유지"
+        },
+        {
+          "headline": "반투명 소재 하나로 포장 고민을 줄여보세요",
+          "sub_copy": "데이지와 체리, S와 L까지 상황에 맞게 고를 수 있어요",
+          "section_type": "benefit",
+          "image_direction": "제품 사용 중인 밝고 긍정적인 라이프스타일 이미지"
+        },
+        {
+          "headline": "이런 점이 다릅니다",
+          "sub_copy": "",
+          "detail_items": [
+            {
+              "icon": "✦",
+              "text": "은은한 반투명: 내용물이 살짝 비쳐\n설렘을 더해줘요"
+            },
+            {
+              "icon": "◆",
+              "text": "컬러 2종: 데이지와 체리\n분위기 맞춰 선택"
+            },
+            {
+              "icon": "●",
+              "text": "S/L 두 사이즈: 소품부터 큰 선물까지\n폭넓게 대응해요"
+            }
+          ],
+          "section_type": "detail_points",
+          "image_direction": "제품 디테일 클로즈업 샷"
+        },
+        {
+          "headline": "이렇게 사용하세요",
+          "sub_copy": "소품 선물 포장할 때: S사이즈 파우치에 액세서리나 소품을 넣고 입구를 묶어요",
+          "section_type": "usage",
+          "image_direction": "자연스러운 사용 장면, 한국인 모델"
+        },
+        {
+          "headline": "이런 분께 추천합니다",
+          "sub_copy": "소품 선물 자주 포장하는 분, 답례품 여러 개 준비하는 분, 핸드메이드 선물 만드는 분",
+          "section_type": "trust",
+          "image_direction": "신뢰감을 주는 깔끔한 제품 이미지"
+        },
+        {
+          "headline": "컬러와 사이즈 선택하고 담아보세요",
+          "sub_copy": "한정 수량 / 빠른 배송",
+          "section_type": "cta",
+          "image_direction": ""
+        }
+      ],
+      "solution": {
+        "summary": "데이지와 체리, S와 L까지 상황에 맞게 고를 수 있어요",
+        "declaration": "반투명 소재 하나로 포장 고민을 줄여보세요"
+      },
+      "hero_copy": {
+        "hook": "포장 고민\n한 번에 끝",
+        "subline": "은은하게 비치는 반투명 소재, 포장만으로 분위기가 살아나요",
+        "benefit_headline": "포장 고민\n한 번에 끝"
+      },
+      "mainIntro": {
+        "hook": "봉투 하나로 선물 분위기가 달라져요",
+        "category": "선물 포장 파우치",
+        "subBenefit": "은은하게 비치는 반투명 소재, 포장만으로 분위기가 살아나요",
+        "brandAndName": "페어넥스 · 구디백 포장봉투 선물 파우치 반투명",
+        "benefitHeadline": "포장 고민\n한 번에 끝"
+      },
+      "closingCta": {
+        "subtext": "데이지와 체리 중 분위기에 맞게 골라보세요",
+        "headline": "컬러와 사이즈 선택하고 담아보세요"
+      },
+      "pointCards": [
+        {
+          "title": "은은한 반투명",
+          "description": "내용물이 살짝 비쳐\n설렘을 더해줘요"
+        },
+        {
+          "title": "컬러 2종",
+          "description": "데이지와 체리\n분위기 맞춰 선택"
+        },
+        {
+          "title": "S/L 두 사이즈",
+          "description": "소품부터 큰 선물까지\n폭넓게 대응해요"
+        },
+        {
+          "title": "20개 구성",
+          "description": "여러 번 나눠 써서\n알뜰하게 포장해요"
+        }
+      ],
+      "conceptCopy": {
+        "subCopy": "신비로운 반투명 포장의 매력",
+        "headline": "비치는 듯 비치지 않는"
+      },
+      "mainCutCopy": {
+        "subCopy": "포장지만 바꿔도 분위기가 달라져요",
+        "headline": "선물의 첫인상이 바뀌어요"
+      },
+      "colorOptions": {
+        "title": "컬러 & 사이즈 선택",
+        "options": [
+          "20개 데이지(S)",
+          "20개 체리(L)"
+        ],
+        "description": "화사한 데이지와 발랄한 체리, 선물 분위기에 맞게 골라보세요"
+      },
+      "compareItems": [
+        {
+          "cons": "성의 없어 보일 수 있음",
+          "name": "일반 비닐봉투",
+          "pros": "저렴하고 구하기 쉬움"
+        },
+        {
+          "cons": "내용물 확인이 어려움",
+          "name": "종이 쇼핑백",
+          "pros": "튼튼하고 불투명함"
+        },
+        {
+          "cons": "",
+          "name": "본 상품",
+          "pros": "은은한 반투명과 컬러감, 사이즈 선택 가능"
+        }
+      ],
+      "cta_variants": [
+        {
+          "copy": "컬러와 사이즈 선택하고 담아보세요",
+          "type": "emotion"
+        },
+        {
+          "copy": "데이지와 체리 중 분위기에 맞게 골라보세요",
+          "type": "rational"
+        }
+      ],
+      "detailPoints": [
+        {
+          "claim": "비칠 듯 안 비치는 신비로움",
+          "proof": "반투명 소재로 내용물이 은은하게 드러나요",
+          "benefit": "열기 전부터 설렘이 생겨요",
+          "imageHint": "[설렘 가득] — 반투명 파우치 사이로 소품이 살짝 비치는 클로즈업"
+        },
+        {
+          "claim": "포장 하나로 분위기가 달라져요",
+          "proof": "일반 비닐 대신 감성적인 소재감을 담았어요",
+          "benefit": "성의 있어 보이는 선물 완성",
+          "imageHint": "[특별한 느낌] — 파우치에 담긴 선물을 손에 든 장면"
+        },
+        {
+          "claim": "데이지와 체리, 분위기 따라 선택",
+          "proof": "화사한 데이지, 발랄한 체리 두 컬러로 구성",
+          "benefit": "상황에 맞는 선물 분위기를 연출해요",
+          "imageHint": "[컬러 비교] — 데이지와 체리 파우치 나란히 놓인 모습"
+        },
+        {
+          "claim": "S/L 두 사이즈로 고민 해결",
+          "proof": "작은 소품부터 큰 선물까지 맞춰 선택 가능",
+          "benefit": "크기 고민 없이 바로 포장해요",
+          "imageHint": "[크기 비교] — S, L 사이즈에 각각 소품 담은 비교컷"
+        },
+        {
+          "claim": "여러 번 쓰는 20개 구성",
+          "proof": "한 번에 20개씩 들어 있어 반복 사용 가능",
+          "benefit": "답례품, 소품 포장까지 알뜰하게",
+          "imageHint": "[넉넉한 구성] — 20개 파우치가 쌓여 있는 모습"
+        },
+        {
+          "claim": "소품부터 핸드메이드까지 활용",
+          "proof": "액세서리, 베이킹 선물 등 다양한 용도로 사용",
+          "benefit": "하나로 여러 선물 상황에 대응해요",
+          "imageHint": "[다양한 활용] — 소품과 베이킹 선물 각각 포장된 장면"
+        }
+      ],
+      "designPalette": {
+        "bgSub": "#fff7ed",
+        "bgMain": "#fdf2f8",
+        "primary": "#c2410c",
+        "textMain": "#262626",
+        "secondary": "#be185d",
+        "textHighlight": "#d63384"
+      },
+      "directionHint": {
+        "subCopy": "내 선물에 맞는 크기\n미리 가늠해보세요",
+        "headline": "사이즈 먼저 확인하기"
+      },
+      "soldOutBanner": {
+        "headline": "선물철 품절 주의",
+        "subtitle": "수요 많은 시즌엔 빠르게 소진돼요"
+      },
+      "compareSummary": "포장 고민을 컬러와 사이즈로 해결",
+      "convertDivCopy": {
+        "subCopy": "컬러와 크기 고르고 바로 담아보세요",
+        "headline": "지금 사이즈 선택하기"
+      },
+      "keyMessageCopy": {
+        "subCopy": "크기도 분위기도 고민 끝",
+        "headline": "포장 고민 없는 선물 준비"
+      },
+      "usageSceneTags": [
+        "#소품포장",
+        "#답례품",
+        "#핸드메이드선물",
+        "#선물파우치"
+      ],
+      "eventBundleCopy": {
+        "subCopy": "답례품부터 소품까지 두루두루",
+        "headline": "20개 구성, 여러 번 사용"
+      },
+      "productExposure": {
+        "subCopy": "데이지는 화사하게, 체리는 발랄하게",
+        "headline": "컬러별 다른 분위기"
+      },
+      "review_strategy": {
+        "position": "dynamic",
+        "why_here": "strategy_contract.review_position_strategy=dynamic 기반 배치"
+      },
+      "reviewHighlights": [],
+      "objection_handlers": [
+        {
+          "answer": "반투명 소재로 내용물이 은은하게 드러나요 — 열기 전부터 설렘이 생겨요",
+          "objection": "실제 상품 품질과 내구성에 대한 검증 정보 부족"
+        },
+        {
+          "answer": "일반 비닐 대신 감성적인 소재감을 담았어요 — 성의 있어 보이는 선물 완성",
+          "objection": "정확한 사이즈 규격 정보 미제공"
+        },
+        {
+          "answer": "합리적인 가격에 최고의 품질을 제공합니다.",
+          "objection": "가격이 비싸지 않나요?"
+        }
+      ],
+      "recommendedTargets": [
+        "소품 선물 자주 포장하는 분",
+        "답례품 여러 개 준비하는 분",
+        "핸드메이드 선물 만드는 분",
+        "감성적인 포장 원하는 분"
+      ],
+      "section_copy_blocks": [
+        {
+          "body": "페어넥스 · 구디백 포장봉투 선물 파우치 반투명",
+          "role": "proof",
+          "section": "hook",
+          "headline": "포장 고민\n한 번에 끝"
+        },
+        {
+          "body": "봉투 하나 고르는데 크기도 애매하고, 흔해 보일까 걱정되죠, 받는 사람 반응까지 신경 쓰이고요",
+          "role": "proof",
+          "section": "problem",
+          "headline": "선물 포장할 때마다 망설여지나요?"
+        },
+        {
+          "body": "데이지와 체리, S와 L까지 상황에 맞게 고를 수 있어요",
+          "role": "proof",
+          "section": "benefit",
+          "headline": "반투명 소재 하나로 포장 고민을 줄여보세요"
+        },
+        {
+          "body": "",
+          "role": "proof",
+          "section": "detail_points",
+          "headline": "이런 점이 다릅니다"
+        },
+        {
+          "body": "소품 선물 포장할 때: S사이즈 파우치에 액세서리나 소품을 넣고 입구를 묶어요",
+          "role": "proof",
+          "section": "usage",
+          "headline": "이렇게 사용하세요"
+        },
+        {
+          "body": "소품 선물 자주 포장하는 분, 답례품 여러 개 준비하는 분, 핸드메이드 선물 만드는 분",
+          "role": "proof",
+          "section": "trust",
+          "headline": "이런 분께 추천합니다"
+        },
+        {
+          "body": "한정 수량 / 빠른 배송",
+          "role": "proof",
+          "section": "cta",
+          "headline": "컬러와 사이즈 선택하고 담아보세요"
+        }
+      ],
+      "keyMessageVariations": {
+        "mid": "데이지와 체리로 선물 분위기 완성",
+        "top": "포장 고민, 봉투 하나로 끝",
+        "bottom": "지금 사이즈 골라 담아보세요"
+      },
+      "sizeComparisonObject": "iphone"
+    }
+  },
+  "design_prompts": {
+    "lighting_params": {
+      "direction": "top-left",
+      "intensity": 0.85,
+      "shadow_angle": 45,
+      "ambient_level": 0.35,
+      "color_temperature": "warm"
+    }
+  },
+  "section_images": [
+    {
+      "section": "usp_icons:1",
+      "url": "https://img.test/p02-usp_icons-1.png"
+    },
+    {
+      "section": "usp_icons:2",
+      "url": "https://img.test/p02-usp_icons-2.png"
+    },
+    {
+      "section": "usp_icons:3",
+      "url": "https://img.test/p02-usp_icons-3.png"
+    },
+    {
+      "section": "hero",
+      "url": "https://img.test/p02-hero.png"
+    },
+    {
+      "section": "problem",
+      "url": "https://img.test/p02-problem.png"
+    },
+    {
+      "section": "solution",
+      "url": "https://img.test/p02-solution.png"
+    },
+    {
+      "section": "usage",
+      "url": "https://img.test/p02-usage.png"
+    },
+    {
+      "section": "cta",
+      "url": "https://img.test/p02-cta.png"
+    },
+    {
+      "section": "features:0",
+      "url": "https://img.test/p02-features-0.png"
+    },
+    {
+      "section": "features:1",
+      "url": "https://img.test/p02-features-1.png"
+    },
+    {
+      "section": "features:2",
+      "url": "https://img.test/p02-features-2.png"
+    },
+    {
+      "section": "features:3",
+      "url": "https://img.test/p02-features-3.png"
+    },
+    {
+      "section": "howto:0",
+      "url": "https://img.test/p02-howto-0.png"
+    },
+    {
+      "section": "howto:1",
+      "url": "https://img.test/p02-howto-1.png"
+    },
+    {
+      "section": "howto:2",
+      "url": "https://img.test/p02-howto-2.png"
+    },
+    {
+      "section": "usp_icons:0",
+      "url": "https://img.test/p02-usp_icons-0.png"
+    },
+    {
+      "section": "product_exposure",
+      "url": "https://img.test/p02-product_exposure.png"
+    },
+    {
+      "section": "empathy_scene",
+      "url": "https://img.test/p02-empathy_scene.png"
+    },
+    {
+      "section": "direction_hint",
+      "url": "https://img.test/p02-direction_hint.png"
+    },
+    {
+      "section": "key_benefit_visual",
+      "url": "https://img.test/p02-key_benefit_visual.png"
+    },
+    {
+      "section": "premium_hero",
+      "url": "https://img.test/p02-premium_hero.png"
+    },
+    {
+      "section": "concept_mood",
+      "url": "https://img.test/p02-concept_mood.png"
+    },
+    {
+      "section": "comparison_scene",
+      "url": "https://img.test/p02-comparison_scene.png"
+    },
+    {
+      "section": "rating_bg",
+      "url": "https://img.test/p02-rating_bg.png"
+    }
+  ]
+}

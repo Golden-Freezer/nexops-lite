@@ -1,6 +1,6 @@
 'use client';
 
-import { Eye, EyeOff, Layers, FileText, ChevronDown, ChevronUp, ChevronsLeft, Plus, Trash2, Sparkles, MessageCircle, Star, Puzzle } from 'lucide-react';
+import { Eye, EyeOff, Layers, FileText, ChevronDown, ChevronUp, ChevronsLeft, Plus, Trash2, Sparkles, MessageCircle, Star, Puzzle, ImagePlus } from 'lucide-react';
 import { useState } from 'react';
 import {
   useEditorStore,
@@ -8,10 +8,13 @@ import {
   selectSelectedSectionId,
   selectStrategyContract,
   selectDerivativePreview,
+  selectRegenAddable,
 } from '@/lib/registration/editor/stores/editorStore';
 import { SECTION_GROUP_MAP } from '@/lib/registration/editor/constants/sectionConfig';
 import { filterSectionsByDerivative } from '@/lib/registration/editor/utils/exportUtils';
 import { getSectionLabel } from '@/lib/registration/editor/utils/sectionConverter';
+import { LONG_SECTION_TITLE } from '@/lib/registration/long-sections';
+import { expansionState } from '@/lib/registration/editor/utils/keepCore';
 import type { ProSectionType } from '@/lib/registration/editor/types/section';
 import SectionPickerModal from './SectionPickerModal';
 
@@ -42,7 +45,12 @@ export default function LeftPanel() {
   const selectSection      = useEditorStore((s) => s.selectSection);
   const strategyContract   = useEditorStore(selectStrategyContract);
   const derivativePreview  = useEditorStore(selectDerivativePreview);
+  const setExpansionsVisible = useEditorStore((s) => s.setExpansionsVisible);
+  const removeExpansions   = useEditorStore((s) => s.removeExpansions);
   const [pickerOpen, setPickerOpen] = useState(false);
+  // 확장 섹션 지우기는 두 번 눌러 확인한다(브라우저 확인 창 없이) — 다시 열면 되돌릴 수 없다
+  const [confirmRemove, setConfirmRemove] = useState(false);
+  const expansions = expansionState(sections);
   // 좌측 패널 접기 — 240px 고정으로 닫을 수 없어 좁은 화면에서 캔버스가 압박되던 문제
   const [collapsed, setCollapsed] = useState(false);
 
@@ -97,6 +105,42 @@ export default function LeftPanel() {
           </button>
         </span>
       </div>
+
+      {/* 긴 상세페이지 '핵심만 남기기' — 확장 섹션을 한꺼번에 숨기거나 다시 보이고(되돌리기 한 번), 두 번 눌러 지운다 */}
+      {expansions.count > 0 && (
+        <div className="flex items-center gap-1.5 px-3 py-1.5 border-b border-[var(--border-default)] shrink-0">
+          <span className="text-[10px] text-[var(--text-disabled)] whitespace-nowrap">
+            확장 {expansions.count}개{expansions.visible === 0 ? ' · 숨김' : ''}
+          </span>
+          <button
+            onClick={() => setExpansionsVisible(expansions.visible === 0)}
+            className="ml-auto text-[10px] px-1.5 py-0.5 rounded bg-sky-50 text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap"
+            title={
+              expansions.visible > 0
+                ? '확장 섹션을 모두 숨긴다(Ctrl+Z로 되돌리기)'
+                : '숨긴 확장 섹션을 모두 다시 보인다'
+            }
+          >
+            {expansions.visible > 0 ? '핵심만 남기기' : '확장 다시 보이기'}
+          </button>
+          <button
+            onClick={() => {
+              if (!confirmRemove) return setConfirmRemove(true);
+              removeExpansions();
+              setConfirmRemove(false);
+            }}
+            onMouseLeave={() => setConfirmRemove(false)}
+            onBlur={() => setConfirmRemove(false)}
+            className={`text-[10px] px-1 py-0.5 rounded transition-colors whitespace-nowrap ${
+              confirmRemove ? 'bg-red-50 text-red-600' : 'text-[var(--text-disabled)] hover:text-red-500'
+            }`}
+            title="확장 섹션을 모두 지운다 — Ctrl+Z 되돌리기는 이 편집 중(최근 50단계)에만, 다시 열면 되돌릴 수 없다"
+            aria-label={confirmRemove ? '한 번 더 누르면 확장 섹션을 지운다' : '확장 섹션 지우기'}
+          >
+            {confirmRemove ? '다시 눌러 지우기' : <Trash2 size={12} />}
+          </button>
+        </div>
+      )}
 
       {/* 섹션 추가 모달 */}
       <SectionPickerModal isOpen={pickerOpen} onClose={() => setPickerOpen(false)} />
@@ -175,8 +219,11 @@ interface SectionListProps {
 
 function SectionList({ sections, selectedId, onSelect }: SectionListProps) {
   const reorderSections = useEditorStore((s) => s.reorderSections);
-  const updateSection   = useEditorStore((s) => s.updateSection);
+  const toggleSectionVisibility = useEditorStore((s) => s.toggleSectionVisibility);
   const removeSection   = useEditorStore((s) => s.removeSection);
+  // 사진 없는 섹션(수동 추가)에 AI 새 컷 만들기 — 가능한 섹션은 Canvas 재생성 훅이 잡 기록으로 계산해 둔다(W5b)
+  const regenAddable    = useEditorStore(selectRegenAddable);
+  const setRegenTarget  = useEditorStore((s) => s.setRegenTarget);
 
   // DnD 상태
   const [dragId, setDragId] = useState<string | null>(null);
@@ -320,13 +367,36 @@ function SectionList({ sections, selectedId, onSelect }: SectionListProps) {
                     </span>
                   );
                 })()}
-                <span className="truncate">{getSectionLabel(section.sectionType)}</span>
+                {/* 긴 상세페이지 확장 섹션은 스펙 표 빌더로 지어 유형 이름 대신 제목(크기·구성 등)과 '확장' 뱃지를 보인다 */}
+                <span className="truncate">
+                  {section.expansion ? LONG_SECTION_TITLE[section.expansion] : getSectionLabel(section.sectionType)}
+                </span>
+                {section.expansion && (
+                  <span className="text-[8px] px-1 py-px rounded bg-sky-100 text-sky-700 shrink-0" title="긴 상세페이지 확장 섹션">
+                    확장
+                  </span>
+                )}
                 {section.isPlaceholder && (
                   <span className="text-[8px] px-1 py-px rounded bg-amber-100 text-amber-600 shrink-0">
                     플레이스홀더
                   </span>
                 )}
               </button>
+
+              {/* AI 새 컷 만들기 (사진 없는 섹션 — 그 섹션 키의 컷이 아직 없을 때만) */}
+              {regenAddable[section.id] && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setRegenTarget({ sectionId: section.id });
+                  }}
+                  className="text-[var(--editor-brand)] hover:opacity-80 shrink-0"
+                  title="AI로 이 섹션 사진 만들기"
+                  aria-label="AI로 이 섹션 사진 만들기"
+                >
+                  <ImagePlus size={12} />
+                </button>
+              )}
 
               {/* 삭제 버튼 (플레이스홀더 섹션 또는 호버 시) */}
               <button
@@ -340,14 +410,11 @@ function SectionList({ sections, selectedId, onSelect }: SectionListProps) {
                 <Trash2 size={12} />
               </button>
 
-              {/* 가시성 토글 */}
+              {/* 가시성 토글 — 되돌리기 기록을 남긴다(일괄 '핵심만 남기기'와 섞여도 Ctrl+Z가 한 단계씩 되돌린다) */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  updateSection(section.id, {
-                    ...section,
-                    isVisible: !section.isVisible,
-                  });
+                  toggleSectionVisibility(section.id);
                 }}
                 className="text-[var(--text-disabled)] hover:text-[var(--text-secondary)] shrink-0"
                 title={section.isVisible ? '숨기기' : '표시'}

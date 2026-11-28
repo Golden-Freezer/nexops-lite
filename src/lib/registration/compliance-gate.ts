@@ -60,13 +60,21 @@ export function ageNoticePhrase(minAge: number): string {
   return `만 ${minAge}세 이상`
 }
 
-/** ① 카피 프롬프트 금지 블록 — copywriting groundingBlock 말미에 append(양 트랙 공통). */
-export function buildAgeComplianceCopyBlock(specSheet: PdpSpecSheet): string | null {
+/**
+ * ① 카피 프롬프트 금지 블록 — copywriting groundingBlock 말미에 append(양 트랙 공통).
+ * slots(K 칸 카피, 결정 카드 c03): 금지 줄은 같고, 리뷰 인용·고지 문구 줄 대신 고지는 상품 정보 표의 사용연령 행이 싣는다고 알린다 —
+ * K 후기 카드는 코드가 채우고, CTA 칸은 12~22자라 고지 문장이 들어가지 않는다. 기본값(D 카피)은 바이트 그대로다
+ */
+export function buildAgeComplianceCopyBlock(specSheet: PdpSpecSheet, opts: { slots?: boolean } = {}): string | null {
   if (!isAgeRestricted(specSheet)) return null
   const minAge = specSheet.minAgeYears!
-  return [
+  const head = [
     `[연령 제한 — 법적 준수, 다른 모든 지시보다 우선] 이 상품은 만 ${minAge}세 이상 사용 가능한 제품이다(어린이 KC 인증 없음).`,
     `- 어린이·아이·아동·유아·키즈 등 만 ${minAge}세 미만의 사용·등장을 묘사하거나 암시하는 표현을 카피 어디에도 쓰지 마라. "아이 생일파티", "아이들이 좋아해요" 같은 문장 전부 금지.`,
+  ]
+  if (opts.slots) return [...head, '- 사용 연령 고지는 상품 정보 표(사용연령 행)가 싣는다. 칸 글에는 고지 문구를 넣지 않는다.'].join('\n')
+  return [
+    ...head,
     '- 리뷰 인용(reviewHighlights)에도 어린이 사용이 담긴 문장을 선택하지 마라.',
     `- 클로징/CTA 부근에 "본 제품은 ${ageNoticePhrase(minAge)} 사용 가능한 제품입니다" 고지 문구를 반드시 포함하라.`,
   ].join('\n')
@@ -96,7 +104,11 @@ function collectViolations(value: unknown, section: string, out: AgeComplianceFi
     return
   }
   if (value && typeof value === 'object') {
-    for (const v of Object.values(value as Record<string, unknown>)) collectViolations(v, section, out)
+    // 후기 카드의 original(P1-6 후기 요약의 원문 — 대조용)은 화면에 그리지 않는다. 보이는 요약(text)만 본다 — 원문까지 보면
+    // 고칠 수 없는 위반으로 재생성을 헛되이 부른다
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      if (k !== 'original') collectViolations(v, section, out)
+    }
   }
 }
 
@@ -109,7 +121,9 @@ export function checkAgeCompliance(copy: CopywritingResult, minAge: number): {
   for (const [section, value] of Object.entries(copy)) {
     collectViolations(value, section, violations)
   }
-  return { violations, noticePresent: JSON.stringify(copy).includes(ageNoticePhrase(minAge)) }
+  // 고지 여부도 보이는 글로만 — original(후기 원문 대조용)의 '만 14세 이상'을 고지로 세지 않는다
+  const shown = JSON.stringify(copy, (key, value) => (key === 'original' ? undefined : value))
+  return { violations, noticePresent: shown.includes(ageNoticePhrase(minAge)) }
 }
 
 /**

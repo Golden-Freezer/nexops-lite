@@ -1,0 +1,401 @@
+[
+  {
+    "id": "ingredients.tag-center",
+    "section": "ingredients",
+    "name": "가운데 제목 + 재료 이름표(사진 없음)",
+    "version": 1,
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "tags",
+        "slot": "names",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "names": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "ingredient.names",
+        "min": 2,
+        "max": 8,
+        "fields": {}
+      }
+    },
+    "needs": {
+      "evidence": [
+        "ingredient"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "sea-salt",
+        "linen-natural",
+        "lofi-mauve",
+        "vintage-film",
+        "winter-snow",
+        "autumn-amber"
+      ],
+      "density": "low",
+      "personaTags": [
+        "감성 취향형",
+        "실용 비교형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "ingredients.tag-center"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "none"
+    },
+    "preview": "mock/ingredients.tag-center.html",
+    "estimatedHeight": {
+      "min": 490,
+      "max": 1320
+    },
+    "height": 910
+  },
+  {
+    "id": "ingredients.rule-rows",
+    "section": "ingredients",
+    "name": "제목 + 재료 이름 줄(구분선, 사진 없음)",
+    "version": 1,
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "ingredient.items",
+        "min": 2,
+        "max": 8,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none",
+            "input": "ingredient.name"
+          }
+        }
+      }
+    },
+    "needs": {
+      "evidence": [
+        "ingredient"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 8
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "soft-gray",
+        "simple-life",
+        "cool-silver",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "editorial",
+        "herb-garden",
+        "forest-green",
+        "terracotta-earth"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "ingredients.rule-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "table"
+    },
+    "preview": "mock/ingredients.rule-rows.html",
+    "estimatedHeight": {
+      "min": 690,
+      "max": 2590
+    },
+    "height": 1640
+  },
+  {
+    "id": "ingredients.light-band",
+    "section": "ingredients",
+    "name": "옅은 띠 안 가운데 제목 + 재료 이름 줄(사진 없음)",
+    "version": 1,
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2",
+            "align": "center",
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "rule": true,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "name",
+                "token": "BODY_BOLD",
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "ingredient.items",
+        "min": 2,
+        "max": 8,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none",
+            "input": "ingredient.name"
+          }
+        }
+      }
+    },
+    "needs": {
+      "evidence": [
+        "ingredient"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 2,
+        "max": 8
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "retro-80s",
+        "y2k-glossy",
+        "city-pop",
+        "spring-blossom",
+        "summer-citrus",
+        "gift-redgreen",
+        "autumn-amber",
+        "clean-trust",
+        "reassure-care",
+        "honest-kraft",
+        "sea-salt",
+        "linen-natural",
+        "natural-wood"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "ingredients.light-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "center",
+      "container": "band"
+    },
+    "preview": "mock/ingredients.light-band.html",
+    "estimatedHeight": {
+      "min": 690,
+      "max": 2590
+    },
+    "height": 1640
+  }
+]

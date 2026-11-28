@@ -1,0 +1,5119 @@
+[
+  {
+    "id": "hook_3step.fashion-title-worn-sub",
+    "section": "hook_3step",
+    "name": "큰 제목 + 착용 큰 컷 + 보조",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "HOOK",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "hook_3step.fashion-title-worn-sub"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hook_3step.fashion-title-worn-sub.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 1880
+    },
+    "height": 1700
+  },
+  {
+    "id": "main_cut.fashion-worn-fabric-note",
+    "section": "main_cut",
+    "name": "풀폭 착용 컷 + 제목·짧은 글 + 어긋난 소재 컷",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "worn",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "note",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "fabric",
+        "x": 200,
+        "w": 600
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "worn": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "fabric": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "note": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 2,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 3,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.fashion-worn-fabric-note"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.fashion-worn-fabric-note.html",
+    "estimatedHeight": {
+      "min": 2460,
+      "max": 2810
+    },
+    "height": 2640
+  },
+  {
+    "id": "sub2_div_page.fashion-worn-pair-detail",
+    "section": "sub2_div_page",
+    "name": "착용 2장 + 글 + 소재 풀폭",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "wide",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "worn",
+          "side"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "wide": {
+        "type": "image",
+        "required": false,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.fashion-worn-pair-detail"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub2_div_page.fashion-worn-pair-detail.html",
+    "estimatedHeight": {
+      "min": 840,
+      "max": 1690
+    },
+    "height": 1270
+  },
+  {
+    "id": "product_exposure.fashion-fit-mosaic",
+    "section": "product_exposure",
+    "name": "착용 큰 컷 + 근접 2장 모자이크 + 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "gapAfter": "itemGap",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "big"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "top",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "bottom"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD"
+      }
+    ],
+    "slots": {
+      "big": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scale",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "top": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "bottom": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "side"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "product_exposure.fashion-fit-mosaic"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/product_exposure.fashion-fit-mosaic.html",
+    "estimatedHeight": {
+      "min": 830,
+      "max": 1060
+    },
+    "height": 950
+  },
+  {
+    "id": "solution_guide.fashion-worn-first-checks",
+    "section": "solution_guide",
+    "name": "착용 풀폭 + 해결 선언 + 체크 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "check"
+                  }
+                ]
+              },
+              {
+                "w": 628,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "state"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "solution_guide.fashion-worn-first-checks"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/solution_guide.fashion-worn-first-checks.html",
+    "estimatedHeight": {
+      "min": 1980,
+      "max": 2680
+    },
+    "height": 2330
+  },
+  {
+    "id": "spec_table.fashion-worn-card-rows",
+    "section": "spec_table",
+    "name": "머리표 + 착용 컷 + 카드 안 표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "SPEC",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "panel",
+        "fill": "C",
+        "radius": "card",
+        "nodes": [
+          {
+            "kind": "repeat",
+            "slot": "rows",
+            "rule": true,
+            "gap": "tableGap",
+            "even": true,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ],
+            "gapAfter": "blockGap"
+          },
+          {
+            "kind": "repeat",
+            "slot": "special",
+            "rule": true,
+            "joinRule": true,
+            "even": true,
+            "gap": "tableGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "label",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "value",
+                "token": "TABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "rows": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "spec.rows",
+        "min": 1,
+        "max": 7,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.rows.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.rows.value"
+          }
+        }
+      },
+      "special": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "spec.special",
+        "min": 1,
+        "max": 3,
+        "fields": {
+          "label": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "spec.special.label"
+          },
+          "value": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none",
+            "input": "spec.special.value"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 10
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "spec_table.fashion-worn-card-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "inset",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/spec_table.fashion-worn-card-rows.html",
+    "estimatedHeight": {
+      "min": 1750,
+      "max": 4920
+    },
+    "height": 3340
+  },
+  {
+    "id": "option_gallery.fashion-band-tags",
+    "section": "option_gallery",
+    "name": "연한 띠 + 옵션 2열, 사진마다 이름표",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2",
+            "gapAfter": "photoGap",
+            "emphasis": true
+          },
+          {
+            "kind": "repeat",
+            "slot": "swatches",
+            "columns": 2,
+            "gap": "blockGap",
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "tags",
+                "slot": "name"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "swatches": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "option.images",
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "color"
+            ],
+            "composition": [
+              "worn",
+              "front"
+            ],
+            "aspect": [
+              "2:3",
+              "3:4"
+            ],
+            "minHeight": 600
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "option.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "option"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "option_gallery.fashion-band-tags"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "grid",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/option_gallery.fashion-band-tags.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 2100
+    },
+    "height": 1620
+  },
+  {
+    "id": "option_gallery.fashion-switch-band",
+    "section": "option_gallery",
+    "name": "옵션마다 전환 띠(옵션 이름 탭) + 그 옵션 사진",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "swatches",
+        "gap": "blockGap",
+        "nodes": [
+          {
+            "kind": "steps",
+            "field": "name",
+            "gapAfter": "rowGap"
+          },
+          {
+            "kind": "image",
+            "slot": "photo",
+            "x": 150,
+            "w": 560
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "swatches": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "option.images",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "color"
+            ],
+            "composition": [
+              "worn",
+              "front"
+            ],
+            "aspect": [
+              "2:3",
+              "3:4"
+            ],
+            "minHeight": 600
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "option.name"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "option"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "선물 구매형",
+        "감성 취향형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "option_gallery.fashion-band-tags",
+        "option_gallery.fashion-switch-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/option_gallery.fashion-switch-band.html",
+    "estimatedHeight": {
+      "min": 2380,
+      "max": 3600
+    },
+    "height": 2990
+  },
+  {
+    "id": "problem_raise.fashion-title-bleed-rows",
+    "section": "problem_raise",
+    "name": "제목 + 풀폭 고민 컷 + 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "item",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_raise.fashion-title-bleed-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_raise.fashion-title-bleed-rows.html",
+    "estimatedHeight": {
+      "min": 2100,
+      "max": 2800
+    },
+    "height": 2450
+  },
+  {
+    "id": "problem_empathy.fashion-bleed-tint-band",
+    "section": "problem_empathy",
+    "name": "풀폭 장면 + 붙은 연한 띠 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true
+      },
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2",
+            "align": "center",
+            "gapAfter": "titleGap"
+          },
+          {
+            "kind": "text",
+            "slot": "sub",
+            "token": "BODY",
+            "align": "center"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 30,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "problem"
+        ],
+        "composition": [
+          "worn",
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "problem",
+      "notNextTo": [
+        "problem_empathy.fashion-bleed-tint-band"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/problem_empathy.fashion-bleed-tint-band.html",
+    "estimatedHeight": {
+      "min": 1510,
+      "max": 2040
+    },
+    "height": 1780
+  },
+  {
+    "id": "key_message.fashion-worn-overlay-bottom",
+    "section": "key_message",
+    "name": "풀폭 착용 컷 + 아래쪽 사진 위 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "overlay": {
+          "anchor": "bottom",
+          "ink": "light",
+          "nodes": [
+            {
+              "kind": "text",
+              "slot": "headline",
+              "token": "H1",
+              "gapAfter": "titleGap"
+            },
+            {
+              "kind": "text",
+              "slot": "sub",
+              "token": "BODY"
+            }
+          ]
+        }
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "action"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "key_message.fashion-worn-overlay-bottom"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "overlay"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/key_message.fashion-worn-overlay-bottom.html",
+    "estimatedHeight": {
+      "min": 1290,
+      "max": 1290
+    },
+    "height": 1290
+  },
+  {
+    "id": "point_div.fashion-stagger-tags",
+    "section": "point_div",
+    "name": "표준 머리 + 어긋난 사진 2장 + 이름표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "POINT",
+        "gapAfter": "rowGap",
+        "steps": {
+          "slot": "progress",
+          "current": "chapter",
+          "name": "step"
+        }
+      },
+      {
+        "kind": "row",
+        "gap": 10,
+        "gapAfter": "titleGap",
+        "columns": [
+          {
+            "w": 150,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "chapter",
+                "token": "DISPLAY",
+                "format": "two",
+                "color": "accent"
+              }
+            ]
+          },
+          {
+            "w": 580,
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "headline",
+                "token": "H1",
+                "emphasis": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "first",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "second",
+        "x": 60,
+        "w": 600,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "tags",
+        "slot": "tags"
+      }
+    ],
+    "slots": {
+      "chapter": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 2,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "chapter"
+      },
+      "progress": {
+        "type": "list",
+        "required": false,
+        "source": "input",
+        "input": "point.steps",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": false,
+            "source": "input",
+            "input": "point.step",
+            "facts": 0,
+            "maxChars": 4,
+            "maxLines": 1,
+            "claimRisk": "none"
+          }
+        }
+      },
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "step": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 4,
+        "maxLines": 1,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "second": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "side"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "tags": {
+        "type": "list",
+        "required": false,
+        "min": 2,
+        "max": 3,
+        "fields": {}
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_div.fashion-stagger-tags"
+      ]
+    },
+    "headStyle": "point-standard",
+    "signature": {
+      "columns": 2,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_div.fashion-stagger-tags.html",
+    "estimatedHeight": {
+      "min": 2220,
+      "max": 3100
+    },
+    "height": 2660
+  },
+  {
+    "id": "sub_div.fashion-fabric-mosaic-note",
+    "section": "sub_div",
+    "name": "제목 + 소재 모자이크 + 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "row",
+        "gapAfter": "photoGap",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "big"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "top",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "bottom"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "slot": "desc",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "desc": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "big": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "feature_proof",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "top": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "bottom": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup",
+          "side"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub_div.fashion-fabric-mosaic-note"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub_div.fashion-fabric-mosaic-note.html",
+    "estimatedHeight": {
+      "min": 1140,
+      "max": 1610
+    },
+    "height": 1380
+  },
+  {
+    "id": "hidden_page.fashion-closeup-pair-rows",
+    "section": "hidden_page",
+    "name": "제목 + 근접 2장 + 줄 목록",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "title",
+        "token": "H2",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "gapAfter": "photoGap",
+        "columns": [
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "left"
+              }
+            ]
+          },
+          {
+            "w": 358,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "right"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "item",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "title": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "item": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "left": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      },
+      "right": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "underside"
+        ],
+        "composition": [
+          "closeup",
+          "side",
+          "top"
+        ],
+        "aspect": [
+          "2:3",
+          "3:4"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "high",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "hidden_page.fashion-closeup-pair-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hidden_page.fashion-closeup-pair-rows.html",
+    "estimatedHeight": {
+      "min": 1510,
+      "max": 2040
+    },
+    "height": 1780
+  },
+  {
+    "id": "petit_div.fashion-line-between-bleeds",
+    "section": "petit_div",
+    "name": "풀폭 2장 사이 가운데 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "first",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "line",
+        "token": "H2",
+        "align": "center",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "second",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "line": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 22,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "action"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "second": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "worn",
+          "side",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "petit_div.fashion-line-between-bleeds"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/petit_div.fashion-line-between-bleeds.html",
+    "estimatedHeight": {
+      "min": 2700,
+      "max": 2800
+    },
+    "height": 2750
+  },
+  {
+    "id": "direction_suggest.fashion-title-mosaic-tags",
+    "section": "direction_suggest",
+    "name": "제목 + 작은 2장·큰 쓰는 컷 + 이름표",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "gapAfter": "itemGap",
+        "columns": [
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "top",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "bottom"
+              }
+            ]
+          },
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "big"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "tags",
+        "slot": "tags"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "big": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "top": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "bottom": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "side"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "tags": {
+        "type": "list",
+        "required": false,
+        "min": 2,
+        "max": 3,
+        "fields": {}
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "direction_suggest.fashion-title-mosaic-tags"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/direction_suggest.fashion-title-mosaic-tags.html",
+    "estimatedHeight": {
+      "min": 1190,
+      "max": 1760
+    },
+    "height": 1480
+  },
+  {
+    "id": "concept_desc.fashion-story-stagger",
+    "section": "concept_desc",
+    "name": "제목 + 글 + 어긋난 사진 2장",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "story",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "first",
+        "x": 200,
+        "w": 600,
+        "gapAfter": "itemGap"
+      },
+      {
+        "kind": "image",
+        "slot": "second",
+        "x": 60,
+        "w": 600
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "story": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "first": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      },
+      "second": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "feature_proof"
+        ],
+        "composition": [
+          "worn",
+          "side",
+          "closeup"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "concept_desc.fashion-story-stagger"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "offset",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/concept_desc.fashion-story-stagger.html",
+    "estimatedHeight": {
+      "min": 2250,
+      "max": 2840
+    },
+    "height": 2550
+  },
+  {
+    "id": "point_list_div.fashion-photo-rows",
+    "section": "point_list_div",
+    "name": "제목 + 줄마다 사진과 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "photoGap",
+        "emphasis": true
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "columns": [
+              {
+                "w": 296,
+                "nodes": [
+                  {
+                    "kind": "image",
+                    "slot": "photo"
+                  }
+                ]
+              },
+              {
+                "w": 420,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "title",
+                    "token": "BODY_BOLD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 3,
+        "max": 4,
+        "fields": {
+          "photo": {
+            "type": "image",
+            "required": true,
+            "purpose": [
+              "feature_proof",
+              "texture"
+            ],
+            "composition": [
+              "closeup",
+              "side",
+              "top",
+              "worn"
+            ],
+            "aspect": [
+              "3:4"
+            ],
+            "minHeight": 395
+          },
+          "title": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "point_list_div.fashion-photo-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "side",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/point_list_div.fashion-photo-rows.html",
+    "estimatedHeight": {
+      "min": 1760,
+      "max": 2440
+    },
+    "height": 2100
+  },
+  {
+    "id": "cta.fashion-worn-overlay-top",
+    "section": "cta",
+    "name": "풀폭 착용 컷 + 위쪽 가운데 사진 위 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "overlay": {
+          "anchor": "top",
+          "ink": "light",
+          "nodes": [
+            {
+              "kind": "text",
+              "slot": "headline",
+              "token": "H1",
+              "align": "center",
+              "gapAfter": "titleGap"
+            },
+            {
+              "kind": "text",
+              "slot": "sub",
+              "token": "BODY",
+              "align": "center"
+            }
+          ]
+        }
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "action"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "cta.fashion-worn-overlay-top"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "overlay"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/cta.fashion-worn-overlay-top.html",
+    "estimatedHeight": {
+      "min": 1290,
+      "max": 1290
+    },
+    "height": 1290
+  },
+  {
+    "id": "convert_div.fashion-bleed-left-close",
+    "section": "convert_div",
+    "name": "풀폭 사진 + 왼쪽 제목·글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "action"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "convert_div.fashion-bleed-left-close"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/convert_div.fashion-bleed-left-close.html",
+    "estimatedHeight": {
+      "min": 1630,
+      "max": 2220
+    },
+    "height": 1930
+  },
+  {
+    "id": "hook_3step.support-title-worn-hand-sub",
+    "section": "hook_3step",
+    "name": "보호대 첫 화면 — 큰 제목 + 착용 부위 크게·손으로 채우기 좁게 + 보조",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "HOOK",
+        "emphasis": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "worn",
+        "bleed": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY"
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      },
+      "worn": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "hero",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 1,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "editorial",
+        "champagne",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "outdoor-khaki",
+        "cool-aqua",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ],
+      "productFamilies": [
+        "sports_support"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "hook_3step.support-title-worn-hand-sub"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/hook_3step.support-title-worn-hand-sub.html",
+    "estimatedHeight": {
+      "min": 1520,
+      "max": 1880
+    },
+    "height": 1700
+  },
+  {
+    "id": "main_cut.support-title-worn-hand-bleed",
+    "section": "main_cut",
+    "name": "보호대 메인 — 제목·보조 + 착용 크게·손 좁게 + 움직이는 착용 풀폭",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "action",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "emphasis": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "sub",
+        "token": "BODY",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "worn"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "hand"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "sub": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 36,
+        "maxLines": 3,
+        "claimRisk": "effect"
+      },
+      "worn": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "hero"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "hand": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "feature_proof",
+          "group"
+        ],
+        "composition": [
+          "in_hand",
+          "group"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 588
+      },
+      "action": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "editorial",
+        "champagne",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "outdoor-khaki",
+        "cool-aqua",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ],
+      "productFamilies": [
+        "sports_support"
+      ]
+    },
+    "order": {
+      "zone": "intro",
+      "notNextTo": [
+        "main_cut.support-title-worn-hand-bleed"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/main_cut.support-title-worn-hand-bleed.html",
+    "estimatedHeight": {
+      "min": 1810,
+      "max": 2400
+    },
+    "height": 2110
+  },
+  {
+    "id": "sub2_div_page.support-plate-wide-narrow",
+    "section": "sub2_div_page",
+    "name": "보호대 사진 막 — 판 깐 움직이는 착용 + 옆 착용 크게·근접 좁게 + 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "run",
+        "x": 120,
+        "w": 680,
+        "plate": {
+          "dx": -48,
+          "dy": 48
+        },
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "worn"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "caption",
+        "token": "BODY_BOLD"
+      }
+    ],
+    "slots": {
+      "caption": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 1,
+        "maxChars": 24,
+        "maxLines": 2,
+        "claimRisk": "effect"
+      },
+      "run": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "in_use"
+        ],
+        "aspect": [
+          "4:3",
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "worn": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state",
+          "scene"
+        ],
+        "composition": [
+          "worn",
+          "side"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "feature_proof"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 588
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [],
+      "photos": 3,
+      "facts": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ],
+      "productFamilies": [
+        "sports_support"
+      ]
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.support-plate-wide-narrow"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "plate"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/sub2_div_page.support-plate-wide-narrow.html",
+    "estimatedHeight": {
+      "min": 1470,
+      "max": 1710
+    },
+    "height": 1590
+  },
+  {
+    "id": "review.fashion-title-mosaic-quotes",
+    "section": "review",
+    "name": "머리표·제목 + 착용 크게·소재·코디 작게 모자이크 + 후기, 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "capsule",
+        "label": "REVIEW",
+        "gapAfter": "rowGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H1",
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "big"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "top",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "bottom"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "quote",
+            "token": "BODY",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "CAPTION"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": false,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "review.items",
+        "min": 2,
+        "max": 3,
+        "fields": {
+          "quote": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "effect",
+            "input": "review.quote"
+          },
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 0,
+            "maxChars": 8,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "input": "review.name"
+          }
+        }
+      },
+      "big": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "top": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "bottom": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "closeup",
+          "angle45"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "review"
+      ],
+      "photos": 3,
+      "facts": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "review.fashion-title-mosaic-quotes"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/review.fashion-title-mosaic-quotes.html",
+    "estimatedHeight": {
+      "min": 1810,
+      "max": 3300
+    },
+    "height": 2560
+  },
+  {
+    "id": "faq.fashion-band-bleed-rows",
+    "section": "faq",
+    "name": "연한 띠 안 제목 + 풀폭 착용 컷 + 질문·답",
+    "version": 1,
+    "surfaces": [
+      "W"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "T",
+        "bleed": true,
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2"
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "image",
+        "slot": "photo",
+        "bleed": true,
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "question",
+            "token": "BODY_BOLD",
+            "gapAfter": "tightGap"
+          },
+          {
+            "kind": "text",
+            "slot": "answer",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "min": 2,
+        "max": 4,
+        "fields": {
+          "question": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 0,
+            "maxChars": 22,
+            "maxLines": 2,
+            "claimRisk": "none"
+          },
+          "answer": {
+            "type": "text",
+            "required": true,
+            "source": "copy",
+            "facts": 1,
+            "maxChars": 30,
+            "maxLines": 3,
+            "claimRisk": "effect"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "state"
+        ],
+        "composition": [
+          "in_use",
+          "front"
+        ],
+        "aspect": [
+          "3:4",
+          "4:3"
+        ],
+        "minHeight": 500
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "faq"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "faq.fashion-band-bleed-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/faq.fashion-band-bleed-rows.html",
+    "estimatedHeight": {
+      "min": 2470,
+      "max": 4130
+    },
+    "height": 3300
+  },
+  {
+    "id": "perf_metric.fashion-mosaic-first-score",
+    "section": "perf_metric",
+    "name": "착용 크게·소재·코디 작게 먼저 + 가운데 큰 평점·별·후기 수, 수치는 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "big"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "top",
+                "gapAfter": "tightGap"
+              },
+              {
+                "kind": "image",
+                "slot": "bottom"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "score",
+        "token": "DISPLAY",
+        "color": "accent",
+        "gapAfter": "tightGap",
+        "align": "center"
+      },
+      {
+        "kind": "rating",
+        "slot": "stars",
+        "gapAfter": "tightGap",
+        "align": "center"
+      },
+      {
+        "kind": "text",
+        "slot": "count",
+        "token": "BODY_BOLD",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "score": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "stars": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 0,
+        "maxChars": 3,
+        "maxLines": 1,
+        "claimRisk": "none",
+        "input": "review.rating"
+      },
+      "count": {
+        "type": "text",
+        "required": false,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 12,
+        "maxLines": 2,
+        "claimRisk": "none",
+        "input": "review.count"
+      },
+      "big": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene"
+        ],
+        "composition": [
+          "top",
+          "angle45"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 588
+      },
+      "top": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      },
+      "bottom": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "state"
+        ],
+        "composition": [
+          "closeup",
+          "angle45"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 286
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "rating"
+      ],
+      "photos": 3,
+      "facts": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "perf_metric.fashion-mosaic-first-score"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/perf_metric.fashion-mosaic-first-score.html",
+    "estimatedHeight": {
+      "min": 1040,
+      "max": 1280
+    },
+    "height": 1160
+  },
+  {
+    "id": "certification.fashion-pair-first-names",
+    "section": "certification",
+    "name": "소재·태그 근접 크게·포장 좁게 먼저 + 제목 + 인증 줄, 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "name",
+            "token": "BODY_BOLD"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "regulated"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "certification.items",
+        "min": 1,
+        "max": 4,
+        "fields": {
+          "name": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "facts": 1,
+            "maxChars": 16,
+            "maxLines": 2,
+            "claimRisk": "none",
+            "input": "certification.name"
+          }
+        }
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "texture",
+          "package"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "package"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "certification"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 4
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "trust",
+      "notNextTo": [
+        "certification.fashion-pair-first-names"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/certification.fashion-pair-first-names.html",
+    "estimatedHeight": {
+      "min": 1200,
+      "max": 2260
+    },
+    "height": 1730
+  },
+  {
+    "id": "event_offer.fashion-pair-first-center-offer",
+    "section": "event_offer",
+    "name": "코디 크게·구성 좁게 먼저 + 가운데 혜택, 글은 입력만",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "row",
+        "columns": [
+          {
+            "w": 440,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "photo"
+              }
+            ]
+          },
+          {
+            "w": 276,
+            "nodes": [
+              {
+                "kind": "image",
+                "slot": "detail"
+              }
+            ]
+          }
+        ],
+        "gapAfter": "photoGap"
+      },
+      {
+        "kind": "text",
+        "slot": "offer",
+        "token": "H2",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "offer": {
+        "type": "text",
+        "required": true,
+        "source": "input",
+        "facts": 1,
+        "maxChars": 18,
+        "maxLines": 3,
+        "claimRisk": "none",
+        "input": "offer.info"
+      },
+      "photo": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "scene",
+          "group"
+        ],
+        "composition": [
+          "closeup"
+        ],
+        "aspect": [
+          "3:4"
+        ],
+        "minHeight": 500
+      },
+      "detail": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "group"
+        ],
+        "composition": [
+          "closeup",
+          "top"
+        ],
+        "aspect": [
+          "2:3"
+        ],
+        "minHeight": 586
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "offer"
+      ],
+      "photos": 2,
+      "facts": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "fit": {
+      "concepts": [
+        "pro-navy",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "autumn-amber",
+        "winter-snow"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형"
+      ],
+      "categoryBlock": [],
+      "categories": [
+        "fashion"
+      ]
+    },
+    "order": {
+      "zone": "decision",
+      "notNextTo": [
+        "event_offer.fashion-pair-first-center-offer"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "pair",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/event_offer.fashion-pair-first-center-offer.html",
+    "estimatedHeight": {
+      "min": 1030,
+      "max": 1250
+    },
+    "height": 1140
+  }
+]

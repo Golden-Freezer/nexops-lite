@@ -6,29 +6,20 @@
  * 폴백 사유는 warnings로 표면화한다(조용히 삼키지 않음).
  */
 
-import type { AgentConfig, AgentOutput, AgentUsage, RunContext } from '../types'
-import { callAgent } from '../_base'
+import { billedUsageOf } from '../billed-usage'
+import type { AgentOutput, AgentUsage, RunContext } from '../types'
+import { callLlm } from '../llm'
+import { pdpRoute } from '@/lib/registration/pdp-model-routes'
 import { parseLlmJson } from '../json-parser'
 import { buildCategoryDetectionPrompt, buildDataAnalysisPrompt } from './prompts/pdp-analysis-prompts'
-import type { AnalysisResult, DecisionProfile, EssenceType, PdpSpecSheet, StrategyContract } from '@/lib/registration/pdp-state'
+import type { AnalysisResult, CategoryCheck, DecisionProfile, EssenceType, PdpSpecSheet, StrategyContract } from '@/lib/registration/pdp-state'
+import { specSheetPromptJson } from '@/lib/registration/pdp-state'
 import {
   CATEGORY_TO_ESSENCE,
   deriveStrategyContract,
   mergeManualStrategy,
   normalizeDecisionProfile,
 } from '@/lib/registration/pdp-strategy-contract'
-
-// 원본 premium_analysis_model(Gemini) 대응 — 구조화 추출은 Haiku로 충분(설계문서 결정 C)
-const CATEGORY_CONFIG: AgentConfig = {
-  model: 'claude-haiku-4-5-20251001',
-  maxTokens: 300,
-  temperature: 0,
-}
-const ANALYSIS_CONFIG: AgentConfig = {
-  model: 'claude-haiku-4-5-20251001',
-  maxTokens: 2000,
-  temperature: 0,
-}
 
 function isPlainObject(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v)
@@ -44,20 +35,52 @@ function appendGroundingBlock(prompt: string, groundingBlock?: string): string {
   return `${prompt}\n\n## 참고 자료(코퍼스 그라운딩)\n${groundingBlock}`
 }
 
-/** reviewsText는 별도 슬롯(reviews_summary)으로 전달하므로 스펙표 JSON에서는 제외 */
+/**
+ * reviewsText는 별도 슬롯(reviews_summary)으로 전달하므로 스펙표 JSON에서는 제외.
+ * optionSpec(T6b 옵션 구조)도 뺀다 — 옵션명은 colorOptions로 이미 들어가고, 넣으면 대조군·Track S 프롬프트가 바뀐다.
+ * 리뷰 파일 메타(reviewFiles)와 경쟁사 리뷰(competitorReviews — 경쟁사 콜에만 넣는다)도 뺀다(pdp-review-input).
+ */
 function buildSpecSheetJson(specSheet: PdpSpecSheet): string {
-  const specForPrompt: Record<string, unknown> = { ...specSheet }
-  delete specForPrompt.reviewsText
-  return JSON.stringify(specForPrompt)
+  // 인용 카드(reviewQuotes)·초안 표시(draftPrefill)도 뺀다(W2a) — 제외 목록은 카피 직렬화와 같다(SPEC_PROMPT_EXCLUDED_KEYS)
+  return specSheetPromptJson(specSheet)
 }
 
-function parseCategoryResponse(text: string): { category: string } {
+/** 카테고리 근거 글 상한 — 기록 칸(analysis.category_check)이 커지지 않게 자른다 */
+const CATEGORY_REASONING_MAX = 500
+
+interface CategoryResponse {
+  category: string
+  /** 0~1 안의 수만 — 없거나 범위 밖이면 null */
+  confidence: number | null
+  reasoning: string | null
+}
+
+/** 카테고리 감지 답 — category만 필수다. confidence·reasoning은 기록용이라 형식이 틀려도 콜을 실패시키지 않는다(null) */
+export function parseCategoryResponse(text: string): CategoryResponse {
   const parsed = parseLlmJson(text)
   const category = parsed?.category
   if (typeof category !== 'string' || !category.trim()) {
     throw new Error('카테고리 감지 응답 형식이 올바르지 않습니다.')
   }
-  return { category: category.trim() }
+  const confidence = parsed?.confidence
+  const rawReasoning = parsed?.reasoning
+  const reasoning = typeof rawReasoning === 'string' ? rawReasoning.trim().slice(0, CATEGORY_REASONING_MAX) : ''
+  return {
+    category: category.trim(),
+    confidence: typeof confidence === 'number' && Number.isFinite(confidence) && confidence >= 0 && confidence <= 1 ? confidence : null,
+    reasoning: reasoning || null,
+  }
+}
+
+/** 판정 기록(J22) — 목록 대조는 성격 찾기(CATEGORY_TO_ESSENCE[category])와 같은 키로 한다 */
+export function categoryCheckOf(source: CategoryCheck['source'], category: string, response?: CategoryResponse): CategoryCheck {
+  return {
+    source,
+    category,
+    confidence: response?.confidence ?? null,
+    reasoning: response?.reasoning ?? null,
+    inList: Object.hasOwn(CATEGORY_TO_ESSENCE, category),
+  }
 }
 
 function parseAnalysisResponse(text: string): Record<string, unknown> {
@@ -71,15 +94,16 @@ async function resolveCategory(
   specSheet: PdpSpecSheet,
   groundingBlock: string | undefined,
   runContext: RunContext | undefined,
-): Promise<{ category: string; usage: AgentUsage; warning?: string }> {
+): Promise<{ category: string; check: CategoryCheck; usage: AgentUsage; warning?: string }> {
   if (specSheet.category?.trim()) {
-    return { category: specSheet.category.trim(), usage: { inputTokens: 0, outputTokens: 0, cost: 0 } }
+    const category = specSheet.category.trim()
+    return { category, check: categoryCheckOf('spec', category), usage: { inputTokens: 0, outputTokens: 0, cost: 0 } }
   }
 
   const prompt = appendGroundingBlock(buildCategoryDetectionPrompt(buildSpecSheetJson(specSheet)), groundingBlock)
-  const result = await callAgent<{ category: string }>(
+  const result = await callLlm<CategoryResponse>(
+    pdpRoute('analysis/category'),
     {
-      config: CATEGORY_CONFIG,
       system: 'You are an e-commerce product category classifier. Respond only with the requested JSON.',
       messages: [{ role: 'user', content: prompt }],
       timeoutMs: 30_000,
@@ -89,14 +113,17 @@ async function resolveCategory(
     parseCategoryResponse,
   )
 
-  if (result.success) return { category: result.data.category, usage: result.usage }
+  if (result.success) {
+    const { category } = result.data
+    return { category, check: categoryCheckOf('llm', category, result.data), usage: billedUsageOf(result) }
+  }
 
   // 트랙 E(P1-6): household 폴백은 essence_type→섹션순서→이미지 톤까지 연쇄되므로 표면화(원본 :272-278)
   const warning =
     "[DataAnalysis] 카테고리 자동 감지 실패 — 기본값 'household'로 진행 (섹션 구성·이미지 톤에 영향 가능): " +
     result.error.message
   console.warn('[registration/pdp-analysis]', warning)
-  return { category: 'household', usage: result.usage, warning }
+  return { category: 'household', check: categoryCheckOf('fallback', 'household'), usage: billedUsageOf(result), warning }
 }
 
 // data_analysis_agent.py:365-375 파싱 실패 폴백 그대로
@@ -119,9 +146,9 @@ async function resolveAnalysisData(
     buildDataAnalysisPrompt({ specSheet: buildSpecSheetJson(specSheet), reviewsSummary, category }),
     groundingBlock,
   )
-  const result = await callAgent<Record<string, unknown>>(
+  const result = await callLlm<Record<string, unknown>>(
+    pdpRoute('analysis'),
     {
-      config: ANALYSIS_CONFIG,
       system: 'You are an e-commerce product data analyst. Respond only with the requested JSON.',
       messages: [{ role: 'user', content: prompt }],
       timeoutMs: 60_000,
@@ -131,11 +158,11 @@ async function resolveAnalysisData(
     parseAnalysisResponse,
   )
 
-  if (result.success) return { data: result.data, usage: result.usage }
+  if (result.success) return { data: result.data, usage: billedUsageOf(result) }
 
   const warning = `[DataAnalysis] 분석 결과 파싱 실패 — 최소 필드로 계속: ${result.error.message}`
   console.warn('[registration/pdp-analysis]', warning)
-  return { data: ANALYSIS_FALLBACK, usage: result.usage, warning }
+  return { data: ANALYSIS_FALLBACK, usage: billedUsageOf(result), warning }
 }
 
 export interface PdpAnalysisInput {
@@ -161,7 +188,7 @@ export async function runPdpAnalysis(input: PdpAnalysisInput): Promise<AgentOutp
   const start = Date.now()
   const warnings: string[] = []
 
-  const { category, usage: categoryUsage, warning: categoryWarning } = await resolveCategory(
+  const { category, check: categoryCheck, usage: categoryUsage, warning: categoryWarning } = await resolveCategory(
     input.specSheet,
     input.groundingBlock,
     input.runContext,
@@ -207,6 +234,8 @@ export async function runPdpAnalysis(input: PdpAnalysisInput): Promise<AgentOutp
     pain_clusters: painClusters,
     objection_priority: objectionPriority,
     recommended_strategy_contract: recommendedContract,
+    // 기록만(J22, I1-1 기록 칸 바로) — 이후 단계 프롬프트는 analysisForPrompt로 이 칸을 빼고 받는다
+    category_check: categoryCheck,
   }
 
   return {

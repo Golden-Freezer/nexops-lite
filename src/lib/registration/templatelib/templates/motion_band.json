@@ -1,0 +1,302 @@
+[
+  {
+    "id": "motion_band.caption-top",
+    "section": "motion_band",
+    "name": "동작 한 줄 + 풀폭 움직임 띠",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "motion",
+        "token": "BODY_BOLD",
+        "align": "center",
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "image",
+        "slot": "clip",
+        "bleed": true
+      }
+    ],
+    "slots": {
+      "motion": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      },
+      "clip": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 600
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "motion"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.full-photo",
+        "product_exposure.hero-bleed"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-bottom",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/motion_band.caption-top.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 1130
+    },
+    "height": 1130
+  },
+  {
+    "id": "motion_band.caption-bottom",
+    "section": "motion_band",
+    "name": "풀폭 움직임 띠 + 동작 한 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "image",
+        "slot": "clip",
+        "bleed": true,
+        "gapAfter": "titleGap"
+      },
+      {
+        "kind": "text",
+        "slot": "motion",
+        "token": "BODY_BOLD",
+        "align": "center"
+      }
+    ],
+    "slots": {
+      "clip": {
+        "type": "image",
+        "required": true,
+        "purpose": [
+          "action"
+        ],
+        "composition": [
+          "in_use"
+        ],
+        "aspect": [
+          "1:1"
+        ],
+        "minHeight": 600
+      },
+      "motion": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 12,
+        "maxLines": 1,
+        "claimRisk": "effect"
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "motion"
+      ],
+      "photos": 1,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "pastel-baby",
+        "jelly-soft",
+        "cloud-soft",
+        "candy-pop",
+        "cozy-beige",
+        "animal-friends",
+        "mono-minimal",
+        "white-gallery",
+        "soft-gray",
+        "natural-wood",
+        "nordic-light",
+        "simple-life",
+        "black-gold",
+        "deep-wine",
+        "editorial",
+        "champagne",
+        "modern-luxury",
+        "cool-silver",
+        "forest-green",
+        "herb-garden",
+        "terracotta-earth",
+        "sea-salt",
+        "linen-natural",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "retro-80s",
+        "y2k-glossy",
+        "lofi-mauve",
+        "city-pop",
+        "vintage-film",
+        "spring-blossom",
+        "summer-citrus",
+        "autumn-amber",
+        "winter-snow",
+        "gift-redgreen"
+      ],
+      "density": "low",
+      "personaTags": [
+        "실용 비교형",
+        "감성 취향형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "sub2_div_page.full-photo",
+        "product_exposure.hero-bleed"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "bleed-top",
+      "align": "center",
+      "container": "none"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/motion_band.caption-bottom.html",
+    "estimatedHeight": {
+      "min": 1130,
+      "max": 1130
+    },
+    "height": 1130
+  }
+]

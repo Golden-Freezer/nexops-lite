@@ -1,0 +1,531 @@
+[
+  {
+    "id": "notice.band-head-rows",
+    "section": "notice",
+    "name": "짙은 머리 띠 + 줄 이름 붙은 주의·보관 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "D",
+        "bleed": true,
+        "pad": "blockGap",
+        "gapAfter": "blockGap",
+        "nodes": [
+          {
+            "kind": "capsule",
+            "label": "CHECK",
+            "gapAfter": "rowGap"
+          },
+          {
+            "kind": "text",
+            "slot": "headline",
+            "token": "H2"
+          }
+        ]
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "itemGap",
+        "nodes": [
+          {
+            "kind": "text",
+            "slot": "kind",
+            "token": "LABEL",
+            "color": "accent",
+            "gapAfter": "tableTight"
+          },
+          {
+            "kind": "text",
+            "slot": "text",
+            "token": "BODY"
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 16,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "notice.items",
+        "min": 1,
+        "max": 6,
+        "fields": {
+          "kind": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "notice.kind",
+            "facts": 0,
+            "maxChars": 2,
+            "maxLines": 1,
+            "claimRisk": "none"
+          },
+          "text": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "notice.text",
+            "facts": 0,
+            "maxChars": 80,
+            "maxLines": 8,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "notice"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "soft-gray",
+        "simple-life",
+        "cool-silver",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "editorial",
+        "herb-garden",
+        "forest-green",
+        "terracotta-earth"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "notice.band-head-rows"
+      ]
+    },
+    "signature": {
+      "columns": 1,
+      "photo": "none",
+      "align": "left",
+      "container": "band"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/notice.band-head-rows.html",
+    "estimatedHeight": {
+      "min": 950,
+      "max": 5270
+    },
+    "height": 3110
+  },
+  {
+    "id": "notice.warn-box",
+    "section": "notice",
+    "name": "옅은 상자 + 경고 표식 + 주의·보관 줄",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "panel",
+        "fill": "N",
+        "nodes": [
+          {
+            "kind": "row",
+            "gapAfter": "blockGap",
+            "columns": [
+              {
+                "w": 88,
+                "nodes": [
+                  {
+                    "kind": "mark",
+                    "value": "warn"
+                  }
+                ]
+              },
+              {
+                "w": 540,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "headline",
+                    "token": "H3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "repeat",
+            "slot": "items",
+            "rule": false,
+            "gap": "rowGap",
+            "nodes": [
+              {
+                "kind": "text",
+                "slot": "kind",
+                "token": "LABEL",
+                "color": "accent",
+                "gapAfter": "tableTight"
+              },
+              {
+                "kind": "text",
+                "slot": "text",
+                "token": "BODY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 14,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "notice.items",
+        "min": 1,
+        "max": 6,
+        "fields": {
+          "kind": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "notice.kind",
+            "facts": 0,
+            "maxChars": 2,
+            "maxLines": 1,
+            "claimRisk": "none"
+          },
+          "text": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "notice.text",
+            "facts": 0,
+            "maxChars": 60,
+            "maxLines": 6,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "notice"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "soft-gray",
+        "simple-life",
+        "cool-silver",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "editorial",
+        "herb-garden",
+        "forest-green",
+        "terracotta-earth"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "notice.warn-box"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "left",
+      "container": "card"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/notice.warn-box.html",
+    "estimatedHeight": {
+      "min": 830,
+      "max": 3820
+    },
+    "height": 2330
+  },
+  {
+    "id": "notice.icon-rows",
+    "section": "notice",
+    "name": "종류 아이콘 줄 + 줄 이름 + 짧은 글",
+    "version": 1,
+    "surfaces": [
+      "W",
+      "N",
+      "T"
+    ],
+    "flow": [
+      {
+        "kind": "text",
+        "slot": "headline",
+        "token": "H2",
+        "gapAfter": "blockGap"
+      },
+      {
+        "kind": "repeat",
+        "slot": "items",
+        "rule": true,
+        "gap": "rowGap",
+        "nodes": [
+          {
+            "kind": "row",
+            "gap": 24,
+            "columns": [
+              {
+                "w": 120,
+                "nodes": [
+                  {
+                    "kind": "icon",
+                    "slot": "icon",
+                    "size": 96,
+                    "disc": true
+                  }
+                ]
+              },
+              {
+                "w": 572,
+                "nodes": [
+                  {
+                    "kind": "text",
+                    "slot": "kind",
+                    "token": "LABEL",
+                    "color": "accent",
+                    "gapAfter": "tableTight"
+                  },
+                  {
+                    "kind": "text",
+                    "slot": "text",
+                    "token": "BODY"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slots": {
+      "headline": {
+        "type": "text",
+        "required": true,
+        "source": "copy",
+        "facts": 0,
+        "maxChars": 16,
+        "maxLines": 2,
+        "claimRisk": "none"
+      },
+      "items": {
+        "type": "list",
+        "required": true,
+        "source": "input",
+        "input": "notice.items",
+        "min": 1,
+        "max": 4,
+        "fields": {
+          "icon": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "notice.icon",
+            "facts": 0,
+            "maxChars": 7,
+            "maxLines": 1,
+            "claimRisk": "none",
+            "choices": "icon"
+          },
+          "kind": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "notice.kind",
+            "facts": 0,
+            "maxChars": 2,
+            "maxLines": 1,
+            "claimRisk": "none"
+          },
+          "text": {
+            "type": "text",
+            "required": true,
+            "source": "input",
+            "input": "notice.text",
+            "facts": 0,
+            "maxChars": 30,
+            "maxLines": 4,
+            "claimRisk": "none"
+          }
+        }
+      }
+    },
+    "spacing": {
+      "top": 120,
+      "titleGap": 48,
+      "photoGap": 88,
+      "bottom": 120
+    },
+    "needs": {
+      "evidence": [
+        "notice"
+      ],
+      "photos": 0,
+      "facts": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "fit": {
+      "concepts": [
+        "clean-trust",
+        "cool-white-blue",
+        "pro-navy",
+        "lab-white",
+        "honest-kraft",
+        "reassure-care",
+        "soft-gray",
+        "simple-life",
+        "cool-silver",
+        "vivid-energy",
+        "neon-sport",
+        "outdoor-khaki",
+        "cool-aqua",
+        "dark-performance",
+        "editorial",
+        "herb-garden",
+        "forest-green",
+        "terracotta-earth"
+      ],
+      "density": "mid",
+      "personaTags": [
+        "실용 비교형",
+        "학부모 대리 구매형"
+      ],
+      "categoryBlock": []
+    },
+    "order": {
+      "zone": "value",
+      "notNextTo": [
+        "notice.icon-rows"
+      ]
+    },
+    "signature": {
+      "columns": 2,
+      "photo": "none",
+      "align": "left",
+      "container": "table"
+    },
+    "tokens": {
+      "color": "concept",
+      "type": "scene",
+      "radius": "concept"
+    },
+    "check": {
+      "stress": 1.2,
+      "lint": "ci",
+      "avgScore": null,
+      "usedIn": 0
+    },
+    "preview": "mock/notice.icon-rows.html",
+    "estimatedHeight": {
+      "min": 670,
+      "max": 2430
+    },
+    "height": 1550
+  }
+]

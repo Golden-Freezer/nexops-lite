@@ -6,7 +6,7 @@ import { useEditorStore, selectSelectedSectionId, selectSections } from '@/lib/r
 import { useCanvasStore } from '@/lib/registration/editor/stores/canvasStore';
 import { useLayoutStore, selectActiveCategory } from '@/lib/registration/editor/stores/layoutStore';
 import { loadLayoutPresets } from '@/lib/registration/editor/data/layouts';
-import { applyLayoutPreset, type PresetApplyMode } from '@/lib/registration/editor/utils/applyLayoutPreset';
+import { applyLayoutPreset, isOptionGallerySection, type PresetApplyMode } from '@/lib/registration/editor/utils/applyLayoutPreset';
 import { getLayoutOnlySupport } from '@/lib/registration/editor/utils/presetCompatibility';
 import { restoreInitialSection } from '@/lib/registration/editor/utils/restoreInitialSection';
 import { buildEditorDocument } from '@/lib/registration/editor/utils/buildEditorDocument';
@@ -77,11 +77,15 @@ export default function LayoutLibrary() {
   const isLoading            = useLayoutStore((s) => s.isLoading);
 
   const selectedSection  = sections.find((s) => s.id === selectedSectionId) ?? null;
+  // 옵션 카드 섹션은 프리셋을 적용하지 않는다 — 슬롯이 카드 바탕·사진·라벨을 흩뜨린다(isOptionGallerySection)
+  const optionGallery = selectedSection ? isOptionGallerySection(selectedSection) : false;
   const sectionType      = selectedSection?.sectionType as ProSectionType | undefined;
   const baselineSection  = selectedSection
     ? doc?.initialBaseline?.sections.find((section) => section.id === selectedSection.id) ??
       doc?.initialBaseline?.sections.find(
-        (section) => section.sectionType === selectedSection.sectionType,
+        // 긴 상세페이지 확장 표는 스펙 표와 유형이 같다 — 확장 표지까지 같은 섹션을 고른다
+        (section) =>
+          section.sectionType === selectedSection.sectionType && section.expansion === selectedSection.expansion,
       )
     : undefined;
 
@@ -124,7 +128,7 @@ export default function LayoutLibrary() {
   const schedulePresetPreview = useCallback(
     (preset: LayoutPreset, anchorRect: { top: number; left: number }) => {
       clearPreview();
-      if (!selectedSection) return;
+      if (!selectedSection || isOptionGallerySection(selectedSection)) return;
 
       previewTimerRef.current = setTimeout(() => {
         previewTimerRef.current = null;
@@ -289,7 +293,8 @@ export default function LayoutLibrary() {
         sections_data: [],
       });
       const rebuiltSection = rebuilt.sections.find(
-        (section) => section.sectionType === selectedSection.sectionType,
+        (section) =>
+          section.sectionType === selectedSection.sectionType && section.expansion === selectedSection.expansion,
       );
       if (!rebuiltSection) {
         toast.error('이 섹션은 재구성할 수 없습니다');
@@ -351,6 +356,11 @@ export default function LayoutLibrary() {
   async function handlePresetClick(preset: LayoutPreset) {
     clearPreview();
     if (!selectedSection || !selectedSectionId) return;
+    // 방어 — 옵션 카드 섹션에서는 프리셋 카드가 비활성이라 보통 여기까지 오지 않는다
+    if (isOptionGallerySection(selectedSection)) {
+      toast.error('옵션 카드 섹션은 카드 배치를 지키기 위해 레이아웃을 바꾸지 않습니다');
+      return;
+    }
 
     if (presetApplyMode === 'placement-only') {
       const layoutOnlySupport = getLayoutOnlySupport(preset);
@@ -443,6 +453,11 @@ export default function LayoutLibrary() {
 
       {/* 프리셋 그리드 */}
       <div className="flex-1 overflow-y-auto p-3">
+        {optionGallery && (
+          <p className="mb-2 text-[10px] text-[var(--text-disabled)]">
+            옵션 카드 섹션은 카드 배치를 지키기 위해 레이아웃 프리셋을 적용하지 않습니다.
+          </p>
+        )}
         {filteredPresets.length === 0 ? (
           <p className="text-[11px] text-[var(--text-disabled)] text-center pt-6">
             해당 카테고리의 프리셋이 없습니다.
@@ -459,7 +474,7 @@ export default function LayoutLibrary() {
                   key={preset.id}
                   preset={preset}
                   isActive={currentPresetId === preset.id}
-                  isDisabled={layoutOnlySupport === 'unsupported'}
+                  isDisabled={optionGallery || layoutOnlySupport === 'unsupported'}
                   showWarning={layoutOnlySupport === 'preview-required'}
                   onClick={() => {
                     void handlePresetClick(preset);

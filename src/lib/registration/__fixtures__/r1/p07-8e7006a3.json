@@ -1,0 +1,565 @@
+{
+  "_source": "R1 P07 treatment 잡 8e7006a3(2026-10-28, 38.69점, 성능 결과 감점 3건) — 카피 단계 입력(spec_sheet·analysis·research_result·section_plan 일부). 산출 카피는 감점 문장 확인용 일부만",
+  "mode": "pro",
+  "generation_track": "internalized",
+  "spec_sheet": {
+    "category": "pet",
+    "brandName": "페어넥스",
+    "productName": "페어넥스 강아지 밥그릇 고양이 식기 2구",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ]
+  },
+  "analysis": {
+    "cons": [
+      "리뷰 데이터 부재로 실제 내구성과 사용감 검증 필요",
+      "가격대 정보 부재로 경쟁제품 대비 가성비 판단 어려움"
+    ],
+    "pros": [
+      "2구 디자인으로 물과 사료를 동시에 제공 가능",
+      "세이지 그린 컬러로 인테리어와 조화로운 디자인",
+      "강아지와 고양이 모두 사용 가능한 범용성"
+    ],
+    "keywords": [
+      "강아지 밥그릇",
+      "고양이 식기",
+      "2구 식기",
+      "페어넥스",
+      "반려동물 식기",
+      "세이지 그린",
+      "애완동물 밥그릇",
+      "이중식기",
+      "반려견 용품",
+      "반려묘 용품",
+      "식기세트",
+      "펫 식기",
+      "반려동물 밥그릇",
+      "고급 식기",
+      "실용적 식기"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ]
+    },
+    "raw_summary": "페어넥스의 2구 반려동물 식기는 강아지와 고양이 모두 사용 가능한 범용 제품입니다. 세이지 그린 컬러로 현대적 인테리어와 조화를 이루며, 물과 사료를 분리 제공할 수 있는 실용적 디자인이 특징입니다.",
+    "pain_clusters": [
+      {
+        "pain": "강아지와 고양이를 함께 키울 때 각각 다른 식기 구비의 번거로움",
+        "urgency": "medium"
+      },
+      {
+        "pain": "반려동물 용품이 인테리어와 어울리지 않는 문제",
+        "urgency": "low"
+      }
+    ],
+    "usp_candidates": [
+      "강아지와 고양이 모두 사용 가능한 범용 2구 식기",
+      "세이지 그린 컬러로 모던한 반려동물 생활용품",
+      "페어넥스 브랜드의 반려동물 식기 솔루션"
+    ],
+    "benefit_clusters": [
+      {
+        "name": "다중 반려동물 관리 편의성",
+        "weight": 0.4
+      },
+      {
+        "name": "인테리어 조화로운 디자인",
+        "weight": 0.35
+      },
+      {
+        "name": "물과 사료 분리 제공",
+        "weight": 0.25
+      }
+    ],
+    "decision_profile": {
+      "giftability": "medium",
+      "repeatability": "repeat",
+      "urgency_level": "low",
+      "price_resistance": "low",
+      "visual_hook_need": "high",
+      "explanation_depth": "quick",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "comparison_intensity": "medium"
+    },
+    "detected_category": "pet",
+    "objection_priority": [
+      "실제 사용 후기와 내구성에 대한 검증 부족",
+      "경쟁 제품 대비 가격 경쟁력 불명확"
+    ],
+    "recommended_strategy_contract": {
+      "hook_mode": "empathy",
+      "page_goal": "standard",
+      "persuasion_axis": "balanced",
+      "frame_style_pack": "editorial_mix",
+      "purchase_context": "self_use",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "visual_style_pack": "clean_proof",
+      "objection_priority": [
+        "실제 사용 후기와 내구성에 대한 검증 부족",
+        "경쟁 제품 대비 가격 경쟁력 불명확"
+      ],
+      "page_length_target": "quick",
+      "comparison_intensity": "medium",
+      "review_position_strategy": "dynamic",
+      "soldout_position_strategy": "dynamic"
+    }
+  },
+  "research_result": {
+    "proof_plan": {
+      "minimum_proof_count": 3,
+      "required_proof_types": [
+        "구조컷",
+        "사용컷",
+        "비교컷",
+        "소재 스펙컷"
+      ]
+    },
+    "length_plan": {
+      "master_depth": "quick",
+      "quick_version_sections": 10,
+      "standard_version_sections": 15,
+      "persuasive_version_sections": 22
+    },
+    "pain_points": [
+      {
+        "insight": "강아지와 고양이를 함께 키우는 가구가 늘면서 각 동물용 식기를 따로 구비해야 하는 번거로움이 반복적으로 언급된다",
+        "evidence": "다중 반려동물 가구의 식기 중복 구매 부담 추론",
+        "support_count": 0
+      },
+      {
+        "insight": "반려동물 식기 대부분이 플라스틱 느낌의 디자인이라 거실에 두면 인테리어를 해친다는 불만이 존재한다",
+        "evidence": "인테리어 부조화 관련 pain_cluster 근거",
+        "support_count": 0
+      },
+      {
+        "insight": "소재나 내구성에 대한 실사용 정보가 부족해 구매 전 깨짐·변색 여부를 확신하지 못한다",
+        "evidence": "리뷰 부재로 내구성 검증 어려움 언급",
+        "support_count": 0
+      },
+      {
+        "insight": "가격 대비 품질을 비교할 기준이 없어 비슷한 2구 식기 제품들 사이에서 선택을 망설인다",
+        "evidence": "가격 정보 부재로 가성비 판단 어려움 언급",
+        "support_count": 0
+      },
+      {
+        "insight": "물그릇과 사료그릇이 분리되지 않아 사료가 물에 젖거나 그릇이 밀려 다니는 불편을 겪는다",
+        "evidence": "2구 디자인의 분리 제공 필요성 추론",
+        "support_count": 0
+      },
+      {
+        "insight": "세척 시 그릇이 미끄러지거나 무게가 가벼워 식사 중 밀리는 제품에 대한 불만이 흔하다",
+        "evidence": "실용성 관련 benefit_cluster 역추론",
+        "support_count": 0
+      }
+    ],
+    "usp_mapping": {
+      "세척 시 그릇이 미끄러지거나 무게가 가벼워 식사 중 밀리는 제품에 대한 불만이 흔하다": "일체형 구조와 안정적인 바닥 설계로 식사 중 밀림을 줄인 점을 사용컷으로 입증합니다",
+      "가격 대비 품질을 비교할 기준이 없어 비슷한 2구 식기 제품들 사이에서 선택을 망설인다": "2구 일체형 구성과 디자인·소재 스펙을 명확히 제시해 가격 대비 구성가치를 직관적으로 비교하게 합니다",
+      "소재나 내구성에 대한 실사용 정보가 부족해 구매 전 깨짐·변색 여부를 확신하지 못한다": "소재 스펙과 구조컷, 세척·사용 과정을 상세페이지에 투명하게 공개해 구매 전 확인 가능하게 합니다",
+      "물그릇과 사료그릇이 분리되지 않아 사료가 물에 젖거나 그릇이 밀려 다니는 불편을 겪는다": "2구 분리 설계로 물과 사료가 섞이지 않고 각각 안정적으로 담기도록 구성합니다",
+      "반려동물 식기 대부분이 플라스틱 느낌의 디자인이라 거실에 두면 인테리어를 해친다는 불만이 존재한다": "세이지 그린 컬러로 거실·주방 어디에 둬도 튀지 않는 모던한 톤을 제공합니다",
+      "강아지와 고양이를 함께 키우는 가구가 늘면서 각 동물용 식기를 따로 구비해야 하는 번거로움이 반복적으로 언급된다": "페어넥스 2구 식기 하나로 강아지와 고양이 식사·급수를 동시에 해결해 식기 중복 구매를 없앱니다"
+    },
+    "hook_candidates": [
+      {
+        "mode": "empathy",
+        "headline": "밥그릇 두 개 치우기 번거로우셨죠, 이제 하나로 끝내세요"
+      },
+      {
+        "mode": "curiosity",
+        "headline": "강아지 밥그릇과 고양이 식기, 왜 따로 사야 할까요"
+      },
+      {
+        "mode": "proof",
+        "headline": "물과 사료를 한 번에, 2구 구조가 만드는 식사 시간의 변화"
+      }
+    ],
+    "review_insights": {
+      "objections": [
+        {
+          "insight": "실제 내구성(깨짐, 스크래치, 변색)에 대한 검증된 후기가 없어 구매를 망설인다",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "경쟁 제품과 가격을 비교할 정보가 부족해 가성비 판단이 어렵다",
+          "evidence": "",
+          "support_count": 0
+        }
+      ],
+      "usage_scenes": [
+        {
+          "insight": "거실이나 주방 한편에 상시 배치해두고 매일 식사·급수 용도로 사용하는 장면",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "강아지와 고양이를 함께 키우는 가정에서 식기를 공용으로 교체 사용하는 장면",
+          "evidence": "",
+          "support_count": 0
+        }
+      ],
+      "benefit_clusters": [
+        {
+          "insight": "강아지와 고양이 모두 쓸 수 있어 다중 반려동물 가정의 관리 부담을 줄여준다",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "세이지 그린 컬러가 거실·주방 인테리어와 자연스럽게 어울린다는 반응이 많다",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "물과 사료를 한 번에 분리 제공할 수 있어 급여 동선이 단순해진다",
+          "evidence": "",
+          "support_count": 0
+        }
+      ]
+    },
+    "target_insights": "일반 소비자는 반려동물 식기를 자주 교체하지 않지만, 다묘·다견 가정 증가로 식기 중복 구매와 인테리어 부조화에 피로감을 느낀다. 관여도는 낮지만 내구성과 가격 검증 정보 부족이 구매 결정을 늦추므로, 공감형 후킹과 담백한 스펙 증거를 빠르게 제시하는 퀵 버전 구성이 효과적이다.",
+    "planning_skeleton": {
+      "sections": [
+        {
+          "purpose": "공감 유도",
+          "key_message": "밥그릇 두 개, 이제 하나로 정리하세요",
+          "section_name": "메인 비주얼 후킹"
+        },
+        {
+          "purpose": "불편 구체화",
+          "key_message": "따로 식기 사느라 번거롭고 인테리어도 안 맞았던 경험",
+          "section_name": "문제 공감"
+        },
+        {
+          "purpose": "USP 전달",
+          "key_message": "강아지와 고양이 모두 쓰는 2구 식기, 세이지 그린 컬러",
+          "section_name": "제품 핵심 소개"
+        },
+        {
+          "purpose": "내구성 신뢰 확보",
+          "key_message": "소재와 구조를 투명하게 공개합니다",
+          "section_name": "구조 디테일"
+        },
+        {
+          "purpose": "사용 상상 유도",
+          "key_message": "거실, 주방 어디든 자연스럽게 어울리는 배치",
+          "section_name": "사용 시나리오"
+        },
+        {
+          "purpose": "가성비 판단 지원",
+          "key_message": "따로 사는 것보다 합리적인 구성",
+          "section_name": "비교 가이드"
+        },
+        {
+          "purpose": "구매 장벽 해소",
+          "key_message": "세척, 사용 관련 자주 묻는 질문 정리",
+          "section_name": "FAQ/안심 정보"
+        },
+        {
+          "purpose": "구매 확신 강화",
+          "key_message": "실사용 기반 신뢰 신호 배치",
+          "section_name": "리뷰/신뢰 요소"
+        },
+        {
+          "purpose": "행동 유도",
+          "key_message": "지금 식사 환경을 바꿔보세요",
+          "section_name": "마감 CTA"
+        }
+      ],
+      "hook_score": {
+        "proof": 0.4,
+        "clarity": 0.8,
+        "novelty": 0.55,
+        "relevance": 0.85,
+        "visual_stop_power": 0.7
+      },
+      "hook_theme": "강아지랑 고양이, 식기는 하나로 충분해요",
+      "proof_plan": {
+        "minimum_proof_count": 3,
+        "required_proof_types": [
+          "구조컷",
+          "사용컷",
+          "비교컷",
+          "소재 스펙컷"
+        ]
+      },
+      "story_flow": [
+        "공감: 다묘·다견 가정의 식기 중복 고민 제시",
+        "문제 제기: 인테리어와 어울리지 않는 기존 식기의 한계",
+        "해결: 페어넥스 2구 식기의 구조와 컬러로 두 문제 동시 해결",
+        "증명: 소재·구조·사용 장면으로 실사용 신뢰 확보",
+        "비교: 가격대별 구성가치 비교로 선택 기준 제공",
+        "행동 유도: 지금 바로 식사 환경 개선 제안"
+      ],
+      "length_plan": {
+        "master_depth": "quick",
+        "quick_version_sections": 10,
+        "standard_version_sections": 15,
+        "persuasive_version_sections": 22
+      },
+      "cta_strategy": "낮은 관여도·낮은 긴급성을 고려해 강압적 할인보다는 '지금 정리하면 편해지는 이유'를 담백하게 제시하고, 구매 버튼은 제품 핵심 소개 직후와 마무리에 두 번 배치해 이탈을 최소화한다",
+      "hook_candidates": [
+        {
+          "mode": "empathy",
+          "headline": "밥그릇 두 개 치우기 번거로우셨죠, 이제 하나로 끝내세요"
+        },
+        {
+          "mode": "curiosity",
+          "headline": "강아지 밥그릇과 고양이 식기, 왜 따로 사야 할까요"
+        },
+        {
+          "mode": "proof",
+          "headline": "물과 사료를 한 번에, 2구 구조가 만드는 식사 시간의 변화"
+        }
+      ],
+      "section_purpose_map": [
+        {
+          "purpose": "공감형 훅으로 다중 반려동물 가구의 번거로움을 환기",
+          "section": "메인 후킹"
+        },
+        {
+          "purpose": "기존 식기의 인테리어·분리 불편 문제를 구체화",
+          "section": "문제 공감"
+        },
+        {
+          "purpose": "2구 구조와 세이지 그린 디자인을 USP로 제시",
+          "section": "제품 소개"
+        },
+        {
+          "purpose": "내구성·소재 불안을 스펙 기반으로 해소",
+          "section": "구조/소재 증명"
+        },
+        {
+          "purpose": "실생활 배치 이미지로 사용 상상을 돕기",
+          "section": "사용 장면"
+        },
+        {
+          "purpose": "구성 요소 비교로 가격 합리성 설득",
+          "section": "비교/가성비"
+        },
+        {
+          "purpose": "낮은 관여도 소비자의 빠른 구매 결정 유도",
+          "section": "마무리 CTA"
+        }
+      ]
+    },
+    "section_purpose_map": [
+      {
+        "purpose": "공감형 훅으로 다중 반려동물 가구의 번거로움을 환기",
+        "section": "메인 후킹"
+      },
+      {
+        "purpose": "기존 식기의 인테리어·분리 불편 문제를 구체화",
+        "section": "문제 공감"
+      },
+      {
+        "purpose": "2구 구조와 세이지 그린 디자인을 USP로 제시",
+        "section": "제품 소개"
+      },
+      {
+        "purpose": "내구성·소재 불안을 스펙 기반으로 해소",
+        "section": "구조/소재 증명"
+      },
+      {
+        "purpose": "실생활 배치 이미지로 사용 상상을 돕기",
+        "section": "사용 장면"
+      },
+      {
+        "purpose": "구성 요소 비교로 가격 합리성 설득",
+        "section": "비교/가성비"
+      },
+      {
+        "purpose": "낮은 관여도 소비자의 빠른 구매 결정 유도",
+        "section": "마무리 CTA"
+      }
+    ]
+  },
+  "section_plan": {
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ],
+      "vocabHash": "73b757bbdea4"
+    },
+    "internalized_skeleton": {
+      "persuasion": {
+        "rules": [
+          {
+            "id": "R1",
+            "pass": true
+          },
+          {
+            "id": "R2",
+            "pass": true
+          },
+          {
+            "id": "R3",
+            "pass": true
+          },
+          {
+            "id": "R4",
+            "pass": true
+          },
+          {
+            "id": "R5",
+            "pass": true
+          },
+          {
+            "id": "R6",
+            "pass": false,
+            "detail": "섹션 6개, 목표 7~10 — 목표 분량 미달(근거 없는 섹션은 만들지 않음 · 제외 사유는 excluded 참조)"
+          },
+          {
+            "id": "R7",
+            "pass": true
+          },
+          {
+            "id": "R8",
+            "pass": true
+          }
+        ],
+        "stages": [
+          {
+            "role": "hook",
+            "stage": "ATTENTION",
+            "reason": "pooled hookDefault — problem 출현율 0.31 ≥ 0.15",
+            "section": "hook_3step"
+          },
+          {
+            "role": "product_intro",
+            "stage": "ATTENTION",
+            "reason": "필수 — 첫 화면 상품",
+            "section": "main_cut"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "첫 가치 — 가치 단계를 연다",
+            "section": "point_div"
+          },
+          {
+            "role": "product_intro",
+            "stage": "VALUE",
+            "reason": "상품 노출(생성 예정 컷)",
+            "section": "product_exposure"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "가치 군집 3개 이상",
+            "section": "sub_div"
+          },
+          {
+            "role": "cta",
+            "stage": "ACTION",
+            "reason": "필수 — 마지막 행동",
+            "section": "cta"
+          }
+        ],
+        "grammar": "G3",
+        "layouts": [
+          {
+            "llm": "image_first",
+            "reason": "LLM 선택이 실측 후보 안",
+            "source": "llm",
+            "section": "hook_3step",
+            "category": "image_first"
+          },
+          {
+            "llm": "overlay",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "main_cut",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "point_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "card",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "product_exposure",
+            "category": "minimal"
+          },
+          {
+            "llm": "image_first",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "sub_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "bold",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "cta",
+            "category": "minimal"
+          }
+        ],
+        "vocabHash": "73b757bbdea4",
+        "priorSource": "coupang:pooled",
+        "lengthTarget": [
+          7,
+          10
+        ],
+        "objectionCoverage": [
+          {
+            "note": "클로즈업 증거 컷 — 수치 주장 금지",
+            "type": "quality_durability",
+            "objection": "실제 사용 후기와 내구성에 대한 검증 부족",
+            "answeredBy": "sub_div"
+          },
+          {
+            "note": "구성·가치 컷 — 가격 비교 수치 금지",
+            "type": "price_value",
+            "objection": "경쟁 제품 대비 가격 경쟁력 불명확",
+            "answeredBy": "point_div"
+          }
+        ]
+      }
+    }
+  },
+  "flagged_copy": {
+    "pointCards[3].description": "식사 중 밀림을 줄인\n안정적인 구조예요",
+    "detailPoints[3].claim": "식사 중에도 흔들림 적게",
+    "detailPoints[3].proof": "안정적인 바닥 설계로 밀림 최소화"
+  }
+}

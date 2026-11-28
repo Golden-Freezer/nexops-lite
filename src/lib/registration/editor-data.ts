@@ -5,11 +5,15 @@
  */
 
 import type { SupabaseClient } from '@supabase/supabase-js'
-import { resolveGenerationTrack, type PdpJobRow } from './pdp-state'
+import { resolveGenerationTrack, type PdpJobRow, type SectionImage } from './pdp-state'
 import type { EditorDataResponse } from './editor/services/editorApi'
+import type { MotionClip } from './editor/types/editor'
 import { toGeneratedImagesMap } from './pdp-image-tasks'
 import { getCorpusSnapshotV2 } from './corpus-v2'
 import { buildInternalizedTheme } from './internalized/internalized-theme'
+import { roleSectionMap } from './internalized/role-section-map'
+import { usesEnrichedMapping } from './pdp-enrichment-stage'
+import { editorAnnotationsOf } from './pdp-annotation-stage'
 
 export interface EditorDataRow {
   id: string
@@ -36,6 +40,27 @@ export async function getEditorData(
 }
 
 /**
+ * 모바일 하한 적용 잡(T3m, 2026-10-27 오너 결정) — Track S(standard) 잡이거나 설계 단계가 mobile을 기록한 잡.
+ * Track I 중 기록 없는 잡(구 잡·R0 대조군)은 기존 그대로 둔다(대조군 재현성).
+ */
+export function usesMobileFloor(job: PdpJobRow): boolean {
+  return resolveGenerationTrack(job) === 'standard' || (job.section_plan?.enrichment?.features ?? []).includes('mobile')
+}
+
+/**
+ * GIF 칸(세션 B ③ P4) — 움직이는 WebP가 있는 칸만 포스터 URL(entry.url) 키로. 포스터로 내린 칸(status poster)·실패 칸은 뺀다.
+ * 없으면 null — 응답에 키를 싣지 않는다(움직임 칸 없는 잡 응답 불변)
+ */
+export function motionClipsOf(images: readonly SectionImage[]): Record<string, MotionClip> | null {
+  const entries = images.flatMap((e): Array<[string, MotionClip]> => {
+    const m = e.motion
+    if (!e.url || e.error || m?.status !== 'ok' || !m.webpUrl || !(m.width > 0) || !(m.height > 0)) return []
+    return [[e.url, { webpUrl: m.webpUrl, width: m.width, height: m.height, bytes: m.bytes }]]
+  })
+  return entries.length > 0 ? Object.fromEntries(entries) : null
+}
+
+/**
  * GET /editor 응답 조립 — NEXFIT EditorDataResponse 계약(editorApi.ts)에 맞춰
  * 잡 JSONB를 클라이언트(buildEditorDocument) 무변경으로 소비 가능한 형태로 변환한다.
  * 이미지 키 변환은 파이프라인 SSOT toGeneratedImagesMap 재사용(features:i → features[] 등).
@@ -50,8 +75,27 @@ export function assembleEditorDataResponse(job: PdpJobRow, row: EditorDataRow | 
   // 이후 편집·저장본은 오너 재량(테마 미재적용). Track S·v2 미보유 카테고리는 null.
   const snapshotV2 =
     resolveGenerationTrack(job) === 'internalized' ? getCorpusSnapshotV2(job.analysis.detected_category) : null
+  // ENRICHMENT persuasion 잡은 compose와 같은 정정 매핑으로 테마를 펼친다(편집기·final_html 테마 일치).
+  const enriched = usesEnrichedMapping(job)
+  // 강조 장식(T4): 이미지 URL 키로 전달 — 장식이 없는 잡은 키를 싣지 않는다(Track S·구 잡 응답 불변)
+  const annotations = editorAnnotationsOf(job)
+  // D2-3 첫 화면 글자 자리: 잰 기록(designcut2 잡 hero)만 — 없으면 키를 싣지 않는다(그 밖의 잡 응답 불변)
+  const zone = (job.section_images ?? []).find((s) => s.section === 'hero' && s.url)?.copyZone?.measure
+  // D2 장면 사진의 실제 가로/세로(D2-2b): 아트 디렉션 기록 잡만, 이미지 URL 키 — 그 밖의 잡은 키를 싣지 않는다
+  const aspects = job.section_plan?.designcut?.artDirection
+    ? Object.fromEntries(
+        (job.section_images ?? [])
+          .filter((s) => s.url && typeof s.imageAspect === 'number' && s.imageAspect > 0)
+          .map((s) => [s.url, s.imageAspect as number])
+      )
+    : {}
+  // 사이즈 단독 컷의 제품 경계 — 치수선 자리(이미지 URL 키)
+  const productBoxes = Object.fromEntries((job.section_images ?? []).flatMap((e) => (e.url && e.productBox ? [[e.url, e.productBox]] : [])))
+  const motionClips = motionClipsOf(job.section_images ?? [])
+  // 뺀 컷(usegate 잡, J44) — 쓰는 법 미달로 뺀 컷 키. 꺼진 잡은 droppedForUse가 생기지 않아 키를 싣지 않는다(응답 그대로)
+  const droppedCuts = (job.section_images ?? []).flatMap((e) => (e.droppedForUse ? [e.section] : []))
   const internalizedTheme = snapshotV2
-    ? buildInternalizedTheme(snapshotV2, job.copy_sections.final?.designPalette ?? null)
+    ? buildInternalizedTheme(snapshotV2, job.copy_sections.final?.designPalette ?? null, roleSectionMap(enriched))
     : null
 
   return {
@@ -65,6 +109,13 @@ export function assembleEditorDataResponse(job: PdpJobRow, row: EditorDataRow | 
     spec_sheet: (job.spec_sheet ?? null) as unknown as EditorDataResponse['spec_sheet'],
     section_plan: (job.section_plan ?? null) as EditorDataResponse['section_plan'],
     internalized_theme: internalizedTheme,
+    mobile_floor: usesMobileFloor(job),
+    ...(annotations ? { annotations } : {}),
+    ...(zone ? { hero_copy_zone: { pass: zone.pass, ink: zone.ink } } : {}),
+    ...(Object.keys(aspects).length > 0 ? { image_aspects: aspects } : {}),
+    ...(Object.keys(productBoxes).length > 0 ? { product_boxes: productBoxes } : {}),
+    ...(motionClips ? { motion_clips: motionClips } : {}),
+    ...(droppedCuts.length > 0 ? { dropped_cuts: droppedCuts } : {}),
   }
 }
 

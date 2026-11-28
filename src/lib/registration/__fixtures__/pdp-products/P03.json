@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "P03",
+  "sourceFolder": "두피브러쉬",
+  "categoryKey": "beauty",
+  "evidencePath": "v2",
+  "sellerProductId": "16153272920",
+  "specSheet": {
+    "productName": "페어넥스 스칼프 마사지 두피 샴푸 브러쉬",
+    "brandName": "페어넥스",
+    "category": "beauty",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ],
+    "size": "85mm x 80mm",
+    "material": "ABS",
+    "origin": "중국",
+    "extraSpecs": [
+      {
+        "key": "방수",
+        "value": "방수"
+      },
+      {
+        "key": "휴대",
+        "value": "휴대용"
+      },
+      {
+        "key": "사용 대상",
+        "value": "남녀공용"
+      },
+      {
+        "key": "솔",
+        "value": "유연한 탄성모"
+      }
+    ]
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "colorOptions": "products.option_name",
+    "size": "현행 상세 표(두피브러쉬 상세페이지_20260122) — nexfit.pdp_records.6b034319 8.5cm x 8cm와 같음",
+    "material": "현행 상세 표 소재(OpenAPI에 재질 칸 없음) — nexfit.pdp_records.6b034319 ABS와 같음",
+    "origin": "openapi.notices 제조국(원산지)",
+    "extraSpecs": "openapi.attributes 방수 수준·휴대용 여부·사용대상 + 현행 상세 표 주요 특징(유연한 탄성모)"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "targetPersona",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "self_photo",
+      "path": "두피브러쉬 제품 사진/KakaoTalk_20260403_023840964_13.jpg",
+      "note": "자체 촬영 전체 형태(흰 책상)"
+    },
+    {
+      "origin": "self_photo",
+      "path": "두피브러쉬 제품 사진/KakaoTalk_20260403_023840964_19.jpg",
+      "note": "자체 촬영 볼팁 핀 클로즈업"
+    },
+    {
+      "origin": "self_photo",
+      "path": "두피브러쉬 제품 사진/KakaoTalk_20260311_114222684_12.jpg",
+      "note": "자체 촬영 옆모습(바닥)"
+    }
+  ],
+  "optionLabels": [
+    "1개 세이지 그린"
+  ],
+  "currentPagePaths": [
+    "nexfit_full_page (12).png",
+    "nexfit_full_page (7).jpg",
+    "nexfit_sections (3).jpg",
+    "product-page-페어넥스 딥클리닝 두피브러쉬-1769059246864.png",
+    "product-page-페어넥스 딥클리닝 두피브러쉬-1769060560760.png",
+    "product-page-페어넥스 딥클리닝 두피브러쉬-1769064063488.png",
+    "product-page-페어넥스 딥클리닝 두피브러쉬-1769064067901.jpeg",
+    "두피브러쉬 상세페이지_20260122.jpeg"
+  ],
+  "searchTags": [
+    "두피각질제거브러쉬",
+    "두피마사지",
+    "두피마사지브러쉬",
+    "두피마사지샴푸브러쉬",
+    "두피브러쉬",
+    "두피빗",
+    "두피샴푸브러쉬",
+    "두피스케일링브러쉬",
+    "두피케어브러쉬",
+    "두피클렌징브러쉬",
+    "머리감는브러쉬",
+    "머리감을때쓰는 브러쉬",
+    "머리샴푸브러쉬",
+    "샴푸브러쉬",
+    "스칼프브러쉬",
+    "스칼프샴푸브러쉬",
+    "실리콘두피마사지브러쉬",
+    "실리콘두피브러쉬",
+    "실리콘샴푸브러쉬",
+    "헤어샴푸브러쉬"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P03-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "SEO 파일은 다른 상품(괄사) 내용이라 제외 — 상품명은 products 등록명",
+    "'두피브러쉬 대표이미지 (3).png'는 굵은 반투명 실리콘 돌기로, 자체 촬영 실물(가는 볼팁 핀)과 외형이 달라 제외 — 자체 촬영만 사용",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] 관리 방법은 어느 출처에도 없어 비움"
+  ]
+}

@@ -194,7 +194,9 @@ function SaveStatusBadge({ saveStatus, isDirty }: { saveStatus: SaveStatus; isDi
 
 const DERIVATIVE_MODES: { mode: DerivativePreviewMode; label: string; title: string }[] = [
   { mode: 'master', label: 'M', title: '전체 섹션 (마스터본)' },
-  { mode: 'quick', label: 'Q', title: '핵심 섹션만 (priority 1~3)' },
+  // 섹션 우선순위 상위만 보이는 미리보기(derivativeFilter) — 긴 상세페이지 '핵심만 남기기'(LeftPanel, 확장 섹션 숨김)와 다른 기능이라
+  // 이름을 나눈다
+  { mode: 'quick', label: 'Q', title: '빠른 미리보기 — 우선순위 높은 섹션만' },
   { mode: 'standard', label: 'S', title: '표준 섹션 (priority 1~6)' },
   { mode: 'persuasive', label: 'P', title: '설득 강화 전체 섹션' },
 ];
