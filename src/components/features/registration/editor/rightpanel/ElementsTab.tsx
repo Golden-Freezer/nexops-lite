@@ -4,7 +4,7 @@
 
 import { useRef, useCallback, useState } from 'react';
 import { ImageIcon } from 'lucide-react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import { useEditorStore, selectSelectedSectionId } from '@/lib/registration/editor/stores/editorStore';
 import ElementPanel, { type ElementKind } from '../ElementPanel';

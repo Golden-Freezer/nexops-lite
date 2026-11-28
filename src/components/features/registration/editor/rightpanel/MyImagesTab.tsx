@@ -6,7 +6,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { RefreshCw } from 'lucide-react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { fetchLibraryImages, type LibraryImageItem } from '@/lib/registration/editor/services/editorApi';
 import { useEditorStore, selectSelectedSectionId, selectSelectedElementId } from '@/lib/registration/editor/stores/editorStore';
 import { useCanvasStore } from '@/lib/registration/editor/stores/canvasStore';

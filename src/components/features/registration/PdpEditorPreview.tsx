@@ -10,7 +10,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react'
-import { useAuth } from '@clerk/nextjs'
+import { useAuth } from '@/lib/auth/clerk-shim'
 import { Loader2 } from 'lucide-react'
 import { fetchEditorData } from '@/lib/registration/editor/services/editorApi'
 import { useViewerMountReflow } from '@/lib/registration/editor/hooks/useViewerMountReflow'

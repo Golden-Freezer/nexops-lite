@@ -8,7 +8,7 @@
 // P1-4: 지금 컷을 바꿀 때는 '유지할 것'과 '지금 컷을 바탕으로 고치기'(기본 켬)를 받고, 바뀐 컷은 '직전 컷으로 되돌리기'(생성 없음)를 보인다.
 
 import { useEffect, useRef, useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { ImagePlus, Loader2, Sparkles, X } from 'lucide-react';
 import type { RegenPreviewResponse, RegenStyle } from '@/lib/registration/pdp-image-regen';
 import type { PdpJobRow } from '@/lib/registration/pdp-state';

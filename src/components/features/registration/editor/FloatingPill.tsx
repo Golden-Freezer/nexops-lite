@@ -24,7 +24,7 @@ import {
   ChevronRight,
   GripVertical,
 } from 'lucide-react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import { type ElementKind } from './ElementPanel';
 import {

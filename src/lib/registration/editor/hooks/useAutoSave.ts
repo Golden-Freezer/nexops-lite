@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { useEditorStore } from '@/lib/registration/editor/stores/editorStore';
 import { useCanvasStore } from '@/lib/registration/editor/stores/canvasStore';
 import { saveEditorData } from '@/lib/registration/editor/services/editorApi';

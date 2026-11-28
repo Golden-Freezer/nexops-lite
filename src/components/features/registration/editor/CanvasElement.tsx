@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react
 import type { CSSProperties } from 'react';
 import { useEditorStore, selectSelectedElementIds, selectZoom, selectStyleRemeasure } from '@/lib/registration/editor/stores/editorStore';
 import { useCanvasStore } from '@/lib/registration/editor/stores/canvasStore';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import type { CanvasElement } from '@/lib/registration/editor/types/canvas';
 import { sanitizeRichText, richTextToPlainText, normalizeRichText } from '@/lib/registration/editor/utils/textSanitizer';

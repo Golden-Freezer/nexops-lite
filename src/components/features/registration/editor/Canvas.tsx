@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useCallback, useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { useEditorStore, selectSections, selectZoom, selectSelectedElementIds, selectViewMode, selectDerivativePreview, selectShowGrid } from '@/lib/registration/editor/stores/editorStore';
 import type { DerivativePreviewMode } from '@/lib/registration/editor/stores/editorStore';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';

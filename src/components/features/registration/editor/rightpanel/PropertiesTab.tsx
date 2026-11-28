@@ -9,7 +9,7 @@ import {
   Lock, Unlock, Eye, EyeOff,
   AlignStartVertical, AlignCenterVertical, AlignEndVertical,
 } from 'lucide-react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import {
   useEditorStore,

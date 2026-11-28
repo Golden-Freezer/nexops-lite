@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { useEditorStore, selectSelectedSectionId, selectSections } from '@/lib/registration/editor/stores/editorStore';
 import { useCanvasStore } from '@/lib/registration/editor/stores/canvasStore';
 import { useLayoutStore, selectActiveCategory } from '@/lib/registration/editor/stores/layoutStore';

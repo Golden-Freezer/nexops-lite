@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/lib/auth/clerk-shim';
 import { fetchEditorData } from '@/lib/registration/editor/services/editorApi';
 import { useViewerMountReflow } from '@/lib/registration/editor/hooks/useViewerMountReflow';
 import { buildEditorDocument } from '@/lib/registration/editor/utils/buildEditorDocument';

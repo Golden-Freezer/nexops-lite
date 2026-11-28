@@ -11,7 +11,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useAuth } from '@clerk/nextjs'
+import { useAuth } from '@/lib/auth/clerk-shim'
 import { Loader2 } from 'lucide-react'
 import type { PdpJobRow } from '@/lib/registration/pdp-state'
 import { pdpApi } from '@/lib/registration/pdp-client'
