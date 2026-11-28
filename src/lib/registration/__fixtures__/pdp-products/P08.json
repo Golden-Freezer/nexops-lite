@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "P08",
+  "sourceFolder": "다용도 식물 지지대 고정클립 300개",
+  "categoryKey": "household",
+  "evidencePath": "v2",
+  "sellerProductId": "16173992003",
+  "specSheet": {
+    "productName": "페어넥스 식물 고정 클립 농작물 원예",
+    "brandName": "페어넥스",
+    "category": "household",
+    "categoryDetail": "garden",
+    "colorOptions": [
+      "300개"
+    ],
+    "size": "내측 3.2cm, 펼침 7.3cm",
+    "material": "플라스틱",
+    "origin": "중국",
+    "extraSpecs": [
+      {
+        "key": "구성",
+        "value": "300개"
+      }
+    ]
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "categoryDetail": "catalog(판정 8종에 식물·원예 없음 — 제품군 판정에 쓴다)",
+    "colorOptions": "products.option_name",
+    "size": "openapi.attributes 길이·굵기 — 수치 그대로, 이름만 NEXFIT 생성 페이지(nexfit_full_page (8)) 표기 '내측 3.2cm, 펼침 7.3cm'로 정정(실물 크기 11-05: '길이 7.3'이 고리 크기로 그려짐)",
+    "material": "openapi.attributes 상품 재질",
+    "origin": "openapi.notices 제조국(원산지)",
+    "extraSpecs": "openapi.attributes 수량(300개)"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "targetPersona",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "representative",
+      "path": "대표이미지/제목을 입력해주세요. - 2026-04-03T161534.723.png",
+      "note": "흰 배경 클립 단독"
+    },
+    {
+      "origin": "representative",
+      "path": "대표이미지/3.png",
+      "note": "줄기에 끼운 사용 컷(손·크기 비교, 좌상단 원형 삽입 있음)"
+    }
+  ],
+  "optionLabels": [
+    "300개"
+  ],
+  "currentPagePaths": [
+    "상세페이지/nexfit_full_page (8).jpg"
+  ],
+  "searchTags": [
+    "작물 고정 클립",
+    "넝쿨 고정 클립",
+    "식물 고정 클립",
+    "화초 고정클립",
+    "식물 지지대 고정 클립",
+    "농작물 고정 클립",
+    "가지 고정 클립",
+    "고추 고정 클립",
+    "고추지지대 클립",
+    "화분 지지대 고리",
+    "고추지지대 고정클립",
+    "고추대 고정클립",
+    "고추지지대 연결고리",
+    "가지고정클립"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P08-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] NEXFIT 생성 페이지(nexfit_full_page (8), 4순위)의 사이즈 \"내측 3.2cm, 펼침 7.3cm\"·소재 ABS·색상 반투명은 기록만",
+    "[사실 10-31] 관리 방법은 어느 출처에도 없어 비움",
+    "[오너 답 11-01] 사용연령 행을 유지한다(식물에 쓰지만 사용하는 것은 사람). #405의 제외를 뒤집었다"
+  ]
+}

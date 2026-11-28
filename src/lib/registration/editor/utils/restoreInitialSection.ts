@@ -155,6 +155,8 @@ export function restoreInitialSection(
     order: currentCopy.order,
     isVisible: currentCopy.isVisible,
     schemaVersion: currentCopy.schemaVersion,
+    // 긴 상세페이지 확장 표지는 지금 섹션 것 — 같은 유형의 다른 표(baseline)에서 표지가 옮겨 오지 않게
+    expansion: currentCopy.expansion,
     canvas: {
       ...baselineCopy.canvas,
       height: Math.max(baselineCopy.canvas.height, Math.ceil(maxBottom)),

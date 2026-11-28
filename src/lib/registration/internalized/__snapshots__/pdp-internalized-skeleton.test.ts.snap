@@ -1,0 +1,443 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > digital · 치수 무 · hookDefault false 1`] = `
+{
+  "excluded": [
+    "legal_notice",
+    "shipping_cs",
+    "size_spec",
+    "hook",
+  ],
+  "order": [
+    "event_banner",
+    "certification",
+    "perf_reviews",
+    "perf_rating",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "point_div",
+    "sub_div",
+    "solution_guide",
+    "petit_div",
+    "hidden_page",
+    "cta",
+  ],
+  "roles": [
+    "promotion_offer",
+    "authenticity",
+    "social_proof",
+    "brand_story",
+    "product_intro",
+    "option_catalog",
+    "usp_feature",
+    "certification_evidence",
+    "how_to_guide",
+    "target_recommendation",
+    "faq",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > digital · 치수 무 · hookDefault true 1`] = `
+{
+  "excluded": [
+    "legal_notice",
+    "shipping_cs",
+    "size_spec",
+  ],
+  "order": [
+    "event_banner",
+    "hook_3step",
+    "certification",
+    "perf_reviews",
+    "perf_rating",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "point_div",
+    "sub_div",
+    "solution_guide",
+    "petit_div",
+    "hidden_page",
+    "cta",
+  ],
+  "roles": [
+    "promotion_offer",
+    "hook",
+    "authenticity",
+    "social_proof",
+    "brand_story",
+    "product_intro",
+    "option_catalog",
+    "usp_feature",
+    "certification_evidence",
+    "how_to_guide",
+    "target_recommendation",
+    "faq",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > digital · 치수 유 · hookDefault false 1`] = `
+{
+  "excluded": [
+    "legal_notice",
+    "shipping_cs",
+    "hook",
+  ],
+  "order": [
+    "event_banner",
+    "certification",
+    "perf_reviews",
+    "perf_rating",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "point_div",
+    "sub_div",
+    "spec_table",
+    "solution_guide",
+    "petit_div",
+    "hidden_page",
+    "cta",
+  ],
+  "roles": [
+    "promotion_offer",
+    "authenticity",
+    "social_proof",
+    "brand_story",
+    "product_intro",
+    "option_catalog",
+    "usp_feature",
+    "size_spec",
+    "certification_evidence",
+    "how_to_guide",
+    "target_recommendation",
+    "faq",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > digital · 치수 유 · hookDefault true 1`] = `
+{
+  "excluded": [
+    "legal_notice",
+    "shipping_cs",
+  ],
+  "order": [
+    "event_banner",
+    "hook_3step",
+    "certification",
+    "perf_reviews",
+    "perf_rating",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "point_div",
+    "sub_div",
+    "spec_table",
+    "solution_guide",
+    "petit_div",
+    "hidden_page",
+    "cta",
+  ],
+  "roles": [
+    "promotion_offer",
+    "hook",
+    "authenticity",
+    "social_proof",
+    "brand_story",
+    "product_intro",
+    "option_catalog",
+    "usp_feature",
+    "size_spec",
+    "certification_evidence",
+    "how_to_guide",
+    "target_recommendation",
+    "faq",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > fashion · 치수 무 · hookDefault false 1`] = `
+{
+  "excluded": [
+    "size_spec",
+    "shipping_cs",
+    "legal_notice",
+  ],
+  "order": [
+    "concept_desc",
+    "event_banner",
+    "petit_div",
+    "point_div",
+    "sub_div",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "solution_guide",
+    "cta",
+  ],
+  "roles": [
+    "brand_story",
+    "promotion_offer",
+    "target_recommendation",
+    "usp_feature",
+    "product_intro",
+    "option_catalog",
+    "how_to_guide",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > fashion · 치수 무 · hookDefault true 1`] = `
+{
+  "excluded": [
+    "size_spec",
+    "shipping_cs",
+    "legal_notice",
+  ],
+  "order": [
+    "concept_desc",
+    "event_banner",
+    "petit_div",
+    "point_div",
+    "sub_div",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "solution_guide",
+    "cta",
+  ],
+  "roles": [
+    "brand_story",
+    "promotion_offer",
+    "target_recommendation",
+    "usp_feature",
+    "product_intro",
+    "option_catalog",
+    "how_to_guide",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > fashion · 치수 유 · hookDefault false 1`] = `
+{
+  "excluded": [
+    "shipping_cs",
+    "legal_notice",
+  ],
+  "order": [
+    "concept_desc",
+    "event_banner",
+    "petit_div",
+    "point_div",
+    "sub_div",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "solution_guide",
+    "spec_table",
+    "cta",
+  ],
+  "roles": [
+    "brand_story",
+    "promotion_offer",
+    "target_recommendation",
+    "usp_feature",
+    "product_intro",
+    "option_catalog",
+    "how_to_guide",
+    "size_spec",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > fashion · 치수 유 · hookDefault true 1`] = `
+{
+  "excluded": [
+    "shipping_cs",
+    "legal_notice",
+  ],
+  "order": [
+    "concept_desc",
+    "event_banner",
+    "petit_div",
+    "point_div",
+    "sub_div",
+    "main_cut",
+    "product_exposure",
+    "point_list_div",
+    "solution_guide",
+    "spec_table",
+    "cta",
+  ],
+  "roles": [
+    "brand_story",
+    "promotion_offer",
+    "target_recommendation",
+    "usp_feature",
+    "product_intro",
+    "option_catalog",
+    "how_to_guide",
+    "size_spec",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > household · 치수 무 · hookDefault false 1`] = `
+{
+  "excluded": [
+    "size_spec",
+    "shipping_cs",
+    "problem",
+    "legal_notice",
+    "hook",
+  ],
+  "order": [
+    "event_banner",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "perf_reviews",
+    "perf_rating",
+    "certification",
+    "point_div",
+    "sub_div",
+    "point_list_div",
+    "solution_guide",
+    "cta",
+  ],
+  "roles": [
+    "promotion_offer",
+    "brand_story",
+    "product_intro",
+    "social_proof",
+    "certification_evidence",
+    "usp_feature",
+    "option_catalog",
+    "how_to_guide",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > household · 치수 무 · hookDefault true 1`] = `
+{
+  "excluded": [
+    "size_spec",
+    "shipping_cs",
+    "legal_notice",
+  ],
+  "order": [
+    "hook_3step",
+    "event_banner",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "perf_reviews",
+    "perf_rating",
+    "problem_raise",
+    "problem_empathy",
+    "certification",
+    "point_div",
+    "sub_div",
+    "point_list_div",
+    "solution_guide",
+    "cta",
+  ],
+  "roles": [
+    "hook",
+    "promotion_offer",
+    "brand_story",
+    "product_intro",
+    "social_proof",
+    "problem",
+    "certification_evidence",
+    "usp_feature",
+    "option_catalog",
+    "how_to_guide",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > household · 치수 유 · hookDefault false 1`] = `
+{
+  "excluded": [
+    "shipping_cs",
+    "problem",
+    "legal_notice",
+    "hook",
+  ],
+  "order": [
+    "event_banner",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "perf_reviews",
+    "perf_rating",
+    "certification",
+    "point_div",
+    "sub_div",
+    "point_list_div",
+    "spec_table",
+    "solution_guide",
+    "cta",
+  ],
+  "roles": [
+    "promotion_offer",
+    "brand_story",
+    "product_intro",
+    "social_proof",
+    "certification_evidence",
+    "usp_feature",
+    "option_catalog",
+    "size_spec",
+    "how_to_guide",
+  ],
+}
+`;
+
+exports[`buildSkeleton — 12케이스 골격 스냅샷 (카테고리 3종 × 치수 유/무 × hook 유/무) > household · 치수 유 · hookDefault true 1`] = `
+{
+  "excluded": [
+    "shipping_cs",
+    "legal_notice",
+  ],
+  "order": [
+    "hook_3step",
+    "event_banner",
+    "concept_desc",
+    "main_cut",
+    "product_exposure",
+    "perf_reviews",
+    "perf_rating",
+    "problem_raise",
+    "problem_empathy",
+    "certification",
+    "point_div",
+    "sub_div",
+    "point_list_div",
+    "spec_table",
+    "solution_guide",
+    "cta",
+  ],
+  "roles": [
+    "hook",
+    "promotion_offer",
+    "brand_story",
+    "product_intro",
+    "social_proof",
+    "problem",
+    "certification_evidence",
+    "usp_feature",
+    "option_catalog",
+    "size_spec",
+    "how_to_guide",
+  ],
+}
+`;

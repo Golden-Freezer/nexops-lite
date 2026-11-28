@@ -19,6 +19,7 @@ export type SkeletonCondition =
   | 'has_certification'
   | 'has_event'
   | 'has_options'
+  | 'has_reviews'
   | 'hook_gate'
   | 'never'
 
@@ -55,3 +56,31 @@ export const ROLE_TO_SECTIONS: Record<Role16, RoleSectionMapping> = {
 
 /** usp_feature 2개 전개(point_div+sub_div)의 출현율 임계 — 결정 T-4 비고. */
 export const USP_SECONDARY_PREVALENCE_THRESHOLD = 0.6
+
+/**
+ * 렌더 의미에 맞춘 정정 매핑(docs/plans/pdp-enrichment/00_DESIGN.md §4.2 선행 수리) — ENRICHMENT persuasion이 기록된
+ * Track I 잡만 쓴다. 기록이 없는 잡(구 잡·대조군)은 위 ROLE_TO_SECTIONS를 그대로 써서 기존 동작(골든)과 같다.
+ * 근거: hidden_page = "사용 방법" 단계, point_list_div = "이런 분께 추천드려요", petit_div = 컬러·옵션(렌더: 옵션 ≥ 2),
+ * solution_guide = 해결 요약(문제-해결 짝), FAQ 렌더러 없음.
+ */
+export const ROLE_TO_SECTIONS_ENRICHED: Record<Role16, RoleSectionMapping> = {
+  ...ROLE_TO_SECTIONS,
+  problem: {
+    sections: [ProSectionType.PROBLEM_RAISE, ProSectionType.PROBLEM_EMPATHY, ProSectionType.SOLUTION_GUIDE],
+    condition: 'hook_gate',
+  },
+  how_to_guide: { sections: [ProSectionType.HIDDEN_PAGE] },
+  target_recommendation: { sections: [ProSectionType.POINT_LIST_DIV] },
+  option_catalog: { sections: [ProSectionType.PETIT_DIV], condition: 'has_options' },
+  // 리뷰 근거(원문·평점·리뷰 수)가 있을 때만 — perf_rating은 실평점이 있을 때만 전개한다(buildSkeleton·플래너)
+  social_proof: {
+    sections: [ProSectionType.PERFORMANCE_REVIEWS, ProSectionType.PERFORMANCE_RATING],
+    condition: 'has_reviews',
+  },
+  faq: { sections: [], condition: 'never' },
+}
+
+/** 잡의 기록에 따라 매핑을 고른다 — enriched=true는 ENRICHMENT persuasion이 기록된 Track I 잡. */
+export function roleSectionMap(enriched: boolean): Record<Role16, RoleSectionMapping> {
+  return enriched ? ROLE_TO_SECTIONS_ENRICHED : ROLE_TO_SECTIONS
+}

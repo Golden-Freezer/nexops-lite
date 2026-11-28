@@ -195,6 +195,8 @@ export default function ImageCropOverlay({
       onPointerDown={(e) => e.stopPropagation()}
     >
       {/* 1. 어두운 원본 이미지 — 고정, 절대 움직이지 않음 */}
+      {/* 크롭은 원본 비율 그대로 겹쳐 그려야 해 next/image 최적화를 쓰지 않는다 */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={imageSrc}
         alt="crop base"
@@ -204,6 +206,7 @@ export default function ImageCropOverlay({
       />
 
       {/* 2. 밝은 이미지 — clipPath로 crop 영역만 노출, 고정 */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={imageSrc}
         alt="crop bright"

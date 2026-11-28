@@ -18,6 +18,7 @@ export function TextField({
   placeholder,
   disabled,
   maxLength,
+  describedBy,
 }: {
   label: string
   value: string
@@ -25,6 +26,8 @@ export function TextField({
   placeholder?: string
   disabled?: boolean
   maxLength?: number
+  /** 입력 아래 안내·경고 요소의 id — 화면 낭독기가 입력과 함께 읽는다 */
+  describedBy?: string
 }) {
   return (
     <label className="flex flex-col gap-1 text-xs text-slate-500">
@@ -35,6 +38,7 @@ export function TextField({
         placeholder={placeholder}
         disabled={disabled}
         maxLength={maxLength}
+        aria-describedby={describedBy}
         className="w-full border border-slate-200 rounded px-2 py-1.5 text-sm text-slate-700 focus:outline-none focus:border-brand-400 disabled:opacity-50"
       />
     </label>

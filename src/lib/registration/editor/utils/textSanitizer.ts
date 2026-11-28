@@ -1,17 +1,22 @@
 // ─── Rich Text Sanitizer ────────────────────────────────────────────────────
-// <span style="font-size:...;color:..."> + <br> 만 허용, 나머지 태그 제거
+// <span style="font-size:...;color:...;background-color:..."> + <br> 만 허용, 나머지 태그 제거
 
 const ALLOWED_SPAN_RE = /<span\s+style="([^"]*)">([\s\S]*?)<\/span>/gi;
 const BR_RE = /<br\s*\/?>/gi;
 const ANY_TAG_RE = /<\/?[^>]+(>|$)/g;
 
-/** span style에서 font-size / color만 추출 */
+/** 형광 띠(디자인 컷 v2 강조 구절) 색 — #hex·rgb()·rgba() 숫자 형식만 받는다(url·식 등은 버림) */
+const BG_COLOR_VALUE_RE = /^(#[0-9a-f]{3,8}|rgba?\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*(,\s*[\d.]+\s*)?\))$/i;
+
+/** span style에서 font-size / color / background-color(색 값 형식만)만 추출 */
 function sanitizeSpanStyle(raw: string): string {
   const parts: string[] = [];
   const fsMatch = raw.match(/font-size\s*:\s*([^;]+)/i);
   if (fsMatch) parts.push(`font-size:${fsMatch[1].trim()}`);
   const cMatch = raw.match(/(?:^|;)\s*color\s*:\s*([^;]+)/i);
   if (cMatch) parts.push(`color:${cMatch[1].trim()}`);
+  const bgMatch = raw.match(/(?:^|;)\s*background-color\s*:\s*([^;]+)/i);
+  if (bgMatch && BG_COLOR_VALUE_RE.test(bgMatch[1].trim())) parts.push(`background-color:${bgMatch[1].trim()}`);
   return parts.join(';');
 }
 

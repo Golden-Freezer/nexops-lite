@@ -8,7 +8,7 @@
  * 치환 방식(핵심 — 인벤토리 §0-6): 원본은 프롬프트별로 두 가지 방식을 섞어 쓴다 —
  * SECTION_PLANNING_PROMPT는 `.format()`(agent.py:930-943), DESIGN_PROMPT_ENGINEERING_PROMPT는
  * `str.replace()`(agent.py:1251-1268, JSON 예시의 단일 중괄호와 `.format()` 충돌을 피하기 위해
- * 명시적으로 .format()을 버린 것). 이 파일은 두 프롬프트 모두 `String.replaceAll('{slot}', value)`
+ * 명시적으로 .format()을 버린 것). 이 파일은 두 프롬프트 모두 `String.replaceAll('{slot}', () => value)`
  * 방식으로 통일한다 — 최종 텍스트는 두 원본 방식 모두 동일한 결과를 내므로 통일해도 무손실이다.
  * 원본이 `{{`/`}}`로 이스케이프한 JSON 예시 중괄호는 이 파일에서는 애초에 단일 중괄호로 저장한다
  * (템플릿 리터럴은 .format()과 달리 중괄호 충돌이 없다) — {slot} 토큰만 실제 치환 대상이다.
@@ -240,7 +240,7 @@ export function buildSectionPlanningPrompt(input: SectionPlanningPromptInput): s
   }
   let prompt = SECTION_PLANNING_PROMPT
   for (const [slot, value] of Object.entries(replacements)) {
-    prompt = prompt.replaceAll(`{${slot}}`, value)
+    prompt = prompt.replaceAll(`{${slot}}`, () => value)
   }
   return prompt
 }
@@ -416,6 +416,30 @@ export const TEXT_BEARING_PROMPT_SCOPE = `
 - 이 제품은 **평면 인쇄물**입니다 — 접시·도자기·머그·상자 같은 입체 물체로 렌더하지 마세요.
 `
 
+/**
+ * R1 빛·색온도 정본(잡 스위치 light, PDP-DR-PLAN §3) — 위 JSON 예시의 빛 문구 → 대비·밝기만 남긴 문구.
+ * 이미지 단계(pdp-image-light)도 LLM이 예시에서 그대로 옮긴 문구를 같은 표로 바꾼다
+ */
+export const CHARTER_LIGHT_EXAMPLE_SWAPS: ReadonlyArray<readonly [string, string]> = [
+  [
+    'soft warm natural lighting (golden hour or warm indoor light), warm color temperature, natural saturated colors',
+    'soft inviting light, natural saturated colors',
+  ],
+  ['Soft diffused lighting from top-left.', 'Soft diffused light.'],
+  ['Warm tones, high saturation, enhanced brightness.', 'High saturation, enhanced brightness.'],
+  ['Side lighting emphasizing texture depth.', 'Texture-revealing contrast.'],
+  ['Golden hour warm soft lighting.', 'Soft inviting light.'],
+]
+
+/** R1 — 빛 방향·색온도는 이미지 단계의 스타일 헌장 한 곳만 정한다. light 기록 잡의 설계 콜에만 덧붙인다(슬롯 없음) */
+export const LIGHT_FROM_CHARTER_SCOPE = `
+
+## 빛·색온도(스타일 헌장이 정한다)
+- \`positive\`에 광원 종류(소프트박스·창가·골든아워·텅스텐 등)·빛 방향·색온도(K 값, 따뜻한/차가운 색온도)를 쓰지 마세요.
+  이미지 단계가 모든 컷에 같은 스타일 헌장(빛 방향·색온도 하나)을 붙입니다.
+- 컷마다 다르게 쓸 수 있는 빛은 대비(부드럽게·강하게)와 밝기(밝게·하이키)뿐입니다.
+`
+
 /** DESIGN_PROMPT_ENGINEERING_PROMPT 슬롯 11종 입력 (PRODUCT_CONSISTENCY_RULES 제외 — 별도 인자) */
 export interface DesignPromptEngineeringInput {
   productName: string
@@ -440,11 +464,16 @@ export interface DesignPromptEngineeringInput {
 export function buildDesignPromptEngineeringPrompt(
   input: DesignPromptEngineeringInput,
   productConsistencyRules: string,
-  options?: { textBearing?: boolean }
+  options?: { textBearing?: boolean; lightFromCharter?: boolean }
 ): string {
   let prompt = DESIGN_PROMPT_ENGINEERING_PROMPT
   if (options?.textBearing) {
     prompt += TEXT_BEARING_PROMPT_SCOPE
+  }
+  // R1 — 예시의 빛 문구를 대비·밝기만 남긴 문구로 바꾸고 헌장 우선 블록을 붙인다(light 기록 잡만, 그 밖은 원문 그대로)
+  if (options?.lightFromCharter) {
+    for (const [from, to] of CHARTER_LIGHT_EXAMPLE_SWAPS) prompt = prompt.replaceAll(from, () => to)
+    prompt += LIGHT_FROM_CHARTER_SCOPE
   }
   const replacements: Record<string, string> = {
     product_name: input.productName,
@@ -461,7 +490,7 @@ export function buildDesignPromptEngineeringPrompt(
     PRODUCT_CONSISTENCY_RULES: productConsistencyRules,
   }
   for (const [slot, value] of Object.entries(replacements)) {
-    prompt = prompt.replaceAll(`{${slot}}`, value)
+    prompt = prompt.replaceAll(`{${slot}}`, () => value)
   }
   return prompt
 }

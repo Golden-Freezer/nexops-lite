@@ -1,0 +1,603 @@
+{
+  "_source": "R1 P03 treatment 잡 f2d72bd0(2026-10-27, 24.94점, 효능 감점 4건) — 카피 단계 입력(spec_sheet·analysis·research_result·section_plan 일부). 산출 카피는 문제 문장 확인용 일부만",
+  "mode": "pro",
+  "generation_track": "internalized",
+  "spec_sheet": {
+    "category": "beauty",
+    "brandName": "페어넥스",
+    "productName": "페어넥스 스칼프 마사지 두피 샴푸 브러쉬",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ]
+  },
+  "analysis": {
+    "cons": [
+      "리뷰 데이터 부재로 인한 단점 추출 불가"
+    ],
+    "pros": [
+      "리뷰 데이터 부재로 인한 장점 추출 불가"
+    ],
+    "keywords": [
+      "두피 마사지",
+      "스칼프 브러쉬",
+      "샴푸 브러쉬",
+      "두피 케어",
+      "마사지 도구",
+      "페어넥스",
+      "세이지 그린",
+      "두피 건강",
+      "혈액순환",
+      "스트레스 완화",
+      "홈케어",
+      "뷰티 도구",
+      "헤어 케어",
+      "두피 마사지기",
+      "셀프 마사지"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ]
+    },
+    "raw_summary": "페어넥스의 스칼프 마사지 두피 샴푸 브러쉬는 샴푸 시 두피 마사지를 동시에 할 수 있는 멀티펑셔널 뷰티 도구입니다. 세이지 그린 색상으로 감각적인 디자인을 갖추고 있으며, 일상적인 홈케어를 통해 두피 건강과 혈액순환을 개선할 수 있습니다.",
+    "pain_clusters": [
+      {
+        "pain": "일상적인 두피 관리의 번거로움",
+        "urgency": "medium"
+      },
+      {
+        "pain": "두피 혈액순환 부족으로 인한 건강 악화",
+        "urgency": "medium"
+      }
+    ],
+    "usp_candidates": [
+      "두피 마사지와 샴푸를 동시에 수행하는 멀티펑셔널 브러쉬",
+      "세이지 그린 컬러의 감각적인 디자인",
+      "페어넥스 브랜드의 두피 케어 전문성"
+    ],
+    "benefit_clusters": [
+      {
+        "name": "두피 건강 개선",
+        "weight": 0.35
+      },
+      {
+        "name": "편의성 및 효율성",
+        "weight": 0.3
+      },
+      {
+        "name": "감각적 디자인",
+        "weight": 0.2
+      },
+      {
+        "name": "스트레스 완화",
+        "weight": 0.15
+      }
+    ],
+    "decision_profile": {
+      "giftability": "medium",
+      "repeatability": "repeat",
+      "urgency_level": "low",
+      "price_resistance": "medium",
+      "visual_hook_need": "high",
+      "explanation_depth": "standard",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "comparison_intensity": "medium"
+    },
+    "detected_category": "beauty",
+    "objection_priority": [
+      "단순 브러쉬 대비 실제 효과의 차별성",
+      "사용 편의성 및 내구성"
+    ],
+    "recommended_strategy_contract": {
+      "hook_mode": "empathy",
+      "page_goal": "standard",
+      "persuasion_axis": "balanced",
+      "frame_style_pack": "editorial_mix",
+      "purchase_context": "self_use",
+      "involvement_level": "low",
+      "proof_sensitivity": "medium",
+      "visual_style_pack": "clean_proof",
+      "objection_priority": [
+        "단순 브러쉬 대비 실제 효과의 차별성",
+        "사용 편의성 및 내구성"
+      ],
+      "page_length_target": "standard",
+      "comparison_intensity": "medium",
+      "review_position_strategy": "dynamic",
+      "soldout_position_strategy": "dynamic"
+    }
+  },
+  "research_result": {
+    "proof_plan": {
+      "minimum_proof_count": 3,
+      "required_proof_types": [
+        "구조컷",
+        "사용컷",
+        "비교컷",
+        "스펙표"
+      ]
+    },
+    "length_plan": {
+      "master_depth": "standard",
+      "quick_version_sections": 10,
+      "standard_version_sections": 15,
+      "persuasive_version_sections": 22
+    },
+    "pain_points": [
+      {
+        "insight": "매일 샴푸할 때 손가락만으로는 두피를 제대로 자극하기 어렵다고 느낀다",
+        "evidence": "리뷰 데이터 부재, 페르소나 및 카테고리 특성 기반 추론",
+        "support_count": 0
+      },
+      {
+        "insight": "손으로 하는 두피 마사지는 금방 지치고 일관된 압력을 유지하기 힘들다",
+        "evidence": "저관여 셀프케어 도구 카테고리 공통 불만 패턴 추론",
+        "support_count": 0
+      },
+      {
+        "insight": "저렴한 샴푸 브러쉬는 모가 금방 뻣뻣해지거나 잘 빠져 내구성이 의심스럽다",
+        "evidence": "objection_priority '사용 편의성 및 내구성' 근거 반영",
+        "support_count": 0
+      },
+      {
+        "insight": "브러쉬가 단순 세정 도구인지 실제 두피 건강 효과가 있는지 확신이 서지 않는다",
+        "evidence": "objection_priority '효과의 차별성' 근거 반영",
+        "support_count": 0
+      },
+      {
+        "insight": "욕실에 두는 소품인데 디자인이 투박해 인테리어와 어울리지 않아 불만스럽다",
+        "evidence": "benefit_clusters '감각적 디자인' 비중 0.2 근거 추론",
+        "support_count": 0
+      },
+      {
+        "insight": "손잡이가 미끄럽거나 그립감이 나빠 거품 낀 상태에서 사용하기 불편하다",
+        "evidence": "뷰티 도구 카테고리 공통 사용성 불만 패턴 추론",
+        "support_count": 0
+      },
+      {
+        "insight": "하루 중 유일하게 긴장을 풀 수 있는 샤워 시간에도 피로나 스트레스가 해소되지 않는다",
+        "evidence": "pain_clusters '스트레스 완화' 니즈 기반 추론",
+        "support_count": 0
+      }
+    ],
+    "usp_mapping": {
+      "손으로 하는 두피 마사지는 금방 지치고 일관된 압력을 유지하기 힘들다": "인체공학적 그립으로 손목 힘을 덜 들이고도 일정한 압력을 유지하도록 설계",
+      "매일 샴푸할 때 손가락만으로는 두피를 제대로 자극하기 어렵다고 느낀다": "실리콘 돌기 구조로 손끝보다 넓고 균일하게 두피 전체를 자극하는 멀티펑셔널 브러쉬 설계로 해결",
+      "손잡이가 미끄럽거나 그립감이 나빠 거품 낀 상태에서 사용하기 불편하다": "젖은 손에서도 잡기 편한 그립 디자인으로 사용 편의성 확보",
+      "저렴한 샴푸 브러쉬는 모가 금방 뻣뻣해지거나 잘 빠져 내구성이 의심스럽다": "페어넥스 브랜드의 두피 케어 전문성을 바탕으로 한 내구 소재 적용 사실을 스펙으로 안내",
+      "욕실에 두는 소품인데 디자인이 투박해 인테리어와 어울리지 않아 불만스럽다": "세이지 그린 컬러의 감각적 디자인으로 욕실 소품으로서의 비주얼 만족도 제공",
+      "브러쉬가 단순 세정 도구인지 실제 두피 건강 효과가 있는지 확신이 서지 않는다": "두피 마사지와 샴푸를 동시에 수행하는 구조적 차별점을 구조컷과 사용컷으로 입증",
+      "하루 중 유일하게 긴장을 풀 수 있는 샤워 시간에도 피로나 스트레스가 해소되지 않는다": "두피 혈액순환을 돕는 마사지 기능으로 샤워 시간을 셀프케어 루틴으로 전환"
+    },
+    "hook_candidates": [
+      {
+        "mode": "empathy",
+        "headline": "손으로만 감는 샴푸, 두피는 그대로였다는 걸 알고 계셨나요"
+      },
+      {
+        "mode": "curiosity",
+        "headline": "같은 샴푸인데 왜 어떤 날은 두피가 더 개운할까"
+      },
+      {
+        "mode": "proof",
+        "headline": "세이지 그린 브러쉬 하나, 샴푸 시간을 바꾸는 구조의 차이"
+      }
+    ],
+    "review_insights": {
+      "objections": [
+        {
+          "insight": "일반 손 마사지와 비교해 실제로 효과 차이가 있는지 의심",
+          "evidence": "",
+          "support_count": 0
+        }
+      ],
+      "usage_scenes": [
+        {
+          "insight": "매일 샤워할 때 샴푸와 함께 사용하는 장면",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "퇴근 후 피로를 풀기 위해 자기 전 사용하는 장면",
+          "evidence": "",
+          "support_count": 0
+        }
+      ],
+      "benefit_clusters": [
+        {
+          "insight": "두피를 자극해 시원하고 개운한 느낌을 준다",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "샴푸 거품이 더 잘 나고 세정감이 좋아진다",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "짧은 시간 투자로 간편하게 두피 관리를 할 수 있다",
+          "evidence": "",
+          "support_count": 0
+        }
+      ]
+    },
+    "target_insights": "일반 소비자는 두피 건강에 관심은 있지만 전문적 관리보다는 일상 샤워 루틴 속에서 손쉽게 실천 가능한 방법을 원한다. 저관여·자기사용 목적 구매가 많아 과장된 효능보다 구조적 차별성과 디자인, 사용 편의성에 대한 담백한 증명이 구매 결정에 더 효과적이다.",
+    "planning_skeleton": {
+      "sections": [
+        {
+          "purpose": "공감 유발로 스크롤 유도",
+          "key_message": "매일 샴푸하지만 두피는 그대로였다",
+          "section_name": "메인 후킹"
+        },
+        {
+          "purpose": "불편함 구체화",
+          "key_message": "손가락 마사지는 힘들고 일관되지 않다",
+          "section_name": "문제 공감"
+        },
+        {
+          "purpose": "USP 제시",
+          "key_message": "샴푸와 마사지를 동시에 하는 멀티펑셔널 브러쉬",
+          "section_name": "제품 소개"
+        },
+        {
+          "purpose": "기능적 신뢰 구축",
+          "key_message": "실리콘 돌기 구조로 두피 전체 자극",
+          "section_name": "구조 설명"
+        },
+        {
+          "purpose": "구매 후 상황 이미지화",
+          "key_message": "매일 샤워 루틴에 자연스럽게 추가",
+          "section_name": "사용 장면"
+        },
+        {
+          "purpose": "감성 소구",
+          "key_message": "세이지 그린 컬러로 욕실 분위기 업",
+          "section_name": "디자인 디테일"
+        },
+        {
+          "purpose": "반론 해소",
+          "key_message": "그립감과 소재 내구성 스펙 안내",
+          "section_name": "내구성·사용성 안내"
+        },
+        {
+          "purpose": "경쟁 대비 차별성 전달",
+          "key_message": "단순 브러쉬와의 구조적 차이",
+          "section_name": "비교 설명"
+        },
+        {
+          "purpose": "정보 탐색 니즈 충족",
+          "key_message": "사이즈, 소재, 색상 등 기본 정보",
+          "section_name": "스펙 요약"
+        },
+        {
+          "purpose": "행동 유도",
+          "key_message": "오늘 샤워부터 바로 시작하기",
+          "section_name": "구매 전환 CTA"
+        }
+      ],
+      "hook_score": {
+        "proof": 0.45,
+        "clarity": 0.78,
+        "novelty": 0.6,
+        "relevance": 0.82,
+        "visual_stop_power": 0.7
+      },
+      "hook_theme": "매일 하는 샴푸, 그 3분을 두피 케어 시간으로 바꾸는 공감형 후킹",
+      "proof_plan": {
+        "minimum_proof_count": 3,
+        "required_proof_types": [
+          "구조컷",
+          "사용컷",
+          "비교컷",
+          "스펙표"
+        ]
+      },
+      "story_flow": [
+        "공감: 매일 샴푸하지만 두피 관리까지는 못하는 일상 공감",
+        "문제 제기: 손가락 마사지의 한계와 번거로움 환기",
+        "해결책 제시: 멀티펑셔널 브러쉬 구조와 사용법 소개",
+        "근거 제시: 구조컷·사용컷으로 기능 차별성 증명",
+        "디자인 소구: 세이지 그린 컬러와 욕실 인테리어 조화",
+        "행동 유도: 가격·구성 안내 및 구매 유도"
+      ],
+      "length_plan": {
+        "master_depth": "standard",
+        "quick_version_sections": 10,
+        "standard_version_sections": 15,
+        "persuasive_version_sections": 22
+      },
+      "cta_strategy": "급박한 혜택 강조보다 '오늘부터 바로 실천 가능한 루틴'이라는 담백한 메시지로 낮은 관여도 소비자의 부담 없는 클릭을 유도. 가격 저항을 고려해 가성비보다 '매일 쓰는 소모 없는 도구'라는 반복구매 가치 강조.",
+      "hook_candidates": [
+        {
+          "mode": "empathy",
+          "headline": "손으로만 감는 샴푸, 두피는 그대로였다는 걸 알고 계셨나요"
+        },
+        {
+          "mode": "curiosity",
+          "headline": "같은 샴푸인데 왜 어떤 날은 두피가 더 개운할까"
+        },
+        {
+          "mode": "proof",
+          "headline": "세이지 그린 브러쉬 하나, 샴푸 시간을 바꾸는 구조의 차이"
+        }
+      ],
+      "section_purpose_map": [
+        {
+          "purpose": "타겟의 일상적 불편을 환기시켜 몰입 유도",
+          "section": "공감 후킹"
+        },
+        {
+          "purpose": "손 마사지의 한계를 구체화해 니즈 자극",
+          "section": "문제 심화"
+        },
+        {
+          "purpose": "USP를 구조적으로 설명해 신뢰 확보",
+          "section": "제품 소개"
+        },
+        {
+          "purpose": "구조컷·비교컷으로 실제 효과 차별성 입증",
+          "section": "기능 증명"
+        },
+        {
+          "purpose": "감각적 비주얼로 소유 욕구 자극",
+          "section": "디자인 소구"
+        },
+        {
+          "purpose": "내구성·그립감 등 반론 선제 해소",
+          "section": "사용성 안내"
+        },
+        {
+          "purpose": "가격 저항 완화 및 CTA 클릭 유도",
+          "section": "구매 전환"
+        }
+      ]
+    },
+    "section_purpose_map": [
+      {
+        "purpose": "타겟의 일상적 불편을 환기시켜 몰입 유도",
+        "section": "공감 후킹"
+      },
+      {
+        "purpose": "손 마사지의 한계를 구체화해 니즈 자극",
+        "section": "문제 심화"
+      },
+      {
+        "purpose": "USP를 구조적으로 설명해 신뢰 확보",
+        "section": "제품 소개"
+      },
+      {
+        "purpose": "구조컷·비교컷으로 실제 효과 차별성 입증",
+        "section": "기능 증명"
+      },
+      {
+        "purpose": "감각적 비주얼로 소유 욕구 자극",
+        "section": "디자인 소구"
+      },
+      {
+        "purpose": "내구성·그립감 등 반론 선제 해소",
+        "section": "사용성 안내"
+      },
+      {
+        "purpose": "가격 저항 완화 및 CTA 클릭 유도",
+        "section": "구매 전환"
+      }
+    ]
+  },
+  "section_plan": {
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ],
+      "vocabHash": "73b757bbdea4"
+    },
+    "internalized_skeleton": {
+      "persuasion": {
+        "rules": [
+          {
+            "id": "R1",
+            "pass": true
+          },
+          {
+            "id": "R2",
+            "pass": true
+          },
+          {
+            "id": "R3",
+            "pass": true
+          },
+          {
+            "id": "R4",
+            "pass": true
+          },
+          {
+            "id": "R5",
+            "pass": true
+          },
+          {
+            "id": "R6",
+            "pass": false,
+            "detail": "섹션 8개, 목표 10~14 — 목표 분량 미달(근거 없는 섹션은 만들지 않음 · 제외 사유는 excluded 참조)"
+          },
+          {
+            "id": "R7",
+            "pass": true
+          },
+          {
+            "id": "R8",
+            "pass": true
+          }
+        ],
+        "stages": [
+          {
+            "role": "hook",
+            "stage": "ATTENTION",
+            "reason": "v2 hookDefault",
+            "section": "hook_3step"
+          },
+          {
+            "role": "product_intro",
+            "stage": "ATTENTION",
+            "reason": "필수 — 첫 화면 상품",
+            "section": "main_cut"
+          },
+          {
+            "role": "problem",
+            "stage": "RELEVANCE",
+            "reason": "공감 신호(고통 긴급도·축·후킹 방식) + hook_gate",
+            "section": "problem_raise"
+          },
+          {
+            "role": "problem",
+            "stage": "RELEVANCE",
+            "reason": "문제-해결 짝(PAS)",
+            "section": "solution_guide"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "첫 가치 — 가치 단계를 연다",
+            "section": "point_div"
+          },
+          {
+            "role": "product_intro",
+            "stage": "VALUE",
+            "reason": "상품 노출(생성 예정 컷)",
+            "section": "product_exposure"
+          },
+          {
+            "role": "usp_feature",
+            "stage": "VALUE",
+            "reason": "가치 군집 3개 이상",
+            "section": "sub_div"
+          },
+          {
+            "role": "cta",
+            "stage": "ACTION",
+            "reason": "필수 — 마지막 행동",
+            "section": "cta"
+          }
+        ],
+        "grammar": "G1",
+        "layouts": [
+          {
+            "llm": "image_first",
+            "reason": "LLM 선택이 실측 후보 안",
+            "source": "llm",
+            "section": "hook_3step",
+            "category": "image_first"
+          },
+          {
+            "llm": "overlay",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "main_cut",
+            "category": "minimal"
+          },
+          {
+            "llm": "minimal",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "problem_raise",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "실측 1순위 후보(LLM split는 후보 밖)",
+            "source": "vocab",
+            "section": "solution_guide",
+            "category": "image_first"
+          },
+          {
+            "llm": "card",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "point_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "image_first",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "product_exposure",
+            "category": "minimal"
+          },
+          {
+            "llm": "split",
+            "reason": "행렬(가드·모바일)을 통과한 후보 없음",
+            "source": "default",
+            "section": "sub_div",
+            "category": "minimal"
+          },
+          {
+            "llm": "bold",
+            "reason": "프리셋 제외 섹션 — 전용 디자인 유지",
+            "source": "default",
+            "section": "cta",
+            "category": "minimal"
+          }
+        ],
+        "vocabHash": "73b757bbdea4",
+        "priorSource": "v2:beauty",
+        "lengthTarget": [
+          10,
+          14
+        ],
+        "objectionCoverage": [
+          {
+            "note": "유형 미분류 — 미응답 기록",
+            "type": "other",
+            "objection": "단순 브러쉬 대비 실제 효과의 차별성",
+            "answeredBy": null
+          },
+          {
+            "note": "클로즈업 증거 컷 — 수치 주장 금지",
+            "type": "quality_durability",
+            "objection": "사용 편의성 및 내구성",
+            "answeredBy": "sub_div"
+          }
+        ]
+      }
+    }
+  },
+  "flagged_copy": {
+    "mainIntro.benefitHeadline": "두피가 개운해지는\n3분 샤워 습관",
+    "mainIntro.subBenefit": "실리콘 돌기가 손끝보다 넓게 두피를 자극해 개운한 세정감까지 끌어올려요",
+    "solution.summary": "실리콘 돌기가 손가락보다 넓고 균일하게 압력을 전달해 샴푸하면서 마사지까지 끝나요",
+    "detailPoints[4].claim": "단순 브러쉬와는 구조부터 달라요"
+  }
+}

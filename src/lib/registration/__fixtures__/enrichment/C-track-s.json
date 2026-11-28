@@ -1,0 +1,1189 @@
+{
+  "fixtureKey": "C-track-s",
+  "sourceJobId": "7d5abdb4-cf66-4e83-9831-934985e92b78",
+  "exportedAt": "2026-10-27T01:50:05.023Z",
+  "generation_track": "standard",
+  "mode": "pro",
+  "image_model": "gpt-image-2",
+  "image_quality": "medium",
+  "spec_sheet": {
+    "category": "packaging",
+    "material": "반투명 PE 파우치",
+    "brandName": "지야픽",
+    "keyFeatures": [
+      "데이지 패턴 반투명 스트링 파우치",
+      "간식·답례품 소분 포장",
+      "끈으로 여미는 간편 밀봉"
+    ],
+    "productName": "지야픽 데이지 구디백 답례품 선물 파우치",
+    "usageLocation": "답례품/파티 간식 포장",
+    "imagePhotoStyle": "studio"
+  },
+  "source_images": [
+    "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/nexfit-materials/goodiebag-2065dc71308f.png",
+    "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/nexfit-materials/goodiebag-94270ce3afc8.png"
+  ],
+  "analysis": {
+    "cons": [
+      "PE 소재의 내구성 한계로 재사용 어려움",
+      "반투명 특성상 습기에 민감한 상품 보관 제한"
+    ],
+    "pros": [
+      "데이지 패턴으로 감성적이고 세련된 디자인",
+      "반투명 소재로 내용물이 보여 신뢰감 형성",
+      "스트링으로 간편하게 밀봉 가능",
+      "답례품과 파티 간식 포장에 최적화된 용도"
+    ],
+    "keywords": [
+      "데이지 패턴 파우치",
+      "반투명 PE 파우치",
+      "스트링 파우치",
+      "구디백",
+      "답례품 포장",
+      "선물 포장재",
+      "간식 소분",
+      "파티 용품",
+      "끈 밀봉",
+      "지야픽",
+      "일회용 포장",
+      "투명 파우치",
+      "소분 포장재",
+      "감성 포장",
+      "편의점 상품"
+    ],
+    "raw_summary": "지야픽의 데이지 패턴 반투명 스트링 파우치는 감성적 디자인과 실용성을 결합한 답례품·파티 포장재입니다. 반투명 PE 소재로 내용물 확인이 용이하며, 끈 밀봉으로 간편한 사용성을 제공합니다.",
+    "pain_clusters": [
+      {
+        "pain": "답례품/선물 포장 시 감성적 표현의 어려움",
+        "urgency": "medium"
+      },
+      {
+        "pain": "간식 소분 시 적절한 포장재 선택의 번거로움",
+        "urgency": "medium"
+      },
+      {
+        "pain": "파티/행사 준비 시 대량 포장재 수급의 불편함",
+        "urgency": "low"
+      }
+    ],
+    "usp_candidates": [
+      "데이지 플로럴 패턴의 감성적 디자인으로 선물 가치 상승",
+      "반투명 + 스트링 조합으로 편의성과 미학성 동시 충족",
+      "답례품/파티 용도 특화 포장재로 즉시 활용 가능",
+      "지야픽 브랜드의 감성 포장 전문성"
+    ],
+    "benefit_clusters": [
+      {
+        "name": "감성적 선물 가치 상승",
+        "weight": 0.35
+      },
+      {
+        "name": "사용 편의성 (간편 밀봉)",
+        "weight": 0.3
+      },
+      {
+        "name": "신뢰감 형성 (내용물 가시성)",
+        "weight": 0.2
+      },
+      {
+        "name": "다양한 용도 활용성",
+        "weight": 0.15
+      }
+    ],
+    "detected_category": "packaging",
+    "objection_priority": [
+      "일회용 포장재로 환경 친화성 부족",
+      "PE 소재의 재사용 불가능성",
+      "습기 민감 상품 보관 제한"
+    ],
+    "recommended_strategy_contract": {
+      "hook_mode": "curiosity",
+      "page_goal": "standard",
+      "persuasion_axis": "emotion",
+      "frame_style_pack": "pebble_soft",
+      "purchase_context": "gift",
+      "involvement_level": "low",
+      "proof_sensitivity": "low",
+      "visual_style_pack": "warm_story",
+      "objection_priority": [
+        "일회용 포장재로 환경 친화성 부족",
+        "PE 소재의 재사용 불가능성",
+        "습기 민감 상품 보관 제한"
+      ],
+      "page_length_target": "quick",
+      "comparison_intensity": "low",
+      "review_position_strategy": "dynamic",
+      "soldout_position_strategy": "dynamic"
+    }
+  },
+  "research_result": {
+    "proof_plan": {
+      "minimum_proof_count": 3,
+      "required_proof_types": [
+        "구조컷",
+        "사용컷",
+        "후기근거"
+      ]
+    },
+    "length_plan": {
+      "master_depth": "quick",
+      "quick_version_sections": 10,
+      "standard_version_sections": 15,
+      "persuasive_version_sections": 22
+    },
+    "pain_points": [
+      {
+        "insight": "답례품이나 파티용 소분 포장을 준비할 때 성의 없어 보이지 않으면서도 예쁜 포장재를 찾기 어렵다",
+        "evidence": "감성 디자인 관련 키워드와 답례품 용도 언급이 다수 확인됨",
+        "support_count": 0
+      },
+      {
+        "insight": "투명 포장재는 내용물이 그대로 드러나 저렴해 보이거나 성의 없어 보일까 걱정된다",
+        "evidence": "반투명 소재 신뢰감 형성 pros와 감성적 표현 어려움 pain 클러스터 존재",
+        "support_count": 0
+      },
+      {
+        "insight": "소분 포장 시 테이프나 별도 도구 없이 빠르게 밀봉할 방법이 마땅치 않다",
+        "evidence": "스트링 간편 밀봉 pros 언급 및 사용 편의성 benefit 비중 0.3",
+        "support_count": 0
+      },
+      {
+        "insight": "행사나 파티 준비 시 포장재를 낱개로 구매하거나 여러 곳에서 수급해야 해 번거롭다",
+        "evidence": "대량 포장재 수급 불편함 pain 클러스터 존재(낮은 긴급도)",
+        "support_count": 0
+      },
+      {
+        "insight": "일회용 포장재를 사용하는 것이 환경에 좋지 않다는 부담감이 구매를 망설이게 한다",
+        "evidence": "objection_priority 1순위로 환경 친화성 부족 언급",
+        "support_count": 0
+      },
+      {
+        "insight": "PE 소재라 한 번 쓰고 버려야 해서 아깝다는 인식이 있다",
+        "evidence": "cons에 PE 소재 내구성 한계로 재사용 어려움 명시",
+        "support_count": 0
+      },
+      {
+        "insight": "습기에 약한 식품이나 소품을 넣었을 때 눅눅해지거나 상할까 걱정된다",
+        "evidence": "cons에 반투명 특성상 습기 민감 상품 보관 제한 명시",
+        "support_count": 0
+      }
+    ],
+    "usp_mapping": {
+      "PE 소재라 한 번 쓰고 버려야 해서 아깝다는 인식이 있다": "1회성 이벤트·답례품 목적에 맞춘 합리적 소모품으로 포지셔닝",
+      "습기에 약한 식품이나 소품을 넣었을 때 눅눅해지거나 상할까 걱정된다": "장기 보관용이 아닌 단기 전달·선물용으로 용도를 명확히 안내",
+      "소분 포장 시 테이프나 별도 도구 없이 빠르게 밀봉할 방법이 마땅치 않다": "스트링 밀봉 방식으로 도구 없이 손쉽게 마무리 가능",
+      "일회용 포장재를 사용하는 것이 환경에 좋지 않다는 부담감이 구매를 망설이게 한다": "꼭 필요한 만큼만 소량 구성해 불필요한 소비를 줄이는 실용적 사용 제안",
+      "투명 포장재는 내용물이 그대로 드러나 저렴해 보이거나 성의 없어 보일까 걱정된다": "반투명 PE 소재로 은은하게 내용물을 비추면서도 고급스러운 느낌 유지",
+      "행사나 파티 준비 시 포장재를 낱개로 구매하거나 여러 곳에서 수급해야 해 번거롭다": "답례품·파티 용도에 특화된 구성으로 한 번에 필요한 만큼 준비 가능",
+      "답례품이나 파티용 소분 포장을 준비할 때 성의 없어 보이지 않으면서도 예쁜 포장재를 찾기 어렵다": "데이지 플로럴 패턴 디자인으로 포장만으로도 감성적인 선물 가치를 더함"
+    },
+    "hook_candidates": [
+      {
+        "mode": "curiosity",
+        "headline": "똑같은 사탕인데, 왜 이 답례품만 더 예뻐 보일까요?"
+      },
+      {
+        "mode": "empathy",
+        "headline": "답례품 포장, 매번 뭘로 해야 할지 고민이셨죠?"
+      },
+      {
+        "mode": "proof",
+        "headline": "데이지 패턴 하나로 완성되는 감성 포장, 지야픽 스트링 파우치"
+      }
+    ],
+    "review_insights": {
+      "objections": [
+        {
+          "insight": "일회용이라 환경에 부담이 될까 망설여진다",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "PE 소재라 재사용이 안 되니 낭비 아닌가 싶다",
+          "evidence": "",
+          "support_count": 0
+        }
+      ],
+      "usage_scenes": [
+        {
+          "insight": "결혼식, 돌잔치 등 행사 답례품을 소분해 담는 장면",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "홈파티나 생일파티에서 과자·사탕 등 간식을 나눠 담는 장면",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "핸드메이드 소품이나 액세서리를 선물용으로 포장하는 장면",
+          "evidence": "",
+          "support_count": 0
+        }
+      ],
+      "benefit_clusters": [
+        {
+          "insight": "데이지 패턴 디자인 덕분에 포장만으로 선물이 특별해 보인다는 반응",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "내용물이 비쳐 보여서 무엇이 들었는지 바로 확인되니 안심된다는 반응",
+          "evidence": "",
+          "support_count": 0
+        },
+        {
+          "insight": "끈으로 묶기만 하면 되니 포장 시간이 단축된다는 반응",
+          "evidence": "",
+          "support_count": 0
+        }
+      ]
+    },
+    "target_insights": "일반 소비자는 답례품·파티 포장을 준비할 때 예쁘면서도 간편한 포장재를 찾는 데 어려움을 겪는다. 저관여·감성 구매 맥락이므로 복잡한 스펙보다 디자인 매력과 사용 편의성을 감성적으로 전달하는 것이 중요하다. 동시에 일회용·재사용 불가·습기 민감 같은 사실은 과장 없이 담백하게 고지해 신뢰를 유지해야 한다.",
+    "planning_skeleton": {
+      "sections": [
+        {
+          "purpose": "감성적 호기심으로 시선 고정",
+          "key_message": "포장 하나로 달라지는 답례품의 인상",
+          "section_name": "메인 후킹 배너"
+        },
+        {
+          "purpose": "타겟 페르소나의 포장 고민 공감",
+          "key_message": "답례품 포장, 매번 고민되시죠?",
+          "section_name": "공감 도입부"
+        },
+        {
+          "purpose": "데이지 패턴의 감성적 가치 전달",
+          "key_message": "데이지 패턴 하나로 완성되는 선물 무드",
+          "section_name": "디자인 소개"
+        },
+        {
+          "purpose": "반투명 소재의 신뢰감 강조",
+          "key_message": "은은하게 비치는 내용물, 신뢰가는 포장",
+          "section_name": "소재 특징"
+        },
+        {
+          "purpose": "스트링 밀봉의 간편함 체감",
+          "key_message": "끈만 묶으면 끝, 도구 없이도 완성되는 포장",
+          "section_name": "사용 방법"
+        },
+        {
+          "purpose": "다양한 용도의 실용성 어필",
+          "key_message": "답례품부터 파티 간식까지 이 파우치 하나면 충분",
+          "section_name": "활용 시나리오"
+        },
+        {
+          "purpose": "오브젝션 사전 해소로 신뢰 형성",
+          "key_message": "일회성 선물·간식용으로 최적화된 포장재입니다",
+          "section_name": "정직한 사용 안내"
+        },
+        {
+          "purpose": "구매 결정에 필요한 기본 정보 제공",
+          "key_message": "사이즈, 수량, 소재 정보 한눈에 확인",
+          "section_name": "구성/스펙 안내"
+        },
+        {
+          "purpose": "사회적 증거로 구매 확신 강화",
+          "key_message": "실제 사용해본 분들의 생생한 활용 후기",
+          "section_name": "리뷰/후기 존"
+        },
+        {
+          "purpose": "행동 촉구",
+          "key_message": "지금 필요한 만큼, 부담 없이 준비하세요",
+          "section_name": "구매 유도 CTA"
+        }
+      ],
+      "hook_score": {
+        "proof": 0.4,
+        "clarity": 0.75,
+        "novelty": 0.6,
+        "relevance": 0.8,
+        "visual_stop_power": 0.7
+      },
+      "hook_theme": "포장 하나로 달라지는 답례품의 첫인상, 데이지 파우치의 감성 이야기",
+      "proof_plan": {
+        "minimum_proof_count": 3,
+        "required_proof_types": [
+          "구조컷",
+          "사용컷",
+          "후기근거"
+        ]
+      },
+      "story_flow": [
+        "공감: 답례품/파티 포장 고민 제시",
+        "발견: 데이지 패턴 파우치와의 만남",
+        "체감: 반투명+스트링으로 확인되는 편의성과 감성",
+        "확신: 다양한 활용 장면으로 신뢰 형성",
+        "안내: 사용 시 유의사항(용도 한정) 담백하게 고지",
+        "행동: 지금 필요한 만큼 구매 유도"
+      ],
+      "length_plan": {
+        "master_depth": "quick",
+        "quick_version_sections": 10,
+        "standard_version_sections": 15,
+        "persuasive_version_sections": 22
+      },
+      "cta_strategy": "고관여 설득보다 저관여 구매 결정을 돕는 담백한 CTA 사용. '지금 필요한 만큼 준비하세요' 식의 부담 없는 문구로 즉시 구매를 유도하며, 리뷰/재구매 여부는 동적 배치로 구매 직전 신뢰 보강 지점에 노출.",
+      "hook_candidates": [
+        {
+          "mode": "curiosity",
+          "headline": "똑같은 사탕인데, 왜 이 답례품만 더 예뻐 보일까요?"
+        },
+        {
+          "mode": "empathy",
+          "headline": "답례품 포장, 매번 뭘로 해야 할지 고민이셨죠?"
+        },
+        {
+          "mode": "proof",
+          "headline": "데이지 패턴 하나로 완성되는 감성 포장, 지야픽 스트링 파우치"
+        }
+      ],
+      "section_purpose_map": [
+        {
+          "purpose": "감성적 궁금증 유발로 스크롤 유도",
+          "section": "메인 후킹"
+        },
+        {
+          "purpose": "답례품/파티 포장 고민에 대한 감정적 동조 형성",
+          "section": "공감 포인트"
+        },
+        {
+          "purpose": "데이지 패턴과 반투명 소재의 감성적 가치 전달",
+          "section": "제품 소개"
+        },
+        {
+          "purpose": "스트링 밀봉의 편리함을 체감시켜 구매 장벽 낮춤",
+          "section": "사용성 강조"
+        },
+        {
+          "purpose": "다양한 상황에 적용 가능함을 보여줘 구매 확신 강화",
+          "section": "활용 장면"
+        },
+        {
+          "purpose": "일회용/재사용 불가/습기 민감 사실을 담백하게 고지해 신뢰 확보",
+          "section": "정직한 안내"
+        },
+        {
+          "purpose": "부담 없는 선물 준비를 위한 행동 촉구",
+          "section": "구매 유도"
+        }
+      ]
+    },
+    "section_purpose_map": [
+      {
+        "purpose": "감성적 궁금증 유발로 스크롤 유도",
+        "section": "메인 후킹"
+      },
+      {
+        "purpose": "답례품/파티 포장 고민에 대한 감정적 동조 형성",
+        "section": "공감 포인트"
+      },
+      {
+        "purpose": "데이지 패턴과 반투명 소재의 감성적 가치 전달",
+        "section": "제품 소개"
+      },
+      {
+        "purpose": "스트링 밀봉의 편리함을 체감시켜 구매 장벽 낮춤",
+        "section": "사용성 강조"
+      },
+      {
+        "purpose": "다양한 상황에 적용 가능함을 보여줘 구매 확신 강화",
+        "section": "활용 장면"
+      },
+      {
+        "purpose": "일회용/재사용 불가/습기 민감 사실을 담백하게 고지해 신뢰 확보",
+        "section": "정직한 안내"
+      },
+      {
+        "purpose": "부담 없는 선물 준비를 위한 행동 촉구",
+        "section": "구매 유도"
+      }
+    ]
+  },
+  "section_plan": {
+    "reasoning": "완판·리뷰 실적이 없어 실적증거 무기는 무력화, 패키징 제품 특성상 시각적 충격보다는 답례품/파티라는 감성적 사용 맥락과 pain point(성의없어 보임, 감성 표현 어려움)를 겨냥한 감성연결이 가장 설득력 있다. 전략계약(저관여+emotion+dynamic리뷰+curiosity후킹)에 따라 hook_3step에 이미지 후킹을 적용하고 리뷰(perf_rating/perf_reviews)는 solution_guide 이후 증거 섹션들과 인접한 중반부에 배치했다. problem_raise와 key_message는 5개 이상 간격을 두었고, key_message는 solution_guide 직후가 아닌 point_list_div/perf 섹션들 뒤에 배치해 규칙을 준수했다. 저관여 특성상 compare_div는 뒤쪽에 압축 배치하고 hidden_page(습기 주의 등 objection 대응)를 후반에 넣어 우려를 해소한다. 총 21개 섹션으로 스크롤 길이와 신뢰감을 확보했다.",
+    "font_scheme": {
+      "usp": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      },
+      "hook": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      },
+      "modules": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      },
+      "problem": {
+        "body": "Pretendard",
+        "heading": "Cafe24 Ssurround"
+      }
+    },
+    "hook_strategy": {
+      "reasoning": "완판 실적 없음, 리뷰 없음, 실적/시각충격 무기 모두 부재. 반면 데이지 플로럴 패턴 + 답례품/파티 용도라는 감성적 사용 맥락이 뚜렷하고, 저관여+emotion 축 전략계약과도 정합. Pain point 상위(성의 없어 보임, 감성 표현 어려움)가 모두 '감성적 가치'에 대한 결핍이므로 감성 연결이 가장 강한 무기.",
+      "hero_frame": "petal",
+      "image_hooking": true,
+      "first_3_seconds": "답례품/파티 테이블에 데이지 패턴 파우치가 소분되어 놓인 감성 사용 장면 + 궁금증 유발 카피, 이어서 Hero 제품컷과 아이콘 USP(반투명·스트링밀봉·감성디자인·답례품특화)",
+      "strongest_weapon": "감성연결"
+    },
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "product_exposure",
+      "problem_raise",
+      "problem_empathy",
+      "direction_suggest",
+      "solution_guide",
+      "concept_desc",
+      "point_div",
+      "spec_table",
+      "point_list_div",
+      "perf_rating",
+      "perf_reviews",
+      "key_message",
+      "sub_div",
+      "event_bundle",
+      "sub2_div_page",
+      "hidden_page",
+      "compare_div",
+      "petit_div",
+      "cta"
+    ],
+    "section_specs": {
+      "cta": {
+        "has_image": false,
+        "image_role": "",
+        "body_max_chars": 30,
+        "headline_max_chars": 18
+      },
+      "sub_div": {
+        "has_image": true,
+        "image_role": "다양한 파티/답례품 활용 장면",
+        "body_max_chars": 50,
+        "headline_max_chars": 20
+      },
+      "main_cut": {
+        "has_image": true,
+        "image_role": "petal 프레임 적용 Hero 제품컷 + 아이콘 USP 4개",
+        "body_max_chars": 50,
+        "headline_max_chars": 20
+      },
+      "petit_div": {
+        "has_image": true,
+        "image_role": "작은 디테일컷 모음",
+        "body_max_chars": 30,
+        "headline_max_chars": 16
+      },
+      "point_div": {
+        "has_image": true,
+        "image_role": "USP 포인트별 아이콘·컷 3~4개",
+        "body_max_chars": 40,
+        "headline_max_chars": 18
+      },
+      "hook_3step": {
+        "has_image": true,
+        "image_role": "답례품/파티 테이블에 파우치가 놓인 감성 장면으로 궁금증 유발",
+        "body_max_chars": 40,
+        "headline_max_chars": 24
+      },
+      "spec_table": {
+        "has_image": false,
+        "image_role": "",
+        "body_max_chars": 30,
+        "headline_max_chars": 16
+      },
+      "compare_div": {
+        "has_image": false,
+        "image_role": "",
+        "body_max_chars": 40,
+        "headline_max_chars": 18
+      },
+      "hidden_page": {
+        "has_image": true,
+        "image_role": "보관/취급 주의사항 안내 이미지",
+        "body_max_chars": 50,
+        "headline_max_chars": 20
+      },
+      "key_message": {
+        "has_image": false,
+        "image_role": "",
+        "body_max_chars": 30,
+        "headline_max_chars": 20
+      },
+      "perf_rating": {
+        "has_image": false,
+        "image_role": "",
+        "body_max_chars": 30,
+        "headline_max_chars": 16
+      },
+      "concept_desc": {
+        "has_image": true,
+        "image_role": "지야픽 브랜드 감성 포장 컨셉 이미지",
+        "body_max_chars": 60,
+        "headline_max_chars": 20
+      },
+      "event_bundle": {
+        "has_image": true,
+        "image_role": "대량 세트 구성 이미지",
+        "body_max_chars": 40,
+        "headline_max_chars": 18
+      },
+      "perf_reviews": {
+        "has_image": true,
+        "image_role": "실사용 후기 캐릭터 썸네일",
+        "body_max_chars": 40,
+        "headline_max_chars": 18
+      },
+      "problem_raise": {
+        "has_image": false,
+        "image_role": "질문형 카피로 시선 정지",
+        "body_max_chars": 50,
+        "headline_max_chars": 26
+      },
+      "sub2_div_page": {
+        "has_image": true,
+        "image_role": "소재 디테일(반투명+데이지 패턴) 확대컷",
+        "body_max_chars": 50,
+        "headline_max_chars": 20
+      },
+      "point_list_div": {
+        "has_image": true,
+        "image_role": "스트링 밀봉 사용법 스텝 이미지",
+        "body_max_chars": 40,
+        "headline_max_chars": 18
+      },
+      "solution_guide": {
+        "has_image": true,
+        "image_role": "데이지 패턴 파우치로 답례품을 소분 포장하는 해결 장면",
+        "body_max_chars": 55,
+        "headline_max_chars": 22
+      },
+      "problem_empathy": {
+        "has_image": true,
+        "image_role": "성의 없어 보이는 저렴한 포장재 vs 고민하는 상황 이미지",
+        "body_max_chars": 60,
+        "headline_max_chars": 24
+      },
+      "product_exposure": {
+        "has_image": true,
+        "image_role": "반투명 소재감·스트링 클로즈업 추가 앵글",
+        "body_max_chars": 40,
+        "headline_max_chars": 20
+      },
+      "direction_suggest": {
+        "has_image": false,
+        "image_role": "",
+        "body_max_chars": 50,
+        "headline_max_chars": 24
+      }
+    },
+    "design_direction": "감성적이고 아기자기한 파스텔·플로럴 톤을 중심으로, 답례품/파티 상황의 따뜻한 사용 장면을 스토리텔링으로 풀어낸다. 저관여 상품 특성에 맞춰 증거 섹션은 압축하고 감각적 이미지와 짧은 카피로 속결 유도한다. petal 프레임으로 선물·감성 무드를 강조하고 전체적으로 부드러운 라운드 톤을 유지한다.",
+    "layout_selections": {
+      "cta": "full_bleed",
+      "sub_div": "split",
+      "main_cut": "bold",
+      "petit_div": "stacked",
+      "point_div": "dynamic",
+      "hook_3step": "image_first",
+      "spec_table": "minimal",
+      "compare_div": "split",
+      "hidden_page": "minimal",
+      "key_message": "gradient",
+      "perf_rating": "minimal",
+      "concept_desc": "card",
+      "event_bundle": "card",
+      "perf_reviews": "card",
+      "problem_raise": "minimal",
+      "sub2_div_page": "image_first",
+      "point_list_div": "stacked",
+      "solution_guide": "image_first",
+      "problem_empathy": "overlay",
+      "product_exposure": "split",
+      "direction_suggest": "minimal"
+    },
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "product_exposure",
+      "problem_raise",
+      "problem_empathy",
+      "direction_suggest",
+      "solution_guide",
+      "concept_desc",
+      "point_div",
+      "spec_table",
+      "point_list_div",
+      "key_message",
+      "sub_div",
+      "event_bundle",
+      "sub2_div_page",
+      "hidden_page",
+      "compare_div",
+      "petit_div",
+      "perf_rating",
+      "perf_reviews",
+      "cta"
+    ]
+  },
+  "design_prompts": {
+    "color_params": {
+      "primary_hex": "{palette.primary}",
+      "tone_mapping": "warm",
+      "secondary_hex": "{palette.secondary}",
+      "text_on_light": "{palette.primary}",
+      "background_hex": "{palette.bgMain}",
+      "saturation_level": "0.75"
+    },
+    "frame_system": {
+      "primary": "pebble_soft",
+      "secondary": "rounded_rect"
+    },
+    "howto_prompts": [],
+    "identity_card": "PRODUCT IDENTITY (read from the user's reference photo — the generated product must match every detail below): Drawstring gift bag, yellow cord drawstring closure, closed at top, semi-transparent frosted plastic material, white daisy flower print pattern, filled with assorted candy and snack packages visible inside, 1 compartment, bell-shaped bag",
+    "style_charter": "GLOBAL STYLE CHARTER (identical across ALL images of this product page — deviation from this charter is a failure):\n- Background: solid #fdf6f0\n- Single color temperature for every cut: Bright neutral 5500K even commercial lighting, maximum product clarity and detail\n- Single key light direction: top-left (shadow angle ~45 degrees)\n- Prop/accent palette (props harmonized ONLY to): #c2410c, #f4a5c0, #fbe8ee\n- Mood keywords: cozy · warm · inviting · soft · trustworthy\n- Set description: one continuous studio set shared by every cut of this page\nThis image is one of many images on a single product page sharing this exact charter.\nIP PROTECTION RULE (ABSOLUTE): Do NOT depict any copyrighted or trademarked fictional character, mascot, anime/cartoon figure (e.g. Pokemon, Disney, Sanrio, or any licensed brand mascot) anywhere in the image — not as a main subject, prop, background decoration, or printed pattern. Props and decorations must be generic and unbranded. If the reference product itself depicts a licensed character, reproduce the product faithfully but do NOT add any additional licensed character elements beyond what the product photo shows.",
+    "feature_prompts": [],
+    "lighting_params": {
+      "direction": "top-left",
+      "intensity": 0.85,
+      "shadow_angle": 45,
+      "ambient_level": 0.35,
+      "color_temperature": "warm"
+    },
+    "composition_notes": "Product as visual hero. Consistent lighting. Cohesive image set.",
+    "section_image_prompts": {
+      "cta": {
+        "style": "emotional",
+        "negative": "text, letters, watermark, cold tones",
+        "positive": "Premium aspirational display of 지야픽 데이지 구디백 답례품 선물 파우치. Golden hour lighting. {palette.primary} accents. Trust and desire. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only."
+      },
+      "hero": {
+        "style": "premium_studio",
+        "negative": "text, letters, watermark, blurry, cluttered",
+        "positive": "Premium studio product photography of 지야픽 데이지 구디백 답례품 선물 파우치. Center-placed, 60-70% frame. 30-degree elevated angle. Soft diffused lighting. Clean {palette.bgMain} background. Sharp edges. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only."
+      },
+      "usage": {
+        "style": "lifestyle",
+        "negative": "text, letters, watermark, subway, bus, children",
+        "positive": "Natural lifestyle photo using 지야픽 데이지 구디백 답례품 선물 파우치 in its natural usage environment inferred from the product type (indoor or outdoor, matching season and place). Authentic interaction. Korean adult model. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only."
+      },
+      "detail": {
+        "style": "macro",
+        "negative": "text, letters, watermark, blurry texture",
+        "positive": "Extreme macro close-up of 지야픽 데이지 구디백 답례품 선물 파우치. Texture focus. 80% frame fill. Side lighting. White background. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only."
+      },
+      "options": {
+        "style": "catalog",
+        "negative": "text, letters, watermark, inconsistent lighting",
+        "positive": "Clean grid of product variations. Same lighting and angle. {palette.bgMain} background. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only."
+      },
+      "problem": {
+        "style": "empathy",
+        "negative": "any product, any tool, any device as a focal object, old or industrial equipment, products displayed on shelves, product, text, letters, watermark, cool blue tones, gray desaturated mood, gloomy, dark filter, children",
+        "positive": "Empathetic lifestyle scene centered on the CUSTOMER's facial expression and situation, showing everyday frustration. Frame the person and their emotion — do NOT depict any product, tool, device, or any old / alternative version of the product as a focal object. WARM and INVITING mood — soft warm natural lighting, warm color temperature, natural saturated colors. Clean aesthetic composition. Korean adult model. DO NOT include the product. IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only."
+      },
+      "solution": {
+        "style": "solution_hero",
+        "negative": "text, letters, watermark, dark tones, children",
+        "positive": "Bright positive lifestyle with 지야픽 데이지 구디백 답례품 선물 파우치 in use. Warm tones, satisfied expression. Clean background. Korean adult model. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only."
+      }
+    }
+  },
+  "copy_sections": {
+    "final": {
+      "howTo": [
+        {
+          "step": "간식이나 답례품 담기",
+          "description": "사탕, 소품 등 원하는 내용물을 파우치에 넣어요"
+        },
+        {
+          "step": "스트링으로 묶기",
+          "description": "달려있는 끈을 리본처럼 묶어 밀봉해요"
+        },
+        {
+          "step": "선물처럼 전달하기",
+          "description": "포장 그대로 답례품이나 간식으로 나눠줘요"
+        }
+      ],
+      "title": "지야픽 · 데이지 구디백 답례품 선물 파우치",
+      "problem": {
+        "empathy": "예쁘게 담고 싶은데, 손에 잡히는 건 늘 투명 비닐뿐, 성의 없어 보일까 걱정되셨죠",
+        "question": "답례품 포장, 매번 뭘로 할지 고민되죠?",
+        "empathyLines": [
+          "포장이 다 비슷해 보여요",
+          "투명 비닐은 저렴해 보여요",
+          "테이프 없인 밀봉이 힘들어요",
+          "예쁜 포장재 찾기 어려워요"
+        ],
+        "empathyDeepLines": [
+          "성의 없어 보일까 조마조마해",
+          "매번 같은 포장이라 민망해요",
+          "포장 고민에 시간 다 써요",
+          "받는 사람 반응이 걱정돼요"
+        ]
+      },
+      "summary": "포장으로 달라지는 첫인상",
+      "sections": [
+        {
+          "headline": "포장만으로\n선물이 더 특별해져요",
+          "sub_copy": "지야픽 · 데이지 구디백 답례품 선물 파우치",
+          "section_type": "hook",
+          "image_direction": "제품 중심의 프리미엄 스튜디오 촬영, 따뜻한 조명"
+        },
+        {
+          "headline": "답례품 포장, 매번 뭘로 할지 고민되죠?",
+          "sub_copy": "예쁘게 담고 싶은데, 손에 잡히는 건 늘 투명 비닐뿐, 성의 없어 보일까 걱정되셨죠",
+          "section_type": "problem",
+          "image_direction": "문제 상황을 보여주는 공감 가는 이미지, 밝은 톤 유지"
+        },
+        {
+          "headline": "데이지 패턴 하나로 선물의 무드가 달라져요",
+          "sub_copy": "반투명 소재와 스트링 밀봉으로 감성과 간편함을 담았어요",
+          "section_type": "benefit",
+          "image_direction": "제품 사용 중인 밝고 긍정적인 라이프스타일 이미지"
+        },
+        {
+          "headline": "이런 점이 다릅니다",
+          "sub_copy": "",
+          "detail_items": [
+            {
+              "icon": "✦",
+              "text": "감성 패턴: 데이지 플로럴 프린트로\n포장부터 특별해져요"
+            },
+            {
+              "icon": "◆",
+              "text": "간편 밀봉: 끈만 묶으면 끝\n테이프 필요 없어요"
+            },
+            {
+              "icon": "●",
+              "text": "내용물 확인: 반투명 소재라\n무엇인지 바로 보여요"
+            }
+          ],
+          "section_type": "detail_points",
+          "image_direction": "제품 디테일 클로즈업 샷"
+        },
+        {
+          "headline": "이렇게 사용하세요",
+          "sub_copy": "간식이나 답례품 담기: 사탕, 소품 등 원하는 내용물을 파우치에 넣어요",
+          "section_type": "usage",
+          "image_direction": "자연스러운 사용 장면, 한국인 모델"
+        },
+        {
+          "headline": "이런 분께 추천합니다",
+          "sub_copy": "결혼식 답례품 준비하는 분, 돌잔치 답례품 챙기는 분, 홈파티 간식 나누는 분",
+          "section_type": "trust",
+          "image_direction": "신뢰감을 주는 깔끔한 제품 이미지"
+        },
+        {
+          "headline": "필요한 만큼 지금 담아보세요",
+          "sub_copy": "한정 수량 / 빠른 배송",
+          "section_type": "cta",
+          "image_direction": ""
+        }
+      ],
+      "solution": {
+        "summary": "반투명 소재와 스트링 밀봉으로 감성과 간편함을 담았어요",
+        "declaration": "데이지 패턴 하나로 선물의 무드가 달라져요"
+      },
+      "hero_copy": {
+        "hook": "포장만으로\n선물이 더 특별해져요",
+        "subline": "데이지 패턴 반투명 파우치, 끈만 묶으면 간편 포장 완성",
+        "benefit_headline": "포장만으로\n선물이 더 특별해져요"
+      },
+      "mainIntro": {
+        "hook": "이 파우치, 왜 다들 다시 찾을까요?",
+        "category": "포장/답례품 파우치",
+        "subBenefit": "데이지 패턴 반투명 파우치, 끈만 묶으면 간편 포장 완성",
+        "brandAndName": "지야픽 · 데이지 구디백 답례품 선물 파우치",
+        "benefitHeadline": "포장만으로\n선물이 더 특별해져요"
+      },
+      "closingCta": {
+        "subtext": "답례품·파티 준비, 이 파우치로 끝내세요",
+        "headline": "필요한 만큼 지금 담아보세요"
+      },
+      "pointCards": [
+        {
+          "title": "감성 패턴",
+          "description": "데이지 플로럴 프린트로\n포장부터 특별해져요"
+        },
+        {
+          "title": "간편 밀봉",
+          "description": "끈만 묶으면 끝\n테이프 필요 없어요"
+        },
+        {
+          "title": "내용물 확인",
+          "description": "반투명 소재라\n무엇인지 바로 보여요"
+        },
+        {
+          "title": "다용도 활용",
+          "description": "답례품부터 간식까지\n다양하게 써요"
+        }
+      ],
+      "conceptCopy": {
+        "subCopy": "데이지 한 송이가 담긴\n감성 포장지",
+        "headline": "포장에도 계절이 있어요"
+      },
+      "mainCutCopy": {
+        "subCopy": "성의는 포장에서\n먼저 느껴져요",
+        "headline": "받는 순간 표정이 달라져요"
+      },
+      "colorOptions": {
+        "title": "패턴 옵션",
+        "options": [
+          "데이지 패턴"
+        ],
+        "description": "은은한 반투명 소재에 데이지 패턴이 프린트되어 있어요"
+      },
+      "compareItems": [
+        {
+          "cons": "성의 없어 보여요",
+          "name": "투명 비닐봉투",
+          "pros": "가격이 저렴해요"
+        },
+        {
+          "cons": "포장 시간이 길어요",
+          "name": "종이 선물박스",
+          "pros": "고급스러워 보여요"
+        },
+        {
+          "cons": "",
+          "name": "본 상품",
+          "pros": "감성 패턴+간편 밀봉 둘 다 돼요"
+        }
+      ],
+      "cta_variants": [
+        {
+          "copy": "필요한 만큼 지금 담아보세요",
+          "type": "emotion"
+        },
+        {
+          "copy": "답례품·파티 준비, 이 파우치로 끝내세요",
+          "type": "rational"
+        }
+      ],
+      "detailPoints": [
+        {
+          "claim": "포장 하나로 인상이 달라져요",
+          "proof": "데이지 플로럴 패턴 반투명 PE 소재 적용",
+          "benefit": "받는 사람이 먼저 포장을 알아봐요",
+          "imageHint": "[선물 건네는 손] — 파우치를 내미는 클로즈업"
+        },
+        {
+          "claim": "속이 보여도 고급스러워요",
+          "proof": "은은하게 비치는 반투명 PE 파우치 소재",
+          "benefit": "무엇이 들었는지 바로 안심돼요",
+          "imageHint": "[내용물 살짝 보임] — 캔디 담긴 파우치 컷"
+        },
+        {
+          "claim": "묶기만 하면 포장 끝",
+          "proof": "스트링 방식으로 도구 없이 밀봉",
+          "benefit": "포장 시간이 확 줄어들어요",
+          "imageHint": "[끈 묶는 손] — 스트링 마무리 장면"
+        },
+        {
+          "claim": "행사 준비가 한결 가벼워져요",
+          "proof": "답례품·파티 간식 소분에 최적화된 크기",
+          "benefit": "여러 개 담아도 부담 없어요",
+          "imageHint": "[테이블에 여러 개] — 파우치 여러 개 나열"
+        },
+        {
+          "claim": "선물 받는 사람도 기분 좋아져요",
+          "proof": "데이지 패턴 디자인으로 감성 포인트 강화",
+          "benefit": "작은 선물도 특별하게 느껴져요",
+          "imageHint": "[웃으며 받는 모습] — 파우치 받는 순간 컷"
+        },
+        {
+          "claim": "필요한 순간에 바로 써요",
+          "proof": "답례품/파티 간식 포장 용도로 구성",
+          "benefit": "행사 당일 준비가 수월해져요",
+          "imageHint": "[파티 테이블 세팅] — 파우치 올려진 테이블 컷"
+        }
+      ],
+      "designPalette": {
+        "bgSub": "#fbe8ee",
+        "bgMain": "#fdf6f0",
+        "primary": "#c2410c",
+        "textMain": "#292524",
+        "secondary": "#f4a5c0",
+        "textHighlight": "#d63384"
+      },
+      "directionHint": {
+        "subCopy": "사이즈부터 수량까지\n한눈에 확인하세요",
+        "headline": "지금 얼마나 필요한지 볼까요"
+      },
+      "soldOutBanner": {
+        "headline": "재구매 문의 다수",
+        "subtitle": "답례품 시즌마다 찾는 파우치예요"
+      },
+      "compareSummary": "예쁘면서도 빠른 포장, 이거 하나면 끝",
+      "convertDivCopy": {
+        "subCopy": "다음 답례품, 이걸로 정하세요",
+        "headline": "지금 필요한 만큼 담아보세요"
+      },
+      "keyMessageCopy": {
+        "subCopy": "도구 없이 1초 밀봉",
+        "headline": "끈 하나로 완성되는 간편 포장"
+      },
+      "usageSceneTags": [
+        "#답례품포장",
+        "#파티간식",
+        "#소분포장",
+        "#구디백",
+        "#선물포장"
+      ],
+      "eventBundleCopy": {
+        "subCopy": "필요한 만큼 넉넉하게 구성",
+        "headline": "행사 준비, 한 번에 끝나요"
+      },
+      "productExposure": {
+        "subCopy": "은은하게 비치는 데이지 패턴",
+        "headline": "가까이 보면 더 예뻐요"
+      },
+      "review_strategy": {
+        "position": "dynamic",
+        "why_here": "strategy_contract.review_position_strategy=dynamic 기반 배치"
+      },
+      "reviewHighlights": [],
+      "objection_handlers": [
+        {
+          "answer": "데이지 플로럴 패턴 반투명 PE 소재 적용 — 받는 사람이 먼저 포장을 알아봐요",
+          "objection": "일회용 포장재로 환경 친화성 부족"
+        },
+        {
+          "answer": "은은하게 비치는 반투명 PE 파우치 소재 — 무엇이 들었는지 바로 안심돼요",
+          "objection": "PE 소재의 재사용 불가능성"
+        },
+        {
+          "answer": "스트링 방식으로 도구 없이 밀봉 — 포장 시간이 확 줄어들어요",
+          "objection": "습기 민감 상품 보관 제한"
+        }
+      ],
+      "recommendedTargets": [
+        "결혼식 답례품 준비하는 분",
+        "돌잔치 답례품 챙기는 분",
+        "홈파티 간식 나누는 분",
+        "핸드메이드 소품 선물하는 분"
+      ],
+      "section_copy_blocks": [
+        {
+          "body": "지야픽 · 데이지 구디백 답례품 선물 파우치",
+          "role": "proof",
+          "section": "hook",
+          "headline": "포장만으로\n선물이 더 특별해져요"
+        },
+        {
+          "body": "예쁘게 담고 싶은데, 손에 잡히는 건 늘 투명 비닐뿐, 성의 없어 보일까 걱정되셨죠",
+          "role": "proof",
+          "section": "problem",
+          "headline": "답례품 포장, 매번 뭘로 할지 고민되죠?"
+        },
+        {
+          "body": "반투명 소재와 스트링 밀봉으로 감성과 간편함을 담았어요",
+          "role": "proof",
+          "section": "benefit",
+          "headline": "데이지 패턴 하나로 선물의 무드가 달라져요"
+        },
+        {
+          "body": "",
+          "role": "proof",
+          "section": "detail_points",
+          "headline": "이런 점이 다릅니다"
+        },
+        {
+          "body": "간식이나 답례품 담기: 사탕, 소품 등 원하는 내용물을 파우치에 넣어요",
+          "role": "proof",
+          "section": "usage",
+          "headline": "이렇게 사용하세요"
+        },
+        {
+          "body": "결혼식 답례품 준비하는 분, 돌잔치 답례품 챙기는 분, 홈파티 간식 나누는 분",
+          "role": "proof",
+          "section": "trust",
+          "headline": "이런 분께 추천합니다"
+        },
+        {
+          "body": "한정 수량 / 빠른 배송",
+          "role": "proof",
+          "section": "cta",
+          "headline": "필요한 만큼 지금 담아보세요"
+        }
+      ],
+      "keyMessageVariations": {
+        "mid": "끈만 묶으면 완성되는 간편 포장",
+        "top": "포장 하나로 달라지는 인상",
+        "bottom": "지금 필요한 만큼 준비하세요"
+      },
+      "sizeComparisonObject": "iphone"
+    },
+    "stage3_changed_ratio": 0.08
+  },
+  "section_images": [
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/icon-library/photo.png",
+      "prompt": "library:photo",
+      "section": "usp_icons:0"
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/icon-library/easy-use.png",
+      "prompt": "library:easy-use",
+      "section": "usp_icons:1"
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/icon-library/multi-use.png",
+      "prompt": "library:multi-use",
+      "section": "usp_icons:3"
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-hero-1786546329784.png",
+      "prompt": "Premium studio product photography of 지야픽 데이지 구디백 답례품 선물 파우치. Center-placed, 60-70% frame. 30-degree elevated angle. Soft diffused lighting. Clean #fdf6f0 background. Sharp edges. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.",
+      "retried": false,
+      "section": "hero",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-problem-1786546442358.png",
+      "prompt": "Empathetic lifestyle scene centered on the CUSTOMER's facial expression and situation, showing everyday frustration. Frame the person and their emotion — do NOT depict any product, tool, device, or any old / alternative version of the product as a focal object. WARM and INVITING mood — soft warm natural lighting, warm color temperature, natural saturated colors. Clean aesthetic composition. Korean adult model. DO NOT include the product. IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nSCENE FOCUS RULE (ABSOLUTE): Center the composition on the PERSON's facial expression and body language conveying the everyday frustration or situation. Do NOT depict any product, tool, device, gadget, instrument, or any old / industrial / alternative version of the product as a focal or prominent object. No products displayed on shelves or held up to the camera as the subject. Environment stays as soft, ambient context only — the emotion is the hero.\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.",
+      "retried": true,
+      "section": "problem",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-solution-1786546581126.png",
+      "prompt": "Bright positive lifestyle with 지야픽 데이지 구디백 답례품 선물 파우치 in use. Warm tones, satisfied expression. Clean background. Korean adult model. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.",
+      "retried": true,
+      "section": "solution",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-usage-1786546702314.png",
+      "prompt": "Natural lifestyle photo using 지야픽 데이지 구디백 답례품 선물 파우치 in its natural usage environment inferred from the product type (indoor or outdoor, matching season and place). Authentic interaction. Korean adult model. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.",
+      "retried": true,
+      "section": "usage",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-cta-1786546758980.png",
+      "error": "cta 생성 실패: PDP 이미지 업로드 실패(cta): Bad Gateway",
+      "prompt": "Premium aspirational display of 지야픽 데이지 구디백 답례품 선물 파우치. Golden hour lighting. #c2410c accents. Trust and desire. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n IMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.",
+      "retried": true,
+      "section": "cta",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-features-0-1786547004061.png",
+      "prompt": "FEATURE HIGHLIGHT IMAGE:\nContext (scene description for you, never to be drawn as text): 파우치를 내미는 클로즈업\nCategory focus guide: Material thickness macro, seal strength close-up, stacking capability demo, size comparison with common items\nComposition:\n- Product angle: Focus on the specific product part described in the context above\n- Visual Proof: Show that feature in action or close-up\n- Example: for a waterproof zipper, show water droplets on the closed zipper\n- Aspect Ratio: 3:4\n- Background: Match design palette #fbe8ee\n\nNOTE ON THE CONTEXT LINE ABOVE: it is Korean product copy written for YOU as a scene description. It is NOT a caption. Do NOT render those Korean characters — or any other letters, numbers or words — anywhere in the image.\n\nPhotography setup: 50mm f/2.0 lens, flat lay or 45-degree elevated angle, product fills 60% of frame, even dual softbox setup, minimal shadows, true color rendering, catalog-style feature — clear, informative, all details visible\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE",
+      "retried": true,
+      "section": "features:0",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-features-1-1786547156661.png",
+      "prompt": "FEATURE HIGHLIGHT IMAGE:\nContext (scene description for you, never to be drawn as text): 캔디 담긴 파우치 컷\nCategory focus guide: Material thickness macro, seal strength close-up, stacking capability demo, size comparison with common items\nComposition:\n- Product angle: Focus on the specific product part described in the context above\n- Visual Proof: Show that feature in action or close-up\n- Example: for a waterproof zipper, show water droplets on the closed zipper\n- Aspect Ratio: 3:4\n- Background: Match design palette #fbe8ee\n\nNOTE ON THE CONTEXT LINE ABOVE: it is Korean product copy written for YOU as a scene description. It is NOT a caption. Do NOT render those Korean characters — or any other letters, numbers or words — anywhere in the image.\n\nPhotography setup: 50mm f/2.0 lens, flat lay or 45-degree elevated angle, product fills 60% of frame, even dual softbox setup, minimal shadows, true color rendering, catalog-style feature — clear, informative, all details visible\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE",
+      "retried": true,
+      "section": "features:1",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-features-2-1786547286948.png",
+      "prompt": "FEATURE HIGHLIGHT IMAGE:\nContext (scene description for you, never to be drawn as text): 스트링 마무리 장면\nCategory focus guide: Material thickness macro, seal strength close-up, stacking capability demo, size comparison with common items\nComposition:\n- Product angle: Focus on the specific product part described in the context above\n- Visual Proof: Show that feature in action or close-up\n- Example: for a waterproof zipper, show water droplets on the closed zipper\n- Aspect Ratio: 3:4\n- Background: Match design palette #fbe8ee\n\nNOTE ON THE CONTEXT LINE ABOVE: it is Korean product copy written for YOU as a scene description. It is NOT a caption. Do NOT render those Korean characters — or any other letters, numbers or words — anywhere in the image.\n\nPhotography setup: 50mm f/2.0 lens, flat lay or 45-degree elevated angle, product fills 60% of frame, even dual softbox setup, minimal shadows, true color rendering, catalog-style feature — clear, informative, all details visible\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE",
+      "retried": true,
+      "section": "features:2",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-features-3-1786547411007.png",
+      "prompt": "FEATURE HIGHLIGHT IMAGE:\nContext (scene description for you, never to be drawn as text): 파우치 여러 개 나열\nCategory focus guide: Material thickness macro, seal strength close-up, stacking capability demo, size comparison with common items\nComposition:\n- Product angle: Focus on the specific product part described in the context above\n- Visual Proof: Show that feature in action or close-up\n- Example: for a waterproof zipper, show water droplets on the closed zipper\n- Aspect Ratio: 3:4\n- Background: Match design palette #fbe8ee\n\nNOTE ON THE CONTEXT LINE ABOVE: it is Korean product copy written for YOU as a scene description. It is NOT a caption. Do NOT render those Korean characters — or any other letters, numbers or words — anywhere in the image.\n\nPhotography setup: 50mm f/2.0 lens, flat lay or 45-degree elevated angle, product fills 60% of frame, even dual softbox setup, minimal shadows, true color rendering, catalog-style feature — clear, informative, all details visible\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE",
+      "retried": true,
+      "section": "features:3",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-howto-0-1786547566131.png",
+      "prompt": "USAGE SCENARIO IMAGE:\nScenario (description for you, never to be drawn as text): 간식이나 답례품 담기\nAction: 사탕, 소품 등 원하는 내용물을 파우치에 넣어요\nCategory context: Folding technique, sealing and taping method, stacking arrangement guide, item-to-box size matching\nNOTE ON THE CONTEXT LINE ABOVE: it is Korean product copy written for YOU as a scene description. It is NOT a caption. Do NOT render those Korean characters — or any other letters, numbers or words — anywhere in the image.\nVisual Requirements:\n- Show hands/person interacting with product\n- Focus on the ACTION moment (not before/after)\n- Include environmental context clues\n- NEGATIVE CONSTRAINT: Do NOT use public transportation backgrounds (bus, subway, train) unless explicitly requested.\n- Composition: Medium shot (product + partial surroundings)\n- The model must be a Korean adult. Do NOT generate children, babies, or minors.\n\nHuman Subject Quality Rules:\n- Natural pose, accurate hand depiction (exactly 5 fingers per hand)\n- Natural skin tone and texture — no plastic-like sheen, realistic pores\n- Wrist/finger joints must be anatomically natural when holding/using product\n- Shadow direction consistent across all elements\n- Clothing wrinkles: follow natural fabric physics, no floating folds\n\nPhotography setup: 35mm f/1.4 lens, environmental portrait, product in use, natural hand positioning, natural window light or outdoor golden hour, soft and warm, lifestyle editorial — relatable, warm, authentic usage scenario\n\nAspect Ratio: 1:1\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE",
+      "retried": true,
+      "section": "howto:0",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-howto-1-1786547652903.png",
+      "prompt": "USAGE SCENARIO IMAGE:\nScenario (description for you, never to be drawn as text): 스트링으로 묶기\nAction: 달려있는 끈을 리본처럼 묶어 밀봉해요\nCategory context: Folding technique, sealing and taping method, stacking arrangement guide, item-to-box size matching\nNOTE ON THE CONTEXT LINE ABOVE: it is Korean product copy written for YOU as a scene description. It is NOT a caption. Do NOT render those Korean characters — or any other letters, numbers or words — anywhere in the image.\nVisual Requirements:\n- Show hands/person interacting with product\n- Focus on the ACTION moment (not before/after)\n- Include environmental context clues\n- NEGATIVE CONSTRAINT: Do NOT use public transportation backgrounds (bus, subway, train) unless explicitly requested.\n- Composition: Medium shot (product + partial surroundings)\n- The model must be a Korean adult. Do NOT generate children, babies, or minors.\n\nHuman Subject Quality Rules:\n- Natural pose, accurate hand depiction (exactly 5 fingers per hand)\n- Natural skin tone and texture — no plastic-like sheen, realistic pores\n- Wrist/finger joints must be anatomically natural when holding/using product\n- Shadow direction consistent across all elements\n- Clothing wrinkles: follow natural fabric physics, no floating folds\n\nPhotography setup: 35mm f/1.4 lens, environmental portrait, product in use, natural hand positioning, natural window light or outdoor golden hour, soft and warm, lifestyle editorial — relatable, warm, authentic usage scenario\n\nAspect Ratio: 1:1\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE",
+      "retried": false,
+      "section": "howto:1"
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-howto-2-1786547815851.png",
+      "prompt": "USAGE SCENARIO IMAGE:\nScenario (description for you, never to be drawn as text): 선물처럼 전달하기\nAction: 포장 그대로 답례품이나 간식으로 나눠줘요\nCategory context: Folding technique, sealing and taping method, stacking arrangement guide, item-to-box size matching\nNOTE ON THE CONTEXT LINE ABOVE: it is Korean product copy written for YOU as a scene description. It is NOT a caption. Do NOT render those Korean characters — or any other letters, numbers or words — anywhere in the image.\nVisual Requirements:\n- Show hands/person interacting with product\n- Focus on the ACTION moment (not before/after)\n- Include environmental context clues\n- NEGATIVE CONSTRAINT: Do NOT use public transportation backgrounds (bus, subway, train) unless explicitly requested.\n- Composition: Medium shot (product + partial surroundings)\n- The model must be a Korean adult. Do NOT generate children, babies, or minors.\n\nHuman Subject Quality Rules:\n- Natural pose, accurate hand depiction (exactly 5 fingers per hand)\n- Natural skin tone and texture — no plastic-like sheen, realistic pores\n- Wrist/finger joints must be anatomically natural when holding/using product\n- Shadow direction consistent across all elements\n- Clothing wrinkles: follow natural fabric physics, no floating folds\n\nPhotography setup: 35mm f/1.4 lens, environmental portrait, product in use, natural hand positioning, natural window light or outdoor golden hour, soft and warm, lifestyle editorial — relatable, warm, authentic usage scenario\n\nAspect Ratio: 1:1\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\n\nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE",
+      "retried": true,
+      "section": "howto:2",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-usp_icons-2-1786547825168.jpg",
+      "prompt": "FLAT 2D MONOCHROME LINE ICON — NOT A PHOTO.\n\nDraw a single minimalist line-art pictogram for the concept: \"내용물 확인\".\n\nOUTPUT MUST BE:\n- A flat 2D vector-style icon in PURE BLACK (#000000) on a PURE WHITE (#FFFFFF) background.\n  The background must be perfectly flat white with no tint, texture, vignette or shading —\n  it is keyed out to transparency afterwards, so any stray tone becomes a visible artifact.\n- BOLD, HEAVY outlined strokes — uniform stroke weight of roughly 1/12 of the icon's width.\n  The icon is displayed very small (80x80 pixels), so hairline strokes disappear.\n  Err on the side of too thick rather than too thin.\n- ONE color only: black strokes. No other hue anywhere.\n- Total visual elements: 2 or fewer simple geometric shapes — fewer, larger shapes read better\n  at small size than a detailed drawing\n- Centered in frame with generous padding (icon occupies ~50% of canvas)\n- Style reference: Lucide, Feather, or Material Design outlined icons at their boldest weight\n- Examples: a simple shield outline ◇ for \"protection\", a single leaf stroke 🍃 for \"natural\"\n\nABSOLUTELY NO:\n- Photographs, product images, 3D renders, realistic objects\n- Fills, gradients, shadows, highlights, textures, patterns\n- Text, letters, words, labels, watermarks, numbers\n- Background elements, decorations, borders, frames\n- Multiple colors — single monochrome color only\n- Complex detailed illustrations — MAXIMUM 3 simple strokes/shapes\n\nThis must look like a simple SVG icon exported as PNG, NOT a photograph or illustration.\n\nIMPORTANT: Do NOT include any text, letters, watermarks, brand names, or logos on the generated image. The image should be clean graphics only.\nAspect Ratio: 1:1 (perfect square canvas — the icon is cropped to a circle when displayed)",
+      "retried": false,
+      "section": "usp_icons:2"
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-product_exposure-1786547918775.png",
+      "prompt": "Alternative angle product photography of 지야픽 · 데이지 구디백 답례품 선물 파우치. MANDATORY ANGLE CHANGE: this cut must NOT repeat the hero framing. Shoot it from a clearly different viewpoint — a straight side profile, a top-down flat lay, or a tight three-quarter detail angle — so a viewer instantly sees a new side of the product. Same lighting consistency. Clean background. Studio quality. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n No text, letters, or typography anywhere in the image. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.\n\nPhotography setup: 50mm f/2.0 lens, flat lay or 45-degree elevated angle, product fills 60% of frame, even dual softbox setup, minimal shadows, true color rendering, catalog-style feature — clear, informative, all details visible\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n",
+      "retried": true,
+      "section": "product_exposure",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-empathy_scene-1786548044733.png",
+      "prompt": "Relatable everyday scene showing mild inconvenience related to 답례품 포장, 매번 뭘로 할지 고민되죠?. Product category: packaging, 반투명 PE 파우치. Warm, natural color tones — NOT desaturated or cold. Soft warm lighting. Korean adult in a clean, modern setting. Subtle thoughtful expression, relatable body language. No product visible. Commercial product-page quality that harmonizes with bright, premium surrounding images. No text, letters, or typography anywhere in the image.\nSCENE FOCUS RULE (ABSOLUTE): Center the composition on the PERSON's facial expression and body language conveying the everyday frustration or situation. Do NOT depict any product, tool, device, gadget, instrument, or any old / industrial / alternative version of the product as a focal or prominent object. No products displayed on shelves or held up to the camera as the subject. Environment stays as soft, ambient context only — the emotion is the hero. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.\n\nPhotography setup: 35mm f/1.4 lens, environmental portrait, product in use, natural hand positioning, natural window light or outdoor golden hour, soft and warm, lifestyle editorial — relatable, warm, authentic usage scenario\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nHuman Subject Quality Rules:\n- Natural pose, accurate hand depiction (exactly 5 fingers per hand)\n- Natural skin tone and texture — no plastic-like sheen, realistic pores\n- Wrist/finger joints must be anatomically natural\n- Shadow direction consistent across all elements\n- Hair: individual strand visibility near edges, no helmet effect\n- Clothing wrinkles: follow natural fabric physics, no floating folds",
+      "retried": true,
+      "section": "empathy_scene",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-direction_hint-1786548166951.png",
+      "prompt": "Premium product showcase of 지야픽 · 데이지 구디백 답례품 선물 파우치 as THE solution. The actual product must be clearly visible, centered, and the hero of the frame. SHOT DISTANCE: pull back to a wider full-product shot with generous negative space around it — noticeably wider than the hero cut, not another tight centered close-up. Clean, natural studio lighting with soft shadows. Simple gradient or softly blurred neutral background. Aspirational, premium mood — 'this is the answer'. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n No text, letters, or typography anywhere in the image. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.\n\nPhotography setup: 85mm f/1.8 lens, center-weighted, slight 3/4 angle, shallow DOF with subject in sharp focus, large softbox key light, white bounce fill, subtle rim light, editorial product hero — clean, aspirational, immediate product recognition\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n",
+      "retried": true,
+      "section": "direction_hint",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-key_benefit_visual-1786548302036.png",
+      "prompt": "Visual metaphor or close-up demonstrating the key benefit of 지야픽 · 데이지 구디백 답례품 선물 파우치: 데이지 패턴 하나로 선물의 무드가 달라져요. Clear cause-and-effect visual. Studio lighting. Aspirational quality. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n No text, letters, or typography anywhere in the image. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.\n\nPhotography setup: 50mm f/2.0 lens, flat lay or 45-degree elevated angle, product fills 60% of frame, even dual softbox setup, minimal shadows, true color rendering, catalog-style feature — clear, informative, all details visible\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n",
+      "retried": true,
+      "section": "key_benefit_visual",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-premium_hero-1786548412058.png",
+      "prompt": "Ultra-premium hero shot of 지야픽 · 데이지 구디백 답례품 선물 파우치. MANDATORY CONTRAST WITH THE STANDARD HERO CUT: this must read as a different photograph — use a low camera angle or a tight dramatic crop, AND a different backdrop treatment (deep soft gradient or a reflective surface), never a repeat of the plain frontal studio framing on a flat light background. Low angle, dramatic lighting. Rich shadows and highlights. Magazine-cover quality. Center composition with breathing room. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n No text, letters, or typography anywhere in the image. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.\n\nPhotography setup: 85mm f/1.8 lens, center-weighted, slight 3/4 angle, shallow DOF with subject in sharp focus, large softbox key light, white bounce fill, subtle rim light, editorial product hero — clean, aspirational, immediate product recognition\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n",
+      "retried": true,
+      "section": "premium_hero",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-concept_mood-1786548546347.png",
+      "prompt": "Brand concept lifestyle image for 지야픽 · 데이지 구디백 답례품 선물 파우치. Product as visual hero. Consistent lighting. Cohesive image set. atmosphere. Product resting on a natural surface (wood board, linen cloth, or stone slab) with complementary lifestyle props that reflect the product category: packaging, 반투명 PE 파우치. Soft warm studio lighting. Premium flat-lay or 45-degree angle arrangement. COMPOSITION: an off-center editorial arrangement seen from above with props sharing the frame — deliberately different from the centered hero and from the alternative-angle product cut, so no two cuts on this page read as the same photo. Color palette: #c2410c, #f4a5c0. Product must be clearly visible. \nPRODUCT CONSISTENCY RULES (ABSOLUTE):\n1. SHAPE: If reference is rectangular, generated must be rectangular (same aspect ratio ±5%)\n2. COLOR: Match exact color code from reference - no artistic interpretation\n3. LOGO/LABEL: Preserve structural design elements, BUT omit any printed brand name or\n   generic word text on the product surface (keep it blank/unbranded)\n4. MATERIAL: Preserve texture (fabric weave, plastic gloss, metal finish)\n5. SIZE RATIO: If product has components (e.g., bottle + cap), maintain their size ratio\n6. COMPONENT COUNT & MECHANISM: Keep the number of tiers/levels, drawers, parts and set\n   pieces exactly as in the reference. Do NOT invent parts, dials, buttons, handles,\n   baskets or extra units that are not visible in the reference. Moving parts (drawers,\n   lids, hinges) must stay in the same assembled/closed state shown in the reference —\n   do not open, detach or explode them unless the reference shows them that way.\n\nVERIFICATION CHECKLIST BEFORE OUTPUT:\n- [ ] Does this look like the SAME product from different angle?\n- [ ] Would a customer recognize this as identical item?\n- [ ] Are brand elements (logo/text) consistent?\n- [ ] Does it have the SAME number of tiers/drawers/parts as the reference, with no invented components?\n\nIf ANY checklist fails → REGENERATE\n No text, letters, or typography anywhere in the image. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.\n\nPhotography setup: 35mm f/1.4 lens, environmental portrait, product in use, natural hand positioning, natural window light or outdoor golden hour, soft and warm, lifestyle editorial — relatable, warm, authentic usage scenario\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n\nHuman Subject Quality Rules:\n- Natural pose, accurate hand depiction (exactly 5 fingers per hand)\n- Natural skin tone and texture — no plastic-like sheen, realistic pores\n- Wrist/finger joints must be anatomically natural\n- Shadow direction consistent across all elements\n- Hair: individual strand visibility near edges, no helmet effect\n- Clothing wrinkles: follow natural fabric physics, no floating folds",
+      "retried": true,
+      "section": "concept_mood",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-comparison_scene-1786548689274.png",
+      "prompt": "Before/after or comparison scene. Left side: dull, problematic state. Right side: bright, improved state. Split composition or gradual transition. No product. Related to 답례품 포장, 매번 뭘로 할지 고민되죠?. No text, letters, or typography anywhere in the image. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.\n\nPhotography setup: 50mm f/2.0 lens, side-by-side layout, consistent framing, equal visual weight, even, flat lighting, no dramatic shadows, true color comparison, comparison lineup — objective, consistent, fair visual treatment\n\nProfessional e-commerce product photography directive:\n- Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity\n- Color profile: Adobe RGB, accurate color reproduction\n- Lighting: large softbox at 45-degree angle (key), white reflector fill, strip/rim light for edge separation\n- Color temperature: 5500K daylight balanced, no color cast\n- Post-production: minimal retouching, preserve natural imperfections, accurate white balance\n- No HDR effect, no over-sharpening, no artificial bokeh overlay, clean sensor\n\nCritical Anti-AI Artifact Rules:\n- Hands must have exactly 5 fingers with natural proportions and joints\n- Fabric patterns must maintain consistent repeat without warping\n- Symmetrical objects must show true symmetry\n- Shadow direction must be consistent across all elements in the scene\n- No plastic-like skin sheen on human subjects\n- Text on products must be legible and correctly spelled (or omitted entirely)\n\nProduct cleanliness (critical):\n- The product must be pristine and brand-new — absolutely NO stains, dirt, grime,\n  discoloration, brown/gray blotches, or mold-like marks anywhere on it.\n- Mesh, fabric, and transparent panels must look clean and clear, never soiled.\n\nProp / branding rules:\n- All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world\n  company name, brand logo, or recognizable product label (e.g. real shampoo, cosmetics,\n  or beverage brands). Bottles and containers should be plain/blank.\n- Any text that appears must be generic Korean (Hangul), correctly spelled, or omitted.\n- Do NOT include Chinese characters (Hanzi/Kanji), Japanese text, or non-Korean text.\n\nProduct surface must be BLANK (critical):\n- The product itself must be clean and UNBRANDED — do NOT print any brand name, logo,\n  or generic English word (such as \"WASHBAG\", \"BAG\", \"WATERPROOF\") on the product's\n  surface, transparent panel, mesh, or fabric. Keep the product face empty.\n- Even if a reference photo shows printed lettering on the product, OMIT that lettering\n  and render the surface clean.\n",
+      "retried": true,
+      "section": "comparison_scene",
+      "pendingRegen": false
+    },
+    {
+      "url": "https://nkpfjmiypnuerqbgxweh.supabase.co/storage/v1/object/public/sourcing-product-images/user_OWNER/registration/7d5abdb4-cf66-4e83-9831-934985e92b78/pdp-rating_bg-1786548697198.jpg",
+      "prompt": "Abstract premium background for product rating display. Soft golden bokeh circles, warm ambient light particles. Radiant concentric circles emanating from center. Elegant and luxurious mood, color palette of #c2410c and #f4a5c0 with #fdf6f0 background. No text, no product, only atmospheric background. No text, letters, or typography anywhere in the image. Studio setup: large softbox key light at 45 degrees, white reflector fill, clean seamless background.",
+      "retried": false,
+      "section": "rating_bg"
+    }
+  ],
+  "corpus_version": null,
+  "cost_usd": 2.5285,
+  "current_step": "done",
+  "progress": 100,
+  "created_at": "2026-08-12T14:45:59.153891+00:00",
+  "final_html_length": 14286,
+  "final_html_sha256": "d4a6057f2a98fe0d071d6f878d3289b9981b61542dd395037076b4ef608c3422"
+}

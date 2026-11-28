@@ -229,3 +229,22 @@ export function buildInternalizedImageBlock(categoryKey: string | undefined | nu
   parts.push(`[실측 디자인 레시피 — 역할별 중앙값(캔버스 860px 기준), 측정 hex 외 신규 색 생성 금지]\n${roleLines}`)
   return parts.filter(Boolean).join('\n\n')
 }
+
+// ─────────────────────────────────────────────────────────────────
+// v2가 없는 카테고리(stationery·packaging·pet 등)의 Track I 블록 — ENRICHMENT 잡만(설계 §4.2 v2 없는 카테고리).
+// 카테고리 실측 레시피가 없으므로 범용 근거(pooled)임을 밝히고, 공통 규칙(유사도 방어·모바일 판독)만 준다.
+// ─────────────────────────────────────────────────────────────────
+
+const POOLED_EVIDENCE_NOTE =
+  '[범용 근거] 이 카테고리는 카테고리별 실측 레시피가 없어 쿠팡·네이버 상세페이지 전체 실측 분포(pooled)를 구조 근거로 쓴다. ' +
+  '카테고리 고유 관행을 단정하지 말고 입력 스펙에 있는 사실만 쓴다.'
+
+/** Track I 카피 블록(pooled) — copyTone 지시·패턴 목록 없이 공통 규칙과 범용 근거 표시만. */
+export function buildPooledInternalizedCopyBlock(): string {
+  return [ANTI_COPY_PREAMBLE_V2, buildInternalizedMobileRulesBlock(), POOLED_EVIDENCE_NOTE].join('\n\n')
+}
+
+/** Track I 이미지 블록(pooled) — 역할별 레시피(px·hex)가 없으므로 공통 규칙만. 컷별 연출 지시는 T3(E-4)가 더한다. */
+export function buildPooledInternalizedImageBlock(): string {
+  return [ANTI_COPY_PREAMBLE_V2, buildInternalizedMobileRulesBlock()].join('\n\n')
+}

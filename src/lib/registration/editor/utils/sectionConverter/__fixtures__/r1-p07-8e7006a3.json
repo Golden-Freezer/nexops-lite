@@ -1,0 +1,414 @@
+{
+  "_source": "R1 P07 treatment 잡 8e7006a3(2026-10-28, 38.69점) — copy_sections.final·section_plan 일부·spec_sheet. 이미지 URL은 자리표시",
+  "copy": {
+    "howTo": [
+      {
+        "step": "거실이나 주방 한편에 배치",
+        "description": "평평한 바닥에 올려두면 바로 사용할 수 있어요"
+      },
+      {
+        "step": "물과 사료 나눠 담기",
+        "description": "2구 중 한쪽엔 물, 한쪽엔 사료를 담아주세요"
+      },
+      {
+        "step": "강아지 고양이 함께 사용",
+        "description": "두 마리를 키운다면 교차로 사용해도 좋아요"
+      }
+    ],
+    "title": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+    "problem": {
+      "empathy": "강아지 그릇 따로, 고양이 그릇 따로, 자리도 두 배, 치우는 손도 두 배예요",
+      "question": "밥그릇 두 개, 매번 꺼내고 치우시나요?",
+      "empathyLines": [
+        "식기 두 개 사는 게 번거로",
+        "색깔이 거실과 안 어울려요",
+        "사료가 물그릇에 자꾸 빠져요",
+        "밥 먹을 때 그릇이 밀려다녀"
+      ],
+      "empathyDeepLines": [
+        "정리할 때마다 손이 많이 가",
+        "플라스틱 느낌이라 괜히 눈에",
+        "매번 닦고 나르는 게 지쳐요",
+        "예쁜 그릇 찾기가 쉽지 않아"
+      ]
+    },
+    "summary": "밥그릇 두 개, 이제 하나로",
+    "sections": [
+      {
+        "headline": "식기 두 개를\n하나로 끝내세요",
+        "sub_copy": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+        "section_type": "hook",
+        "image_direction": "제품 중심의 프리미엄 스튜디오 촬영, 따뜻한 조명"
+      },
+      {
+        "headline": "밥그릇 두 개, 매번 꺼내고 치우시나요?",
+        "sub_copy": "강아지 그릇 따로, 고양이 그릇 따로, 자리도 두 배, 치우는 손도 두 배예요",
+        "section_type": "problem",
+        "image_direction": "문제 상황을 보여주는 공감 가는 이미지, 밝은 톤 유지"
+      },
+      {
+        "headline": "2구 구조 하나로 강아지와 고양이 식사를 동시에 해결해요",
+        "sub_copy": "물과 사료를 나눠 담는 구조로 중복 구매와 뒤섞임 걱정을 줄였어요",
+        "section_type": "benefit",
+        "image_direction": "제품 사용 중인 밝고 긍정적인 라이프스타일 이미지"
+      },
+      {
+        "headline": "이런 점이 다릅니다",
+        "sub_copy": "",
+        "detail_items": [
+          {
+            "icon": "✦",
+            "text": "식기 하나로 끝: 강아지 고양이 공용\n따로 살 필요 없어요"
+          },
+          {
+            "icon": "◆",
+            "text": "물 사료 분리: 2구 구조로 나눠 담아\n섞일 걱정 없어요"
+          },
+          {
+            "icon": "●",
+            "text": "인테리어 조화: 세이지 그린 컬러로\n거실에도 자연스럽게"
+          }
+        ],
+        "section_type": "detail_points",
+        "image_direction": "제품 디테일 클로즈업 샷"
+      },
+      {
+        "headline": "이렇게 사용하세요",
+        "sub_copy": "거실이나 주방 한편에 배치: 평평한 바닥에 올려두면 바로 사용할 수 있어요",
+        "section_type": "usage",
+        "image_direction": "자연스러운 사용 장면, 한국인 모델"
+      },
+      {
+        "headline": "이런 분께 추천합니다",
+        "sub_copy": "강아지 고양이 함께 키우는 집, 식기 인테리어 신경 쓰는 분, 밥그릇 자리 줄이고 싶은 분",
+        "section_type": "trust",
+        "image_direction": "신뢰감을 주는 깔끔한 제품 이미지"
+      },
+      {
+        "headline": "지금 식사 환경을 정리해보세요",
+        "sub_copy": "한정 수량 / 빠른 배송",
+        "section_type": "cta",
+        "image_direction": ""
+      }
+    ],
+    "solution": {
+      "summary": "물과 사료를 나눠 담는 구조로 중복 구매와 뒤섞임 걱정을 줄였어요",
+      "declaration": "2구 구조 하나로 강아지와 고양이 식사를 동시에 해결해요"
+    },
+    "hero_copy": {
+      "hook": "식기 두 개를\n하나로 끝내세요",
+      "subline": "물과 사료를 한 번에, 세이지 그린으로 공간까지 챙겼어요",
+      "benefit_headline": "식기 두 개를\n하나로 끝내세요"
+    },
+    "mainIntro": {
+      "hook": "강아지도 고양이도, 이 식기 하나로 끝",
+      "category": "반려동물 식기",
+      "subBenefit": "물과 사료를 한 번에, 세이지 그린으로 공간까지 챙겼어요",
+      "brandAndName": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+      "benefitHeadline": "식기 두 개를\n하나로 끝내세요"
+    },
+    "closingCta": {
+      "subtext": "세이지 그린 2구 식기, 빠르게 받아보세요",
+      "headline": "지금 식사 환경을 정리해보세요"
+    },
+    "pointCards": [
+      {
+        "title": "식기 하나로 끝",
+        "description": "강아지 고양이 공용\n따로 살 필요 없어요"
+      },
+      {
+        "title": "물 사료 분리",
+        "description": "2구 구조로 나눠 담아\n섞일 걱정 없어요"
+      },
+      {
+        "title": "인테리어 조화",
+        "description": "세이지 그린 컬러로\n거실에도 자연스럽게"
+      },
+      {
+        "title": "안정적인 사용감",
+        "description": "식사 중 밀림을 줄인\n안정적인 구조예요"
+      }
+    ],
+    "conceptCopy": {
+      "subCopy": "두 마리 식사, 한 공간에서 끝",
+      "headline": "그릇 하나의 여유"
+    },
+    "mainCutCopy": {
+      "subCopy": "강아지 고양이 둘 다 쓰는 식기",
+      "headline": "밥그릇 고민 끝"
+    },
+    "colorOptions": {
+      "title": "컬러 옵션",
+      "options": [
+        "세이지 그린"
+      ],
+      "description": "거실과 주방 어디든 무난하게 어울리는 톤으로 준비했어요"
+    },
+    "compareItems": [
+      {
+        "cons": "자리 차지하고 번거로워요",
+        "name": "식기 두 개 따로 구매",
+        "pros": "각 동물 전용 디자인"
+      },
+      {
+        "cons": "인테리어와 안 어울려요",
+        "name": "플라스틱 일반 식기",
+        "pros": "가격이 저렴해요"
+      },
+      {
+        "cons": "",
+        "name": "본 상품",
+        "pros": "2구 공용 구조로 한 번에 해결"
+      }
+    ],
+    "cta_variants": [
+      {
+        "copy": "지금 식사 환경을 정리해보세요",
+        "type": "emotion"
+      },
+      {
+        "copy": "세이지 그린 2구 식기, 빠르게 받아보세요",
+        "type": "rational"
+      }
+    ],
+    "detailPoints": [
+      {
+        "claim": "식기 교체 없이 두 아이 모두 사용",
+        "proof": "강아지·고양이 공용으로 설계된 2구 구조",
+        "benefit": "식기 중복 구매 부담이 줄어요",
+        "imageHint": "[둘이 함께 식사] — 강아지와 고양이가 나란히 식사하는 장면"
+      },
+      {
+        "claim": "물과 사료, 한 그릇에 안전하게",
+        "proof": "좌우 분리된 2구 구성으로 내용물 섞임 방지",
+        "benefit": "사료가 눅눅해지지 않아요",
+        "imageHint": "[젖지 않은 사료] — 분리된 구조 클로즈업 컷"
+      },
+      {
+        "claim": "거실에 둬도 어색하지 않은 톤",
+        "proof": "세이지 그린 단일 컬러로 구성",
+        "benefit": "인테리어와 자연스럽게 어울려요",
+        "imageHint": "[거실 속 그릇] — 세이지 그린 식기가 놓인 거실 전경"
+      },
+      {
+        "claim": "식사 중에도 흔들림 적게",
+        "proof": "안정적인 바닥 설계로 밀림 최소화",
+        "benefit": "급하게 먹어도 덜 밀려요",
+        "imageHint": "[흔들림 없이] — 식사 중인 반려동물과 고정된 그릇"
+      },
+      {
+        "claim": "소재, 숨기지 않고 보여드려요",
+        "proof": "구조와 마감을 그대로 공개한 디자인",
+        "benefit": "사용 전 느낌을 미리 확인해요",
+        "imageHint": "[가까이 본 소재] — 식기 표면과 테두리 클로즈업"
+      },
+      {
+        "claim": "한 번 두면 계속 쓰는 자리",
+        "proof": "거실·주방 어디에나 배치 가능한 구성",
+        "benefit": "매일 같은 자리에서 편하게 급여해요",
+        "imageHint": "[늘 그 자리] — 주방 한편에 상시 놓인 식기"
+      }
+    ],
+    "designPalette": {
+      "bgSub": "#E8E6DC",
+      "bgMain": "#F5F3EC",
+      "primary": "#5C7A5C",
+      "textMain": "#262626",
+      "secondary": "#8FA888",
+      "textHighlight": "#2563eb"
+    },
+    "directionHint": {
+      "subCopy": "거실이든 주방이든\n자연스럽게 어울려요",
+      "headline": "자리부터 정해보세요"
+    },
+    "soldOutBanner": {
+      "headline": "다묘다견 가정 선택",
+      "subtitle": "두 마리 식사를 한 그릇으로 해결해요"
+    },
+    "compareSummary": "따로 두 개 살 필요 없이 하나로 끝나요",
+    "convertDivCopy": {
+      "subCopy": "번거로운 식기 정리, 오늘 끝내요",
+      "headline": "지금 하나로 바꿔보세요"
+    },
+    "keyMessageCopy": {
+      "subCopy": "섞이지 않게 나눠 담아요",
+      "headline": "물과 사료 따로따로"
+    },
+    "usageSceneTags": [
+      "#다묘다견가정",
+      "#거실인테리어",
+      "#매일급여",
+      "#식기정리"
+    ],
+    "eventBundleCopy": {
+      "subCopy": "2구 식기 하나로 준비 끝",
+      "headline": "세이지 그린 단일 구성"
+    },
+    "productExposure": {
+      "subCopy": "분리된 2구 구조, 한눈에 또렷해요",
+      "headline": "위에서 봐도 깔끔해요"
+    },
+    "review_strategy": {
+      "position": "dynamic",
+      "why_here": "strategy_contract.review_position_strategy=dynamic 기반 배치"
+    },
+    "reviewHighlights": [],
+    "objection_handlers": [
+      {
+        "answer": "강아지·고양이 공용으로 설계된 2구 구조 — 식기 중복 구매 부담이 줄어요",
+        "objection": "실제 사용 후기와 내구성에 대한 검증 부족"
+      },
+      {
+        "answer": "따로 두 개 살 필요 없이 하나로 끝나요",
+        "objection": "경쟁 제품 대비 가격 경쟁력 불명확"
+      },
+      {
+        "answer": "합리적인 가격에 최고의 품질을 제공합니다.",
+        "objection": "가격이 비싸지 않나요?"
+      }
+    ],
+    "recommendedTargets": [
+      "강아지 고양이 함께 키우는 집",
+      "식기 인테리어 신경 쓰는 분",
+      "밥그릇 자리 줄이고 싶은 분",
+      "물 사료 분리 급여하고 싶은 분"
+    ],
+    "section_copy_blocks": [
+      {
+        "body": "페어넥스 · 강아지 밥그릇 고양이 식기 2구",
+        "role": "proof",
+        "section": "hook",
+        "headline": "식기 두 개를\n하나로 끝내세요"
+      },
+      {
+        "body": "강아지 그릇 따로, 고양이 그릇 따로, 자리도 두 배, 치우는 손도 두 배예요",
+        "role": "proof",
+        "section": "problem",
+        "headline": "밥그릇 두 개, 매번 꺼내고 치우시나요?"
+      },
+      {
+        "body": "물과 사료를 나눠 담는 구조로 중복 구매와 뒤섞임 걱정을 줄였어요",
+        "role": "proof",
+        "section": "benefit",
+        "headline": "2구 구조 하나로 강아지와 고양이 식사를 동시에 해결해요"
+      },
+      {
+        "body": "",
+        "role": "proof",
+        "section": "detail_points",
+        "headline": "이런 점이 다릅니다"
+      },
+      {
+        "body": "거실이나 주방 한편에 배치: 평평한 바닥에 올려두면 바로 사용할 수 있어요",
+        "role": "proof",
+        "section": "usage",
+        "headline": "이렇게 사용하세요"
+      },
+      {
+        "body": "강아지 고양이 함께 키우는 집, 식기 인테리어 신경 쓰는 분, 밥그릇 자리 줄이고 싶은 분",
+        "role": "proof",
+        "section": "trust",
+        "headline": "이런 분께 추천합니다"
+      },
+      {
+        "body": "한정 수량 / 빠른 배송",
+        "role": "proof",
+        "section": "cta",
+        "headline": "지금 식사 환경을 정리해보세요"
+      }
+    ],
+    "keyMessageVariations": {
+      "mid": "물 사료 분리해 한 번에 급여",
+      "top": "밥그릇 두 개, 이제 하나로",
+      "bottom": "지금 식기 정리, 하나로 끝내요"
+    },
+    "sizeComparisonObject": "iphone"
+  },
+  "images": {
+    "hero": "https://img.test/r1-p07/hero.png",
+    "problem": "https://img.test/r1-p07/problem.png",
+    "solution": "https://img.test/r1-p07/solution.png",
+    "usage": "https://img.test/r1-p07/usage.png",
+    "cta": "https://img.test/r1-p07/cta.png",
+    "product_exposure": "https://img.test/r1-p07/product_exposure.png",
+    "empathy_scene": "https://img.test/r1-p07/empathy_scene.png",
+    "direction_hint": "https://img.test/r1-p07/direction_hint.png",
+    "key_benefit_visual": "https://img.test/r1-p07/key_benefit_visual.png",
+    "premium_hero": "https://img.test/r1-p07/premium_hero.png",
+    "concept_mood": "https://img.test/r1-p07/concept_mood.png",
+    "comparison_scene": "https://img.test/r1-p07/comparison_scene.png",
+    "rating_bg": "https://img.test/r1-p07/rating_bg.png",
+    "features": [
+      "https://img.test/r1-p07/features-0.png",
+      "https://img.test/r1-p07/features-1.png",
+      "https://img.test/r1-p07/features-2.png",
+      "https://img.test/r1-p07/features-3.png"
+    ],
+    "howToImages": [
+      "https://img.test/r1-p07/howto-0.png",
+      "https://img.test/r1-p07/howto-1.png",
+      "https://img.test/r1-p07/howto-2.png"
+    ],
+    "usp_icons": [
+      "https://img.test/r1-p07/usp_icons-0.png",
+      "https://img.test/r1-p07/usp_icons-1.png",
+      "https://img.test/r1-p07/usp_icons-2.png",
+      "https://img.test/r1-p07/usp_icons-3.png"
+    ],
+    "conversion_cta": "https://img.test/r1-p07/cta.png"
+  },
+  "spec_sheet": {
+    "category": "pet",
+    "brandName": "페어넥스",
+    "productName": "페어넥스 강아지 밥그릇 고양이 식기 2구",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ]
+  },
+  "section_plan": {
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ],
+      "vocabHash": "73b757bbdea4"
+    },
+    "layout_selections": {
+      "cta": "minimal",
+      "sub_div": "minimal",
+      "main_cut": "minimal",
+      "point_div": "minimal",
+      "hook_3step": "image_first",
+      "product_exposure": "minimal"
+    },
+    "hook_strategy": {
+      "reasoning": "완판 이력 없음, 리뷰 없음으로 실적증거 불가. 반려동물 카테고리+emotional 본질 유형+Pain Points가 다묘/다견 가정의 번거로움, 인테리어 부조화 등 정서적 맥락에 집중되어 있어 무기3(문제공감)보다는 무기4(감성연결)가 더 강하다. 전략계약의 hook_mode=empathy, persuasion_axis=balanced를 반영해 감성 장면으로 열되 기능적 해결(2구 분리, 세이지 그린)을 빠르게 뒤따르는 구성이 최적.",
+      "hero_frame": "cloud",
+      "image_hooking": true,
+      "first_3_seconds": "강아지와 고양이가 세이지 그린 2구 식기 앞에 나란히 앉아 각자의 그릇에서 편안하게 식사하는 따뜻한 생활 장면 + '한 그릇에 담은 두 마리의 평화' 류의 감성 카피",
+      "strongest_weapon": "감성연결"
+    }
+  }
+}

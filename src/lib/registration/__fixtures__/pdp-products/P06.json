@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "P06",
+  "sourceFolder": "강아지빗(옵션 3in1)",
+  "categoryKey": "pet",
+  "evidencePath": "pooled",
+  "sellerProductId": "15872821389",
+  "specSheet": {
+    "productName": "페어넥스 강아지빗 브러쉬 털갈이 슬리커",
+    "brandName": "페어넥스",
+    "category": "pet",
+    "colorOptions": [
+      "1개 모던 그레이"
+    ],
+    "size": "슬리커 9.7cm x 18.3cm x 4.1cm",
+    "origin": "중국",
+    "extraSpecs": [
+      {
+        "key": "구성",
+        "value": "슬리커 브러쉬·미세빗(대)·미세빗(소)"
+      },
+      {
+        "key": "미세빗(대) 크기",
+        "value": "7.1cm x 4.2cm"
+      },
+      {
+        "key": "미세빗(소) 크기",
+        "value": "5.5cm x 3.2cm"
+      },
+      {
+        "key": "핀",
+        "value": "스테인리스(실리콘 보호 캡)"
+      }
+    ],
+    "material": "ABS+스테인리스+실리콘"
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "colorOptions": "products.option_name",
+    "size": "현행 상세 표(product-page (2)) 사이즈 — 표 원문에 측정 방법에 따라 약간의 오차",
+    "origin": "openapi.notices 제조국(원산지)",
+    "extraSpecs": "현행 상세 표 사이즈·주요 특징(고밀도 스테인리스 핀, 실리콘 보호 캡)",
+    "material": "owner 확인 2026-10-31(슬리커 상세표가 맞음) — 현행 상세 표(product-page (2)) 소재 줄 그대로"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "targetPersona",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "supplier",
+      "path": "상세설명 이미지/강아지빗(3in1)11.png",
+      "note": "슬리커 머리·손잡이·빗 2종 4분할(흰 배경, 워터마크 없음) — 공급처 사진 편집본"
+    },
+    {
+      "origin": "supplier",
+      "path": "상세설명 이미지/스크린샷 2025-11-18 162207.png",
+      "note": "공급처 영상 캡처 — 매끈한 타원형 머리 슬리커 실제 사용(워터마크 없음)"
+    }
+  ],
+  "optionLabels": [
+    "1개 모던 그레이"
+  ],
+  "currentPagePaths": [
+    "상세설명 이미지/product-page-페어넥스-강아지빗-브러쉬-털갈이-슬리커 (2).jpeg",
+    "상세설명 이미지/product-page-페어넥스-강아지빗-브러쉬-털갈이-슬리커 (6).png"
+  ],
+  "searchTags": [
+    "강아지브러쉬",
+    "고양이빗",
+    "애견빗",
+    "고양이브러쉬",
+    "슬리커브러쉬",
+    "강아지 빗브러쉬",
+    "슬리커",
+    "개빗",
+    "애견브러쉬",
+    "강아지슬리커",
+    "고양이 빗브러쉬",
+    "고양이털제거",
+    "강아지 브러쉬빗",
+    "비숑슬리커",
+    "슬리커브러쉬 비숑",
+    "비숑빗",
+    "비숑브러쉬",
+    "개털빗",
+    "안아픈 강아지브러쉬",
+    "털갈이빗"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P06-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "실제 판매품은 슬리커+빗 2종 3in1 세트(모던 그레이). SKU·메인 이미지는 전부 1688 워터마크가 있어 제외, 발바닥 머리 모델(메인 이미지_13 등)은 다른 상품이라 제외",
+    "AI 강아지 장면 컷(강아지빗(3in1).png 등) 제외",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] material: 현행 상세 표 ABS+스테인리스+실리콘(오너 확인 10-31). 표 소재 줄에 부분 구분이 없어 문구 그대로 — 주요 특징 줄에 고밀도 스테인리스 핀·실리콘 보호 캡. OpenAPI 상품 재질=폴리에틸렌(PE)은 등록 오기로 보임(오너 확인)",
+    "[사실 10-31] 대상 갈림: OpenAPI 반려동물 대상=강아지용·대형견용 여부=대형견용 ↔ 현행 상세 표 용도 강아지·고양이용(targetPersona는 쓰지 않음)",
+    "[사실 10-31] 관리 방법은 어느 출처에도 없어 비움",
+    "[오너 답 11-01] 손잡이 끝은 원형 구멍이다. U자 홈으로 보이는 '메인 이미지_05'를 OWNER_PHOTO_NOT_REAL로 뺀다(폴더 파일은 그대로). 상세설명 이미지_09는 모양은 맞지만 치수·중국어 글이 든 설명 그림이라 대표가 되지 않게 OWNER_PHOTO_TEXT_PANEL로 뺀다(C 판단, 오너 답 아님). 쓸 사진은 Gemini 합성 1장이다(AI 합성, 3종과 원형 구멍이 다 보임)"
+  ]
+}

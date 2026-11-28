@@ -75,14 +75,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* GmarketSansBold self-host — NEXFIT과 동일 자산(원 CDN 404로 self-host된 정본) */
-@font-face {
-  font-family: 'GmarketSansBold';
-  src: url('/fonts/GmarketSansBold.woff') format('woff');
-  font-weight: 700;
-  font-display: swap;
-}
-
 /* 에디터 패널 스크롤바 (NEXFIT globals 발췌) */
 .nexops-editor-root ::-webkit-scrollbar {
   width: var(--scrollbar-width);

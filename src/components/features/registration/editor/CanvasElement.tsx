@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react
 import type { CSSProperties } from 'react';
 import { useEditorStore, selectSelectedElementIds, selectZoom, selectStyleRemeasure } from '@/lib/registration/editor/stores/editorStore';
 import { useCanvasStore } from '@/lib/registration/editor/stores/canvasStore';
-import { useAuth } from '@/lib/auth/clerk-shim';
+import { useAuth } from '@clerk/nextjs';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import type { CanvasElement } from '@/lib/registration/editor/types/canvas';
 import { sanitizeRichText, richTextToPlainText, normalizeRichText } from '@/lib/registration/editor/utils/textSanitizer';
@@ -14,6 +14,7 @@ import ImageCropOverlay from './ImageCropOverlay';
 import { selectCropTarget } from '@/lib/registration/editor/stores/editorStore';
 import { Z_INDEX, MULTILINE_HEADING_LINE_HEIGHT, BALANCED_HEADING_MIN_FONT } from '@/lib/registration/editor/constants/designTokens';
 import { estimateWrappedLines } from '@/lib/registration/editor/utils/sectionConverter/helpers';
+import { useMotionPreviewSrc } from './MotionPreview';
 
 interface CanvasElementProps {
   element: CanvasElement;
@@ -22,7 +23,7 @@ interface CanvasElementProps {
   onContextMenu?: (e: React.MouseEvent, elementId: string, sectionId: string) => void;
 }
 
-export default function CanvasElementComponent({ element, sectionId, sectionType, onContextMenu }: CanvasElementProps) {
+export default function CanvasElementComponent({ element, sectionId, onContextMenu }: CanvasElementProps) {
   const selectedElementIds = useEditorStore(selectSelectedElementIds);
   const selectElement      = useEditorStore((s) => s.selectElement);
   const selectSection      = useEditorStore((s) => s.selectSection);
@@ -45,6 +46,11 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
   const [imgError, setImgError] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  // 미리보기 세 곳에서 켠 움직이는 칸만 WebP — 본 캔버스(굽기 원본)는 공급자가 없어 늘 null(결정 카드 c30). 못 받으면 포스터로
+  const motionPreviewSrc = useMotionPreviewSrc(element.id);
+  const [motionPreviewFailed, setMotionPreviewFailed] = useState(false);
+  const motionSrc = motionPreviewSrc && !motionPreviewFailed ? motionPreviewSrc : null;
+  const onPhotoError = () => (motionSrc ? setMotionPreviewFailed(true) : setImgError(true));
 
   // 호버 딜레이 타이머
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -217,7 +223,10 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
 
     // 변경 감지: richContent 또는 plain text 비교
     const prevContent = element.textProps?.richContent || element.textProps?.content || '';
-    const changed = sanitized !== prevContent && plainText !== prevContent;
+    // 줄바꿈 없는 공백(U+00A0 — 변환기가 수량+단위를 붙인다)은 편집 영역에서 &nbsp;로 나와 보통 공백으로 돌아온다 —
+    // 손대지 않은 편집을 변경으로 보지 않게 같은 꼴로 견준다
+    const prevPlain = prevContent.replace(/\u00A0/g, ' ');
+    const changed = sanitized !== prevContent && plainText !== prevContent && plainText !== prevPlain;
 
     if (changed) {
       // P1-4: 멀티라인 헤딩 자동 행간 — 측정 '전에' DOM에 반영해 measuredHeight가
@@ -662,6 +671,7 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
     return (
       <div
         ref={textDivRef}
+        data-el={element.id}
         onPointerDown={handlePointerDown}
         onContextMenu={handleContextMenu}
         onClick={(e) => e.stopPropagation()}
@@ -714,6 +724,10 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
   // ── 이미지 요소 ──────────────────────────────────────────────────────────────
   if (element.type === 'image' && element.imageProps) {
     const { imageProps } = element;
+    // 모서리 반경(옵션 카드 사진) — 내보내기 htmlBuilders와 같은 값. 굽기는 이 화면을 그대로 찍는다
+    const radiusStyle: CSSProperties = imageProps.borderRadii
+      ? { borderRadius: imageProps.borderRadii.map((r) => `${Number(r) || 0}px`).join(' ') }
+      : {};
 
     if (imgError || !imageProps.src) {
       return (
@@ -726,6 +740,7 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
           data-img-placeholder=""
           style={{
             ...baseStyle,
+            ...radiusStyle,
             backgroundColor: '#f3f4f6',
             display: 'flex',
             alignItems: 'center',
@@ -787,16 +802,19 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
         onMouseLeave={handleMouseLeave}
         style={{
           ...baseStyle,
+          // 자르는 동안은 각지게 — 위 모서리 자르기 핸들이 반경 밖으로 잘리지 않게
+          ...(isCropping ? {} : radiusStyle),
           position: 'absolute',
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={imageProps.src}
+          src={motionSrc ?? imageProps.src}
           alt={imageProps.alt}
           loading="eager"
           draggable={false}
-          onError={() => setImgError(true)}
+          onError={onPhotoError}
+          data-motion-preview={motionSrc ? '' : undefined}
           style={cropImgStyle}
         />
 
@@ -837,7 +855,14 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
       frameId === 'circle'
         ? { borderRadius: '50%', overflow: 'hidden' }
         : frameId === 'roundedRect'
-        ? { borderRadius: 16, overflow: 'hidden' }
+        ? {
+            // K 컨셉 사진 반경(cornerRadius) — 숫자가 아니면 기본 16(내보내기 htmlBuilders와 같은 판정)
+            borderRadius:
+              typeof framedImageProps.cornerRadius === 'number' && Number.isFinite(framedImageProps.cornerRadius) && framedImageProps.cornerRadius >= 0
+                ? framedImageProps.cornerRadius
+                : 16,
+            overflow: 'hidden',
+          }
         : frameId === 'rect'
         ? { overflow: 'hidden' }
         : // 기타(Hero clipPath 등) — clipPath 문자열 사용
@@ -930,11 +955,12 @@ export default function CanvasElementComponent({ element, sectionId, sectionType
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={framedImageProps.src}
+          src={motionSrc ?? framedImageProps.src}
           alt={framedImageProps.alt}
           loading="eager"
           draggable={false}
-          onError={() => setImgError(true)}
+          onError={onPhotoError}
+          data-motion-preview={motionSrc ? '' : undefined}
           style={framedCropStyle}
         />
 

@@ -1,0 +1,123 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`기준 상품 골격(사람 검토 후 고정) > A-track-i 1`] = `
+{
+  "excluded": [
+    "certification_evidence",
+    "promotion_offer",
+    "option_catalog",
+    "faq",
+    "shipping_cs",
+    "legal_notice",
+    "authenticity",
+    "brand_story",
+    "problem",
+    "hook",
+    "product_intro",
+  ],
+  "grammar": "G4",
+  "lengthTarget": [
+    7,
+    10,
+  ],
+  "objectionCoverage": [
+    "usage_care→hidden_page",
+    "environment_versatility→point_list_div",
+    "safety_cert→미응답(인증 근거 없음 — 인증·안전 주장 금지(연령 게이트 유지))",
+  ],
+  "priorSource": "v2:household",
+  "stages": [
+    "ATTENTION:main_cut",
+    "RELEVANCE:problem_raise",
+    "RELEVANCE:solution_guide",
+    "VALUE:point_div",
+    "VALUE:sub_div",
+    "PROOF:perf_reviews",
+    "ASSURANCE:hidden_page",
+    "ASSURANCE:point_list_div",
+    "ASSURANCE:spec_table",
+    "ACTION:cta",
+  ],
+}
+`;
+
+exports[`기준 상품 골격(사람 검토 후 고정) > B-track-i 1`] = `
+{
+  "excluded": [
+    "social_proof",
+    "certification_evidence",
+    "promotion_offer",
+    "size_spec",
+    "option_catalog",
+    "how_to_guide",
+    "faq",
+    "shipping_cs",
+    "legal_notice",
+    "authenticity",
+    "brand_story",
+    "problem",
+  ],
+  "grammar": "G4",
+  "lengthTarget": [
+    7,
+    10,
+  ],
+  "objectionCoverage": [
+    "environment_versatility→point_list_div",
+    "quality_durability→sub_div",
+    "quantity_size→point_div",
+  ],
+  "priorSource": "v2:household",
+  "stages": [
+    "ATTENTION:hook_3step",
+    "ATTENTION:main_cut",
+    "RELEVANCE:problem_raise",
+    "RELEVANCE:solution_guide",
+    "VALUE:point_div",
+    "VALUE:product_exposure",
+    "VALUE:sub_div",
+    "ASSURANCE:point_list_div",
+    "ACTION:cta",
+  ],
+}
+`;
+
+exports[`기준 상품 골격(사람 검토 후 고정) > C-track-i 1`] = `
+{
+  "excluded": [
+    "social_proof",
+    "certification_evidence",
+    "promotion_offer",
+    "size_spec",
+    "option_catalog",
+    "faq",
+    "shipping_cs",
+    "legal_notice",
+    "authenticity",
+    "brand_story",
+    "problem",
+  ],
+  "grammar": "G4",
+  "lengthTarget": [
+    7,
+    10,
+  ],
+  "objectionCoverage": [
+    "material_eco→미응답(응답 렌더러 없음 — 친환경·무해 주장 금지(소재 사실만))",
+    "price_value→point_div",
+  ],
+  "priorSource": "v2:household",
+  "stages": [
+    "ATTENTION:hook_3step",
+    "ATTENTION:main_cut",
+    "RELEVANCE:problem_raise",
+    "RELEVANCE:solution_guide",
+    "VALUE:point_div",
+    "VALUE:product_exposure",
+    "VALUE:sub_div",
+    "ASSURANCE:point_list_div",
+    "ASSURANCE:hidden_page",
+    "ACTION:cta",
+  ],
+}
+`;

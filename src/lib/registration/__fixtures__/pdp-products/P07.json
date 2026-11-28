@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "P07",
+  "sourceFolder": "고양이 식기 2구",
+  "categoryKey": "pet",
+  "evidencePath": "pooled",
+  "sellerProductId": "16109099145",
+  "specSheet": {
+    "productName": "페어넥스 강아지 밥그릇 고양이 식기 2구",
+    "brandName": "페어넥스",
+    "category": "pet",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ],
+    "size": "34cm x 19.5cm x 12.5cm",
+    "material": "도자기(그릇)",
+    "origin": "중국",
+    "targetPersona": "소형견·고양이를 키우는 보호자",
+    "extraSpecs": [
+      {
+        "key": "구성",
+        "value": "1개(그릇 2구)"
+      },
+      {
+        "key": "용량",
+        "value": "820ml"
+      },
+      {
+        "key": "높이 조절",
+        "value": "불가"
+      },
+      {
+        "key": "급체 방지",
+        "value": "급체방지용"
+      },
+      {
+        "key": "대상",
+        "value": "소형견·고양이 겸용"
+      },
+      {
+        "key": "프레임 소재",
+        "value": "ABS"
+      }
+    ],
+    "identityNote": "black cap on the tip of every leg"
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "colorOptions": "products.option_name",
+    "size": "현행 상세 표(product-page 1769418299246·nexfit_full_page (12) 같은 값) — OpenAPI 높이(베이스에서 상단까지) 12.5cm와 맞음",
+    "material": "openapi.attributes 식탁/식기 재질(도자기/유리) ∩ 현행 상세 표 소재 도기(그릇) — 좁힌 값(통합 규칙)",
+    "origin": "openapi.notices 제조국(원산지)",
+    "targetPersona": "openapi.attributes 반려동물 대상=겸용·반려동물 대상크기=소형견(통합 승인)",
+    "identityNote": "오너 답(11-01): 다리 끝 검은 캡 있음",
+    "extraSpecs": "openapi.attributes 수량·식탁 구성·용량·급체방지용·반려동물 대상/대상크기 + 현행 상세 표 소재(프레임 ABS, 통합 승인) + 높이 조절은 오너 블라인드 메모(11-01)"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "representative",
+      "path": "이미지/대표이미지/제목을 입력해주세요. (72).png",
+      "note": "흰 배경 전체 형태(발자국·생선 무늬 그릇)"
+    }
+  ],
+  "optionLabels": [
+    "1개 세이지 그린"
+  ],
+  "currentPagePaths": [
+    "이미지/product-page-페어넥스 강아지 밥그릇 고양이 식기 2구-1769415742120.png",
+    "이미지/product-page-페어넥스 강아지 밥그릇 고양이 식기 2구-1769415744605.png",
+    "이미지/product-page-페어넥스 강아지 밥그릇 고양이 식기 2구-1769416804662.png",
+    "이미지/product-page-페어넥스 강아지 밥그릇 고양이 식기 2구-1769416808306.png",
+    "이미지/product-page-페어넥스 강아지 밥그릇 고양이 식기 2구-1769418292316.png",
+    "이미지/product-page-페어넥스 강아지 밥그릇 고양이 식기 2구-1769418299246.jpeg",
+    "이미지/상세페이지/nexfit_full_page (12).png",
+    "이미지/상세페이지/nexfit_full_page (7).jpg",
+    "이미지/상세페이지/nexfit_full_page (8).jpg",
+    "이미지/상세페이지/nexfit_full_page (9).jpg"
+  ],
+  "searchTags": [
+    "고양이식기",
+    "강아지밥그릇",
+    "고양이밥그릇",
+    "강아지밥그릇 2구",
+    "고양이밥그릇 2구",
+    "강아지식기",
+    "애견밥그릇",
+    "애견식기",
+    "고양이식기 2구",
+    "강아지식기 2구",
+    "애견밥그릇 2구",
+    "애견식기 2구",
+    "반려동물 밥그릇",
+    "고양이밥그릇 도자기",
+    "개밥그릇",
+    "애완견밥물그릇 세트",
+    "개밥그릇 2구",
+    "애견그릇 2구",
+    "강아지식기 세트",
+    "고양이밥그릇 2구 도자기"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P07-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "리뷰 이미지 폴더는 쓰지 않음",
+    "4.png는 그릇 무늬가 달라 제외, 5.png는 다른 회사 간식 포장 라벨·로고가 보여 제외(생성 이미지 유입 위험), 나머지는 원형 삽입 장식이 있어 흰 배경 1장만 사용",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] 용량 820ml이 그릇 하나의 값인지 두 그릇 합인지는 출처(OpenAPI 속성)에 없다 — 카피가 나누어 말하지 않게 값 그대로 둔다",
+    "[사실 10-31] NEXFIT 기록 없음(10-30 요약 66건 대조). 관리 방법은 어느 출처에도 없어 비움. 주의사항은 현행 상세 표 \"본 제품은 용도 외 사용을 금합니다\"뿐",
+    "[오너 메모 11-01] 높이 조절이 안 되는 상품이다. OpenAPI 속성 '높이조절 여부=가능'은 틀린 값이라 쓰지 않는다. 행을 지우지 않고 '불가'로 두는 까닭은 후기 일부가 조절된다고 적어, 행이 없으면 후기만 보고 카피가 조절을 주장할 수 있어서다. 상품 정보 표에는 허용 목록 밖이라 실리지 않는다",
+    "[오너 답 11-01] 다리 끝에 검은 캡이 있다. 캡은 다리만 찍은 근접 사진 image-detail-3(…5704266) 한 장에만 보여 판독이 확정하지 못하고, 그 사진은 전체 모양이 안 보여 대표로 못 쓴다. 그래서 identityNote로 식별 카드에 붙여 모든 컷이 따르게 한다"
+  ]
+}

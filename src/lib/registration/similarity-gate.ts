@@ -104,8 +104,10 @@ function collectCandidateSentences(value: unknown, section: string, out: Array<{
   }
   if (value && typeof value === 'object') {
     for (const [key, v] of Object.entries(value as Record<string, unknown>)) {
+      // 후기 카드의 original(P1-6 후기 요약의 원문 — 대조용)은 화면에 그리지 않는다. 결정론 발췌라 재생성으로 고칠 수도 없다
+      if (key === 'original') continue
+      // section 라벨은 최상위 키로 고정 — 내부 키는 문장 위치 구분에 쓰지 않는다(호출부가 section만 소비)
       collectCandidateSentences(v, section, out)
-      void key // section 라벨은 최상위 키로 고정 — 내부 키는 문장 위치 구분에 쓰지 않는다(호출부가 section만 소비)
     }
   }
 }
@@ -139,6 +141,23 @@ function assertCorpusCheck(value: unknown, categoryKey: string): CorpusCheck {
     }
   }
   return corpus as CorpusCheck
+}
+
+/**
+ * 잡 단위 임시 코퍼스 — 글 목록을 정적 코퍼스와 같은 방식(10자 이상 문장 → 음절 3-gram 해시)으로 바꾼다. 레퍼런스 원문처럼
+ * 잡마다 다른 비교 대상을 더할 때 쓴다(원문은 해시로만 남고 프롬프트에 들어가지 않는다). 문장이 없으면 null
+ */
+export function buildTextCorpusCheck(texts: readonly string[]): CorpusCheck | null {
+  const sentences = texts.flatMap(splitSentences).map((s) => ({ len: s.length, grams: [...hashedCharNgrams(s)] }))
+  if (sentences.length === 0) return null
+  return { schemaVersion: 1, algo: CORPUS_ALGO, generatedAt: 'job', sentenceCount: sentences.length, sentences }
+}
+
+/** 두 코퍼스를 합친다 — 한쪽이 없으면 다른 쪽 그대로(둘 다 없으면 null, 기존 의미론) */
+export function mergeCorpusChecks(a: CorpusCheck | null, b: CorpusCheck | null): CorpusCheck | null {
+  if (!a) return b
+  if (!b) return a
+  return { ...a, sentenceCount: a.sentenceCount + b.sentenceCount, sentences: [...a.sentences, ...b.sentences] }
 }
 
 /**

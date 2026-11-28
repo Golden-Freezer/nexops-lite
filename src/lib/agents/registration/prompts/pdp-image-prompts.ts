@@ -4,8 +4,8 @@
  *
  * 원칙(원본 보존 — 설계문서 §7): 프롬프트 영문 본문은 의미·문구 변경 없이 그대로 옮기고,
  * f-string 슬롯만 TS 함수 인자로 변환한다. 각 상수/빌더에 원본 파일:행 출처를 남긴다.
- * hero_image_mode는 studio/lifestyle/premium 3-way만 번역한다 — "original"은 Pillow 합성
- * (photo_composite.py) 의존이라 제외한다(개정 4/D-2, HeroImageMode 타입에서도 이미 제외됨).
+ * hero_image_mode는 studio/lifestyle/premium 3-way만 번역한다 — "original"(원천 사진 합성)은 묶음 4에서 되살렸고
+ * (결정 A·개정 4 번복, registration/composite/) 합성하지 못하면 아래 studio 분기로 생성한다(NEXFIT image_presets와 같다).
  * 팔레트 플레이스홀더(`{palette.primary}` 등)는 이 파일의 어떤 빌더에도 등장하지 않는다 — 그
  * 토큰은 pdp-design-prompts.ts(3단계) 소관이고, 치환은 images 단계 별도 함수 소관이다.
  */
@@ -78,9 +78,88 @@ export const PRINTED_DESIGN_PRESERVE_INSTRUCTION =
   '- This product is a FLAT PRINTED ITEM. Render it as flat printed material (paper/vinyl sheet) — ' +
   'do NOT turn it into a plate, dish, ceramic, mug, box or any other three-dimensional object.'
 
+/**
+ * 인쇄물 도안 규칙(상품 정확성 2026-10-31, P01 스티커 — 여러 장 장면의 빈 자리를 지어낸 도안·섞은 도안으로 채움). 원천 사진이 앞에
+ * 붙는 상품 컷에만 쓴다. 뒤에 붙는 히어로 스타일 참조는 도안 출처가 아니다(지어낸 도안이 히어로를 타고 퍼지지 않게)
+ */
+export function buildPrintedDesignsRule(photoCount: number): string {
+  const photos = photoCount > 1 ? `the first ${photoCount} attached images` : 'the first attached image'
+  return [
+    "PRINTED DESIGNS (this product's artwork is fixed):",
+    `- Every printed design in this image must be one that appears in the product reference photo${photoCount > 1 ? 's' : ''} (${photos}). A style reference attached after them is not a source of designs.`,
+    '- When the shot shows several items (a fan, a sheet, many bags or labels), give each item one of those designs and repeat them as needed. Never invent a new design, character, animal, motif or color scheme, and never blend two designs into one.',
+    ...(photoCount > 1 ? [`- The ${photoCount} product photos may show different designs of this product — use only those.`] : []),
+  ].join('\n')
+}
+
+/**
+ * 인쇄 무늬 보존(상품 정확성 2026-10-31, P07 그릇 바닥 발바닥·생선뼈 무늬 빠짐) — 식별카드가 인쇄 그림·무늬를 적은 일반 상품 컷에
+ * 붙인다. 일관성 규칙 3('글자는 지우고 비워 둔다')·'매끈한 표면' 컷 지시가 그림 무늬까지 지우지 않게 지울 것을 브랜드명·글자로 좁힌다
+ */
+export const PRINTED_MARKS_RULE =
+  'PRINTED MARKS: the pictures, icons and patterns printed on the product (listed in PRODUCT IDENTITY) are part of the product. ' +
+  'Keep each one in the same place, size and color as in the reference photo — also in close-ups and in "clean" or "smooth surface" shots. ' +
+  'Only brand names and words printed on the product may be left blank.'
+
 // NEXFIT agents/image_identity.py:74-76
 export function textRuleFor(textBearing: boolean, noTextInstruction: string): string {
   return textBearing ? PRINTED_DESIGN_PRESERVE_INSTRUCTION : noTextInstruction
+}
+
+// NEXFIT agents/image_identity.py:26-38 (b90f6c0 A-3) — 오탐(일반 상품에 텍스트 보존 모드)이 더 위험해 좁게 유지한다
+const TEXT_BEARING_CATEGORIES: ReadonlySet<string> = new Set(['stationery'])
+const TEXT_BEARING_KEYWORDS = ['스티커', '라벨', '엽서', '포장지', '봉투', '현수막', '메모지', '떡메모지', '카드'] as const
+// 어휘가 넓어 오탐이 잦은 낱말은 제외 목록으로 방어한다 — 제외 낱말을 지운 뒤에도 그 낱말이 남아야 인쇄물이다.
+// "카드": 카드지갑·SD카드·그래픽카드·카드슬리브(보호 비닐) 등. "봉투": 포장봉투·비닐봉투 등 인쇄가 본질이 아닌
+// 포장 봉투(AX-CT-33 — 구디백 '포장봉투'가 인쇄물로 판정돼 움직이는 칸이 0). 편지봉투·돈봉투 같은 종이 봉투는 그대로 인쇄물.
+const KEYWORD_FALSE_POSITIVES: Readonly<Partial<Record<(typeof TEXT_BEARING_KEYWORDS)[number], readonly string[]>>> = {
+  카드: [
+    '카드지갑', '카드케이스', '카드홀더', '카드수납', '카드리더', '카드슬롯',
+    'sd카드', '메모리카드', '그래픽카드', '신용카드', '교통카드', '카드결제', '카드슬리브',
+  ],
+  봉투: ['포장봉투', '비닐봉투', '지퍼봉투', 'opp봉투', '택배봉투', '폴리봉투'],
+}
+// 띄어쓰기('포장 봉투')를 같은 낱말로 보는 것은 봉투 목록만 — 카드 목록에 붙이면 '감사카드 케이스 세트'처럼
+// 띄어 쓴 진짜 인쇄 카드가 '카드케이스'로 맞아 인쇄물에서 빠진다(#1437 검수)
+const SPACING_TOLERANT_KEYWORDS: ReadonlySet<string> = new Set(['봉투'])
+
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const FALSE_POSITIVE_PATTERNS: ReadonlyMap<string, RegExp> = new Map(
+  Object.entries(KEYWORD_FALSE_POSITIVES)
+    .filter(([, list]) => (list ?? []).length > 0)
+    .map(([keyword, list]) => {
+      const sep = SPACING_TOLERANT_KEYWORDS.has(keyword) ? '\\s*' : ''
+      return [keyword, new RegExp((list ?? []).map((fp) => [...fp].map(escapeRegExp).join(sep)).join('|'), 'g')]
+    })
+)
+
+/**
+ * 제품에 인쇄된 문구·디자인이 상품 정체성인지(스티커·엽서·라벨류) — NEXFIT image_identity.py:41-59 1:1.
+ * 참이면 NO_TEXT 일괄 금지 대신 인쇄 디자인 보존 지시문을 쓴다(textRuleFor·getPhotographyBase).
+ */
+export function isTextBearingProduct(category: string | null | undefined, productName: string | null | undefined): boolean {
+  if (TEXT_BEARING_CATEGORIES.has(String(category ?? '').trim().toLowerCase())) return true
+  const name = String(productName ?? '').trim().toLowerCase()
+  if (!name) return false
+  return TEXT_BEARING_KEYWORDS.some((keyword) => {
+    const fp = FALSE_POSITIVE_PATTERNS.get(keyword)
+    return (fp ? name.replace(fp, ' ') : name).includes(keyword)
+  })
+}
+
+/** 텍스트 보유 상품에서 걷어낼 '텍스트 절대 금지' 문장 — NEXFIT image_generation_agent.py:379-382·design_prompt_agent.py:212-215 */
+export const NO_TEXT_PHRASES = ['No text, letters, or typography anywhere in the image.', NO_TEXT_INSTRUCTION] as const
+
+/**
+ * 텍스트 보유 상품이면 프롬프트에 박힌 텍스트 금지 문장을 지우고 인쇄 보존 지시를 한 번만 붙인다 —
+ * NEXFIT image_generation_agent.py:390-399 `_apply_text_policy`. 일반 상품은 그대로 돌려준다.
+ */
+export function applyTextPolicy(positive: string, textBearing: boolean): string {
+  if (!textBearing || !positive) return positive
+  let out = positive
+  for (const phrase of NO_TEXT_PHRASES) out = out.split(phrase).join('')
+  if (out.includes(PRINTED_DESIGN_PRESERVE_INSTRUCTION)) return out
+  return `${out.trimEnd()}\n${PRINTED_DESIGN_PRESERVE_INSTRUCTION}`
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -101,6 +180,9 @@ type CategoryDirectiveKey =
   | 'howto_context'
 
 // NEXFIT agents/image_presets.py:83-188
+// beauty·household feature_focus의 원본 'before/after skin detail'·'before/after tidiness'는 '사용 직후 한 순간'(한 장, 분할·콜라주 없음)으로 바꿨다
+// (하네스 J53, 통합 decide 32). AI가 그린 전후 사진은 지어낸 성능 증거라 효능 기준(decide 29)이 막는 쪽이고, K 컷의 콜라주 금지와도 부딪친다.
+// 전후는 페이지 비교 칸(고민 장면 ↔ 사용 장면)이 맡는다
 export const CATEGORY_IMAGE_DIRECTIVES: Record<string, Partial<Record<CategoryDirectiveKey, string>>> = {
   food: {
     hero_angle: '45-degree overhead or eye-level, product packaging with appetite-appeal styling, fresh ingredients nearby',
@@ -125,7 +207,7 @@ export const CATEGORY_IMAGE_DIRECTIVES: Record<string, Partial<Record<CategoryDi
     usage_environment: 'Clean modern bathroom vanity, bedroom dressing table with mirror — bright soft feminine lighting',
     cta_mood: 'Aspirational beauty shot — product with dewy droplets, luminous skin glow effect, premium packaging radiance',
     lighting_override: 'Soft flattering beauty lighting 5000K, butterfly/clamshell setup, skin-smoothing diffused light',
-    feature_focus: 'Texture swatch on skin, ingredient droplet close-up, absorption demonstration, before/after skin detail',
+    feature_focus: 'Texture swatch on skin, ingredient droplet close-up, absorption demonstration, skin right after use in one photo (no split before/after)',
     howto_context: 'Step-by-step skincare application — cleansing, applying, patting, layering routine with gentle hand motions',
   },
   digital: {
@@ -164,7 +246,7 @@ export const CATEGORY_IMAGE_DIRECTIVES: Record<string, Partial<Record<CategoryDi
     usage_environment: 'Modern Korean apartment — kitchen counter, bathroom, living room shelf, laundry area, organized space',
     cta_mood: 'Clean organized life — product in perfectly tidy setting, sense of domestic order and daily satisfaction',
     lighting_override: 'Bright neutral 5500K even domestic lighting, clean practical home atmosphere',
-    feature_focus: 'Mechanism or structure close-up, material durability demo, size or capacity comparison, before/after tidiness',
+    feature_focus: 'Mechanism or structure close-up, material durability demo, size or capacity comparison, tidy result right after use in one photo (no split before/after)',
     howto_context: 'Assembly or installation steps, usage technique demonstration, cleaning method, storage organization process',
   },
   packaging: {
@@ -234,6 +316,10 @@ export function getCategoryDirective(category: string, key: CategoryDirectiveKey
 // ────────────────────────────────────────────────────────────────
 
 // NEXFIT agents/image_presets.py:216-244
+// 청결 규칙 끝 줄(깨끗한 거품·물방울은 얼룩 아님, 때·몸에서 떨어지는 각질은 그리지 않음)은 하네스 J53(통합 decide 32)에서 더했다 — 효능 문구가 풀려
+// (J50) 세정 장면 칸 글이 오면 거품 묻은 솔이 얼룩으로 재생성되지 않게 한다. 게이트 얼룩 기준(pdp-image-gate-prompts)도 같은 말을 쓴다.
+// 모든 상품 컷에 붙어 MS 2k 상한(5,000자)을 먹으므로 한 줄로 짧게 둔다 — P02 재현(462d097d)에서 상한 안이던 고민 컷이 4,928자라, 72자를 넘기면
+// 그 컷이 사진 기본 블록 하나를 더 덜게 된다(J53 실측)
 const PHOTOGRAPHY_BASE_COMMON = `
 Professional e-commerce product photography directive:
 - Shot with full-frame mirrorless camera, ultra-high detail, 8K equivalent clarity
@@ -255,6 +341,7 @@ Product cleanliness (critical):
 - The product must be pristine and brand-new — absolutely NO stains, dirt, grime,
   discoloration, brown/gray blotches, or mold-like marks anywhere on it.
 - Mesh, fabric, and transparent panels must look clean and clear, never soiled.
+- Foam and water drops are not stains; no dirt or skin flakes.
 
 Prop / branding rules:
 - All props and packaging must be GENERIC and UNBRANDED. Do NOT render any real-world
@@ -357,6 +444,8 @@ export interface StyleCharterArgs {
   mood: string
   setDesc: string
   photographyNote?: string
+  /** R3 잡 단위 출연(shotplan 잡만) — 인물·옷 톤·반려동물·소품. 없으면 줄을 두지 않는다 */
+  castDesc?: string
 }
 
 export function buildStyleCharter(args: StyleCharterArgs): string {
@@ -372,6 +461,7 @@ export function buildStyleCharter(args: StyleCharterArgs): string {
     `- Prop/accent palette (props harmonized ONLY to): ${args.propColors}\n` +
     `- Mood keywords: ${args.mood}\n` +
     `- Set description: ${args.setDesc}${noteLine}\n` +
+    (args.castDesc ? `- Cast (identical in every cut that shows people, hands or animals): ${args.castDesc}\n` : '') +
     'This image is one of many images on a single product page sharing this exact charter.\n' +
     `${IP_PROTECTION_RULES}`
   )
@@ -1002,6 +1092,50 @@ export interface SizeComparisonPromptArgs {
   bgMain?: string
   sizeText?: string
   textBearing?: boolean
+}
+
+export interface OptionBundlePromptArgs {
+  productName: string
+  bgMain?: string
+  textBearing?: boolean
+}
+
+/**
+ * 수량 옵션 묶음 연출 컷(05_OPTIONS.md §4, T6b) — 같은 상품 여러 개를 가지런히 모은 정물 한 장.
+ * 구성 숫자는 이미지에 넣지 않는다(옵션 카드 글자가 등록 옵션값 그대로 보여 준다). 개수도 세지 않게 한다 — 정확한 개수 묘사는
+ * 생성 모델이 지키지 못하고, 숫자와 어긋나면 구성 오인이다.
+ */
+export function buildOptionBundlePrompt(args: OptionBundlePromptArgs): ImagePromptEntry {
+  const { productName, bgMain = '#ffffff', textBearing = false } = args
+  // 텍스트 보유 상품(스티커·엽서 등, b90f6c0 A-3)은 인쇄 문구가 상품이다 — 지우라는 규칙 대신 그대로 옮기라는 규칙
+  const noExtrasRule = textBearing
+    ? '- No packaging, price tags, added labels, numbers or quantity badges'
+    : '- No packaging, price tags, labels, stickers, numbers or quantity badges'
+  const surfaceTextRule = textBearing
+    ? '- Reproduce the artwork and lettering printed ON each unit exactly as in the reference image;\n' +
+      '  the background must stay completely free of text, letters, numbers, watermarks, or brand names'
+    : '- The product surface and the background must be completely free of text, letters, numbers,\n' +
+      '  watermarks, or brand names'
+  return {
+    prompt: `PRODUCT BUNDLE IMAGE:
+Purpose: Show that ${productName} comes as a multi-piece set
+Composition:
+- Several identical units of ${productName} (product from reference image, EXACT appearance)
+  arranged neatly in tidy rows or a loose fan on one surface
+- Every unit is the same product, same color and same design as the reference — no variations
+- Do not try to show an exact count; the arrangement only conveys "a set of many"
+- Eye-level or slightly high angle, the whole group fully inside the frame
+- Background: Clean ${bgMain} or light neutral studio surface
+- Lighting: Even, soft, natural shadows
+
+CRITICAL RULES:
+${noExtrasRule}
+- No other products or props
+${surfaceTextRule}
+- The product must be sharply focused`,
+    // 가로 컷 — 옵션 섹션의 넓은 사진 칸(740×560)에 맞춘다(gpt-image-2 고정 사이즈 중 1536x1024)
+    aspectRatio: '16:9',
+  }
 }
 
 /**

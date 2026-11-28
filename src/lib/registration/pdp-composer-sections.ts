@@ -11,10 +11,20 @@
 
 import type { ComposedSection } from './pdp-composer'
 import type { CopywritingResult, GeneratedImagesMap, PdpMode, PdpSpecSheet } from './pdp-state'
+import { normalizeCompareItems } from './pdp-copy-labels'
+import { productInfoRows } from './product-info-rows'
 
 const SOLD_OUT_SUBTITLE_DEFAULT = '고객님의 성원에 힘입어'
 
 type AvailableMap = Record<string, ComposedSection | ComposedSection[]>
+
+/** 평점만큼 ★, 나머지 ☆(반올림, 0~5) — 숫자가 아니면 별 없이 */
+function ratingStars(rating: string): string {
+  const value = Number(rating)
+  if (!Number.isFinite(value)) return ''
+  const n = Math.min(5, Math.max(0, Math.round(value)))
+  return '★'.repeat(n) + '☆'.repeat(5 - n)
+}
 
 function asRecord(v: unknown): Record<string, unknown> {
   return v && typeof v === 'object' && !Array.isArray(v) ? (v as Record<string, unknown>) : {}
@@ -25,19 +35,34 @@ function strField(rec: Record<string, unknown>, key: string, fallback = ''): str
   return typeof v === 'string' && v ? v : fallback
 }
 
+/**
+ * 첫 번째로 내용이 있는 문자열 — 원본 Python `a or b or c` 폴백 체인의 번역. `??`는 빈 문자열을 그대로 통과시켜
+ * LLM이 ""를 낸 필드가 다음 후보로 넘어가지 못한다(빈 헤드라인 섹션). 공백만 있는 값도 빈 값으로 본다.
+ */
+function firstFilled(...values: Array<string | null | undefined>): string {
+  for (const v of values) {
+    if (typeof v === 'string' && v.trim() !== '') return v
+  }
+  return ''
+}
+
 function arrField(rec: Record<string, unknown>, key: string): unknown[] {
   const v = rec[key]
   return Array.isArray(v) ? v : []
 }
 
-/** template_composer_agent.py:397-412 — 중복 없이 이미지 선택, 소진되면 빈 문자열 */
-function pickUniqueImage(candidates: readonly string[], index: number, used: Set<string>): string {
+/**
+ * template_composer_agent.py:397-412 — 중복 없이 이미지 선택, 소진되면 빈 문자열. 대신 고를 때 뒤 항목(owners개 중 index 뒤)의
+ * 같은 번호 컷은 건너뛴다 — 앞 번호 컷이 실패했을 때 뒤 컷이 한 칸 당겨지지 않게(그 항목은 사진 없이)
+ */
+function pickUniqueImage(candidates: readonly string[], index: number, used: Set<string>, owners = 0): string {
   const atIndex = candidates[index]
   if (atIndex && !used.has(atIndex)) {
     used.add(atIndex)
     return atIndex
   }
-  for (const url of candidates) {
+  for (const [j, url] of candidates.entries()) {
+    if (j > index && j < owners) continue
     if (url && !used.has(url)) {
       used.add(url)
       return url
@@ -120,13 +145,14 @@ function buildPointCards(available: AvailableMap, pointCards: NonNullable<Copywr
 function buildDetailPoints(available: AvailableMap, detailPoints: NonNullable<CopywritingResult['detailPoints']>, images: GeneratedImagesMap): void {
   const featureImages = images.features ?? []
   const used = new Set<string>()
-  available.detail_points = detailPoints.slice(0, 6).map((dp, index) => ({
+  const points = detailPoints.slice(0, 6)
+  available.detail_points = points.map((dp, index) => ({
     type: 'detail_point',
     headline: dp.claim ?? '',
     sub_copy: dp.proof ?? dp.benefit ?? '',
     benefit: dp.benefit ?? '',
     image_hint: dp.imageHint ?? '',
-    image: pickUniqueImage(featureImages, index, used),
+    image: pickUniqueImage(featureImages, index, used, points.length),
     index,
   }))
 }
@@ -169,21 +195,9 @@ function buildCta(available: AvailableMap, copy: CopywritingResult): void {
 }
 
 function buildSpecTable(available: AvailableMap, specSheet: PdpSpecSheet, images: GeneratedImagesMap): void {
-  const rows: Array<{ label: string; value: string }> = []
-  if (specSheet.productName) rows.push({ label: '상품명', value: specSheet.productName })
-  if (specSheet.brandName) rows.push({ label: '브랜드', value: specSheet.brandName })
-  if (specSheet.material) rows.push({ label: '소재/재질', value: specSheet.material })
-  if (specSheet.size) rows.push({ label: '사이즈', value: specSheet.size })
-  if (specSheet.colorOptions?.length) rows.push({ label: '색상', value: specSheet.colorOptions.join(', ') })
-  const extra = specSheet.extra
-  if (extra && typeof extra === 'object') {
-    for (const [key, value] of Object.entries(extra)) {
-      if (value) rows.push({ label: key, value: String(value) })
-    }
-  }
   available.spec_table = {
     type: 'spec_table',
-    spec_rows: rows,
+    spec_rows: productInfoRows(specSheet),
     size_comparison_image: images.size_comparison ?? '',
   }
 }
@@ -210,7 +224,8 @@ function buildProSections(
     available.certification = {
       type: 'certification',
       image: images.certification_badge ?? '',
-      headline: strField(cert, 'headline', `${specSheet.brandName ?? ''} 정품 인증`),
+      // 인증 카피가 없으면 입력 인증 문구 그대로 — '{브랜드} 정품 인증'을 지어내지 않는다(P0-1b)
+      headline: strField(cert, 'headline', specSheet.certificationInfo),
       sub_copy: strField(cert, 'sub_copy'),
       highlight_text: strField(cert, 'highlight_text'),
       bullet_points: arrField(cert, 'bullet_points'),
@@ -262,8 +277,9 @@ function buildProSections(
   available.key_message = {
     type: 'key_message',
     image: images.key_benefit_visual ?? '',
-    headline: copy.keyMessageCopy?.headline ?? copy.keyMessageVariations?.top ?? firstCard?.title ?? firstDetail?.claim ?? '',
-    sub_copy: copy.keyMessageCopy?.subCopy ?? copy.keyMessageVariations?.mid ?? firstCard?.description ?? firstDetail?.proof ?? '',
+    // template_composer_agent.py:606-607 `or` 체인 — 빈 문자열도 다음 후보로 넘긴다
+    headline: firstFilled(copy.keyMessageCopy?.headline, copy.keyMessageVariations?.top, firstCard?.title, firstDetail?.claim),
+    sub_copy: firstFilled(copy.keyMessageCopy?.subCopy, copy.keyMessageVariations?.mid, firstCard?.description, firstDetail?.proof),
   }
 
   available.main_cut = {
@@ -287,14 +303,15 @@ function buildProSections(
     sub_copy: '',
   }
 
-  const ctaHeadline = copy.convertDivCopy?.headline ?? copy.closingCta?.headline ?? copy.keyMessageVariations?.bottom ?? ''
+  // template_composer_agent.py:637-638·655-656 `or` 체인 — 빈 문자열도 다음 후보로 넘긴다
+  const ctaHeadline = firstFilled(copy.convertDivCopy?.headline, copy.closingCta?.headline, copy.keyMessageVariations?.bottom)
   available.convert_div = {
     type: 'convert_div',
     // C-A3(원본 image_generation_agent.py): conversion_cta 이미지는 cta 생성물을 그대로 물려받는다.
     // NexOps는 별도 conversion_cta 프롬프트를 이식하지 않았으므로(PROMPT-INVENTORY §5.3 제외) cta로 직결.
     image: images.cta ?? '',
     headline: ctaHeadline,
-    sub_copy: copy.convertDivCopy?.subCopy ?? copy.closingCta?.subtext ?? '',
+    sub_copy: firstFilled(copy.convertDivCopy?.subCopy, copy.closingCta?.subtext),
   }
 
   // 실제 평점(spec_sheet.rating) 없이 기본값을 지어내면 허위 표시 위험(전자상거래법) — 섹션 자체를 생략.
@@ -304,7 +321,8 @@ function buildProSections(
       type: 'perf_rating',
       image: images.rating_bg ?? '',
       headline: rating,
-      sub_copy: `★★★★★ ${rating} / 5.0`,
+      // 별은 평점만큼(4.0이면 ★★★★☆) — 다섯 개를 다 채우지 않는다
+      sub_copy: `${ratingStars(rating)} ${rating} / 5.0`.trim(),
     }
   }
 
@@ -313,7 +331,7 @@ function buildProSections(
     image: images.size_comparison ?? '',
     headline: '사이즈 비교',
     sub_copy: specSheet.size ?? '',
-    compare_items: copy.compareItems ?? [],
+    compare_items: normalizeCompareItems(copy.compareItems),
     compare_summary: copy.compareSummary ?? '',
   }
 }

@@ -113,9 +113,9 @@ export interface ResearchPlanningPromptArgs {
 
 /** RESEARCH_PLANNING_PROMPT의 5개 슬롯 치환 */
 export function buildResearchPlanningPrompt(args: ResearchPlanningPromptArgs): string {
-  return RESEARCH_PLANNING_PROMPT.replace('{target_persona}', args.targetPersona)
-    .replace('{analysis_result}', args.analysisResult)
-    .replace('{reviews_text}', args.reviewsText)
-    .replace('{brand_voice_guide}', args.brandVoiceGuide)
-    .replace('{strategy_contract}', args.strategyContract)
+  return RESEARCH_PLANNING_PROMPT.replace('{target_persona}', () => args.targetPersona)
+    .replace('{analysis_result}', () => args.analysisResult)
+    .replace('{reviews_text}', () => args.reviewsText)
+    .replace('{brand_voice_guide}', () => args.brandVoiceGuide)
+    .replace('{strategy_contract}', () => args.strategyContract)
 }

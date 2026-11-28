@@ -9,8 +9,8 @@ import type { CorpusSnapshotV2, Role16, SequenceRoleStatV2 } from '../corpus-v2'
 import type { PdpSpecSheet, SectionPlan, StrategyContract } from '../pdp-state'
 import { ProSectionType } from '@/lib/registration/editor/types/section'
 import {
-  ROLE_TO_SECTIONS,
   USP_SECONDARY_PREVALENCE_THRESHOLD,
+  roleSectionMap,
   type SkeletonCondition,
 } from './role-section-map'
 
@@ -24,6 +24,11 @@ export interface SkeletonInput {
   snapshot: CorpusSnapshotV2
   specSheet: PdpSpecSheet
   strategyContract: StrategyContract
+  /**
+   * ENRICHMENT persuasion이 기록됐지만 디자인 어휘를 못 읽은 잡의 폴백 — 정정 매핑(렌더 의미)과 has_reviews·실평점 조건을 쓴다.
+   * 기본값 false는 기존 동작(구 잡·대조군·골든) 그대로다.
+   */
+  enriched?: boolean
 }
 
 export interface SkeletonResult {
@@ -39,7 +44,7 @@ export interface SkeletonResult {
 const POSITION_RANK: Record<string, number> = { opening: 0, early: 1, middle: 2, late: 3, closing: 4 }
 
 /** 동률 정렬용 — position_dist 기대값(구간 가중 평균, 오름차순 = 페이지 상단 성향 먼저). */
-function expectedPosition(stat: SequenceRoleStatV2 | undefined): number {
+export function expectedPosition(stat: SequenceRoleStatV2 | undefined): number {
   if (!stat) return POSITION_RANK.middle
   let sum = 0
   for (const [zone, share] of Object.entries(stat.positionDist)) {
@@ -71,6 +76,10 @@ function conditionSatisfied(
       return specSheet.eventBannerInfo?.trim()
         ? { ok: true }
         : { ok: false, reason: 'eventBannerInfo 없음 — 근거 없는 이벤트 섹션 금지' }
+    case 'has_reviews':
+      return specSheet.reviewsText?.trim() || (specSheet.rating ?? 0) > 0 || (specSheet.reviewCount ?? 0) > 0
+        ? { ok: true }
+        : { ok: false, reason: '리뷰 데이터 없음 — 근거 없는 후기 섹션 금지' }
     case 'has_options':
       return (specSheet.colorOptions?.length ?? 0) >= 4
         ? { ok: true }
@@ -99,6 +108,7 @@ export function buildSkeleton(input: SkeletonInput): SkeletonResult {
   // strategyContract는 입력 계약(부록 C)으로 받아두되 현재 조건 판정에는 쓰지 않는다 — hook 명시 신호는
   // spec_sheet.extra.hookMode(위 hook_gate 주석 참조), 그 외 조건은 전부 spec_sheet 근거 유무다.
   const { snapshot, specSheet } = input
+  const roleMap = roleSectionMap(input.enriched === true)
   const statByRole = new Map<Role16, SequenceRoleStatV2>(snapshot.sequenceFull.map((s) => [s.role, s]))
   const excluded: SkeletonResult['excluded'] = []
 
@@ -118,7 +128,7 @@ export function buildSkeleton(input: SkeletonInput): SkeletonResult {
   // 3. 조건 필터
   const adopted: Array<{ role: Role16; reason: string }> = []
   for (const [role, reason] of candidateReasons) {
-    const mapping = ROLE_TO_SECTIONS[role]
+    const mapping = roleMap[role]
     if (!mapping) {
       excluded.push({ role, reason: '매핑표에 없는 역할 — 억지 매핑 금지' })
       continue
@@ -146,7 +156,10 @@ export function buildSkeleton(input: SkeletonInput): SkeletonResult {
   const seen = new Set<ProSectionType>()
   const sectionsOfRole = new Map<Role16, ProSectionType[]>()
   for (const { role } of adopted) {
-    let sections = ROLE_TO_SECTIONS[role].sections
+    let sections = roleMap[role].sections
+    if (input.enriched && role === 'social_proof' && !((specSheet.rating ?? 0) > 0)) {
+      sections = sections.filter((s) => s !== ProSectionType.PERFORMANCE_RATING) // 실평점 없으면 perf_rating 렌더 안 됨
+    }
     if (role === 'usp_feature' && (statByRole.get(role)?.prevalence ?? 0) < USP_SECONDARY_PREVALENCE_THRESHOLD) {
       sections = sections.slice(0, 1) // 출현율 미달이면 point_div 1개만(결정 T-4 비고)
     }

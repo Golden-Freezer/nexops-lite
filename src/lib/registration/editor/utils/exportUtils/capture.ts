@@ -1,10 +1,14 @@
 // exportUtils/capture.ts — D2 분할: 원본 exportUtils.ts 6~288행, 751~856행 순수 이동 (2026-07-04) — 브라우저 의존(캡처/스티치/다운로드 트리거)
 
 import domtoimage from 'dom-to-image-more';
+import type { Options as DomToImageOptions } from 'dom-to-image-more';
 import { toast } from '@/components/features/registration/editor/ui/Toast';
 import { confirmDialog } from '@/components/features/registration/editor/ui/ConfirmDialog';
+import { embeddedFontCss } from './fontEmbed';
+import { PAGE_EXPORT_WIDTH, toExportHeight } from '@/lib/registration/templatelib/template-types';
+import { CANVAS_MAX_SIDE_PX, DETAIL_CANVAS_WIDTH, EXPORT_CAPTURE_SCALE } from './detailImageLimits';
 
-const CANVAS_WIDTH = 860;
+const CANVAS_WIDTH = DETAIL_CANVAS_WIDTH;
 const COUPANG_MAX_SIZE = 10 * 1024 * 1024; // 10MB
 
 export type ExportFormat = 'jpeg' | 'png';
@@ -223,24 +227,98 @@ export const withIsolatedElement = withClonedCapture;
 export const withNeutralizedAncestors = withClonedCapture;
 
 /**
+ * dom-to-image 캡처 공통 경로(U1b) — 노드에 쓰인 글꼴만 넣은 @font-face를 복제 루트에 <style>로 붙이고 disableEmbedFonts로 찍는다.
+ * dom-to-image는 렌더마다 페이지의 웹폰트 전체를 다시 받아 넣기 때문에(fontEmbed.ts) 섹션마다 찍으면 요청이 폭주한다.
+ * 복제 단계는 원본의 <style> 요소를 빼므로 onclone(직렬화 직전)에서 넣는다. 같은 노드를 여러 번 찍으면 fontCss를 한 번 만들어 넘긴다.
+ */
+export async function captureToBlob(node: HTMLElement, options: DomToImageOptions, fontCss?: string): Promise<Blob> {
+  const css = fontCss ?? (await embeddedFontCss(node));
+  return domtoimage.toBlob(node, {
+    ...options,
+    disableEmbedFonts: true,
+    onclone: (clone) => {
+      if (css) {
+        const style = document.createElement('style');
+        style.textContent = css;
+        clone.appendChild(style);
+      }
+      return options.onclone?.(clone);
+    },
+  });
+}
+
+/**
  * dom-to-image로 DOM 요소를 캡처한다.
  * withClonedCapture로 깨끗한 오프스크린 복제본에서 캡처 → 여백/테두리 제거.
- * scale 기본 1 → 860px (devicePixelRatio 무시). 해상도 셀렉터 선택 시 2~4×.
+ * scale 기본 1 → 780px (devicePixelRatio 무시). 해상도 셀렉터 선택 시 2~4×.
+ * 섹션 묶음은 섹션마다 찍어 잇는다 — dom-to-image는 한 변 16,384px를 넘으면 배율을 낮춘다.
  */
 async function captureElementAsBlob(
   el: HTMLElement,
   backgroundColor: string | null = null,
   scale = 1,
 ): Promise<Blob> {
-  return await withClonedCapture(el, async (clone) =>
-    domtoimage.toBlob(clone, {
-      width: CANVAS_WIDTH,
-      height: clone.offsetHeight,
-      scale,
-      bgcolor: backgroundColor ?? undefined,
-      cacheBust: false, // 이미지는 withClonedCapture 내부에서 인라인 완료
-    }),
-  );
+  return await withClonedCapture(el, async (clone) => {
+    const bgcolor = backgroundColor ?? undefined;
+    const sections = clone.matches('[data-section-id]')
+      ? []
+      : Array.from(clone.querySelectorAll<HTMLElement>('[data-section-id]')).filter((s) => s.offsetHeight > 0);
+    if (sections.length === 0) return blobOfBitmap(await captureExportBitmap(clone, { scale, bgcolor }));
+    return captureSectionsAsBlob(sections, bgcolor, scale);
+  });
+}
+
+/**
+ * 섹션을 하나씩 찍어 한 장으로 잇는다. 이어 붙일 캔버스가 브라우저 한도를 넘지 않는 배율까지만 쓴다(긴 페이지의 2× 이상).
+ * 바탕은 섹션 자기 색을 먼저 쓴다 — bgcolor는 찍는 노드의 바탕을 덮어써서, 흰색을 그대로 넘기면 짙은 섹션의 바탕이 사라져 흰 글자가 안 보인다.
+ */
+export async function captureSectionsAsBlob(sections: readonly HTMLElement[], bgcolor: string | undefined, scale: number): Promise<Blob> {
+  const total = sections.reduce((sum, s) => sum + toExportHeight(s.offsetHeight), 0);
+  const fitted = Math.max(1, Math.min(scale, Math.floor(CANVAS_MAX_SIDE_PX / total)));
+  const pieces: Blob[] = [];
+  for (const section of sections) {
+    pieces.push(await blobOfBitmap(await captureExportBitmap(section, { scale: fitted, bgcolor: section.style.backgroundColor || bgcolor })));
+  }
+  return stitchBlobs(pieces, PAGE_EXPORT_WIDTH * fitted);
+}
+
+/**
+ * 내보내기 이미지 한 장 — 860 캔버스를 2배 이상으로 찍어 780 × scale로 줄인 비트맵. 다 쓰면 호출 측이 close한다.
+ * 찍은 큰 PNG를 오래 들고 있지 않게 디코딩하면서 줄인다.
+ */
+export async function captureExportBitmap(
+  node: HTMLElement,
+  options: { scale?: number; bgcolor?: string } = {},
+): Promise<ImageBitmap> {
+  const scale = options.scale ?? 1;
+  const height = node.offsetHeight;
+  const png = await captureToBlob(node, {
+    width: CANVAS_WIDTH,
+    height,
+    scale: Math.max(EXPORT_CAPTURE_SCALE, scale),
+    bgcolor: options.bgcolor,
+    cacheBust: false, // 이미지는 withClonedCapture 내부에서 인라인 완료
+  });
+  return createImageBitmap(png, {
+    resizeWidth: PAGE_EXPORT_WIDTH * scale,
+    resizeHeight: toExportHeight(height) * scale,
+    resizeQuality: 'high',
+  });
+}
+
+/** 비트맵 → PNG Blob(비트맵은 닫는다) */
+async function blobOfBitmap(bitmap: ImageBitmap): Promise<Blob> {
+  const cvs = document.createElement('canvas');
+  cvs.width = bitmap.width;
+  cvs.height = bitmap.height;
+  cvs.getContext('2d')!.drawImage(bitmap, 0, 0);
+  bitmap.close();
+  return canvasToBlob(cvs, 'image/png');
+}
+
+/** 내보내기 이미지 한 장을 PNG Blob으로 — 메뉴의 섹션 내보내기가 쓴다 */
+export async function captureExportBlob(node: HTMLElement, options: { scale?: number; bgcolor?: string } = {}): Promise<Blob> {
+  return blobOfBitmap(await captureExportBitmap(node, options));
 }
 
 /**
@@ -338,11 +416,13 @@ export async function captureSliced(
   return await withClonedCapture(element, async (clone) => {
     const blobs: Blob[] = [];
     const cloneHeight = clone.offsetHeight;
+    // 글꼴은 조각마다 다시 받지 않게 한 번만 만든다
+    const fontCss = await embeddedFontCss(clone);
 
     for (let y = 0; y < cloneHeight; y += sliceH) {
       const height = Math.min(sliceH, cloneHeight - y);
 
-      const blob = await domtoimage.toBlob(clone, {
+      const blob = await captureToBlob(clone, {
         width: CANVAS_WIDTH,
         height: cloneHeight,
         scale,
@@ -352,16 +432,17 @@ export async function captureSliced(
           marginTop: `-${y}px`,
         },
         filter: () => true,
-      }).then(async (fullBlob: Blob) => {
+      }, fontCss).then(async (fullBlob: Blob) => {
         const bitmap = await createImageBitmap(fullBlob);
         const cvs = document.createElement('canvas');
-        cvs.width = CANVAS_WIDTH * scale;
-        cvs.height = height * scale;
+        cvs.width = PAGE_EXPORT_WIDTH * scale;
+        cvs.height = toExportHeight(height) * scale;
         const ctx = cvs.getContext('2d')!;
+        ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(
           bitmap,
           0, y * scale, CANVAS_WIDTH * scale, height * scale,
-          0, 0, CANVAS_WIDTH * scale, height * scale,
+          0, 0, cvs.width, cvs.height,
         );
         bitmap.close();
         return canvasToBlob(cvs, 'image/png');
@@ -420,7 +501,7 @@ export async function exportFullPagePngBlob(
     // 2차: stitched fallback
     console.warn('[exportFullPagePngBlob] 단일 캡처 실패, stitched export로 전환', error);
     const slices = await captureSliced(canvasElement, { sliceHeight: 4000, backgroundColor: bg, scale });
-    return stitchBlobs(slices, CANVAS_WIDTH * scale);
+    return stitchBlobs(slices, PAGE_EXPORT_WIDTH * scale);
   }
 }
 

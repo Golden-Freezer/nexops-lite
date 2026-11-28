@@ -9,7 +9,7 @@ import {
   Lock, Unlock, Eye, EyeOff,
   AlignStartVertical, AlignCenterVertical, AlignEndVertical,
 } from 'lucide-react';
-import { useAuth } from '@/lib/auth/clerk-shim';
+import { useAuth } from '@clerk/nextjs';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import {
   useEditorStore,
@@ -21,7 +21,8 @@ import {
 import { useCanvasStore } from '@/lib/registration/editor/stores/canvasStore';
 import ColorPicker from '../ColorPicker';
 import type { TextElementProps } from '@/lib/registration/editor/types/canvas';
-import { FONT_OPTIONS, FONT_GROUPS, fontKey } from '@/lib/registration/editor/constants/fonts';
+import { FONT_OPTIONS, fontKey, type FontOption } from '@/lib/registration/editor/constants/fonts';
+import { FontPreviewList, FontSelectOptions } from './FontPicker';
 import {
   EmptyState,
   CollapsibleSection,
@@ -36,7 +37,6 @@ function PropertiesTab({ selectedSectionId }: { selectedSectionId: string | null
   const selectedElementId     = useEditorStore(selectSelectedElementId);
   const selectedElementIds    = useEditorStore(selectSelectedElementIds);
   const measuredHeights       = useEditorStore(selectMeasuredHeights);
-  const updateElementPosition = useEditorStore((s) => s.updateElementPosition);
   const updateElementSize     = useEditorStore((s) => s.updateElementSize);
   const updateElement         = useEditorStore((s) => s.updateElement);
   const updateSelectedElements = useEditorStore((s) => s.updateSelectedElements);
@@ -49,6 +49,7 @@ function PropertiesTab({ selectedSectionId }: { selectedSectionId: string | null
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [showStrokeColorPicker, setShowStrokeColorPicker] = useState(false);
   const [showTextShadowColorPicker, setShowTextShadowColorPicker] = useState(false);
+  const [showFontPreview, setShowFontPreview] = useState(false);
 
   const elementData = useMemo(() => {
     if (!doc || !selectedElementId) return null;
@@ -137,6 +138,28 @@ function PropertiesTab({ selectedSectionId }: { selectedSectionId: string | null
     }
   };
 
+  // 글꼴 바꾸기(선택 상자·미리보기 목록 공용) — 패밀리·굵기를 함께 바꾼다
+  const applyFont = (opt: FontOption) => {
+    if (!tp) return;
+    if (isMulti) {
+      updateSelectedTextProps({ fontFamily: opt.fontFamily, fontWeight: opt.fontWeight });
+    } else {
+      updateElement(sectionId, element.id, {
+        textProps: { ...tp, fontFamily: opt.fontFamily, fontWeight: opt.fontWeight },
+      });
+    }
+    // P1-1: 폰트 교체는 글자폭이 달라져 줄바꿈·높이가 바뀐다
+    requestStyleRemeasure(sectionId, element.id);
+    // 선택 상자는 글꼴을 미리 받지 않는다(FontPicker) — 아직 받지 않은 글꼴이면 대체 글꼴 폭으로 잰 높이가 굳지 않게
+    // 파일을 받은 뒤 한 번 더 잰다
+    if (typeof document !== 'undefined' && document.fonts) {
+      document.fonts
+        .load(`${opt.fontWeight} 16px "${opt.fontFamily}"`, '가Aa1')
+        .then(() => requestStyleRemeasure(sectionId, element.id))
+        .catch(() => {});
+    }
+  };
+
   return (
     <div className="p-3 space-y-3">
       {/* 다중선택 표시 */}
@@ -158,32 +181,25 @@ function PropertiesTab({ selectedSectionId }: { selectedSectionId: string | null
               value={`${tp.fontFamily}__${tp.fontWeight}`}
               onChange={(e) => {
                 const opt = FONT_OPTIONS.find((f) => fontKey(f) === e.target.value);
-                if (opt) {
-                  if (isMulti) {
-                    updateSelectedTextProps({ fontFamily: opt.fontFamily, fontWeight: opt.fontWeight });
-                  } else {
-                    updateElement(sectionId, element.id, {
-                      textProps: { ...tp, fontFamily: opt.fontFamily, fontWeight: opt.fontWeight },
-                    });
-                  }
-                  // P1-1: 폰트 교체는 글자폭이 달라져 줄바꿈·높이가 바뀐다
-                  requestStyleRemeasure(sectionId, element.id);
-                }
+                if (opt) applyFont(opt);
               }}
               className="flex-1 h-7 text-xs border border-[var(--border-default)] rounded px-1.5 bg-[var(--surface-elevated)] outline-none cursor-pointer"
               style={{ fontFamily: tp.fontFamily }}
             >
-              {FONT_GROUPS.map((g) => (
-                <optgroup key={g.key} label={g.label}>
-                  {g.fonts.map((f) => (
-                    <option key={fontKey(f)} value={fontKey(f)} style={{ fontFamily: f.fontFamily }}>
-                      {f.label}
-                    </option>
-                  ))}
-                </optgroup>
-              ))}
+              <FontSelectOptions fontFamily={tp.fontFamily} fontWeight={tp.fontWeight} />
             </select>
+            <button
+              type="button"
+              aria-expanded={showFontPreview}
+              onClick={() => setShowFontPreview((v) => !v)}
+              className="h-7 shrink-0 rounded border border-[var(--border-default)] px-1.5 text-[11px] text-[var(--text-secondary)] hover:bg-[var(--hover-overlay)]"
+            >
+              미리보기
+            </button>
           </div>
+          {showFontPreview && (
+            <FontPreviewList currentKey={`${tp.fontFamily}__${tp.fontWeight}`} onPick={applyFont} />
+          )}
 
           {/* 폰트 크기 */}
           <PropertyInput

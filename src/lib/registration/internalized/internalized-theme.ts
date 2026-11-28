@@ -11,9 +11,9 @@
  * palette가 있으면 bgMain/bgSub와 ΔE(CIE76) 최소 후보, 없으면 후보 1위.
  */
 
-import type { CorpusSnapshotV2 } from '../corpus-v2'
+import type { CorpusSnapshotV2, Role16 } from '../corpus-v2'
 import type { DesignPalette } from '../pdp-state'
-import { ROLE_TO_SECTIONS } from './role-section-map'
+import { ROLE_TO_SECTIONS, type RoleSectionMapping } from './role-section-map'
 
 /** 부록 C SectionThemeDefaults — 서버가 해석을 마친 뒤 소비처(compose·에디터)에 내려보내는 형태. */
 export interface ResolvedSectionTheme {
@@ -86,10 +86,12 @@ export function pickBackgroundHex(candidates: string[], palette: DesignPalette |
  */
 export function buildInternalizedTheme(
   snapshot: CorpusSnapshotV2,
-  palette: DesignPalette | null | undefined
+  palette: DesignPalette | null | undefined,
+  /** ENRICHMENT persuasion 잡은 정정 매핑(ROLE_TO_SECTIONS_ENRICHED)을 넘긴다. 기본값은 기존 매핑 */
+  roleMap: Record<Role16, RoleSectionMapping> = ROLE_TO_SECTIONS
 ): InternalizedThemeMap {
   const theme: InternalizedThemeMap = {}
-  for (const [role, mapping] of Object.entries(ROLE_TO_SECTIONS)) {
+  for (const [role, mapping] of Object.entries(roleMap)) {
     const recipe = snapshot.designRecipes[role as keyof typeof snapshot.designRecipes]
     if (!recipe) continue
     for (const sectionType of mapping.sections) {

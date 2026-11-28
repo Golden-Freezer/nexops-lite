@@ -1,0 +1,420 @@
+{
+  "_source": "R1 P03 treatment 잡 f2d72bd0(2026-10-27, 24.94점) — copy_sections.final·section_plan 일부·spec_sheet. 이미지 URL은 자리표시",
+  "copy": {
+    "howTo": [
+      {
+        "step": "샴푸 전, 젖은 두피에 올리기",
+        "description": "브러쉬를 두피에 가볍게 대고 원을 그리듯 움직여요"
+      },
+      {
+        "step": "샴푸 거품 낼 때 함께 사용",
+        "description": "거품을 낸 상태로 두피 전체를 천천히 문질러요"
+      },
+      {
+        "step": "헹군 뒤 제자리에 걸어두기",
+        "description": "물기를 털고 통풍 잘 되는 곳에 보관해요"
+      }
+    ],
+    "title": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+    "problem": {
+      "empathy": "거품을 내는 동안 손가락은 금방 저리고, 힘은 들어가는데 개운함은 느껴지지 않아요",
+      "question": "손가락만으로 두피까지 닿고 계신가요?",
+      "empathyLines": [
+        "손가락이 금방 아파요",
+        "힘 조절이 안 돼요",
+        "두피까진 안 닿아요",
+        "매번 대충 끝내요"
+      ],
+      "empathyDeepLines": [
+        "개운한 적이 별로 없어요",
+        "씻어도 찝찝함이 남아요",
+        "제대로 하는지 모르겠어요",
+        "샤워가 그냥 일이 돼요"
+      ]
+    },
+    "summary": "매일 샴푸, 두피는 그대로였다",
+    "sections": [
+      {
+        "headline": "두피가 개운해지는\n3분 샤워 습관",
+        "sub_copy": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+        "section_type": "hook",
+        "image_direction": "제품 중심의 프리미엄 스튜디오 촬영, 따뜻한 조명"
+      },
+      {
+        "headline": "손가락만으로 두피까지 닿고 계신가요?",
+        "sub_copy": "거품을 내는 동안 손가락은 금방 저리고, 힘은 들어가는데 개운함은 느껴지지 않아요",
+        "section_type": "problem",
+        "image_direction": "문제 상황을 보여주는 공감 가는 이미지, 밝은 톤 유지"
+      },
+      {
+        "headline": "손끝 대신 돌기로, 두피 전체를 한 번에 꾹 눌러주는 구조",
+        "sub_copy": "실리콘 돌기가 손가락보다 넓고 균일하게 압력을 전달해 샴푸하면서 마사지까지 끝나요",
+        "section_type": "benefit",
+        "image_direction": "제품 사용 중인 밝고 긍정적인 라이프스타일 이미지"
+      },
+      {
+        "headline": "이런 점이 다릅니다",
+        "sub_copy": "",
+        "detail_items": [
+          {
+            "icon": "✦",
+            "text": "넓은 자극 면적: 돌기 구조가 두피 전체에 퍼져\n손끝보다 넓게 닿아요"
+          },
+          {
+            "icon": "◆",
+            "text": "안정적 그립: 거품 묻은 손에도 착 잡혀요\n미끄럼 걱정 줄여요"
+          },
+          {
+            "icon": "●",
+            "text": "세이지 그린: 욕실 분위기에 자연스럽게\n소품처럼 어울려요"
+          }
+        ],
+        "section_type": "detail_points",
+        "image_direction": "제품 디테일 클로즈업 샷"
+      },
+      {
+        "headline": "이렇게 사용하세요",
+        "sub_copy": "샴푸 전, 젖은 두피에 올리기: 브러쉬를 두피에 가볍게 대고 원을 그리듯 움직여요",
+        "section_type": "usage",
+        "image_direction": "자연스러운 사용 장면, 한국인 모델"
+      },
+      {
+        "headline": "이런 분께 추천합니다",
+        "sub_copy": "손 마사지가 번거로운 분, 두피 세정감을 더 원하는 분, 욕실 소품도 예쁘게 두고 싶은 분",
+        "section_type": "trust",
+        "image_direction": "신뢰감을 주는 깔끔한 제품 이미지"
+      },
+      {
+        "headline": "오늘 샤워부터 만나보세요",
+        "sub_copy": "한정 수량 / 빠른 배송",
+        "section_type": "cta",
+        "image_direction": ""
+      }
+    ],
+    "solution": {
+      "summary": "실리콘 돌기가 손가락보다 넓고 균일하게 압력을 전달해 샴푸하면서 마사지까지 끝나요",
+      "declaration": "손끝 대신 돌기로, 두피 전체를 한 번에 꾹 눌러주는 구조"
+    },
+    "hero_copy": {
+      "hook": "두피가 개운해지는\n3분 샤워 습관",
+      "subline": "실리콘 돌기가 손끝보다 넓게 두피를 자극해 개운한 세정감까지 끌어올려요",
+      "benefit_headline": "두피가 개운해지는\n3분 샤워 습관"
+    },
+    "mainIntro": {
+      "hook": "매일 감는 샴푸, 두피까지 닿았나요?",
+      "category": "뷰티 · 두피 케어 도구",
+      "subBenefit": "실리콘 돌기가 손끝보다 넓게 두피를 자극해 개운한 세정감까지 끌어올려요",
+      "brandAndName": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+      "benefitHeadline": "두피가 개운해지는\n3분 샤워 습관"
+    },
+    "closingCta": {
+      "subtext": "매일 쓰는 도구라 한 번 구매로 오래 함께해요",
+      "headline": "오늘 샤워부터 만나보세요"
+    },
+    "pointCards": [
+      {
+        "title": "넓은 자극 면적",
+        "description": "돌기 구조가 두피 전체에 퍼져\n손끝보다 넓게 닿아요"
+      },
+      {
+        "title": "안정적 그립",
+        "description": "거품 묻은 손에도 착 잡혀요\n미끄럼 걱정 줄여요"
+      },
+      {
+        "title": "세이지 그린",
+        "description": "욕실 분위기에 자연스럽게\n소품처럼 어울려요"
+      },
+      {
+        "title": "루틴화 가능",
+        "description": "매일 샤워에 바로 추가\n별도 시간 필요 없어요"
+      }
+    ],
+    "conceptCopy": {
+      "subCopy": "소품 하나로 욕실 분위기가 차분히 정돈돼요",
+      "headline": "욕실에 놓는 세이지 그린"
+    },
+    "mainCutCopy": {
+      "subCopy": "촘촘한 돌기가 두피 전체를 꾹 눌러줘요",
+      "headline": "손끝이 닿지 못한 곳까지"
+    },
+    "colorOptions": {
+      "title": "컬러 옵션",
+      "options": [
+        "세이지 그린"
+      ],
+      "description": "차분한 세이지 그린 하나로 욕실 분위기에 자연스럽게 어울려요"
+    },
+    "compareItems": [
+      {
+        "cons": "힘 조절 쉽게 지쳐요",
+        "name": "손가락 마사지",
+        "pros": "도구 없이 바로 가능"
+      },
+      {
+        "cons": "모가 금방 뻣뻣해져요",
+        "name": "일반 샴푸빗",
+        "pros": "저렴하고 구하기 쉬워요"
+      },
+      {
+        "cons": "",
+        "name": "본 상품",
+        "pros": "세정과 마사지 동시에 해결"
+      }
+    ],
+    "cta_variants": [
+      {
+        "copy": "오늘 샤워부터 만나보세요",
+        "type": "emotion"
+      },
+      {
+        "copy": "매일 쓰는 도구라 한 번 구매로 오래 함께해요",
+        "type": "rational"
+      }
+    ],
+    "detailPoints": [
+      {
+        "claim": "샴푸하며 마사지, 한 번에 끝나요",
+        "proof": "세정과 마사지를 동시에 수행하는 멀티펑셔널 구조",
+        "benefit": "따로 시간 들이지 않고 두피 관리 완료",
+        "imageHint": "[샴푸하며 마사지] — 거품 속 브러쉬로 두피 문지르는 장면"
+      },
+      {
+        "claim": "거품이 보글보글 올라오는 걸 느껴요",
+        "proof": "돌기 사이로 공기와 물이 섞여 세정감 상승",
+        "benefit": "씻는 내내 개운한 느낌이 유지돼요",
+        "imageHint": "[풍성한 거품컷] — 브러쉬 돌기 사이로 올라오는 거품 클로즈업"
+      },
+      {
+        "claim": "손목에 힘을 덜 줘도 괜찮아요",
+        "proof": "인체공학적 그립 설계로 일정한 압력 유지",
+        "benefit": "오래 문질러도 손목이 편안해요",
+        "imageHint": "[가벼운 손목컷] — 자연스럽게 쥔 손 모양 클로즈업"
+      },
+      {
+        "claim": "젖은 손에서도 미끄러지지 않아요",
+        "proof": "그립 디자인이 물기 머금은 손에서도 밀착",
+        "benefit": "거품 낀 상태로도 끝까지 편하게 사용",
+        "imageHint": "[미끄럼 없는 그립] — 물방울 맺힌 손잡이를 쥔 모습"
+      },
+      {
+        "claim": "단순 브러쉬와는 구조부터 달라요",
+        "proof": "실리콘 돌기 배열이 두피 전체에 균일하게 닿도록 설계",
+        "benefit": "같은 시간, 더 꼼꼼하게 닿는 느낌",
+        "imageHint": "[돌기 구조컷] — 브러쉬 돌기 배열을 위에서 촬영한 클로즈업"
+      },
+      {
+        "claim": "욕실 선반 위, 소품처럼 자리해요",
+        "proof": "세이지 그린 단일 컬러로 색감 통일감 제공",
+        "benefit": "쓰지 않을 때도 보기 좋은 욕실 풍경",
+        "imageHint": "[욕실 선반컷] — 타일 배경 위 브러쉬 단독 연출"
+      }
+    ],
+    "designPalette": {
+      "bgSub": "#E8EDE5",
+      "bgMain": "#F5F7F3",
+      "primary": "#6B8E6B",
+      "textMain": "#232823",
+      "secondary": "#4A6B4A",
+      "textHighlight": "#C2410C"
+    },
+    "directionHint": {
+      "subCopy": "손끝 대신 브러쉬로\n두피 마사지 시작",
+      "headline": "오늘 샤워부터 바꿔보세요"
+    },
+    "soldOutBanner": {
+      "headline": "재입고 3일 만에 품절",
+      "subtitle": "매일 쓰는 분들이 먼저 선택했어요"
+    },
+    "compareSummary": "손끝 대신 돌기로, 닿는 면적부터 달라요",
+    "convertDivCopy": {
+      "subCopy": "샤워 루틴에 끼워 넣기만 하면 끝",
+      "headline": "오늘부터 바로 시작하세요"
+    },
+    "keyMessageCopy": {
+      "subCopy": "따로 시간 내지 않아도 두피가 관리돼요",
+      "headline": "샴푸 시간, 마사지 시간"
+    },
+    "usageSceneTags": [
+      "#매일샤워루틴",
+      "#두피마사지",
+      "#퇴근후셀프케어",
+      "#욕실소품"
+    ],
+    "eventBundleCopy": {
+      "subCopy": "욕실 한 자리, 매일 쓰는 도구",
+      "headline": "세이지 그린 1개 구성"
+    },
+    "productExposure": {
+      "subCopy": "거품 낀 손에서도 미끄럼 없이 착 잡혀요",
+      "headline": "그립 하나로 달라진 손맛"
+    },
+    "review_strategy": {
+      "position": "dynamic",
+      "why_here": "strategy_contract.review_position_strategy=dynamic 기반 배치"
+    },
+    "reviewHighlights": [],
+    "objection_handlers": [
+      {
+        "answer": "세정과 마사지를 동시에 수행하는 멀티펑셔널 구조 — 따로 시간 들이지 않고 두피 관리 완료",
+        "objection": "단순 브러쉬 대비 실제 효과의 차별성"
+      },
+      {
+        "answer": "돌기 사이로 공기와 물이 섞여 세정감 상승 — 씻는 내내 개운한 느낌이 유지돼요",
+        "objection": "사용 편의성 및 내구성"
+      },
+      {
+        "answer": "합리적인 가격에 최고의 품질을 제공합니다.",
+        "objection": "가격이 비싸지 않나요?"
+      }
+    ],
+    "recommendedTargets": [
+      "손 마사지가 번거로운 분",
+      "두피 세정감을 더 원하는 분",
+      "욕실 소품도 예쁘게 두고 싶은 분",
+      "퇴근 후 샤워로 긴장 풀고 싶은 분"
+    ],
+    "section_copy_blocks": [
+      {
+        "body": "페어넥스 · 스칼프 마사지 두피 샴푸 브러쉬",
+        "role": "proof",
+        "section": "hook",
+        "headline": "두피가 개운해지는\n3분 샤워 습관"
+      },
+      {
+        "body": "거품을 내는 동안 손가락은 금방 저리고, 힘은 들어가는데 개운함은 느껴지지 않아요",
+        "role": "proof",
+        "section": "problem",
+        "headline": "손가락만으로 두피까지 닿고 계신가요?"
+      },
+      {
+        "body": "실리콘 돌기가 손가락보다 넓고 균일하게 압력을 전달해 샴푸하면서 마사지까지 끝나요",
+        "role": "proof",
+        "section": "benefit",
+        "headline": "손끝 대신 돌기로, 두피 전체를 한 번에 꾹 눌러주는 구조"
+      },
+      {
+        "body": "",
+        "role": "proof",
+        "section": "detail_points",
+        "headline": "이런 점이 다릅니다"
+      },
+      {
+        "body": "샴푸 전, 젖은 두피에 올리기: 브러쉬를 두피에 가볍게 대고 원을 그리듯 움직여요",
+        "role": "proof",
+        "section": "usage",
+        "headline": "이렇게 사용하세요"
+      },
+      {
+        "body": "손 마사지가 번거로운 분, 두피 세정감을 더 원하는 분, 욕실 소품도 예쁘게 두고 싶은 분",
+        "role": "proof",
+        "section": "trust",
+        "headline": "이런 분께 추천합니다"
+      },
+      {
+        "body": "한정 수량 / 빠른 배송",
+        "role": "proof",
+        "section": "cta",
+        "headline": "오늘 샤워부터 만나보세요"
+      }
+    ],
+    "keyMessageVariations": {
+      "mid": "돌기 구조로 두피 전체를 자극해요",
+      "top": "매일 샴푸, 두피는 그대로였다",
+      "bottom": "오늘 샤워부터 바로 시작하세요"
+    },
+    "sizeComparisonObject": "iphone"
+  },
+  "images": {
+    "hero": "https://img.test/r1-p03/hero.png",
+    "problem": "https://img.test/r1-p03/problem.png",
+    "solution": "https://img.test/r1-p03/solution.png",
+    "usage": "https://img.test/r1-p03/usage.png",
+    "cta": "https://img.test/r1-p03/cta.png",
+    "product_exposure": "https://img.test/r1-p03/product_exposure.png",
+    "empathy_scene": "https://img.test/r1-p03/empathy_scene.png",
+    "direction_hint": "https://img.test/r1-p03/direction_hint.png",
+    "key_benefit_visual": "https://img.test/r1-p03/key_benefit_visual.png",
+    "premium_hero": "https://img.test/r1-p03/premium_hero.png",
+    "concept_mood": "https://img.test/r1-p03/concept_mood.png",
+    "comparison_scene": "https://img.test/r1-p03/comparison_scene.png",
+    "rating_bg": "https://img.test/r1-p03/rating_bg.png",
+    "features": [
+      "https://img.test/r1-p03/features-0.png",
+      "https://img.test/r1-p03/features-1.png",
+      "https://img.test/r1-p03/features-2.png",
+      "https://img.test/r1-p03/features-3.png"
+    ],
+    "howToImages": [
+      "https://img.test/r1-p03/howto-0.png",
+      "https://img.test/r1-p03/howto-1.png",
+      "https://img.test/r1-p03/howto-2.png"
+    ],
+    "usp_icons": [
+      "https://img.test/r1-p03/usp_icons-0.png",
+      "https://img.test/r1-p03/usp_icons-1.png",
+      "https://img.test/r1-p03/usp_icons-2.png",
+      "https://img.test/r1-p03/usp_icons-3.png"
+    ],
+    "conversion_cta": "https://img.test/r1-p03/cta.png"
+  },
+  "spec_sheet": {
+    "category": "beauty",
+    "brandName": "페어넥스",
+    "productName": "페어넥스 스칼프 마사지 두피 샴푸 브러쉬",
+    "colorOptions": [
+      "1개 세이지 그린"
+    ]
+  },
+  "section_plan": {
+    "activated_sections": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "section_order": [
+      "hook_3step",
+      "main_cut",
+      "problem_raise",
+      "solution_guide",
+      "point_div",
+      "product_exposure",
+      "sub_div",
+      "cta"
+    ],
+    "enrichment": {
+      "version": 1,
+      "features": [
+        "vocab",
+        "persuasion",
+        "layouts",
+        "shots",
+        "annotations",
+        "mobile",
+        "options"
+      ],
+      "vocabHash": "73b757bbdea4"
+    },
+    "layout_selections": {
+      "cta": "minimal",
+      "sub_div": "minimal",
+      "main_cut": "minimal",
+      "point_div": "minimal",
+      "hook_3step": "image_first",
+      "problem_raise": "minimal",
+      "solution_guide": "image_first",
+      "product_exposure": "minimal"
+    },
+    "hook_strategy": {
+      "reasoning": "완판 이력과 리뷰가 전무해 실적증거는 사용 불가. 저관여 뷰티 소품이지만 '손가락 두피 마사지의 한계'라는 일상적 불편은 공감대 형성이 쉽고, hook_mode=empathy·persuasion_axis=balanced 전략과 정확히 부합한다. 시각적 충격(세이지그린 디자인)은 보조 무기로 main_cut에서 활용하되, 첫 진입은 공감형 후킹으로 열어 저관여 고객의 3초 이탈을 막는다.",
+      "hero_frame": "oval",
+      "image_hooking": true,
+      "first_3_seconds": "샤워 중 손가락으로 두피를 벅벅 긁다 지친 손, 혹은 손톱 자국이 남은 두피 클로즈업 이미지 위에 '손가락으로는 한계가 있어요' 공감형 질문 카피가 떠 있는 화면",
+      "strongest_weapon": "문제공감"
+    }
+  }
+}

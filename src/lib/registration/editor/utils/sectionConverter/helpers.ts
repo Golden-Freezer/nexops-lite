@@ -268,6 +268,17 @@ function computeSectionHeight(elements: CanvasElement[]): number {
   return bottom + pad;
 }
 
+/**
+ * 수량+단위를 붙인다(B 배치 점검 #4: '봉투 겉면에 한 / 장 붙여보세요'처럼 줄이 갈렸다) — 수 낱말('한'·'20') 뒤 띄어쓰기가
+ * 단위('장'·'개'·'분' …) 앞이면 줄바꿈 없는 공백(nbsp)으로 바꾼다. 뒤 낱말이 단위로 시작하기만 해도 붙이지만, 두 낱말을 한 줄에
+ * 두는 것뿐이라 뜻은 바뀌지 않는다.
+ */
+const COUNT_WORD = '(?:\\d+(?:[.,]\\d+)?|한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|스무|몇)';
+const COUNT_UNIT = '(?:장|개|매|분|초|시간|일|주|달|번|가지|종|켤레|쌍|팩|세트|구|입|병|롤|겹|단계|배|회|명|마리|칸|줄|cm|mm|ml|kg|g|L|m)';
+const COUNT_SPACE_RE = new RegExp(`(?<![가-힣\\d])(${COUNT_WORD}) (?=${COUNT_UNIT})`, 'g');
+function keepCountUnits(text: string): string {
+  return text.replace(COUNT_SPACE_RE, '$1\u00A0');
+}
 
 export {
   CANVAS_WIDTH,
@@ -290,5 +301,6 @@ export {
   isFullBleedClosure,
   splitGraphemes,
   graphemeWidthPx,
+  keepCountUnits,
 };
 export type { TypoLevel };

@@ -4,8 +4,17 @@
 import { ProSectionType } from '@/lib/registration/editor/types/section';
 import { SECTION_IMAGE_MAPPING } from '@/lib/registration/editor/constants/sectionConfig';
 import type { CopywritingResult } from '@/lib/registration/editor/types/editor';
+import { normalizeCompareItems, withoutWorryPhrase } from '@/lib/registration/pdp-copy-labels';
 import { str, sanitizeImageUrl, extractCta, normalizeDetailPoint } from './helpers';
 
+
+/**
+ * 카피에 CTA가 없을 때의 CTA 제목 — 상품명이 h1 25자 제한("지금 " 3자 + 상품명 + " 담아두세요" 6자) 안이면 상품명 문구, 아니면 범용 문구.
+ * 보라고 안내하는 끝말('만나보세요')은 쓰지 않는다(P1-1a)
+ */
+export function contextualCtaHeadline(productName: string): string {
+  return productName && productName.length <= 16 ? `지금 ${productName} 담아두세요` : '지금 구매하기';
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 이미지 URL 해석: generatedImages Record → 섹션에 맞는 단일 URL (sanitized)
@@ -126,7 +135,7 @@ function buildContext(specSheet?: Record<string, unknown>): BuildContext {
   const hasRealRating = ratings.length > 0;
   const avgRating = hasRealRating
     ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1)
-    : '5.0';
+    : '';
 
   return { soldOutCount, avgRating, hasRealRating, totalReviewCount };
 }
@@ -165,7 +174,6 @@ function extractContent(
     case ProSectionType.PERFORMANCE_RATING:
       return { avgRating: ctx.avgRating, hasRealRating: ctx.hasRealRating };
     case ProSectionType.PERFORMANCE_REVIEWS: {
-      const total = ctx.totalReviewCount;
       return {
         reviewCountText: '',
         reviews: copy.reviewHighlights ?? [],
@@ -177,7 +185,7 @@ function extractContent(
     case ProSectionType.CERTIFICATION: {
       const certCopy = copy.certificationCopy;
       return {
-        text: certCopy?.headline ?? '정품 인증',
+        text: certCopy?.headline ?? '',
         subtitle: certCopy?.sub_copy ?? '',
         highlightText: certCopy?.highlight_text ?? '',
         bulletPoints: certCopy?.bullet_points ?? [],
@@ -206,7 +214,8 @@ function extractContent(
         : empathyRaw
           ? empathyRaw.split(/[.!?。]\s+/).map((s) => s.trim()).filter((s) => s.length > 5).slice(0, 4)
           : [];
-      return { question: copy.problem.question, empathy: empathyRaw, empathyLines };
+      // 저장 카피에 남은 '이런 고민'도 다시 그릴 때 뺀다(오너 지시 11-01)
+      return { question: withoutWorryPhrase(str(copy.problem.question)), empathy: empathyRaw, empathyLines };
     }
     case ProSectionType.PROBLEM_EMPATHY: {
       const empathyRaw = str(copy.problem.empathy);
@@ -295,7 +304,8 @@ function extractContent(
     case ProSectionType.COMPARE_DIV:
       return {
         title: '실제 크기 비교',
-        compareItems: copy.compareItems ?? [],
+        // 저장 카피의 옛 3자 비교·단점 칸도 여기서 두 칸으로 맞춘다(오너 지시 11-01)
+        compareItems: normalizeCompareItems(copy.compareItems),
         compareSummary: copy.compareSummary ?? '',
       };
     case ProSectionType.COMPARE2_DIV:
@@ -316,13 +326,9 @@ function extractContent(
       return { title: '제품 스펙' };
     case ProSectionType.CTA: {
       const cta = extractCta(copy.closingCta);
-      // P1-3: 하드코딩 '지금 구매하기' 폴백을 상품 맥락 기반으로 개선.
-      // 상품명이 있고 h1 25자 제한("지금 " 3자 + 상품명 + " 만나보세요" 6자) 안이면
-      // 상품명 문구, 아니면 기존 범용 문구를 최후 폴백으로 유지.
+      // P1-3: 하드코딩 '지금 구매하기' 폴백을 상품 맥락 기반으로 개선(contextualCtaHeadline)
       const productName = (copy.mainIntro.title || '').trim();
-      const contextualCta = productName && productName.length <= 16
-        ? `지금 ${productName} 만나보세요`
-        : '지금 구매하기';
+      const contextualCta = contextualCtaHeadline(productName);
       // Task 5: convert_div와 중복 방지 — cta는 subtext(행동 촉구) 사용, 없으면 fallback
       const hasRealAction = !!(cta.subtext && cta.subtext !== cta.headline);
       const ctaActionText = hasRealAction ? cta.subtext : contextualCta;

@@ -5,9 +5,16 @@
  * 단가(§9.1 실측)와 이번 잡 예상 비용(장수 × 단가)을 함께 보여준다.
  */
 
-import { IMAGE_MODELS, estimateImageCostUsd, type ImageModel, type ImageQuality } from '@/lib/agents/image/types'
+import {
+  IMAGE_MODELS,
+  estimateImageCostUsd,
+  type ImageModel,
+  type ImageModelInfo,
+  type ImageQuality,
+} from '@/lib/agents/image/types'
 
 export function ImageModelSelect({
+  models = IMAGE_MODELS,
   model,
   quality,
   imageCount,
@@ -15,6 +22,8 @@ export function ImageModelSelect({
   onModelChange,
   onQualityChange,
 }: {
+  /** 선택지 — 없으면 IMAGE_MODELS(상세페이지는 PDP_IMAGE_MODELS) */
+  models?: ImageModelInfo[]
   model: ImageModel
   quality: ImageQuality
   /** 이번 잡의 예상 생성 장수 (대표이미지 3컷 = 3) */
@@ -32,9 +41,10 @@ export function ImageModelSelect({
         value={model}
         onChange={(e) => onModelChange(e.target.value as ImageModel)}
         disabled={disabled}
-        className="border border-slate-200 rounded px-2 py-1 text-xs text-slate-700 focus:outline-none focus:border-brand-400 disabled:opacity-50"
+        // 모델 옵션 글('라벨 — 설명')이 길면 좁은 화면(390)에서 칸 밖으로 넘친다 — 칸 폭까지만(넓은 화면은 그대로)
+        className="max-w-full border border-slate-200 rounded px-2 py-1 text-xs text-slate-700 focus:outline-none focus:border-brand-400 disabled:opacity-50"
       >
-        {IMAGE_MODELS.map((m) => (
+        {models.map((m) => (
           <option key={m.id} value={m.id}>
             {m.label} — {m.note}
           </option>

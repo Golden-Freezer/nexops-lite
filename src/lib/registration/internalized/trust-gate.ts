@@ -6,8 +6,18 @@
  */
 
 import type { CorpusSnapshotV2, Role16 } from '../corpus-v2'
+import type { VocabCell } from '../design-vocab'
 import type { CopySectionsPayload, PdpQualityReport, SectionPlan } from '../pdp-state'
-import { ROLE_TO_SECTIONS } from './role-section-map'
+import { ROLE_TO_SECTIONS, ROLE_TO_SECTIONS_ENRICHED, type RoleSectionMapping } from './role-section-map'
+
+export interface TrustStack {
+  required: Role16[]
+  recommended: Role16[]
+}
+
+/** v2와 같은 임계 — required ≥ 0.50, recommended 0.35 이상 0.50 미만(WORK_SPEC B-3). */
+const TRUST_REQUIRED_MIN = 0.5
+const TRUST_RECOMMENDED_MIN = 0.35
 
 export interface TrustGateResult {
   pass: boolean
@@ -32,25 +42,37 @@ const USER_ACTION_HINTS: Partial<Record<Role16, string>> = {
 }
 
 /** 역할 충족 판정 — 매핑된 섹션 중 하나라도 활성화돼 있으면 충족(certification 변형 dedupe 호환). */
-function roleSatisfied(role: Role16, activatedSet: Set<string>): boolean {
-  const sections = ROLE_TO_SECTIONS[role]?.sections ?? []
+function roleSatisfied(role: Role16, activatedSet: Set<string>, mapping: Record<Role16, RoleSectionMapping>): boolean {
+  const sections = mapping[role]?.sections ?? []
   return sections.some((s) => activatedSet.has(String(s)))
 }
 
 export function runTrustGate(activatedSections: string[], snapshot: CorpusSnapshotV2): TrustGateResult {
+  return evaluateTrustStack(activatedSections, snapshot.profile.trustStack, ROLE_TO_SECTIONS)
+}
+
+/** trustStack 대조 — 매핑을 받아 구 잡(기존 매핑)과 ENRICHMENT 잡(정정 매핑)이 같은 판정 로직을 쓴다. */
+export function evaluateTrustStack(
+  activatedSections: string[],
+  trustStack: TrustStack,
+  mapping: Record<Role16, RoleSectionMapping>
+): TrustGateResult {
   const activatedSet = new Set(activatedSections)
   const missingRequired: Role16[] = []
   const missingRecommended: Role16[] = []
 
-  for (const role of snapshot.profile.trustStack.required) {
-    if (!roleSatisfied(role, activatedSet)) missingRequired.push(role)
+  for (const role of trustStack.required) {
+    if (!roleSatisfied(role, activatedSet, mapping)) missingRequired.push(role)
   }
-  for (const role of snapshot.profile.trustStack.recommended) {
-    if (!roleSatisfied(role, activatedSet)) missingRecommended.push(role)
+  for (const role of trustStack.recommended) {
+    if (!roleSatisfied(role, activatedSet, mapping)) missingRecommended.push(role)
   }
 
-  // 플랫폼 영역 역할은 생성으로 채울 수 없다 — pass 판정에서는 제외하되 힌트로는 안내한다.
-  const generatableMissing = missingRequired.filter((r) => !PLATFORM_ROLES.includes(r))
+  // 플랫폼 영역 역할과 매핑 섹션이 없는 역할(정정 매핑의 faq — 렌더러 부재)은 생성으로 채울 수 없다 —
+  // pass 판정에서는 제외하되 힌트로는 안내한다. 기존 매핑은 플랫폼 역할 외 모든 역할에 섹션이 있어 판정이 그대로다.
+  const generatableMissing = missingRequired.filter(
+    (r) => !PLATFORM_ROLES.includes(r) && (mapping[r]?.sections.length ?? 0) > 0
+  )
   const hints = [...missingRequired, ...missingRecommended]
     .map((role) => USER_ACTION_HINTS[role])
     .filter((h): h is string => Boolean(h))
@@ -74,6 +96,62 @@ export function buildQualityReport(sectionPlan: SectionPlan, snapshot: CorpusSna
       user_action_hints: gate.userActionHints,
     },
     skeleton_excluded: sectionPlan.internalized_skeleton?.excluded ?? [],
+  }
+}
+
+/** ENRICHMENT 잡 전용 힌트 — 정정 매핑에서 섹션이 없는 역할(기존 잡 보고서에는 붙이지 않는다). */
+const ENRICHED_HINTS: Partial<Record<Role16, string>> = {
+  faq: 'FAQ 렌더러가 아직 없어 자주 묻는 질문은 고민 미응답 기록으로만 남깁니다(생성 대상 아님).',
+}
+
+/** v2가 없는 카테고리(stationery·packaging·pet 등) — vocab 셀 출현율로 같은 임계의 trustStack을 만든다. */
+export function buildVocabTrustStack(cell: VocabCell): TrustStack {
+  const required: Role16[] = []
+  const recommended: Role16[] = []
+  for (const [role, stat] of Object.entries(cell.roles) as Array<[Role16, { prevalence: number }]>) {
+    if (stat.prevalence >= TRUST_REQUIRED_MIN) required.push(role)
+    else if (stat.prevalence >= TRUST_RECOMMENDED_MIN) recommended.push(role)
+  }
+  return { required: required.sort(), recommended: recommended.sort() }
+}
+
+/**
+ * ENRICHMENT 잡의 quality_report(설계 §4.6) — 정정 매핑으로 trust gate를 판정하고, 설득 플래너 근거(문법·R1~R8·미응답 고민)와
+ * 근거 수준을 덧붙인다. 차단하지 않는다. 기존 trust_gate·skeleton_excluded 형태는 그대로 둔다(화면 호환).
+ */
+export function buildEnrichedQualityReport(input: {
+  sectionPlan: SectionPlan
+  trustStack: TrustStack
+  evidenceLevel: NonNullable<PdpQualityReport['evidenceLevel']>
+  annotations?: PdpQualityReport['annotations'] | null
+  layouts?: PdpQualityReport['layouts'] | null
+}): PdpQualityReport {
+  const gate = evaluateTrustStack(input.sectionPlan.activated_sections ?? [], input.trustStack, ROLE_TO_SECTIONS_ENRICHED)
+  const missing = [...gate.missingRequired, ...gate.missingRecommended]
+  const enrichedHints = missing.filter((r) => ENRICHED_HINTS[r]).map((r) => ENRICHED_HINTS[r]!)
+  const persuasion = input.sectionPlan.internalized_skeleton?.persuasion
+  return {
+    trust_gate: {
+      pass: gate.pass,
+      missing_required: gate.missingRequired,
+      missing_recommended: gate.missingRecommended,
+      user_action_hints: [...new Set([...gate.userActionHints, ...enrichedHints])],
+    },
+    skeleton_excluded: input.sectionPlan.internalized_skeleton?.excluded ?? [],
+    ...(persuasion
+      ? {
+          persuasion: {
+            grammar: persuasion.grammar,
+            rules: persuasion.rules,
+            unanswered: persuasion.objectionCoverage
+              .filter((o) => !o.answeredBy)
+              .map((o) => ({ objection: o.objection, type: o.type, ...(o.note ? { note: o.note } : {}) })),
+          },
+        }
+      : {}),
+    evidenceLevel: input.evidenceLevel,
+    ...(input.annotations ? { annotations: input.annotations } : {}),
+    ...(input.layouts ? { layouts: input.layouts } : {}),
   }
 }
 

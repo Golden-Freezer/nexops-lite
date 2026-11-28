@@ -4,16 +4,24 @@
 
 import { useRef, useCallback, useState } from 'react';
 import { ImageIcon } from 'lucide-react';
-import { useAuth } from '@/lib/auth/clerk-shim';
+import { useAuth } from '@clerk/nextjs';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import { useEditorStore, selectSelectedSectionId } from '@/lib/registration/editor/stores/editorStore';
 import ElementPanel, { type ElementKind } from '../ElementPanel';
 import type { CanvasElement } from '@/lib/registration/editor/types/canvas';
 import { EmptyState } from './primitives';
+import { MyImagesTab } from './MyImagesTab';
 
-// '내 이미지' 보관함 서브탭(MyImagesTab)은 이미지 라이브러리 백엔드와 함께 Phase 4
+// '내 이미지' 보관함 서브탭(MyImagesTab) — 스토리지 목록(묶음 5 ②)
+
+type ElementsPane = 'elements' | 'my-images';
+const PANES: { id: ElementsPane; label: string }[] = [
+  { id: 'elements', label: '요소' },
+  { id: 'my-images', label: '내 이미지' },
+];
 
 function ElementsTab() {
+  const [pane, setPane] = useState<ElementsPane>('elements');
   const selectedSectionId = useEditorStore(selectSelectedSectionId);
   const addElement        = useEditorStore((s) => s.addElement);
   const selectElement     = useEditorStore((s) => s.selectElement);
@@ -165,19 +173,45 @@ function ElementsTab() {
 
   return (
     <div className="p-2">
-      {/* 이미지 업로드 버튼 */}
-      <button
-        onClick={() => imageInputRef.current?.click()}
-        className="w-full flex items-center gap-2 px-3 py-2 mb-2 rounded-lg border border-dashed border-[var(--border-default)] hover:border-[var(--editor-brand)] hover:bg-[var(--brand-primary-tint)] text-xs text-[var(--text-secondary)] hover:text-[var(--editor-brand)] transition-colors cursor-pointer"
-      >
-        <ImageIcon size={14} />
-        이미지 업로드
-      </button>
-
-      {/* ElementPanel을 인라인으로 렌더링 (popover 스타일 제거) */}
-      <div className="[&>div]:static [&>div]:shadow-none [&>div]:border-0 [&>div]:p-0 [&>div]:w-full [&>div]:max-h-none">
-        <ElementPanel onInsert={insertElement} />
+      {/* 요소 / 내 이미지 */}
+      <div className="flex gap-1 mb-2 p-0.5 rounded-lg bg-[var(--surface-canvas)]" role="tablist" aria-label="요소 탭">
+        {PANES.map((p) => (
+          <button
+            key={p.id}
+            type="button"
+            role="tab"
+            aria-selected={pane === p.id}
+            onClick={() => setPane(p.id)}
+            className={`flex-1 py-1 rounded-md text-xs transition-colors cursor-pointer ${
+              pane === p.id
+                ? 'bg-[var(--surface-base)] text-[var(--text-primary)] shadow-sm'
+                : 'text-[var(--text-secondary)] hover:text-[var(--editor-brand)]'
+            }`}
+          >
+            {p.label}
+          </button>
+        ))}
       </div>
+
+      {pane === 'my-images' && <MyImagesTab />}
+
+      {pane === 'elements' && (
+        <>
+          {/* 이미지 업로드 버튼 */}
+          <button
+            onClick={() => imageInputRef.current?.click()}
+            className="w-full flex items-center gap-2 px-3 py-2 mb-2 rounded-lg border border-dashed border-[var(--border-default)] hover:border-[var(--editor-brand)] hover:bg-[var(--brand-primary-tint)] text-xs text-[var(--text-secondary)] hover:text-[var(--editor-brand)] transition-colors cursor-pointer"
+          >
+            <ImageIcon size={14} />
+            이미지 업로드
+          </button>
+
+          {/* ElementPanel을 인라인으로 렌더링 (popover 스타일 제거) */}
+          <div className="[&>div]:static [&>div]:shadow-none [&>div]:border-0 [&>div]:p-0 [&>div]:w-full [&>div]:max-h-none">
+            <ElementPanel onInsert={insertElement} />
+          </div>
+        </>
+      )}
 
       <input ref={svgInputRef} type="file" accept=".svg,image/svg+xml" onChange={handleSvgUpload} className="hidden" />
       <input ref={imageInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />

@@ -7,7 +7,7 @@ import {
   SECTION_GROUP_MAP,
   SECTION_IMAGE_MAPPING,
 } from '@/lib/registration/editor/constants/sectionConfig';
-import type { CanvasSection, CanvasElement, ReviewCardParams } from '@/lib/registration/editor/types/canvas';
+import type { CanvasSection, CanvasElement, ExpansionKind, ReviewCardParams } from '@/lib/registration/editor/types/canvas';
 import {
   REVIEW_CARD_DEFAULTS,
   SECTION_FONT_SCHEME,
@@ -22,6 +22,11 @@ import { resolveImageUrl, buildFeatureImageSlots, buildContext, extractContent }
 import { createSectionElements } from './sections';
 import type { SectionBuildExtra } from './sections';
 import { filterValidSections, insertWhiteDividers, applySafetyGuards } from './guards';
+import { planFeatureDedupe, specRowsFromInput } from './dedupe';
+import { productInfoRows } from '@/lib/registration/product-info-rows';
+import { isOptionSpec, toColorOptions } from '@/lib/registration/options/option-spec';
+import { keepBeforeCta, missingRows, placePurchaseCheck, purchaseRows, shownTextsOf, type SpecRow } from './purchaseCheck';
+import { buildSceneSection, expansionTables, expansionTitle, placeExpansions, type LongSectionsInput } from './longSections';
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -40,6 +45,41 @@ export interface LayoutSelection {
   card_params?: Record<string, Partial<ReviewCardParams>>;
   /** 트랙 5/7: 생성 파이프라인의 그룹별 폰트 스킴 (section_plan.font_scheme) */
   font_scheme?: Partial<Record<SectionGroupKey, Partial<GroupFontPair>>>;
+  /**
+   * 모바일 하한(pdp-enrichment ENRICHMENT `mobile`) — section_plan.enrichment에 mobile이 기록된 잡만 true.
+   * 켜지면 하한 예외를 쓰던 빌더(hidden_page·point_list_div)가 한 열·MIN_FONT_SIZES 변형으로 그린다. 없으면 기존 그대로.
+   */
+  mobile_floor?: boolean;
+  /**
+   * 옵션 갤러리(pdp-enrichment ENRICHMENT `options`) — section_plan.enrichment에 options가 기록된 잡만 true.
+   * spec_sheet.optionSpec(variants ≥ 2)이 함께 있을 때만 petit_div가 축별 카드로 바뀐다. 없으면 기존 pill 그리드 그대로.
+   */
+  option_gallery?: boolean;
+  /**
+   * 특징·사진 중복 정리(pdp-enrichment R2) — section_plan.enrichment에 persuasion이 기록된 잡만 true.
+   * 켜지면 dedupe.ts가 섹션 카피·컷을 페이지 전체 기준으로 다시 배정하고, 입력 값이 없는 스펙 표는 뺀다. 없으면 기존 그대로.
+   */
+  feature_dedupe?: boolean;
+  /**
+   * R4 렌더 리듬(pdp-enrichment, NEXFIT 대비 비교) — persuasion 기록 잡 중 디자인 컷이 아닌 잡만 true.
+   * 켜지면 섹션 안 간격(헤드라인→본문·글→사진)을 줄여 경계 빈 영역(200)과의 비율을 2.5배 이상으로 맞춘다. 없으면 기존 그대로.
+   */
+  render_rhythm?: boolean;
+  /**
+   * W4-S 섹션 나누기(ENRICHMENT `split`) — section_plan.enrichment에 split·persuasion이 기록된 잡 중 디자인 컷이 아닌 잡만 true.
+   * 켜지면 point_div·sub_div의 특징, hidden_page의 사용 단계를 하나씩 섹션으로 펼친다(section_plan은 유형 그대로). 없으면 기존 그대로.
+   */
+  section_split?: boolean;
+  /**
+   * 긴 상세페이지 확장 섹션(ENRICHMENT `long`) — section_plan.enrichment에 long·persuasion이 기록되고 section_plan.long이 있는 잡 중
+   * 디자인 컷이 아닌 잡만. 설계 단계가 근거를 판정한 확장 섹션(크기·구성·관리·보관·구매 전 질문)을 스펙 표 빌더로 더한다(longSections.ts)
+   */
+  long_sections?: LongSectionsInput;
+  /**
+   * 긴 상세페이지 사용 장면(ENRICHMENT `long`, L-2) — long·persuasion 기록 잡 중 디자인 컷이 아닌 잡만 true. 페이지에 없는 사용 장면
+   * 태그와 그 생성 컷(long_scene:i)이 2쌍 이상이면 확장 섹션 '사용 장면'을 더한다(longSections.ts)
+   */
+  long_scenes?: boolean;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -195,6 +235,9 @@ function shouldActivateSection(
   switch (sectionType) {
     case 'perf_sales':
       return !!content.soldOutCount && Number(content.soldOutCount) > 0;
+    case 'certification':
+      // 인증 카피(인증 입력이 있을 때만 생긴다 — pdp-pro-copy-templates)가 없으면 '정품 인증'을 지어내지 않는다
+      return !!str(content.text);
     case 'perf_rating':
       // 실제 평점 데이터(reviews[].rating)가 있을 때만 활성화. 없으면 기본값
       // 4.9/5.0을 지어내 표기 → 허위 표시 위험(전자상거래법)이므로 섹션 제외.
@@ -248,10 +291,15 @@ function shouldActivateSection(
 export function assignImagesToSections(
   sections: CanvasSection[],
   images: Record<string, string | string[]>,
+  /** 중복 정리 계획(dedupe.ts)이 컷을 정한 섹션 — 대표 컷으로 다시 덮어쓰지 않는다 */
+  pinned?: ReadonlySet<string>,
 ): CanvasSection[] {
   return sections.map((section) => {
     // Task 1: per-element 이미지가 이미 인덱스별로 설정된 섹션은 덮어쓰기 방지
+    // 긴 상세페이지 확장 섹션은 자기 컷(사용 장면 long_scene:i)을 싣는다 — 유형(sub2_div_page)의 대표 컷(usage)으로 덮지 않는다
     if (
+      section.expansion ||
+      pinned?.has(section.sectionType) ||
       section.sectionType === ProSectionType.DIVIDER ||
       section.sectionType === ProSectionType.MAIN_CUT ||
       section.sectionType === ProSectionType.POINT_DIV ||
@@ -272,6 +320,11 @@ export function assignImagesToSections(
 
     return { ...section, elements: updatedElements };
   });
+}
+
+/** 스펙 표 기존 행(중복 정리 아닌 잡) — 상품 정보 표 정본(product-info-rows, 오너 지시 11-01) */
+export function legacySpecRows(specSheet: Record<string, unknown>): Array<{ label: string; value: string }> {
+  return productInfoRows(specSheet);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -311,25 +364,59 @@ export function convertToCanvasSections(
     activatedTypes,
   ) as ProSectionType[];
 
+  // 옵션 갤러리 — options 기록 잡 + 등록 옵션 구조(variants ≥ 2)일 때만
+  const rawOptionSpec = specSheet?.optionSpec;
+  const optionSpec =
+    layoutSelection?.option_gallery && isOptionSpec(rawOptionSpec) && rawOptionSpec.variants.length >= 2
+      ? {
+          ...rawOptionSpec,
+          // 실물 사진은 공개 URL만 쓴다 — 스토리지 경로 등 URL이 아닌 값은 없는 사진으로 보고 이름 칩으로 그린다(깨진 이미지 방지)
+          variants: rawOptionSpec.variants.map(({ sourceImage, ...v }) =>
+            sourceImage && /^https?:\/\//.test(sourceImage) ? { ...v, sourceImage } : v,
+          ),
+        }
+      : null;
+
+  // 스펙 표 기본 행 — 중복 정리 잡은 입력 값만(치수·소재를 만들지 않는다), 그 밖은 기존 행
+  const baseSpecRows = !specSheet ? [] : layoutSelection?.feature_dedupe ? specRowsFromInput(specSheet) : legacySpecRows(specSheet);
+
+  // 특징·사진 중복 정리(R2) — persuasion 기록 잡만. 섹션 순서가 정해진 뒤 페이지 전체를 보고 한 번 배정한다
+  const dedupe = layoutSelection?.feature_dedupe
+    ? planFeatureDedupe(copywritingResult, orderedTypes, generatedImages, layoutSelection.mobile_floor === true, {
+        split: layoutSelection.section_split === true,
+      })
+    : null;
+
   // 추가 컨텍스트 (모든 섹션 빌더에 전달)
   const extra: SectionBuildExtra = {
     hookStrategy,
     brandName,
     allImages: generatedImages,
     specSheet,
+    ...(layoutSelection?.mobile_floor ? { mobileFloor: true } : {}),
+    ...(optionSpec ? { optionSpec } : {}),
+    ...(dedupe ? { dedupe: true } : {}),
+    ...(layoutSelection?.render_rhythm ? { rhythm: true } : {}),
   };
 
-  // Step 3: 각 섹션 빌드 (shouldActivateSection 필터 적용)
+  // Step 3: 각 섹션 빌드 (shouldActivateSection 필터 적용). specPatch는 구매 전 확인이 스펙 표를 다시 지을 때 넘기는 행·제목,
+  // 확장 섹션(expansion)은 스펙 표 빌더로 짓는 표 — 질문은 행마다 위아래 한 열(stacked), 레이아웃은 빌더 기본(스펙 표 프리셋을 받지 않는다)
   let sectionIdx = 0;
-  const sections: CanvasSection[] = orderedTypes.flatMap((sectionType) => {
-    const content = extractContent(sectionType, copywritingResult, ctx);
+  const buildType = (
+    sectionType: ProSectionType,
+    specPatch?: { specRows: SpecRow[]; title?: string; expansion?: ExpansionKind; stacked?: boolean },
+  ): CanvasSection[] => {
+    if (dedupe?.drop.has(sectionType)) return [];
+    const content = { ...extractContent(sectionType, copywritingResult, ctx), ...(dedupe?.content[sectionType] ?? {}) };
+    // 옵션 갤러리: 옵션명은 카피가 아니라 등록 옵션명 그대로(05_OPTIONS.md §4 카피 — 옵션명은 바꾸지 않는다)
+    if (sectionType === ProSectionType.PETIT_DIV && optionSpec) content.options = toColorOptions(optionSpec);
 
     // 데이터 미비 섹션 제외
     if (!shouldActivateSection(sectionType as string, content, generatedImages)) return [];
 
-    const layoutId =
-      layoutSelection?.layout_assignments[sectionType] ??
-      `${sectionType}_layout_01`;
+    const layoutId = specPatch?.expansion
+      ? `${sectionType}_layout_01`
+      : layoutSelection?.layout_assignments[sectionType] ?? `${sectionType}_layout_01`;
 
     // 이미지 중복 해소: 피처 이미지 슬롯 오버라이드
     let imageUrl = resolveImageUrl(sectionType, generatedImages);
@@ -340,23 +427,16 @@ export function convertToCanvasSections(
     } else if (sectionType === ProSectionType.POINT_LIST_DIV && featureSlots.point_list_div) {
       imageUrl = featureSlots.point_list_div;
     }
+    if (dedupe && dedupe.images[sectionType] !== undefined) imageUrl = dedupe.images[sectionType] || null;
 
-    // SPEC_TABLE: specSheet 실제 데이터 주입
-    if (sectionType === ProSectionType.SPEC_TABLE && specSheet) {
-      const rows: Array<{ label: string; value: string }> = [];
-      if (specSheet.name)     rows.push({ label: '상품명', value: str(specSheet.name) });
-      if (specSheet.material) rows.push({ label: '소재/재질', value: str(specSheet.material) });
-      if (specSheet.size)     rows.push({ label: '사이즈', value: str(specSheet.size) });
-      if (specSheet.weight)   rows.push({ label: '무게', value: str(specSheet.weight) });
-      if (specSheet.color)    rows.push({ label: '색상', value: str(specSheet.color) });
-      if (specSheet.origin)   rows.push({ label: '원산지', value: str(specSheet.origin) });
-      const extraSpec = specSheet.extra as Record<string, string> | undefined;
-      if (extraSpec) {
-        Object.entries(extraSpec).forEach(([key, value]) => {
-          if (value) rows.push({ label: key, value });
-        });
-      }
-      content.specRows = rows;
+    // SPEC_TABLE: specSheet 실제 데이터 주입. 구매 전 확인이 다시 지을 때는 넘긴 행·제목(아래 placePurchaseCheck)
+    if (sectionType === ProSectionType.SPEC_TABLE) {
+      const rows = specPatch?.specRows ?? baseSpecRows;
+      if (specPatch?.title) content.title = specPatch.title;
+      if (specPatch?.stacked) content.stacked = true;
+      // 중복 정리 잡: 행이 없으면 안내 문구만 남는 빈 표를 내지 않는다
+      if (dedupe && rows.length === 0) return [];
+      if (dedupe || specSheet || specPatch) content.specRows = rows;
     }
 
     // 트랙 4: 리뷰 섹션 카드 파라미터 (기본 토큰 + 프리셋 오버라이드) — 섹션에 스탬프해
@@ -376,40 +456,89 @@ export function convertToCanvasSections(
           })()
         : undefined;
 
-    const elements = createSectionElements(sectionType, content, imageUrl, designPalette, {
-      ...extra,
-      cardParams: reviewCardParams,
+    // W4-S 섹션 나누기 — 특징·사용 단계를 항목 하나씩 섹션으로 펼친다(항목이 하나 이하면 그대로). 그 밖의 잡·유형은 섹션 하나
+    const parts = layoutSelection?.section_split ? splitSectionParts(sectionType, content) : null;
+    const variants: Array<{ content: Record<string, unknown>; split?: { offset: number; first: boolean } }> =
+      parts && parts.length > 1 ? parts : [{ content }];
+
+    return variants.map(({ content: partContent, split }) => {
+      const elements = createSectionElements(sectionType, partContent, imageUrl, designPalette, {
+        ...extra,
+        cardParams: reviewCardParams,
+        ...(split ? { split } : {}),
+      });
+
+      // 트랙 5: 그룹별 폰트 스킴 적용 (AI font_scheme > 기본 스킴, 화이트리스트 검증)
+      const groupType = SECTION_GROUP_MAP[sectionType];
+      applySectionFontScheme(elements, groupType, layoutSelection?.font_scheme?.[groupType]);
+
+      const sectionHeight = computeSectionHeight(elements);
+
+      const section: CanvasSection = {
+        id: uid('sec'),
+        sectionType,
+        groupType: SECTION_GROUP_MAP[sectionType],
+        order: sectionIdx++,
+        isVisible: true,
+        layoutId,
+        canvas: {
+          width: 860,
+          height: sectionHeight,
+          backgroundColor: designPalette.bgMain,
+        },
+        elements,
+        ...(reviewCardParams ? { reviewCardParams } : {}),
+        // 신규 변환 세션 표식 — 마운트 실측·자동 reflow 허용 (첫 저장 시 해제)
+        needsInitialReflow: true,
+        ...(specPatch?.expansion ? { expansion: specPatch.expansion } : {}),
+      };
+
+      return section;
     });
+  };
+  const built = orderedTypes.flatMap((sectionType) => buildType(sectionType));
 
-    // 트랙 5: 그룹별 폰트 스킴 적용 (AI font_scheme > 기본 스킴, 화이트리스트 검증)
-    const groupType = SECTION_GROUP_MAP[sectionType];
-    applySectionFontScheme(elements, groupType, layoutSelection?.font_scheme?.[groupType]);
+  // 긴 상세페이지 확장 섹션(longSections.ts) — 골격 섹션에 이미 보이는 값을 뺀 표만 짓는다(제자리 배치는 구매 전 확인 뒤)
+  // 골격에 스펙 표가 없어도 상품 정보 표가 CTA 앞에 들어온다(placePurchaseCheck) — 그 값은 이미 보이는 값으로 친다
+  const specTableComing = built.some((s) => s.sectionType === ProSectionType.SPEC_TABLE) ? [] : baseSpecRows.map((r) => r.value);
+  const expansions = layoutSelection?.long_sections
+    ? expansionTables(layoutSelection.long_sections, specSheet, [...shownTextsOf(built), ...specTableComing]).flatMap(({ kind, rows }) =>
+        buildType(ProSectionType.SPEC_TABLE, {
+          specRows: rows,
+          title: expansionTitle(kind),
+          expansion: kind,
+          ...(kind === 'faq' ? { stacked: true } : {}),
+        }).map((section) => ({ kind, section })),
+      )
+    : [];
 
-    const sectionHeight = computeSectionHeight(elements);
-
-    const section: CanvasSection = {
-      id: uid('sec'),
-      sectionType,
-      groupType: SECTION_GROUP_MAP[sectionType],
-      order: sectionIdx++,
-      isVisible: true,
-      layoutId,
-      canvas: {
-        width: 860,
-        height: sectionHeight,
-        backgroundColor: designPalette.bgMain,
-      },
-      elements,
-      ...(reviewCardParams ? { reviewCardParams } : {}),
-      // 신규 변환 세션 표식 — 마운트 실측·자동 reflow 허용 (첫 저장 시 해제)
-      needsInitialReflow: true,
-    };
-
-    return [section];
-  });
+  // 구매 전 확인(purchaseCheck.ts) — 후킹에서 뺀 구성·사이즈·옵션 값이 실제로 그려진 글(카피·옵션 갤러리·스펙 표·확장 섹션)에
+  // 없으면 스펙 표에 더하고, 스펙 표가 없으면 CTA 바로 앞에 '구매 전 확인' 표를 둔다. 확장 섹션이 이미 실은 값은 싣지 않는다(겹치면 한쪽만)
+  const missing = missingRows(purchaseRows(specSheet), shownTextsOf([...built, ...expansions.map((e) => e.section)]));
+  const purchase = placePurchaseCheck(built, missing, baseSpecRows, (patch) => buildType(ProSectionType.SPEC_TABLE, patch));
+  // 긴 상세페이지 사용 장면(L-2) — 사진 확장 섹션. 표 확장 섹션 뒤에 자리를 찾는다(같은 사용 방법 뒤면 사진이 표보다 앞)
+  // 이미 보이는 글에서 후기 카드는 뺀다 — 고객 말에 같은 낱말이 있어도 장면 사진의 되풀이가 아니고, 컷 계획(render-aware-cuts)도
+  // 후기를 보지 않아 여기서만 빼면 만든 컷이 그려지지 않는다
+  const scenes = layoutSelection?.long_scenes
+    ? buildSceneSection(
+        copywritingResult.usageSceneTags,
+        generatedImages,
+        layoutSelection.section_order,
+        designPalette,
+        shownTextsOf([...built, ...expansions.map((e) => e.section)].filter((s) => s.sectionType !== ProSectionType.PERFORMANCE_REVIEWS)),
+      )
+    : null;
+  // 다른 섹션처럼 그룹 폰트 스킴을 입힌다(AI font_scheme > 기본 스킴)
+  if (scenes) applySectionFontScheme(scenes.elements, scenes.groupType, layoutSelection?.font_scheme?.[scenes.groupType]);
+  const placed = [...expansions, ...(scenes ? [{ kind: 'scenes' as const, section: scenes }] : [])];
+  const sections = placed.length > 0 ? placeExpansions(purchase.sections, placed) : purchase.sections;
 
   // Step 4: 이미지 URL 최종 배정 (assignImagesToSections로 재확인)
-  const withImages = assignImagesToSections(sections, generatedImages);
+  const withImages = assignImagesToSections(
+    sections,
+    generatedImages,
+    dedupe ? new Set<string>(Object.keys(dedupe.images)) : undefined,
+  );
 
   // Step 5: 빈 섹션 필터링 + perf_review 제거
   const valid = filterValidSections(withImages);
@@ -452,8 +581,8 @@ export function convertToCanvasSections(
     rhythmIdx++;
   });
 
-  // Step 7: 안전장치 (CTA 마지막 보장 + perf_review 이중 제거)
-  const safe = applySafetyGuards(valid);
+  // Step 7: 안전장치 (CTA 마지막 보장 + perf_review 이중 제거). CTA를 옮겼으면 구매 전 확인 표를 다시 그 바로 앞으로
+  const safe = keepBeforeCta(applySafetyGuards(valid), purchase.added?.id ?? null);
 
   // Step 8: 섹션 간 거터 삽입 — 팔레트 베이스 색으로 연결부 여백 (연결부 개선)
   return insertWhiteDividers(safe, bgMain);
@@ -510,3 +639,23 @@ export function mapBackendSectionsToProTypes(backendSections: string[]): ProSect
   return result;
 }
 
+/** W4-S 나누기 대상 유형 → 항목 칸(빌더가 앞 3개만 그린다) */
+const SPLIT_ITEM_KEYS: Partial<Record<ProSectionType, string>> = {
+  [ProSectionType.POINT_DIV]: 'points',
+  [ProSectionType.SUB_DIV]: 'points',
+  [ProSectionType.HIDDEN_PAGE]: 'steps',
+};
+const SPLIT_ITEM_MAX = 3;
+
+/**
+ * 나누기 인스턴스 — 항목 하나씩 담은 내용과 순번(번호·컷 키 오프셋, 첫 인스턴스만 머리말). 나눌 유형이 아니면 null
+ */
+export function splitSectionParts(
+  sectionType: ProSectionType,
+  content: Record<string, unknown>,
+): Array<{ content: Record<string, unknown>; split: { offset: number; first: boolean } }> | null {
+  const key = SPLIT_ITEM_KEYS[sectionType];
+  if (!key) return null;
+  const items = Array.isArray(content[key]) ? (content[key] as unknown[]).slice(0, SPLIT_ITEM_MAX) : [];
+  return items.map((item, k) => ({ content: { ...content, [key]: [item] }, split: { offset: k, first: k === 0 } }));
+}

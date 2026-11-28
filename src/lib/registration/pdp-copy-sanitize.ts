@@ -6,7 +6,7 @@
  * LLM 호출 없음 — pdp-copy-agent.ts가 순서대로 적용한다.
  */
 
-import { BANNED_EXPRESSIONS } from '@/lib/agents/registration/prompts/pdp-copy-prompts'
+import { BANNED_EXPRESSIONS, OTHER_PRODUCT_REPLACEMENTS } from '@/lib/agents/registration/prompts/pdp-copy-prompts'
 import type { CopywritingResult } from './pdp-state'
 
 function isPlainObject(v: unknown): v is Record<string, unknown> {
@@ -45,6 +45,10 @@ const SANITIZE_REPLACEMENTS: ReadonlyArray<readonly [string, string]> = [
   ['객단가', '구매 금액'],
   ['전환율', '만족률'],
   ['입점', '입문'],
+  // 오너 지시 11-01 — 비교 상대 표기, 고민 섹션 문구
+  ...OTHER_PRODUCT_REPLACEMENTS,
+  ['이런 고민', '고민'],
+  ['이런고민', '고민'],
 ]
 
 /** dict 키·브랜드명 등 고유명사 필드는 정화 대상에서 제외 — copywriting_agent.py:211-214 */
@@ -119,15 +123,24 @@ function stripPlaceholderLines(lines: unknown, placeholders: string[]): string[]
   )
 }
 
-function clampDedup(lines: string[], maxLen = 15): string[] {
+/**
+ * 말풍선 한 줄 상한(앞뒤 따옴표를 뺀 글자 수) — 디자인 컷 T2가 받는 길이(designcut-plan BUBBLE_MAX_CHARS)와 같다.
+ * 옛 말풍선(PROBLEM·PROBLEM_EMPATHY)은 줄 수대로 높이가 늘어 이 길이도 그린다.
+ */
+export const EMPATHY_LINE_MAX_CHARS = 28
+
+const WRAP_QUOTES = /^['"“”‘’「『]+|['"“”‘’」』]+$/g
+const lineChars = (line: string) => [...line.replace(WRAP_QUOTES, '').trim()].length
+
+/** 글자 수로 자르면 문장이 끊긴다(R15 P10) — 상한을 넘는 줄은 버리고 폴백이 채운다. 같은 줄은 하나만 남긴다 */
+function keepFittingLines(lines: string[]): string[] {
   const seen = new Set<string>()
   const out: string[] = []
-  for (const line of lines) {
-    const clamped = line.slice(0, maxLen)
-    if (!seen.has(clamped)) {
-      seen.add(clamped)
-      out.push(clamped)
-    }
+  for (const raw of lines) {
+    const line = raw.trim()
+    if (lineChars(line) > EMPATHY_LINE_MAX_CHARS || seen.has(line)) continue
+    seen.add(line)
+    out.push(line)
   }
   return out
 }
@@ -147,7 +160,7 @@ function buildEmpathyFallbacks(
         fallbacks.push(
           ...empathyText
             .split(sep)
-            .map((p) => p.trim().slice(0, 15))
+            .map((p) => p.trim())
             .filter((p) => p.length >= 4),
         )
         break
@@ -170,7 +183,7 @@ function buildEmpathyFallbacks(
     `${namePart} 비교하느라 지쳤죠`,
   )
 
-  return clampDedup(fallbacks)
+  return keepFittingLines(fallbacks)
 }
 
 /**
@@ -184,7 +197,7 @@ export function validateEmpathyLines(
 ): NonNullable<CopywritingResult['problem']> {
   const problem = copy.problem ?? {}
 
-  let lines = clampDedup(stripPlaceholderLines(problem.empathyLines, EMPATHY_PLACEHOLDERS))
+  let lines = keepFittingLines(stripPlaceholderLines(problem.empathyLines, EMPATHY_PLACEHOLDERS))
   if (lines.length < 4) {
     for (const candidate of buildEmpathyFallbacks(problem, productName, category)) {
       if (lines.length >= 4) break
@@ -205,9 +218,10 @@ export function validateEmpathyLines(
   }
   lines = lines.slice(0, 4)
 
-  let deepLines = stripPlaceholderLines(problem.empathyDeepLines, EMPATHY_DEEP_PLACEHOLDERS).map((l) => l.slice(0, 15))
   const existingEmpathy = new Set(lines)
-  deepLines = clampDedup(deepLines.filter((l) => !existingEmpathy.has(l)))
+  let deepLines = keepFittingLines(stripPlaceholderLines(problem.empathyDeepLines, EMPATHY_DEEP_PLACEHOLDERS)).filter(
+    (l) => !existingEmpathy.has(l),
+  )
   if (deepLines.length < 4) {
     const shortName = productName ? productName.slice(0, 8) : '제품'
     const deepFallbacks = [

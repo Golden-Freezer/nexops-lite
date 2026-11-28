@@ -10,6 +10,7 @@ import type { AgentUsage } from '../types'
 import { buildReviewsAnalysisPrompt } from './prompts/pdp-copy-prompts'
 import { ensureUntrustedFooter } from '@/lib/registration/review-scrubber'
 import type { PdpSpecSheet, SectionPlan, CopywritingResult } from '@/lib/registration/pdp-state'
+import { specSheetPromptJson } from '@/lib/registration/pdp-state'
 
 /** Pro 전용 오버레이 카피 — Premium 모드에서는 LLM이 같은 프롬프트로 생성해도 버린다(원본 plan_tier 게이트) */
 export const PRO_ONLY_OVERLAY_FIELDS = [
@@ -55,11 +56,11 @@ export function appendGroundingBlock(prompt: string, groundingBlock?: string): s
   return `${prompt}\n\n## 참고 자료(코퍼스 그라운딩)\n${groundingBlock}`
 }
 
-/** reviewsText는 별도 슬롯으로 전달하므로 스펙표 JSON에서는 제외 — pdp-analysis-agent.ts 관례와 동일 */
+/** reviewsText는 별도 슬롯으로 전달하므로 스펙표 JSON에서는 제외 — pdp-analysis-agent.ts 관례와 동일(optionSpec도 같은 이유로 뺀다).
+ *  리뷰 파일 메타·경쟁사 리뷰도 뺀다 — 카피 프롬프트에 경쟁사 원문이 들어가지 않는다(pdp-review-input) */
 export function buildSpecSheetJson(specSheet: PdpSpecSheet): string {
-  const specForPrompt: Record<string, unknown> = { ...specSheet }
-  delete specForPrompt.reviewsText
-  return JSON.stringify(specForPrompt)
+  // 인용 카드(reviewQuotes)·초안 표시(draftPrefill)도 뺀다(W2a) — 제외 목록은 분석 직렬화와 같다(SPEC_PROMPT_EXCLUDED_KEYS)
+  return specSheetPromptJson(specSheet)
 }
 
 /** _build_reviews_analysis(copywriting_agent.py:328-334) — 10자 미만 리뷰는 섹션 자체를 생략 */
@@ -83,12 +84,45 @@ export function buildBrandColorInstruction(brandHexColor: string | undefined): s
 `
 }
 
+/** HEX 색을 factor만큼 흰색 쪽으로 밝힌다(tint) — NEXFIT template_composer_agent.py:209-221 `_lighten_hex` 1:1 */
+export function lightenHex(hex: string, factor = 0.3): string {
+  const h = hex.replace(/^#+/, '')
+  if (!/^[0-9a-fA-F]{6}$/.test(h)) return hex
+  const channel = (i: number) => {
+    const v = parseInt(h.slice(i, i + 2), 16)
+    return Math.min(255, Math.floor(v + (255 - v) * factor))
+  }
+  return `#${[0, 2, 4].map((i) => channel(i).toString(16).padStart(2, '0')).join('')}`
+}
+
+/**
+ * 사용자 지정 브랜드색 안전망 — NEXFIT 18dcaa1(template_composer_agent.py:896-903). 지정 색이 유효한 #RRGGBB이고
+ * LLM 팔레트 primary가 그 색과 다르면(대소문자 무시) primary·textHighlight를 지정 색으로, secondary를 30% 밝힌 색으로
+ * 바꾼다. 이미 같으면 손대지 않는다. 카피 지시문(buildBrandColorInstruction)을 LLM이 무시해도 결과 색이 지켜진다.
+ */
+export function enforceBrandPalette(
+  palette: CopywritingResult['designPalette'],
+  brandHexColor: string | undefined,
+): { palette: CopywritingResult['designPalette']; replaced: boolean } {
+  const hex = (brandHexColor ?? '').trim()
+  if (!/^#[0-9a-fA-F]{6}$/.test(hex)) return { palette, replaced: false }
+  const current = palette ?? {}
+  if ((current.primary ?? '').toLowerCase() === hex.toLowerCase()) return { palette, replaced: false }
+  return {
+    palette: { ...current, primary: hex, secondary: lightenHex(hex, 0.3), textHighlight: hex },
+    replaced: true,
+  }
+}
+
 /** _build_fallback_palette(copywriting_agent.py:736-750) 1:1 */
 function buildFallbackPalette(brandHexColor: string | undefined): NonNullable<CopywritingResult['designPalette']> {
   const hex = (brandHexColor ?? '').trim()
   const primary = hex.length === 7 && hex.startsWith('#') ? hex : '#4f46e5'
   return { primary, secondary: '#818cf8', bgMain: '#ffffff', bgSub: '#f8fafc', textMain: '#1e293b', textHighlight: primary }
 }
+
+/** 마지막 CTA 폴백 — 보라고 안내하는 말('확인해 보세요') 대신 행동 이유, 부제는 비운다(입력에 없는 배송·반품 약속 없음, P1-1a) */
+export const FALLBACK_CLOSING_CTA = '필요할 때 바로 쓰도록 지금 담아 두세요'
 
 /** _get_default_copy_data(copywriting_agent.py:752-805) 축약 이식 — 정화·검증 파이프라인은 이 폴백에도 그대로 적용된다 */
 export function getDefaultCopyData(specSheet: PdpSpecSheet): CopywritingResult {
@@ -99,17 +133,17 @@ export function getDefaultCopyData(specSheet: PdpSpecSheet): CopywritingResult {
       category: specSheet.material || '일상용품',
       benefitHeadline: '매일이 더 편해지는 경험',
       hook: '지금 바로 경험하세요',
-      subBenefit: '실용적인 기능 · 검증된 품질',
+      subBenefit: '실용적인 기능',
       brandAndName: `${brandName} · ${productName}`,
     },
     designPalette: buildFallbackPalette(specSheet.brandHexColor),
     problem: { question: '이런 불편함 겪고 계신가요?', empathy: '많은 분들이 같은 고민을 하십니다.' },
-    solution: { declaration: '이제 걱정 없습니다', summary: '이 제품 하나면 모든 문제가 해결돼요' },
+    solution: { declaration: '이제 걱정 없습니다', summary: '필요할 때 바로 꺼내 쓰세요' },
     pointCards: [
-      { title: '포인트 1', description: '주요 특징을 확인하세요' },
+      { title: '포인트 1', description: '꺼내 쓰기 쉬워요' },
       { title: '포인트 2', description: '놀라운 기능을 경험하세요' },
-      { title: '포인트 3', description: '최고의 선택이 될 거예요' },
-      { title: '포인트 4', description: '더 편리한 일상을 만나보세요' },
+      { title: '포인트 3', description: '손이 닿는 곳에 두고 써요' },
+      { title: '포인트 4', description: '일상이 조금 더 편해져요' },
     ],
     summary: '고객님께 딱 맞는 제품입니다',
     colorOptions: { title: '컬러 옵션', options: ['기본 컬러'], description: '원하는 컬러를 선택하세요' },
@@ -117,14 +151,15 @@ export function getDefaultCopyData(specSheet: PdpSpecSheet): CopywritingResult {
     detailPoints: [
       {
         claim: '매일 쓰고 싶어지는 편리함',
-        proof: '인체공학 설계 + 내구성 검증 소재',
+        // 근거는 입력 소재만 — 시험·검증을 지어내지 않는다(2026-10-30 오너 지시)
+        proof: specSheet.material ? `${specSheet.material} 소재` : '',
         benefit: '번거로움 없는 하루를 누리세요',
         imageHint: '제품을 편하게 사용하는 일상 장면',
       },
     ],
     howTo: [{ step: '일상에서', description: '언제든지 편하게 사용하세요' }],
     recommendedTargets: ['모든 분들께 추천드립니다'],
-    closingCta: { headline: '차이를 직접 확인해 보세요', subtext: '빠른 배송 · 30일 무료 반품' },
+    closingCta: { headline: FALLBACK_CLOSING_CTA, subtext: '' },
   }
 }
 

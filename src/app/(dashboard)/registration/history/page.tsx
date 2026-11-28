@@ -2,25 +2,20 @@
 
 // 생성 히스토리 — 대표이미지 잡 + 상세페이지(PDP) 잡 통합 이력 (Phase 2). 시간순 병합, 종류·모드 배지로 구분.
 // 진행 중 잡은 각자의 화면으로 재개(대표이미지 ?jobId=, 상세페이지 ?jobId=).
+// 병합·트랙 필터·페이지 넘김은 서버(/api/registration/history, before 커서)가 하고, 화면은 이어 붙이기만 한다.
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Loader2, RotateCcw } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { Header } from '@/components/layout/Header'
 import {
   THUMBNAIL_CUTS,
   THUMBNAIL_CUT_LABELS,
   type ThumbnailJob,
 } from '@/lib/registration/thumbnail-types'
-import {
-  resolveGenerationTrack,
-  stripStepFailurePrefix,
-  type GenerationTrack,
-  type PdpJobRow,
-  type PdpStep,
-} from '@/lib/registration/pdp-state'
-import { PDP_STATUS_LABELS, pdpApi } from '@/lib/registration/pdp-client'
-import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from '@/components/features/registration/LocalCodexNotice'
+import { resolveGenerationTrack, type GenerationTrack, type PdpJobRow, type PdpStep } from '@/lib/registration/pdp-state'
+import { PDP_STATUS_LABELS } from '@/lib/registration/pdp-client'
+import type { HistoryEntry, HistoryPage } from '@/lib/registration/history'
 
 const STATUS_BADGES: Record<string, { label: string; cls: string }> = {
   done: { label: '완료', cls: 'text-brand-600 border-brand-200 bg-brand-50' },
@@ -38,15 +33,16 @@ const PDP_STATUS_CLS: Record<PdpStep, string> = {
   design: 'text-amber-600 border-amber-200 bg-amber-50',
   copywriting: 'text-amber-600 border-amber-200 bg-amber-50',
   images: 'text-amber-600 border-amber-200 bg-amber-50',
-  waiting_rate_limit: 'text-warning-700 border-warning-500/30 bg-warning-50',
   compose: 'text-amber-600 border-amber-200 bg-amber-50',
   done: 'text-brand-600 border-brand-200 bg-brand-50',
   failed: 'text-danger-600 border-danger-200 bg-danger-50',
 }
 
-type HistoryEntry =
-  | { kind: 'thumbnail'; id: string; createdAt: string; job: ThumbnailJob }
-  | { kind: 'pdp'; id: string; createdAt: string; job: PdpJobRow }
+const PAGE_SIZE = 20
+
+function formatKst(iso: string): string {
+  return new Date(iso).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })
+}
 
 function KindBadge({ kind }: { kind: 'thumbnail' | 'pdp' }) {
   return (
@@ -60,7 +56,20 @@ function KindBadge({ kind }: { kind: 'thumbnail' | 'pdp' }) {
   )
 }
 
-function ThumbnailRow({ job }: { job: ThumbnailJob }) {
+/** 잡이 속한 사업장 — 등록 초안에서 물려받는다. 없으면 '사업장 없음'(초안 없이 만든 잡) */
+function BusinessBadge({ name }: { name: string | null }) {
+  return (
+    <span
+      className={`text-[10px] border rounded-full px-1.5 py-0.5 shrink-0 ${
+        name ? 'text-slate-600 border-slate-200 bg-white' : 'text-slate-400 border-dashed border-slate-200'
+      }`}
+    >
+      {name ?? '사업장 없음'}
+    </span>
+  )
+}
+
+function ThumbnailRow({ job, businessName }: { job: ThumbnailJob; businessName: string | null }) {
   const badge = STATUS_BADGES[job.status] ?? STATUS_BADGES.pending
   const inProgress = job.status !== 'done' && job.status !== 'failed'
   return (
@@ -81,15 +90,15 @@ function ThumbnailRow({ job }: { job: ThumbnailJob }) {
         )}
       </div>
       <div className="flex-1 min-w-[140px]">
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 flex-wrap">
           <KindBadge kind="thumbnail" />
+          <BusinessBadge name={businessName} />
           <div className="text-xs font-medium text-slate-700 truncate">
             {job.productName || job.visionAnalysis?.product_summary || '(상품명 없음)'}
           </div>
         </div>
         <div className="text-[10px] text-slate-400">
-          {new Date(job.createdAt).toLocaleString('ko-KR')} · {job.imageModel} ({job.imageQuality}) · $
-          {job.costUsd.toFixed(3)}
+          {formatKst(job.createdAt)} · {job.imageModel} ({job.imageQuality}) · ${job.costUsd.toFixed(3)}
         </div>
       </div>
       {/* 상태 배지+액션 — 폭이 부족하면 이 그룹 전체가 다음 줄로 내려간다(shrink-0으로 찌그러짐 방지) */}
@@ -106,21 +115,10 @@ function ThumbnailRow({ job }: { job: ThumbnailJob }) {
   )
 }
 
-function PdpRow({
-  job,
-  regenerating,
-  localCodexAvailable,
-  onRegenerate,
-}: {
-  job: PdpJobRow
-  regenerating: boolean
-  localCodexAvailable: boolean
-  onRegenerate: (jobId: string) => void
-}) {
+function PdpRow({ job, businessName }: { job: PdpJobRow; businessName: string | null }) {
   const thumbUrl = job.section_images.find((img) => img.url)?.url
   const inProgress = job.current_step !== 'done' && job.current_step !== 'failed'
   const track = resolveGenerationTrack(job)
-  const missingImageCount = job.section_images.filter((image) => !image.url).length
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-3 flex items-center flex-wrap gap-3">
       {thumbUrl ? (
@@ -145,34 +143,18 @@ function PdpRow({
           >
             {track === 'internalized' ? '실측 내재화 β' : '표준'}
           </span>
+          <BusinessBadge name={businessName} />
           <div className="text-xs font-medium text-slate-700 truncate">{job.spec_sheet.productName || '(상품명 없음)'}</div>
         </div>
         <div className="text-[10px] text-slate-400">
-          {new Date(job.created_at).toLocaleString('ko-KR')} · {job.image_model} ({job.image_quality}) · $
-          {job.cost_usd.toFixed(3)}
+          {formatKst(job.created_at)} · {job.image_model} ({job.image_quality}) · ${job.cost_usd.toFixed(3)}
         </div>
-        {job.current_step === 'done' && job.error && (
-          <div className="mt-1 text-[10px] text-warning-700">
-            경고: {stripStepFailurePrefix(job.error)}
-          </div>
-        )}
       </div>
       {/* 상태 배지+액션 — 폭이 부족하면 이 그룹 전체가 다음 줄로 내려간다(shrink-0으로 찌그러짐 방지) */}
       <div className="flex items-center gap-2 shrink-0 ml-auto">
         <span className={`text-[10px] border rounded-full px-2 py-0.5 ${PDP_STATUS_CLS[job.current_step]}`}>
           {PDP_STATUS_LABELS[job.current_step]}
         </span>
-        {job.current_step === 'done' && missingImageCount > 0 && (
-          <button
-            onClick={() => onRegenerate(job.id)}
-            disabled={!localCodexAvailable || regenerating}
-            title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
-            className="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full bg-warning-500 text-white hover:bg-warning-600 disabled:opacity-50"
-          >
-            {regenerating ? <Loader2 className="h-3 w-3 animate-spin" /> : <RotateCcw className="h-3 w-3" />}
-            빠진 이미지 다시 만들기
-          </button>
-        )}
         <Link
           href={`/registration/detail-page?jobId=${job.id}`}
           className="text-[11px] px-2.5 py-1 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-50"
@@ -184,63 +166,63 @@ function PdpRow({
   )
 }
 
+type HistoryResponse = HistoryPage & { businesses: Array<{ id: string; name: string }> }
+
+async function fetchHistory(trackFilter: 'all' | GenerationTrack, before: string | null): Promise<HistoryResponse> {
+  const qs = new URLSearchParams({ limit: String(PAGE_SIZE) })
+  if (trackFilter !== 'all') qs.set('track', trackFilter)
+  if (before) qs.set('before', before)
+  const res = await fetch(`/api/registration/history?${qs.toString()}`, { cache: 'no-store' })
+  const json = await res.json()
+  if (!res.ok) throw new Error(json.error || '목록 조회 실패')
+  return json.data as HistoryResponse
+}
+
 export default function RegistrationHistoryPage() {
-  const [thumbnailJobs, setThumbnailJobs] = useState<ThumbnailJob[] | null>(null)
-  const [pdpJobs, setPdpJobs] = useState<PdpJobRow[] | null>(null)
+  const [entries, setEntries] = useState<HistoryEntry[] | null>(null)
+  const [nextBefore, setNextBefore] = useState<string | null>(null)
+  const [businessNames, setBusinessNames] = useState<Map<string, string>>(new Map())
+  const [loadingMore, setLoadingMore] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [regeneratingId, setRegeneratingId] = useState<string | null>(null)
-  const localCodexAvailable = useLocalCodexAvailable()
   // 트랙 필터(부록 F-3) — 표준/내재화 선택 시 상세페이지 잡만 해당 트랙으로 좁힌다(대표이미지는 트랙 무관이라 숨김)
   const [trackFilter, setTrackFilter] = useState<'all' | GenerationTrack>('all')
 
-  const regenerateMissing = async (jobId: string) => {
-    setRegeneratingId(jobId)
-    setError(null)
-    try {
-      const { job } = await pdpApi<{ job: PdpJobRow }>(
-        `/api/registration/pdp/${jobId}/regenerate-missing`,
-        { method: 'POST' },
-      )
-      setPdpJobs((jobs) => jobs?.map((entry) => entry.id === job.id ? job : entry) ?? [job])
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '빠진 이미지 재생성 준비 실패')
-    } finally {
-      setRegeneratingId(null)
-    }
-  }
-
+  // 필터가 바뀌면 첫 페이지부터 다시 읽는다
   useEffect(() => {
     let alive = true
-    fetch('/api/registration/thumbnail')
-      .then(async (res) => {
-        const json = await res.json()
-        if (!res.ok) throw new Error(json.error || '목록 조회 실패')
-        if (alive) setThumbnailJobs(json.data as ThumbnailJob[])
+    setEntries(null)
+    setNextBefore(null)
+    setError(null)
+    fetchHistory(trackFilter, null)
+      .then((page) => {
+        if (!alive) return
+        setEntries(page.entries)
+        setNextBefore(page.nextBefore)
+        setBusinessNames(new Map(page.businesses.map((b) => [b.id, b.name])))
       })
       .catch((e) => alive && setError(e instanceof Error ? e.message : '목록 조회 실패'))
-    // PDP 잡 목록 — 별도 태스크가 배선하는 API라 부재/실패해도 대표이미지 목록은 그대로 보인다.
-    pdpApi<{ jobs: PdpJobRow[] }>('/api/registration/pdp')
-      .then(({ jobs }) => {
-        if (alive) setPdpJobs(jobs)
-      })
-      .catch(() => {
-        if (alive) setPdpJobs([])
-      })
     return () => {
       alive = false
     }
-  }, [])
+  }, [trackFilter])
 
-  const entries: HistoryEntry[] = [
-    ...(trackFilter === 'all'
-      ? (thumbnailJobs ?? []).map((job) => ({ kind: 'thumbnail' as const, id: job.id, createdAt: job.createdAt, job }))
-      : []),
-    ...(pdpJobs ?? [])
-      .filter((job) => trackFilter === 'all' || resolveGenerationTrack(job) === trackFilter)
-      .map((job) => ({ kind: 'pdp' as const, id: job.id, createdAt: job.created_at, job })),
-  ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  const loadMore = useCallback(async () => {
+    if (!nextBefore) return
+    setLoadingMore(true)
+    setError(null)
+    try {
+      const page = await fetchHistory(trackFilter, nextBefore)
+      setEntries((prev) => [...(prev ?? []), ...page.entries])
+      setNextBefore(page.nextBefore)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '목록 조회 실패')
+    } finally {
+      setLoadingMore(false)
+    }
+  }, [nextBefore, trackFilter])
 
-  const loading = thumbnailJobs === null && !error
+  const loading = entries === null && !error
+  const nameOf = (id: string | null) => (id ? businessNames.get(id) ?? null : null)
 
   return (
     <>
@@ -277,19 +259,25 @@ export default function RegistrationHistoryPage() {
         {error && (
           <div className="rounded-lg border border-danger-200 bg-danger-50 px-3 py-2 text-xs text-danger-700">{error}</div>
         )}
-        {!loading && entries.length === 0 && <div className="text-xs text-slate-400">아직 생성 이력이 없습니다.</div>}
-        {entries.map((entry) =>
+        {entries !== null && entries.length === 0 && <div className="text-xs text-slate-400">아직 생성 이력이 없습니다.</div>}
+        {entries?.map((entry) =>
           entry.kind === 'thumbnail' ? (
-            <ThumbnailRow key={`thumb-${entry.id}`} job={entry.job} />
+            <ThumbnailRow key={`thumb-${entry.id}`} job={entry.job} businessName={nameOf(entry.businessId)} />
           ) : (
-            <PdpRow
-              key={`pdp-${entry.id}`}
-              job={entry.job}
-              regenerating={regeneratingId === entry.id}
-              localCodexAvailable={localCodexAvailable}
-              onRegenerate={(jobId) => void regenerateMissing(jobId)}
-            />
+            <PdpRow key={`pdp-${entry.id}`} job={entry.job} businessName={nameOf(entry.businessId)} />
           )
+        )}
+        {nextBefore && (
+          <div className="flex justify-center pt-1">
+            <button
+              onClick={loadMore}
+              disabled={loadingMore}
+              className="inline-flex items-center gap-1 text-[11px] px-3 py-1 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50"
+            >
+              {loadingMore && <Loader2 className="w-3 h-3 animate-spin" />}
+              이전 이력 더 보기
+            </button>
+          </div>
         )}
       </div>
     </>

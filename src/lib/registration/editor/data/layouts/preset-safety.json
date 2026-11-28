@@ -1,0 +1,1185 @@
+{
+ "schemaVersion": 1,
+ "source": [
+  "A-track-s",
+  "B-track-s",
+  "C-track-s",
+  "A-track-i",
+  "B-track-i",
+  "C-track-i",
+  "synthetic-full-copy"
+ ],
+ "rule": "applyLayoutPresetIfSafe 통과 — 측정된 모든 인스턴스에서 통과한 조합만 safe, minimal·PRESET_EXEMPT 제외. mobileSafe = safe이고 섹션 단위 M1·M2·M4·M5·M6 증가 0",
+ "matrix": {
+  "certification": {
+   "bold": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "card": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "image_first": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   }
+  },
+  "concept_desc": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "convert_div": {
+   "bold": {
+    "measured": 1,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 1,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 1,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   }
+  },
+  "direction_suggest": {
+   "bold": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 4,
+    "passed": 4,
+    "safe": true,
+    "mobileWorse": 4,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 4,
+    "passed": 4,
+    "safe": true,
+    "mobileWorse": 4,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 4,
+    "passed": 4,
+    "safe": true,
+    "mobileWorse": 4,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 4,
+    "passed": 4,
+    "safe": true,
+    "mobileWorse": 4,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 4,
+    "passed": 4,
+    "safe": true,
+    "mobileWorse": 4,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 4,
+    "passed": 4,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   }
+  },
+  "event_discount": {
+   "bold": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   }
+  },
+  "event_option": {
+   "bold": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 1,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 1,
+    "passed": 1,
+    "safe": true,
+    "mobileWorse": 1,
+    "mobileSafe": false
+   }
+  },
+  "hidden_page": {
+   "bold": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "hook_3step": {
+   "bold": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "card": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 3,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 7,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 7,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   }
+  },
+  "main_cut": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "perf_reviews": {
+   "bold": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 3,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "point_div": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "point_list_div": {
+   "bold": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "problem_empathy": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "problem_raise": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "solution_guide": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 7,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 7,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 7,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 7,
+    "safe": true,
+    "mobileWorse": 0,
+    "mobileSafe": true
+   }
+  },
+  "spec_table": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "sub2_div_page": {
+   "bold": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 4,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  },
+  "sub_div": {
+   "bold": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "card": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "dynamic": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "full_bleed": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "gradient": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "image_first": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "overlay": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "split": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   },
+   "stacked": {
+    "measured": 7,
+    "passed": 0,
+    "safe": false,
+    "mobileWorse": 0,
+    "mobileSafe": false
+   }
+  }
+ }
+}

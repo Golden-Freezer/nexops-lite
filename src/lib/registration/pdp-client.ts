@@ -6,10 +6,21 @@
 
 import type { PdpStep } from './pdp-state'
 
+/** 응답 상태를 함께 싣는 오류 — 진행 화면 drive가 401(낡은 로그인 토큰)만 골라 다시 보낸다(R12a). 글은 지금과 같다 */
+export class PdpApiError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+  ) {
+    super(message)
+    this.name = 'PdpApiError'
+  }
+}
+
 export async function pdpApi<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, init)
   const json = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error((json as { error?: string }).error || `요청 실패(${res.status})`)
+  if (!res.ok) throw new PdpApiError((json as { error?: string }).error || `요청 실패(${res.status})`, res.status)
   return json as T
 }
 
@@ -32,7 +43,6 @@ export const PDP_STATUS_LABELS: Record<PdpStep, string> = {
   design: '섹션 디자인 중',
   copywriting: '카피라이팅 중',
   images: '이미지 생성 중',
-  waiting_rate_limit: '이미지 한도 대기 중',
   compose: '합성 중',
   done: '완료',
   failed: '실패',

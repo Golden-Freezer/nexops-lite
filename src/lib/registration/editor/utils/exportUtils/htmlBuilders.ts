@@ -3,90 +3,13 @@
 import type { CanvasSection, CanvasElement } from '@/lib/registration/editor/types/canvas';
 import type { DesignPalette } from '@/lib/registration/editor/types/editor';
 import { BALANCED_HEADING_MIN_FONT } from '@/lib/registration/editor/constants/designTokens';
+import { PDP_FONT_CSS_URL } from '@/lib/registration/editor/constants/fonts';
 
-// 헤딩 폰트 — 에디터는 /fonts/GmarketSansBold.woff 셀프호스팅(layout.tsx)이지만
-// 단독 실행 HTML은 앱 origin이 없으므로 공개 CDN(눈누 원본과 동일 배포본)을 1순위,
-// 프로덕션 셀프호스트 정본을 2순위 폴백으로 나열한다 (src 목록은 순서대로 시도).
-// 미포함 시 h1/h2가 sans-serif로 폴백되어 캔버스와 줄바꿈/폭이 어긋난다.
-const GMARKET_FONT_FACE =
-  "@font-face{font-family:'GmarketSansBold';" +
-  "src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff')," +
-  "url('https://nexops-one.vercel.app/fonts/GmarketSansBold.woff') format('woff');" +
-  'font-weight:700;font-display:swap}';
-
-// ─────────────────────────────────────────────
-// 레이아웃 트랙 D: 문서에서 실제 사용된 폰트만 선별 로드
-// (기존: Pretendard + GmarketSansBold만 로드 → 나머지 화이트리스트 폰트 전부
-//  sans-serif 폴백으로 캔버스와 줄바꿈/폭이 어긋났다)
-// app/layout.tsx의 에디터 폰트 로딩 소스와 동일하게 유지한다.
-// ─────────────────────────────────────────────
-
-/** Google Fonts css2 패밀리 파라미터 (layout.tsx와 동일 웨이트) */
-const GOOGLE_FONT_FAMILY_PARAMS: Record<string, string> = {
-  'Noto Sans KR': 'Noto+Sans+KR:wght@400;700',
-  'Nanum Gothic': 'Nanum+Gothic:wght@400;700;800',
-  'Nanum Myeongjo': 'Nanum+Myeongjo:wght@400;700',
-  'Black Han Sans': 'Black+Han+Sans',
-  'Do Hyeon': 'Do+Hyeon',
-  'Jua': 'Jua',
-  'IBM Plex Sans KR': 'IBM+Plex+Sans+KR:wght@400;700',
-  'Gothic A1': 'Gothic+A1:wght@400;700;900',
-  'Noto Serif KR': 'Noto+Serif+KR:wght@400;700',
-  'Gowun Batang': 'Gowun+Batang',
-  'Gowun Dodum': 'Gowun+Dodum',
-  'Hahmlet': 'Hahmlet:wght@400;700',
-  'Song Myung': 'Song+Myung',
-  'Nanum Pen Script': 'Nanum+Pen+Script',
-  'Gaegu': 'Gaegu',
-};
-
-/** jsdelivr CSS로 제공되는 variable 폰트 (layout.tsx와 동일 배포본) */
-const CDN_CSS_FONT_LINKS: Record<string, string> = {
-  'SUIT Variable': 'https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css',
-  'Wanted Sans Variable': 'https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css',
-};
-
-/** 섹션 전체에서 사용된 텍스트 폰트 패밀리 수집 */
-function collectUsedFontFamilies(sections: CanvasSection[]): Set<string> {
-  const used = new Set<string>();
-  for (const s of sections) {
-    for (const el of s.elements) {
-      if (el.textProps?.fontFamily) used.add(el.textProps.fontFamily);
-    }
-  }
-  return used;
-}
-
-/** 사용된 폰트에 필요한 <link> 태그 + @font-face 스타일 생성 */
-function buildFontHead(sections: CanvasSection[]): { links: string; fontFaces: string } {
-  const used = collectUsedFontFamilies(sections);
-
-  const links: string[] = [
-    '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>',
-    // Pretendard는 기본 폴백 체인에 항상 포함되므로 상시 로드
-    '<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">',
-  ];
-
-  const googleParams = Object.keys(GOOGLE_FONT_FAMILY_PARAMS)
-    .filter((family) => used.has(family))
-    .map((family) => `family=${GOOGLE_FONT_FAMILY_PARAMS[family]}`);
-  if (googleParams.length > 0) {
-    links.push('<link rel="preconnect" href="https://fonts.googleapis.com">');
-    links.push('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
-    links.push(
-      `<link href="https://fonts.googleapis.com/css2?${googleParams.join('&')}&display=swap" rel="stylesheet">`,
-    );
-  }
-
-  for (const [family, href] of Object.entries(CDN_CSS_FONT_LINKS)) {
-    if (used.has(family)) {
-      links.push(`<link href="${href}" rel="stylesheet">`);
-    }
-  }
-
-  // GmarketSansBold는 헤딩 기본 폰트 — 사용 여부와 무관하게 항상 포함(하위 호환)
-  return { links: links.join('\n  '), fontFaces: GMARKET_FONT_FACE };
-}
+// 글꼴 — 편집기와 같은 자체 보관 스타일시트(public/fonts/pdp/fonts.css) 하나를 싣는다. 단독 실행 HTML은 앱 출처가
+// 없어 운영 출처의 절대 주소로 싣는다(next.config가 /fonts/pdp에 교차 출처 허용을 붙인다). 브라우저는 쓰인 글자가 있는
+// @font-face의 파일만 받으므로 쓰인 글꼴을 따로 고르지 않는다. 미포함 시 제목·본문이 대체 글꼴로 그려져 캔버스와
+// 줄바꿈/폭이 어긋난다. 평가 캡처(scripts/pdp-eval/capture.mjs)는 이 주소를 PR의 public/fonts/pdp 파일로 답한다.
+const FONT_LINK = `<link href="${PDP_FONT_CSS_URL}" rel="stylesheet">`;
 
 /** 요소 그림자(angle/distance/blur/spread) → CSS box-shadow 문자열 */
 function elementShadowCss(el: CanvasElement): string {
@@ -114,17 +37,14 @@ export function exportHtml(
 
   const sectionsHtml = visible.map((s) => renderSectionHtml(s)).join('\n');
   const bgColor = palette?.bgMain ?? '#ffffff';
-  const fonts = buildFontHead(visible);
-
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=860">
   <title>NEXFIT PDP Export</title>
-  ${fonts.links}
+  ${FONT_LINK}
   <style>
-    ${fonts.fontFaces}
     *{margin:0;padding:0;box-sizing:border-box}
     body{width:860px;margin:0 auto;background:${escapeAttr(bgColor)};font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif}
   </style>
@@ -161,7 +81,8 @@ function isValidImageSrc(src: string | undefined | null): boolean {
   return true;
 }
 
-function renderElementHtml(el: CanvasElement): string {
+/** markText: 평가 캡처의 글자 실측용 표시(data-el) — exportRenderHtml의 markTextElements에서만 켠다 */
+function renderElementHtml(el: CanvasElement, markText = false): string {
   const { transform: t, opacity, zIndex } = el;
 
   const baseStyle = [
@@ -224,7 +145,8 @@ function renderElementHtml(el: CanvasElement): string {
     const html = p.richContent
       ? p.richContent
       : escapeHtml(p.content).replace(/\n/g, '<br>');
-    return `<div style="${baseStyle};${textStyle}${vAlignCss ? `;${vAlignCss}` : ''}">${html}</div>`;
+    const mark = markText ? ` data-el="${escapeAttr(el.id)}"` : '';
+    return `<div${mark} style="${baseStyle};${textStyle}${vAlignCss ? `;${vAlignCss}` : ''}">${html}</div>`;
   }
 
   if (el.type === 'image' && el.imageProps) {
@@ -235,7 +157,10 @@ function renderElementHtml(el: CanvasElement): string {
       el.imageProps.objectFit,
       el.verticalAlign,
     );
-    return `<div style="${baseStyle};overflow:hidden;"><img src="${escapeAttr(src)}" alt="${escapeAttr(alt)}" style="${imgStyle}"></div>`;
+    // 캔버스 패리티: 모서리 반경(옵션 카드 사진 — CanvasElement와 같은 값)
+    const radii = el.imageProps.borderRadii;
+    const radiusCss = radii ? `border-radius:${radii.map((r) => `${Number(r) || 0}px`).join(' ')};` : '';
+    return `<div style="${baseStyle};overflow:hidden;${radiusCss}"><img src="${escapeAttr(src)}" alt="${escapeAttr(alt)}" style="${imgStyle}"></div>`;
   }
 
   if (el.type === 'shape' && el.shapeProps) {
@@ -286,7 +211,7 @@ function renderElementHtml(el: CanvasElement): string {
       fp.frameId === 'circle'
         ? 'border-radius:50%;'
         : fp.frameId === 'roundedRect'
-        ? 'border-radius:16px;'
+        ? `border-radius:${typeof fp.cornerRadius === 'number' && Number.isFinite(fp.cornerRadius) && fp.cornerRadius >= 0 ? fp.cornerRadius : 16}px;`
         : fp.frameId === 'rect'
         ? ''
         : fp.clipPath && fp.clipPath !== 'none'
@@ -470,17 +395,14 @@ export function exportReviewHtml(
   </section>`;
   }).join('\n');
 
-  const fonts = buildFontHead(visible);
-
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>NEXFIT PDP 검수용 HTML</title>
-  ${fonts.links}
+  ${FONT_LINK}
   <style>
-    ${fonts.fontFaces}
     *{margin:0;padding:0;box-sizing:border-box}
     body{max-width:860px;margin:0 auto;background:${escapeAttr(bgColor)};font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;color:#1f2937}
     .review-section{background:#fff}
@@ -501,12 +423,16 @@ ${sectionsHtml}
  * - measuredHeight 반영 (실측값으로 height 보정)
  * - absolute position (캡처 정확성 우선)
  * - 이미지 인라인 처리는 호출 측에서 별도 수행 (preloadAndInlineImages)
+ * - markTextElements: 평가 캡처 높이 정합(eval/render-reflow.ts)이 글자를 실측할 때만 섹션·글자 요소에 id 표시를 붙인다
+ *   (기본 꺼짐 — 내보내기 출력 불변)
  */
 export function exportRenderHtml(
   sections: CanvasSection[],
   measuredHeights: Record<string, number>,
   palette: DesignPalette | null = null,
+  options: { markTextElements?: boolean } = {},
 ): string {
+  const mark = options.markTextElements === true;
   const visible = sections
     .filter((s) => s.isVisible && s.canvas.height >= 10)
     .sort((a, b) => a.order - b.order);
@@ -519,15 +445,13 @@ export function exportRenderHtml(
     const elements = s.elements
       .filter((el) => el.isVisible)
       .sort((a, b) => a.zIndex - b.zIndex)
-      .map((el) => renderElementHtml(el))
+      .map((el) => renderElementHtml(el, mark))
       .join('\n    ');
 
-    return `  <div style="position:relative;width:860px;height:${resolvedHeight}px;background:${escapeAttr(s.canvas.backgroundColor)};overflow:hidden;">
+    return `  <div${mark ? ` data-sec="${escapeAttr(s.id)}"` : ''} style="position:relative;width:860px;height:${resolvedHeight}px;background:${escapeAttr(s.canvas.backgroundColor)};overflow:hidden;">
     ${elements}
   </div>`;
   }).join('\n');
-
-  const fonts = buildFontHead(visible);
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -535,9 +459,8 @@ export function exportRenderHtml(
   <meta charset="UTF-8">
   <meta name="viewport" content="width=860">
   <title>NEXFIT PDP Render HTML</title>
-  ${fonts.links}
+  ${FONT_LINK}
   <style>
-    ${fonts.fontFaces}
     *{margin:0;padding:0;box-sizing:border-box}
     html,body{margin:0;padding:0;width:860px;max-width:860px;overflow-x:hidden}
     body{background:${escapeAttr(bgColor)};font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif}

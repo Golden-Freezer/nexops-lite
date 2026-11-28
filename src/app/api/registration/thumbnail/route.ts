@@ -9,6 +9,7 @@ import { requireOwner } from '@/lib/auth/clerk'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { isImageModel } from '@/lib/agents/image/types'
 import { createThumbnailJob, listThumbnailJobs } from '@/lib/registration/jobs'
+import { resolveJobDraftLink } from '@/lib/registration/job-draft-link'
 import { THUMBNAIL_CATEGORIES, type ThumbnailCategory } from '@/lib/registration/thumbnail-types'
 
 export const dynamic = 'force-dynamic'
@@ -50,34 +51,13 @@ export async function POST(req: NextRequest) {
 
     const db = createAdminClient()
 
-    // draft 연결 시 소유·사업장 일치 검증 (business_id 불일치 = 사업장 격리 구멍 — 400)
-    let draftId: string | null = null
-    let businessId: string | null = body.businessId?.trim() || null
-    if (body.draftId?.trim()) {
-      const { data: drafts, error } = await db
-        .from('sourcing_registration_drafts')
-        .select('id, business_id')
-        .eq('user_id', userId)
-        .eq('id', body.draftId.trim())
-        .limit(1)
-      if (error) throw new Error(`드래프트 조회 실패: ${error.message}`)
-      const draft = drafts?.[0] as { id: string; business_id: string | null } | undefined
-      if (!draft) {
-        return NextResponse.json({ error: '연결할 드래프트를 찾을 수 없습니다.' }, { status: 404 })
-      }
-      if (businessId && draft.business_id && businessId !== draft.business_id) {
-        return NextResponse.json(
-          { error: '요청 business_id가 드래프트의 사업장과 일치하지 않습니다.' },
-          { status: 400 }
-        )
-      }
-      draftId = draft.id
-      businessId = businessId ?? draft.business_id
-    }
+    // draft 연결 시 소유·사업장 일치 검증, 사업장 미지정이면 초안 사업장 상속 (job-draft-link.ts)
+    const link = await resolveJobDraftLink(db, userId, { draftId: body.draftId, businessId: body.businessId })
+    if (!link.ok) return NextResponse.json({ error: link.error }, { status: link.status })
 
     const job = await createThumbnailJob(db, userId, {
-      draftId,
-      businessId,
+      draftId: link.draftId,
+      businessId: link.businessId,
       sourceImages,
       productName,
       categoryHint: categoryHint as ThumbnailCategory | null,

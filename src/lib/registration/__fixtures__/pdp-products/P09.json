@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "P09",
+  "sourceFolder": "핸드폰 도난방지 스트랩",
+  "categoryKey": "digital",
+  "evidencePath": "v2",
+  "sellerProductId": "15874657809",
+  "specSheet": {
+    "productName": "페어넥스 핸드폰 스마트폰 도난방지 스트랩",
+    "brandName": "페어넥스",
+    "category": "digital",
+    "colorOptions": [
+      "시크 블랙 2개"
+    ],
+    "size": "고리 21.4cm, 펼침 37.3cm",
+    "material": "폴리에스터",
+    "origin": "중국",
+    "usageLocation": "해외여행·여행지에서 휴대폰을 안심하고 들고 다닐 때",
+    "extraSpecs": [
+      {
+        "key": "구성",
+        "value": "2개"
+      },
+      {
+        "key": "형태",
+        "value": "손목형 로프"
+      },
+      {
+        "key": "구성품",
+        "value": "연결 태그 포함"
+      }
+    ]
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(04_TEST_PROGRAM §1)",
+    "colorOptions": "products.option_name",
+    "size": "현행 상세 표(product-page 휴대폰-도난방지-스트랩) — OpenAPI 최장 길이 37.3과 맞음",
+    "material": "openapi.attributes 패션 잡화 소재",
+    "origin": "openapi.notices 제조국(원산지)",
+    "usageLocation": "오너 블라인드 메모(11-01): 사용 목적이 대부분 여행지, 해외여행에서 안전한 느낌",
+    "extraSpecs": "openapi.attributes 수량(2개)·휴대폰스트랩 형태(손목형) + 현행 상세 표 소재(로프)·주요 특징(연결 태그 포함)"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "targetPersona",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "supplier",
+      "path": "메인 이미지/cutout.png",
+      "note": "흰 배경 시크 블랙"
+    },
+    {
+      "origin": "supplier",
+      "path": "메인 이미지/메인 이미지_05.jpg",
+      "note": "책상 위 실물"
+    }
+  ],
+  "optionLabels": [
+    "시크 블랙 2개"
+  ],
+  "currentPagePaths": [
+    "메인 이미지/product-page-페어넥스-휴대폰-도난방지-스트랩.jpeg",
+    "메인 이미지/product-page-페어넥스-휴대폰-도난방지-스트랩.png"
+  ],
+  "searchTags": [
+    "유럽 핸드폰 도난방지 스트랩",
+    "핸드폰스트랩",
+    "도난방지가방",
+    "도난방지스트랩",
+    "핸드폰고리줄",
+    "스마트폰도난방지",
+    "핸드폰 손목스트랩",
+    "여행용 휴대폰 도난방지스트랩",
+    "핸드폰도난방지",
+    "스마트폰 도난방지스트랩",
+    "핸드폰줄",
+    "탈부착스트랩",
+    "휴대폰 도난방지스트랩",
+    "도난방지핸드폰줄",
+    "휴대폰스트랩",
+    "휴대폰손목스트랩",
+    "휴대폰도난방지",
+    "스마트폰 안전스트랩",
+    "스마트폰 손목스트랩",
+    "유럽 소매치기방지용품"
+  ],
+  "ownerChecks": [],
+  "notes": [
+    "SEO 첫 파일은 다른 상품(접이식 옷걸이) 내용이라 제외, 두 번째 파일 사용",
+    "'도난방지 스트랩 (3).jpg'는 한 개가 질감 없는 편집 실루엣·가장자리 잘림이라 제외",
+    "자사 리뷰 없음 — WING 상품평이 1행·본문 0건이라 리뷰 받기(intakeReviewFile)가 거절한다. R6 표준 입력에서 리뷰 파일을 넣지 않는다",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] NEXFIT P09 기록(a74d3fe9·53974f97, 소재 \"폴리\")은 다른 판매자 상품이라 쓰지 않음(C 확인)",
+    "[사실 10-31] 관리 방법은 어느 출처에도 없어 비움",
+    "[오너 메모 11-01] 사용 목적이 대부분 여행지이고 해외여행에서 안전한 느낌을 주면 좋겠다는 답을 사용처 칸에 넣었다. 도난을 막는 수치·시험·보장은 입력에 없어 만들지 않는다",
+    "[오너 답 11-01] 조절 부품은 납작한 원판이다. 구슬로 보이는 '도난방지 스트랩 (4)'를 OWNER_PHOTO_NOT_REAL로 빼 원판 사진 (8)이 대표가 된다(폴더 파일은 그대로)"
+  ]
+}

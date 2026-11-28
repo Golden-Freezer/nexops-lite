@@ -14,6 +14,7 @@ import {
   XCircle,
   FileCode,
   PackageCheck,
+  Tags,
 } from 'lucide-react';
 import { useEditorStore, selectSections, selectDocument, selectMeasuredHeights } from '@/lib/registration/editor/stores/editorStore';
 import {
@@ -23,6 +24,7 @@ import {
   exportReviewHtml,
   exportRenderHtml,
   withClonedCapture,
+  captureExportBlob,
   type ExportFormat,
 } from '@/lib/registration/editor/utils/exportUtils';
 import { runExportQaCheck } from '@/lib/registration/editor/utils/exportQaCheck';
@@ -30,13 +32,16 @@ import { getSectionLabel } from '@/lib/registration/editor/utils/sectionConverte
 import type { ExportWarning, DerivativeVersion } from '@/lib/registration/editor/types/editor';
 import { Z_INDEX } from '@/lib/registration/editor/constants/designTokens';
 import type { CanvasSection } from '@/lib/registration/editor/types/canvas';
+import CoupangImageSave from './CoupangImageSave';
+import { isOptionSpec } from '@/lib/registration/options/option-spec';
+import { buildRegistrationOptionExport } from '@/lib/registration/options/registration-export';
 
 // ─────────────────────────────────────────────
 // 헬퍼
 // ─────────────────────────────────────────────
 
-function triggerHtmlDownload(htmlStr: string, filename: string): void {
-  const blob = new Blob([htmlStr], { type: 'text/html;charset=utf-8' });
+function triggerHtmlDownload(htmlStr: string, filename: string, type = 'text/html;charset=utf-8'): void {
+  const blob = new Blob([htmlStr], { type });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -58,7 +63,8 @@ type ExportType =
   | 'zip_derivatives'
   | 'review_html'
   | 'render_html'
-  | 'qa_check';
+  | 'qa_check'
+  | 'option_export';
 
 interface ExportOption {
   type: ExportType;
@@ -123,6 +129,13 @@ const EXPORT_OPTIONS: ExportOption[] = [
     label: 'ZIP + 파생본',
     desc: 'Quick(12) / Standard(18) / Persuasive(24) 동시 출력',
     Icon: PackageCheck,
+    group: 'bundle',
+  },
+  {
+    type: 'option_export',
+    label: '옵션 등록용 내보내기',
+    desc: '등록 옵션 축·옵션명 JSON (가격·재고 없음)',
+    Icon: Tags,
     group: 'bundle',
   },
   // ── QA ──
@@ -332,6 +345,9 @@ export default function ExportMenu({ onClose }: ExportMenuProps) {
   const sections = useEditorStore(selectSections);
   const doc = useEditorStore(selectDocument);
   const measuredHeights = useEditorStore(selectMeasuredHeights);
+  // 옵션 등록용 내보내기 — 등록 옵션 구조(variants ≥ 2)가 있는 문서만 메뉴에 보인다(05_OPTIONS.md §5, 읽기 전용)
+  const rawOptionSpec = doc?.sourceData.specSheet?.optionSpec;
+  const optionSpec = isOptionSpec(rawOptionSpec) && rawOptionSpec.variants.length >= 2 ? rawOptionSpec : null;
 
   // NexOps는 오너 전용 도구 — NEXFIT의 유료 구독 게이트를 항상 통과 상태로 둔다.
   const isPaid: boolean = true;
@@ -407,7 +423,6 @@ export default function ExportMenu({ onClose }: ExportMenuProps) {
       if (!canvasEl) throw new Error('캔버스 요소를 찾을 수 없습니다.');
 
       const selectedVisible = visibleSections.filter((s) => selectedSectionIds.has(s.id));
-      const domtoimage = await import('dom-to-image-more');
 
       await withClonedCapture(canvasEl, async (clone) => {
         const ext = exportFormat === 'png' ? 'png' : 'jpg';
@@ -441,11 +456,9 @@ export default function ExportMenu({ onClose }: ExportMenuProps) {
           const el = clone.querySelector<HTMLElement>(`[data-section-id="${section.id}"]`);
           if (!el) continue;
 
-          let blob = await domtoimage.default.toBlob(el, {
-            width: 860,
-            height: el.offsetHeight,
+          // 860으로 찍어 780 × 해상도로 줄인다. 섹션에 쓰인 글꼴만 넣어 찍는다(매번 전체 웹폰트를 받지 않게)
+          let blob = await captureExportBlob(el, {
             scale: resolution,
-            cacheBust: false,
             bgcolor: el.style.backgroundColor || '#ffffff',
           });
 
@@ -533,6 +546,15 @@ export default function ExportMenu({ onClose }: ExportMenuProps) {
     // 다른 옵션 클릭 시 섹션 피커 닫기
     setShowSectionPicker(false);
 
+    // 옵션 등록용 내보내기 — 캔버스 캡처 없이 JSON만 받는다(문서·잡을 고치지 않는다)
+    if (type === 'option_export') {
+      if (optionSpec) {
+        const json = JSON.stringify(buildRegistrationOptionExport(optionSpec), null, 2);
+        triggerHtmlDownload(json, 'nexops_registration_options.json', 'application/json;charset=utf-8');
+      }
+      return;
+    }
+
     // QA 검사는 별도 처리 (비동기 캡처 불필요)
     if (type === 'qa_check') {
       const warnings = runExportQaCheck(sections);
@@ -548,10 +570,6 @@ export default function ExportMenu({ onClose }: ExportMenuProps) {
 
     try {
       const palette = doc?.sourceData.designPalette ?? null;
-      const visible = [...sections]
-        .filter((s) => s.isVisible)
-        .sort((a, b) => a.order - b.order);
-
       const canvasEl = document.querySelector<HTMLElement>('[data-canvas-content]');
 
       if (type === 'full_page_png') {
@@ -753,7 +771,7 @@ export default function ExportMenu({ onClose }: ExportMenuProps) {
       ) : (
         <div className="py-1 max-h-[360px] overflow-y-auto">
           {groups.map((group) => {
-            const opts = EXPORT_OPTIONS.filter((o) => o.group === group);
+            const opts = EXPORT_OPTIONS.filter((o) => o.group === group && (o.type !== 'option_export' || optionSpec));
             return (
               <div key={group}>
                 <div className="px-4 py-1.5">
@@ -811,6 +829,9 @@ export default function ExportMenu({ onClose }: ExportMenuProps) {
           })}
         </div>
       ))}
+
+      {/* 쿠팡 상세 이미지 굽기·저장(U1) — 기존 내보내기와 별개 */}
+      {!showSectionPicker && <CoupangImageSave />}
     </div>
   );
 }

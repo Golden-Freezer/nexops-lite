@@ -65,6 +65,8 @@ export interface ImageElementProps {
   originalPrompt?: string;    // 재생성용 원본 프롬프트
   isUserUploaded: boolean;
   cropRect?: { x: number; y: number; width: number; height: number }; // percentage 0-100
+  /** 모서리 반경 [TL, TR, BR, BL] px — 둥근 카드 안 사진을 카드 모서리에 맞춰 자른다(옵션 카드 사진). 없으면 각진 모서리 */
+  borderRadii?: [number, number, number, number];
 }
 
 // ─────────────────────────────────────────────
@@ -134,6 +136,7 @@ export interface FramedImageElementProps {
   originalPrompt?: string;    // 재생성용 원본 프롬프트
   isUserUploaded: boolean;
   cropRect?: { x: number; y: number; width: number; height: number }; // percentage 0-100
+  cornerRadius?: number;      // px — frameId=roundedRect 모서리(K 컨셉 사진 반경). 없으면 16
   // 테두리 (frameId=rect/roundedRect/circle 에서만 유효; clipPath 경로는 clip으로 잘려서 미적용)
   borderWidth?: number;       // px (기본 0)
   borderColor?: string;       // 색상 (기본 '#000000')
@@ -204,6 +207,19 @@ export interface CanvasElement {
    * (리뷰 카드 배경 등 "고정 shape가 텍스트에 뚫리는" 겹침의 구조적 방지).
    */
   containerOf?: string[];
+
+  /**
+   * 표 행 묶음(K 표 행 높이 맞춤, K10) — 같은 값을 가진 행 상자(containerOf)는 리플로가 실측 내용 높이로 행 높이를 다시 맞춘다:
+   * 가장 낮은 행보다 한 줄 높은 행까지 같은 높이, 더 긴 행은 제 높이. 그리고 칸(가로로 겹치는 식구)마다 행 가운데에 다시 둔다.
+   * 글이 실측으로 줄거나 편집으로 늘어도 행 높이가 같고 이름·값이 가운데다. 값이 없으면 전과 같다.
+   */
+  rowGroup?: string;
+
+  /**
+   * 상자 밖으로 조금 내민 장식(K 띠 곡선 덮개, K1 T1-33) — 상자 경계와 같은 줄에 끝나면 줄인 화면에서 밑의 띠 색이 실선으로 비쳐 몇 px 밖까지 덮는다.
+   * 리플로는 상자 높이를 맞출 때 이 식구를 빼고(내민 만큼 상자가 커지지 않게), 글이 늘면 다른 식구처럼 함께 민다. 값이 없으면 전과 같다.
+   */
+  overhang?: boolean;
 }
 
 // ─────────────────────────────────────────────
@@ -221,6 +237,9 @@ export interface ReviewCardParams {
 // ─────────────────────────────────────────────
 // 캔버스 섹션 (Pro 24개 섹션 중 하나)
 // ─────────────────────────────────────────────
+/** 긴 상세페이지 확장 섹션 종류(long-sections.ts) — 크기·구성, 관리·보관, 구매 전 질문(L-1 표), 사용 장면(L-2 사진) */
+export type ExpansionKind = 'size' | 'care' | 'faq' | 'scenes';
+
 export interface CanvasSection {
   id: string;
   sectionType: ProSectionType;
@@ -249,6 +268,12 @@ export interface CanvasSection {
   /** 데이터 없이 빈 상태로 추가된 섹션 */
   isPlaceholder?: boolean;
 
+  /**
+   * 긴 상세페이지 확장 섹션 표지(ENRICHMENT long) — 변환기가 설계 기록(section_plan.long)으로 더한 섹션만. 편집기가 '확장' 뱃지와
+   * '핵심만 남기기'에 쓴다. 없으면 골격 섹션
+   */
+  expansion?: ExpansionKind;
+
   /** V4.3: export 안전 여부 (placeholder/overflow 검사용) */
   exportSafe?: boolean;
 
@@ -271,6 +296,8 @@ export interface CanvasSection {
    * (Ctrl+Z 기준선만 정상으로 보이던 재접속 배치 붕괴의 원인).
    */
   needsInitialReflow?: boolean;
+  /** 리플로우가 섹션 아래 여백을 토큰 값으로 줄이지 않고 그대로 둔다 — K 템플릿(자기 spacing으로 끝난다) */
+  preserveBottomPad?: boolean;
 }
 
 // ─────────────────────────────────────────────

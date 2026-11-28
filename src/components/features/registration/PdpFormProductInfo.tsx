@@ -3,11 +3,23 @@
 /**
  * PdpForm의 "상품 정보" 섹션 — spec_sheet 핵심 필드 전체(카테고리 셀렉트+직접입력 포함).
  * PdpForm.tsx 300줄 상한 초과를 막기 위해 분리(모듈화 규칙). 상태는 PdpForm이 쥐고 있다.
+ * W3(PDP-W2W3 계약 v1): 무게·원산지·추가 스펙 칸, 등록 초안에서 채운 칸의 '(초안)' 표시(고치면 사라짐), 페르소나·톤 자동 작성.
+ * 추가 스펙 위에 긴 상세페이지 입력 안내(PdpLongInputHint) — 이 칸들이 확장 섹션 근거라는 것을 알린다.
  */
 
+import { useId } from 'react'
 import { THUMBNAIL_CATEGORIES, THUMBNAIL_CATEGORY_LABELS } from '@/lib/registration/thumbnail-types'
 import type { PdpSpecSheet } from '@/lib/registration/pdp-state'
+import { SPEC_SHORT_TEXT_MAX, type PrefillField } from '@/lib/registration/spec-inputs'
+import { autoFillRequestBody, clearDraftMark } from '@/lib/registration/pdp-input-assist'
+import { ACHROMATIC_BRAND_COLOR_MESSAGE, isAchromaticExtreme } from '@/lib/registration/reference-image-quality'
 import { NumberField, SectionTitle, TagsField, TextAreaField, TextField } from './PdpFormFields'
+import { PdpReviewFiles } from './PdpReviewFiles'
+import { PdpReferenceFiles } from './PdpReferenceFiles'
+import { PdpExtraSpecsEditor } from './PdpExtraSpecsEditor'
+import { PdpInputSlotsEditor } from './PdpInputSlotsEditor'
+import { PdpLongInputHint } from './PdpLongInputHint'
+import { PdpAutoFillButton } from './PdpAutoFillButton'
 
 const CUSTOM_CATEGORY = '__custom'
 
@@ -24,22 +36,29 @@ export function PdpFormProductInfo({
   onCategoryModeChange: (mode: 'select' | 'custom') => void
   disabled?: boolean
 }) {
+  const brandColorWarningId = useId()
+  const brandColorWarning = isAchromaticExtreme(spec.brandHexColor)
+  // 등록 초안에서 채운 칸(draftPrefill)은 이름 뒤에 '(초안)'을 붙이고, 오너가 그 칸을 고치면 표시를 뗀다
+  const drafted = (field: PrefillField) => spec.draftPrefill?.includes(field) ?? false
+  const mark = (label: string, field: PrefillField) => (drafted(field) ? `${label} (초안)` : label)
+  const edit = (field: PrefillField, patch: Partial<PdpSpecSheet>) =>
+    onChange(drafted(field) ? { ...patch, draftPrefill: clearDraftMark(spec.draftPrefill, field) } : patch)
   return (
     <section className="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
       <SectionTitle>상품 정보</SectionTitle>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <TextField
-          label="상품명 *"
+          label={mark('상품명 *', 'productName')}
           value={spec.productName}
-          onChange={(v) => onChange({ productName: v })}
+          onChange={(v) => edit('productName', { productName: v })}
           placeholder="쿠팡 노출 상품명"
           disabled={disabled}
           maxLength={200}
         />
         <TextField
-          label="브랜드명"
+          label={mark('브랜드명', 'brandName')}
           value={spec.brandName ?? ''}
-          onChange={(v) => onChange({ brandName: v || undefined })}
+          onChange={(v) => edit('brandName', { brandName: v || undefined })}
           disabled={disabled}
         />
         <label className="flex flex-col gap-1 text-xs text-slate-500">
@@ -76,9 +95,9 @@ export function PdpFormProductInfo({
           />
         )}
         <TextField
-          label="소재"
+          label={mark('소재', 'material')}
           value={spec.material ?? ''}
-          onChange={(v) => onChange({ material: v || undefined })}
+          onChange={(v) => edit('material', { material: v || undefined })}
           disabled={disabled}
         />
         <TextField
@@ -88,18 +107,47 @@ export function PdpFormProductInfo({
           disabled={disabled}
         />
         <TextField
-          label="사이즈"
+          label={mark('사이즈', 'size')}
           value={spec.size ?? ''}
-          onChange={(v) => onChange({ size: v || undefined })}
+          onChange={(v) => edit('size', { size: v || undefined })}
           disabled={disabled}
         />
         <TextField
-          label="브랜드 컬러 (HEX)"
-          value={spec.brandHexColor ?? ''}
-          onChange={(v) => onChange({ brandHexColor: v || undefined })}
-          placeholder="#22C55E"
+          label={mark('무게', 'weight')}
+          value={spec.weight ?? ''}
+          onChange={(v) => edit('weight', { weight: v || undefined })}
+          placeholder="예: 120g"
+          maxLength={SPEC_SHORT_TEXT_MAX}
           disabled={disabled}
         />
+        <TextField
+          label={mark('원산지', 'origin')}
+          value={spec.origin ?? ''}
+          onChange={(v) => edit('origin', { origin: v || undefined })}
+          placeholder="예: 중국"
+          maxLength={SPEC_SHORT_TEXT_MAX}
+          disabled={disabled}
+        />
+        <div className="flex flex-col gap-1">
+          <TextField
+            label="브랜드 컬러 (HEX)"
+            value={spec.brandHexColor ?? ''}
+            onChange={(v) => onChange({ brandHexColor: v || undefined })}
+            placeholder="#22C55E"
+            disabled={disabled}
+            describedBy={brandColorWarning ? brandColorWarningId : undefined}
+          />
+          {/* NEXFIT A-10: 검정·흰색 근처 무채색은 경고만(막지 않음) */}
+          {brandColorWarning && (
+            <span
+              id={brandColorWarningId}
+              role="status"
+              className="rounded border border-amber-300 bg-amber-50 px-2 py-1 text-[11px] leading-snug text-amber-800"
+            >
+              {ACHROMATIC_BRAND_COLOR_MESSAGE}
+            </span>
+          )}
+        </div>
         <label className="flex flex-col gap-1 text-xs text-slate-500">
           사용 연령
           <select
@@ -127,10 +175,25 @@ export function PdpFormProductInfo({
         disabled={disabled}
       />
       <TagsField
-        label="색상 옵션 (줄바꿈/쉼표 구분)"
+        label={mark('색상 옵션 (줄바꿈/쉼표 구분)', 'colorOptions')}
         values={spec.colorOptions ?? []}
-        onChange={(v) => onChange({ colorOptions: v })}
+        onChange={(v) => edit('colorOptions', { colorOptions: v })}
         placeholder="예: 블랙, 화이트, 베이지"
+        disabled={disabled}
+      />
+      <PdpLongInputHint />
+      <PdpExtraSpecsEditor
+        rows={spec.extraSpecs ?? []}
+        onChange={(rows) => edit('extraSpecs', { extraSpecs: rows.length > 0 ? rows : undefined })}
+        draft={drafted('extraSpecs')}
+        disabled={disabled}
+      />
+      <PdpInputSlotsEditor spec={spec} onChange={onChange} disabled={disabled} />
+      <PdpAutoFillButton
+        productName={spec.productName}
+        current={{ targetPersona: spec.targetPersona, brandVoiceGuide: spec.brandVoiceGuide, brandHexColor: spec.brandHexColor }}
+        buildRequest={() => autoFillRequestBody(spec)}
+        onApply={(patch) => onChange(patch)}
         disabled={disabled}
       />
       <TextAreaField
@@ -149,6 +212,8 @@ export function PdpFormProductInfo({
         disabled={disabled}
         rows={2}
       />
+      <PdpReviewFiles spec={spec} onChange={onChange} disabled={disabled} />
+      <PdpReferenceFiles spec={spec} onChange={onChange} disabled={disabled} />
       <TextAreaField
         label="리뷰 원문 (붙여넣기)"
         value={spec.reviewsText ?? ''}

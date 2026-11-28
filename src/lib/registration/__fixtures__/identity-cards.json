@@ -1,0 +1,82 @@
+{
+  "_about": "결정 카드 c32(가정 A6) — 지난 K 라인 시험 잡의 실제 식별 카드(design_prompts.identity_card) 그대로, 상품마다 최근 1개. 시험 잡 저장본(리포 밖 기록 폴더)에서 옮김 — 운영 잡이 아니다. 지금 배치(Sonnet) 카드다. 바꾸지 말고 새 표본은 항목을 더한다.",
+  "cards": [
+    {
+      "product": "P01",
+      "job": "c2948fd2",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's 4 reference photos — the generated product must match every detail below; printed designs come only from the reference photos, as listed below): Shared form: 4 round white glossy sticker labels, flat circular vinyl/paper, each with black Korean text and two red hearts near the bottom edge. Design 1: brown bear in rainbow party hat holding pink cake with lit candle, pink, yellow, teal balloons, confetti, stars, hearts, small gift box; multicolor \"Thank you\" arched above, black Korean \"생일 축하해줘서 고마워!\" below. Design 2: yellow chick with pink balloon, brown squirrel holding cupcake, green dinosaur with tongue out; black Korean \"친구야~\" over \"생일 축하해줘서 고마워!\" beneath, two red hearts. Design 3: crayon-style bear in blue polka-dot party hat behind blue-outlined gift box with red bow and blank white label, pink hearts, yellow stars; dark brown, red-orange Korean text stacked above reading \"생일 축하해줘서 고마워!\". Design 4: brown bear in red striped party hat holding cake, six pastel balloons, confetti; black Korean \"생일 축하해줘서 고마워!\" below, two orange-red hearts."
+    },
+    {
+      "product": "P02",
+      "job": "f288dcd5",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's reference photo — the generated product must match every detail below): Single-compartment drawstring pouch, closed, gathered top with two yellow braided cords threaded through casing, knotted at lower sides, translucent frosted plastic, rectangular flat bottom, white daisy print with yellow centers scattered across front in varying sizes, some faded, no handles, no zipper."
+    },
+    {
+      "product": "P03",
+      "job": "480ecd31",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's 3 reference photos — the generated product must match every detail below): Handheld round scalp massager brush, single piece, matte sage-grey-green silicone or plastic body, low dome-shaped back with short vertical stem ending in a flat oval thumb-grip with 1 small hole near its edge, flat circular bristle face with dense rows of long thin translucent clear-white pins tipped with tiny rounded beads, pins inserted into small holes in a matching grey-green base, pale grey-blue block lettering printed along the side of the body, no moving parts or caps"
+    },
+    {
+      "product": "P04",
+      "job": "2751cabd",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's reference photo — the generated product must match every detail below): 2 vented detangling hair brushes, one black and one lilac, rectangular paddle heads with spiral concentric flexible ridges, short rounded pin bristles with ball tips, smooth rounded tapered handles, matte plastic finish, black brush in front angled left, lilac brush behind, no printed patterns on products"
+    },
+    {
+      "product": "P05",
+      "job": "ed86ce17",
+      "createdAt": "2026-11-06",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's 2 reference photos — the generated product must match every detail below): 1 foldable hair brush, translucent amber-brown matte plastic body, rectangular brush head with 2 small cat-ear tips at the top end, black bristles in dense tufts, small white-tipped pins along the head's side edge, hinge between head and handle, slim straight handle with heart-shaped cutout at the end. State open: head straight in line with handle, bristles facing up. State folded: head folds 180° about the hinge so the bristles sit inside the U-shaped handle, which wraps and covers them, with a small pin tip at the head end; no separate cover or case"
+    },
+    {
+      "product": "P06",
+      "job": "a1e0691d",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's reference photo — the generated product must match every detail below): 3-piece pet grooming set on white, 1 oval slicker brush with white rim, gray rubber-pin pad with dense bent pins, gray textured diamond-faceted rubber handle with oval hanging hole, 2 white plastic flea combs (1 large, 1 small) with fine metal teeth, ribbed oval-cutout handles, teardrop hanging holes"
+    },
+    {
+      "product": "P07",
+      "job": "26d35aa6",
+      "createdAt": "2026-11-06",
+      "identityNote": "black cap on the tip of every leg",
+      "card": "PRODUCT IDENTITY (read from the user's 4 reference photos — the generated product must match every detail below): Elevated double pet feeder, 1 oval matte sage-green plastic tray with raised back lip and 2 round recessed openings, 2 removable glossy white ceramic-look bowls with wide rims sitting tilted in the openings, 4 tapered round wood-grain legs (light oak finish, thin groove near bottom) with black round rubber foot caps, black paw print on floor of left bowl, black fish-skeleton icon on floor of right bowl, no lid, no other parts, black cap on the tip of every leg"
+    },
+    {
+      "product": "P08",
+      "job": "0093515e",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's reference photo — the generated product must match every detail below): Clear transparent plastic ring clip, glossy translucent finish, wide band with 6 visible vertical rectangular slots, horizontal molded groove line around middle, interlocking snap-latch tab closure at front-left, partially open with latch tabs not fully engaged, no handle, no printing, single piece, colorless."
+    },
+    {
+      "product": "P09",
+      "job": "71d0595d",
+      "createdAt": "2026-11-06",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's reference photo — the generated product must match every detail below): Black paracord phone wrist strap, braided cobra-weave wrist loop with adjustable round matte plastic cord lock, two parallel cord strands leading to a stacked knot, small black metal O-ring, black flat nylon rectangular phone tether tab with clipped corners, solid black throughout, single closed loop, no separate case."
+    },
+    {
+      "product": "P10",
+      "job": "365d6f1d",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's 3 reference photos — the generated product must match every detail below): 1 patellar tendon knee strap, black, curved hourglass-shaped central pad wider in the middle and narrowing toward both ends, soft textured fuzzy loop-fabric outer face, neoprene-style rolled edges with visible stitched seam along borders, smooth dark inner lining with raised pad ridge, 2 short adjustable hook-and-loop tabs, one at each end, with small black plastic D-ring buckles, all black, no printed pictures or patterns, approx 190mm x 60mm, worn just below the kneecap, single unit"
+    },
+    {
+      "product": "P11",
+      "job": "ca4dcfb9",
+      "createdAt": "2026-11-05",
+      "identityNote": null,
+      "card": "PRODUCT IDENTITY (read from the user's reference photo — the generated product must match every detail below): Flat circular white sticker, no handle or opening, single piece, matte paper finish, centered watercolor red-pink carnation with black ink outline and ruffled petals, green sepal and stem with 2 pale green leaves, black serif \"Thank You\" text curved along lower edge beneath stem."
+    }
+  ]
+}

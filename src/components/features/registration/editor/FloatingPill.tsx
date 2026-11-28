@@ -20,13 +20,11 @@ import {
   Diamond,
   ArrowRight,
   MessageCircle,
-  Hexagon,
   Minus,
-  ChevronDown,
   ChevronRight,
   GripVertical,
 } from 'lucide-react';
-import { useAuth } from '@/lib/auth/clerk-shim';
+import { useAuth } from '@clerk/nextjs';
 import { uploadImageViaSignedUrl } from '@/lib/registration/editor/services/editorApi';
 import { type ElementKind } from './ElementPanel';
 import {

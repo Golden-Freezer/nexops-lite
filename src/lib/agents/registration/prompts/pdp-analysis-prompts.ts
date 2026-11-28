@@ -85,7 +85,7 @@ export interface DataAnalysisPromptArgs {
 
 /** DATA_ANALYSIS_PROMPT의 {spec_sheet} {reviews_summary} {category} 슬롯 치환 */
 export function buildDataAnalysisPrompt(args: DataAnalysisPromptArgs): string {
-  return DATA_ANALYSIS_PROMPT.replace('{spec_sheet}', args.specSheet)
-    .replace('{reviews_summary}', args.reviewsSummary)
-    .replace('{category}', args.category)
+  return DATA_ANALYSIS_PROMPT.replace('{spec_sheet}', () => args.specSheet)
+    .replace('{reviews_summary}', () => args.reviewsSummary)
+    .replace('{category}', () => args.category)
 }

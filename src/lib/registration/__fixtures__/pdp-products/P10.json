@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "P10",
+  "sourceFolder": "15805693523_페어넥스 슬개골 러닝 무릎 보호대",
+  "categoryKey": "fashion",
+  "evidencePath": "v2",
+  "sellerProductId": "15805693523",
+  "specSheet": {
+    "productName": "페어넥스 슬개골 무릎 보호대 러닝 등산 자전거",
+    "brandName": "페어밴드",
+    "category": "fashion",
+    "colorOptions": [
+      "1개 검정 Free",
+      "1개 Free 검정",
+      "4개 검정 Free",
+      "5개 검정 Free",
+      "6개 검정 Free",
+      "2개 검정 Free",
+      "3개 검정 Free"
+    ],
+    "size": "190mm x 60mm(프리사이즈)",
+    "material": "EVA + 네오프렌 + OK벨벳 패브릭",
+    "origin": "중국",
+    "extraSpecs": [
+      {
+        "key": "착용",
+        "value": "좌우겸용"
+      },
+      {
+        "key": "사용 부위",
+        "value": "무릎"
+      },
+      {
+        "key": "용도",
+        "value": "스포츠·레저"
+      }
+    ]
+  },
+  "fieldSources": {
+    "productName": "openapi.displayProductName",
+    "brandName": "openapi.brand",
+    "category": "catalog(판정 목록 8종에 스포츠 없음 — 착용형 보호대 → fashion)",
+    "colorOptions": "products.option_name",
+    "size": "현행 상세 표(상세페이지 006) — OpenAPI 고시 치수가 \"상품 상세페이지 참조\"",
+    "material": "현행 상세 표(상세페이지 006) — OpenAPI 고시 제품 소재가 \"상품 상세페이지 참조\"",
+    "origin": "현행 상세 표 제조국(상세페이지 006) — OpenAPI 고시 제조국이 \"상품 상세페이지 참조\"",
+    "extraSpecs": "openapi.attributes 착용방향·사용부위·보호대/교정용품 용도"
+  },
+  "emptyFields": [
+    "certificationInfo",
+    "keyFeatures",
+    "usageLocation",
+    "targetPersona",
+    "minAgeYears",
+    "reviewsText",
+    "rating",
+    "reviewCount",
+    "eventBannerInfo"
+  ],
+  "sourcePhotos": [
+    {
+      "origin": "representative",
+      "path": "대표이미지/7.png",
+      "note": "흰 배경 실물 전체"
+    },
+    {
+      "origin": "representative",
+      "path": "대표이미지/6.png",
+      "note": "테이블 위 실물"
+    }
+  ],
+  "optionLabels": [
+    "1개 검정 Free",
+    "1개 Free 검정",
+    "4개 검정 Free",
+    "5개 검정 Free",
+    "6개 검정 Free",
+    "2개 검정 Free",
+    "3개 검정 Free"
+  ],
+  "currentPagePaths": [
+    "상세페이지/001.png",
+    "상세페이지/002.png",
+    "상세페이지/003.png",
+    "상세페이지/004.png",
+    "상세페이지/005.png",
+    "상세페이지/006.png"
+  ],
+  "searchTags": [
+    "관절 무릎보호대",
+    "관절무릅보호대",
+    "남성 무릎보호대",
+    "러닝",
+    "러닝 무릎보호 밴드",
+    "러닝 무릎보호대",
+    "무릅 보호대",
+    "무릅보호대",
+    "무릎",
+    "무릎보호대 프리",
+    "밴드",
+    "보호대",
+    "슬개건",
+    "슬개건 무릎보호대",
+    "슬개건 보호대",
+    "슬개골",
+    "슬개골 무릎보호대",
+    "슬개골 보호대",
+    "슬개골밴드",
+    "여성 무릎보호대"
+  ],
+  "ownerChecks": [],
+  "reviewFiles": [
+    {
+      "kind": "own",
+      "programPath": "reviews-wing/P10-own-wing.xlsx",
+      "note": "WING 공식 상품평(2026-10-30 받음, 이름 제외) — 자사, R6 표준 입력"
+    }
+  ],
+  "notes": [
+    "SEO 파일 없음 — 상품명은 products 등록명",
+    "AI 인물 장면 컷 제외. 효능 표현(통증 완화 등) 금지 점검 대상(의료기기 아님)",
+    "[사실 10-31] 출처 순위: 쿠팡 OpenAPI 등록값 → 사람이 만든 현행 상세 표 → NEXFIT user_input → AI 생성 표시 페이지(통합 결정). 같은 순위에서 값이 갈리면 비우고, OpenAPI 묶음 선택지(예: 도자기/유리)는 아래 순위 출처가 좁힌 값을 쓴다. 예외: 1순위 값이 상품 구조와 맞지 않으면(예: 핀·캡이 있는 브러쉬인데 PE) 비우고 오너 확인으로 돌린다. OpenAPI 고시가 \"상품 상세페이지 참조\"인 칸은 현행 상세 표를 쓴다. 지어낸 값 없음",
+    "[사실 10-31] 고시의 세탁방법·취급 주의도 \"상품 상세페이지 참조\"인데 상세 이미지(001~006)에 관리 방법이 없어 비움. 구성은 수량 옵션(1~6개)이라 넣지 않음"
+  ]
+}

@@ -7,8 +7,8 @@
  */
 
 import { useEffect, useRef, useState } from 'react'
-import { ImagePlus, Loader2, Play, X } from 'lucide-react'
-import { IMAGE_MODELS, type ImageModel, type ImageQuality } from '@/lib/agents/image/types'
+import { Loader2, Play } from 'lucide-react'
+import { PDP_IMAGE_MODELS, type ImageModel, type ImageQuality } from '@/lib/agents/image/types'
 import {
   PDP_MAX_SOURCE_IMAGES,
   isGenerationTrack,
@@ -17,11 +17,19 @@ import {
   type PdpSpecSheet,
 } from '@/lib/registration/pdp-state'
 import { pdpApi } from '@/lib/registration/pdp-client'
+import { applyDraftPrefill } from '@/lib/registration/pdp-input-assist'
+import type { DraftPrefillSource } from '@/lib/registration/spec-inputs'
+import type { ImageDimensions } from '@/lib/registration/reference-image-quality'
+import { rolesForUrls, type SourcePhotoRole } from '@/lib/registration/source-photo-roles'
+import type { PdpModelBatch } from '@/lib/registration/pdp-model-batch'
+import { draftSourceImageUrls, type DraftSourceContent } from '@/lib/sourcing/registration/draft-source-images'
 import { ImageModelSelect } from './ImageModelSelect'
+import { PdpFormBatch } from './PdpFormBatch'
+import { PdpFormPhotos } from './PdpFormPhotos'
 import { PdpFormPro } from './PdpFormPro'
+import { EMPTY_OWN_SALES, PdpOwnSales, ownSalesSpecFields, useOwnSalesBusinessId, type OwnSalesValue } from './PdpOwnSales'
 import { PdpFormProductInfo } from './PdpFormProductInfo'
 import { SectionTitle } from './PdpFormFields'
-import { LOCAL_CODEX_NOTICE, useLocalCodexAvailable } from './LocalCodexNotice'
 
 // POST /api/registration/pdp의 검증 상한과 공유하는 SSOT — pdp-state.ts에서 임포트한다.
 const MAX_SOURCE_IMAGES = PDP_MAX_SOURCE_IMAGES
@@ -32,26 +40,47 @@ const TRACK_STORAGE_KEY = 'nexops-pdp-generation-track'
 
 interface DraftLoad {
   businessId: string | null
-  form: {
-    productName?: string
-    brand?: string
-    content?: { heroImages?: string[]; detailImages?: string[] }
+  // 등록 폼 — 상품명·브랜드·옵션·고시정보는 W2a draftToSpecPrefill이 spec 칸으로 옮긴다(W3)
+  form: Partial<DraftPrefillSource> & {
+    content?: DraftSourceContent
   }
 }
 
-export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (jobId: string) => void }) {
-  const localCodexAvailable = useLocalCodexAvailable()
+export function PdpForm({
+  draftId,
+  initialName,
+  showPhotoRoles = false,
+  onCreated,
+}: {
+  draftId?: string
+  /** 작명 결과에서 넘어온 상품명(?name=) — 초안이 있으면 초안 상품명이 우선 */
+  initialName?: string
+  /** 사진별 역할 칸(결정 카드 c12) — 스위치 photoroles 기본값 또는 미리보기 ?photoroles=1일 때만(page.tsx가 정한다) */
+  showPhotoRoles?: boolean
+  onCreated: (jobId: string) => void
+}) {
   const [mode, setMode] = useState<PdpMode>('pro')
-  const [track, setTrack] = useState<GenerationTrack>('standard')
-  const [spec, setSpec] = useState<PdpSpecSheet>({ productName: '' })
+  // K4 운영 전환(오너 2026-11-06 '전환 PR 준비 승인') — 새 잡 기본은 내재화. 표준은 폼에서 고를 수 있다
+  const [track, setTrack] = useState<GenerationTrack>('internalized')
+  // 모델 배치(R03) — 켜기(R09, 오너 승인 2026-11-08 21:0x) 뒤 새 잡 기본은 새 배치. 지금 배치는 잡마다 고를 수 있다.
+  // 새 배치는 서버가 이미지 모델도 새 배치 값으로 정한다. 서버는 값이 없으면 지금처럼 now(다른 호출 경로 호환)
+  const [batch, setBatch] = useState<PdpModelBatch>('new')
+  const [spec, setSpec] = useState<PdpSpecSheet>({ productName: initialName ?? '' })
   const [categoryMode, setCategoryMode] = useState<'select' | 'custom'>('select')
   const [sourceUrls, setSourceUrls] = useState<string[]>([])
+  // 사진별 역할(원본이 아닌 사진만) — 역할 칸이 보일 때만 보낸다
+  const [photoRoles, setPhotoRoles] = useState<SourcePhotoRole[]>([])
   const [businessId, setBusinessId] = useState<string | null>(null)
-  const [model, setModel] = useState<ImageModel>(IMAGE_MODELS[0].id)
+  // 우리 쿠팡 판매량(J51) — 초안 사업장, 없으면 상단 사업장에서 고른다. 고른 상품이 있으면 그 사업장으로 잡을 만든다
+  const ownSalesBusinessId = useOwnSalesBusinessId(businessId)
+  const [ownSales, setOwnSales] = useState<OwnSalesValue>(EMPTY_OWN_SALES)
+  const [model, setModel] = useState<ImageModel>(PDP_IMAGE_MODELS[0].id)
   const [quality, setQuality] = useState<ImageQuality>('high') // 오너 지시(2026-08-10) — 단가 제한 해제로 기본 high
   const [uploading, setUploading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // 참조 사진 실해상도 — 미리보기 로드 시점에 URL별로 모은다(NEXFIT A-5). 경고만 하고 막지 않는다
+  const [imageDims, setImageDims] = useState<Record<string, ImageDimensions>>({})
   const aliveRef = useRef(true)
   const fileRef = useRef<HTMLInputElement>(null)
 
@@ -68,7 +97,9 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
     if (isGenerationTrack(stored)) setTrack(stored)
   }, [])
 
-  // 드래프트 프리로드 — 상품명·브랜드·기존 이미지 (ThumbnailStudio와 동일 원천/관례)
+  // 드래프트 프리로드 — 상품명·브랜드·고시정보(소재·크기·무게·원산지·추가 스펙)·옵션(색상)·기존 이미지.
+  // 빈 칸만 채우고 '(초안)' 표시(draftPrefill)를 단다 — 상품명은 초안이 이긴다(기존 규칙). 이미지는 ThumbnailStudio와 같은 원천
+  // (원본 대표 사진 먼저, 생성 컷·채택 썸네일은 빼고 — 결정 카드 c01 draftSourceImageUrls)
   useEffect(() => {
     if (!draftId) return
     fetch(`/api/sourcing/registration-drafts/${draftId}`)
@@ -80,15 +111,8 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
       .then((draft) => {
         if (!aliveRef.current) return
         setBusinessId(draft.businessId)
-        setSpec((s) => ({
-          ...s,
-          productName: draft.form.productName || s.productName,
-          brandName: draft.form.brand || s.brandName,
-        }))
-        const images = [
-          ...(draft.form.content?.heroImages ?? []),
-          ...(draft.form.content?.detailImages ?? []),
-        ].filter(Boolean)
+        setSpec((s) => applyDraftPrefill(s, draft.form as DraftPrefillSource))
+        const images = draftSourceImageUrls(draft.form.content)
         if (images.length > 0) setSourceUrls(images.slice(0, MAX_SOURCE_IMAGES))
       })
       .catch((e) => setError(e instanceof Error ? e.message : '드래프트 로드 실패'))
@@ -123,10 +147,6 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
   }
 
   async function submit() {
-    if (!localCodexAvailable) {
-      setError(LOCAL_CODEX_NOTICE)
-      return
-    }
     if (!spec.productName.trim()) {
       setError('상품명을 입력하세요.')
       return
@@ -137,19 +157,24 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
     }
     setSubmitting(true)
     setError(null)
+    const roles = showPhotoRoles ? rolesForUrls(photoRoles, sourceUrls) : []
+    const sourcePhotoRolesField = roles.length > 0 ? { sourcePhotoRoles: roles } : {}
+    const ownSalesFields = ownSalesSpecFields(ownSales)
+    const jobBusinessId = businessId ?? (ownSalesFields.ownSalesProductIds ? ownSalesBusinessId : null)
     try {
       const { jobId } = await pdpApi<{ jobId: string }>('/api/registration/pdp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           draftId,
-          businessId: businessId ?? undefined,
-          specSheet: { ...spec, productName: spec.productName.trim() },
+          businessId: jobBusinessId ?? undefined,
+          specSheet: { ...spec, productName: spec.productName.trim(), ...sourcePhotoRolesField, ...ownSalesFields },
           sourceImages: sourceUrls,
           imageModel: model,
           imageQuality: quality,
           mode,
           generationTrack: track,
+          modelBatch: batch,
         }),
       })
       try {
@@ -167,46 +192,29 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
 
   const busy = submitting
 
+  function recordDims(url: string, width: number, height: number) {
+    setImageDims((prev) =>
+      prev[url]?.width === width && prev[url]?.height === height ? prev : { ...prev, [url]: { width, height } }
+    )
+  }
+
   return (
     <div className="space-y-4">
-      {/* 참조 이미지 */}
-      <section className="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
-        <div className="text-sm font-semibold text-slate-700">참조 이미지 (1~{MAX_SOURCE_IMAGES}장)</div>
-        <div className="flex items-center gap-2 flex-wrap">
-          {sourceUrls.map((url) => (
-            <div key={url} className="relative">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={url} alt="참조 이미지" className="w-20 h-20 rounded object-cover border border-slate-200" />
-              <button
-                onClick={() => setSourceUrls((prev) => prev.filter((u) => u !== url))}
-                disabled={busy}
-                className="absolute -top-1.5 -right-1.5 bg-slate-600 text-white rounded-full p-0.5 hover:bg-slate-800 disabled:opacity-50"
-                aria-label="이미지 제거"
-              >
-                <X className="w-3 h-3" />
-              </button>
-            </div>
-          ))}
-          {sourceUrls.length < MAX_SOURCE_IMAGES && (
-            <button
-              onClick={() => fileRef.current?.click()}
-              disabled={uploading || busy}
-              className="w-20 h-20 rounded border border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400 hover:border-brand-400 hover:text-brand-500 disabled:opacity-50"
-            >
-              {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImagePlus className="w-4 h-4" />}
-              <span className="text-[10px] mt-1">업로드</span>
-            </button>
-          )}
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/png,image/jpeg,image/webp"
-            multiple
-            className="hidden"
-            onChange={(e) => uploadFiles(e.target.files)}
-          />
-        </div>
-      </section>
+      {/* 참조 이미지 — 순서·대표·빼기·역할(결정 카드 c12) */}
+      <PdpFormPhotos
+        urls={sourceUrls}
+        onUrlsChange={setSourceUrls}
+        roles={photoRoles}
+        onRolesChange={setPhotoRoles}
+        showRoles={showPhotoRoles}
+        imageDims={imageDims}
+        onDims={recordDims}
+        maxImages={MAX_SOURCE_IMAGES}
+        uploading={uploading}
+        busy={busy}
+        fileRef={fileRef}
+        onFiles={uploadFiles}
+      />
 
       <PdpFormProductInfo
         spec={spec}
@@ -215,6 +223,8 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
         onCategoryModeChange={setCategoryMode}
         disabled={busy}
       />
+
+      <PdpOwnSales businessId={ownSalesBusinessId} value={ownSales} onChange={setOwnSales} disabled={busy} />
 
       {/* 모드 선택 */}
       <section className="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
@@ -263,14 +273,18 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
         </p>
       </section>
 
+      <PdpFormBatch batch={batch} onChange={setBatch} disabled={busy} />
+
       {/* 이미지 모델·품질 */}
       <section className="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
         <SectionTitle>이미지 모델</SectionTitle>
         <ImageModelSelect
+          models={PDP_IMAGE_MODELS}
           model={model}
           quality={quality}
           imageCount={ESTIMATED_IMAGE_COUNT[mode]}
-          disabled={busy}
+          // 새 배치는 이미지 모델을 배치가 정한다(MS 2k) — 고르지 않게 막는다
+          disabled={busy || batch === 'new'}
           onModelChange={setModel}
           onQualityChange={setQuality}
         />
@@ -281,8 +295,7 @@ export function PdpForm({ draftId, onCreated }: { draftId?: string; onCreated: (
 
       <button
         onClick={submit}
-        disabled={!localCodexAvailable || busy}
-        title={localCodexAvailable ? undefined : LOCAL_CODEX_NOTICE}
+        disabled={busy}
         className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs px-4 py-2 rounded-full bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50"
       >
         {busy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5" />}

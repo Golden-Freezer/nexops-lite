@@ -14,6 +14,8 @@
  * key_benefit_visual·premium_hero·concept_mood.)
  */
 
+import { FIRST_RANK_PATTERN, detectCertType, hasCertWord } from '@/lib/registration/pdp-pro-copy-templates'
+
 export type ProImageType =
   | 'certification_badge'
   | 'event_banner'
@@ -36,9 +38,10 @@ interface ProImagePromptTemplate {
 export const PRO_IMAGE_PROMPTS: Record<ProImageType, ProImagePromptTemplate> = {
   certification_badge: {
     positive:
-      'Holographic authentication sticker for Korean e-commerce product verification. ' +
-      'Iridescent prismatic square sticker with rainbow light refraction, security micro-patterns, ' +
-      'holographic foil effect with color-shifting surface. Anti-counterfeit verification seal. ' +
+      // 정품 인증·위조 방지 실(seal)처럼 보이게 하지 않는다 — 입력에 없는 검증 사칭(P0-1b). 장식용 홀로그램 그래픽만
+      'Decorative holographic sticker graphic for a Korean e-commerce detail page. ' +
+      'Iridescent prismatic square sticker with rainbow light refraction, fine geometric micro-patterns, ' +
+      'holographic foil effect with color-shifting surface. Purely decorative, not an authentication or verification seal. ' +
       'Clean dark background (#1a1a1a). ' +
       'No text, no letters, no words — pure holographic graphic pattern only.',
     negative:
@@ -159,14 +162,14 @@ export interface ProImagePromptSlots {
 /** PRO_IMAGE_PROMPTS[imgType].positive의 슬롯을 치환한다(image_generation_agent.py:1136-1148 상당). */
 export function buildProImagePrompt(imgType: ProImageType, slots: ProImagePromptSlots): string {
   return PRO_IMAGE_PROMPTS[imgType].positive
-    .replace('{product_name}', slots.productName ?? '')
-    .replace('{PRODUCT_CONSISTENCY_RULES}', slots.productConsistencyRules ?? '')
-    .replace('{problem_context}', slots.problemContext ?? '')
-    .replace('{product_context}', slots.productContext ?? '')
-    .replace('{key_benefit}', slots.keyBenefit ?? '')
-    .replace('{brand_mood}', slots.brandMood ?? '')
-    .replace('{palette_colors}', slots.paletteColors ?? '')
-    .replace('{palette_description}', slots.paletteDescription ?? '')
+    .replace('{product_name}', () => slots.productName ?? '')
+    .replace('{PRODUCT_CONSISTENCY_RULES}', () => slots.productConsistencyRules ?? '')
+    .replace('{problem_context}', () => slots.problemContext ?? '')
+    .replace('{product_context}', () => slots.productContext ?? '')
+    .replace('{key_benefit}', () => slots.keyBenefit ?? '')
+    .replace('{brand_mood}', () => slots.brandMood ?? '')
+    .replace('{palette_colors}', () => slots.paletteColors ?? '')
+    .replace('{palette_description}', () => slots.paletteDescription ?? '')
 }
 
 /**
@@ -183,24 +186,20 @@ export function buildEmpathySceneProPrompt(slots: ProImagePromptSlots, problemSc
 
 export type CertificationType = 'genuine' | 'ranking' | 'award' | 'safety'
 
-// NEXFIT image_generation_agent.py:1163-1165 — copywriting_agent와 동일 로직(감사 원문 주석)
-const RANKING_CERT_KEYWORDS = ['1위', '랭킹', '순위', '판매량', '올리브영', '쿠팡', '베스트', 'TOP', '인기']
-const AWARD_CERT_KEYWORDS = ['레드닷', 'iF', '어워드', '수상', '디자인상']
-const SAFETY_CERT_KEYWORDS = ['KC', 'FDA', 'ISO', 'CE', 'GMP', 'HACCP', 'KFDA', 'UL', 'ROHS', '특허', '식약처']
-
-/** cert_type 감지 순수 함수 — 판정 순서(ranking→award→safety→genuine)는 원문 그대로. */
+/**
+ * cert_type 감지 — NEXFIT image_generation_agent.py:1163-1165. 인증 카피 템플릿과 같은 판정을 쓴다(P0-1b: 플랫폼 이름·'인기'·
+ * '판매량'만으로는 순위가 아니다 — 입력 '쿠팡 입점'에 No.1 왕관을 그리지 않는다, 영문 약칭은 낱말 경계)
+ */
 export function detectCertificationType(certificationInfo: string): CertificationType {
-  if (RANKING_CERT_KEYWORDS.some((kw) => certificationInfo.includes(kw))) return 'ranking'
-  if (AWARD_CERT_KEYWORDS.some((kw) => certificationInfo.includes(kw))) return 'award'
-  if (SAFETY_CERT_KEYWORDS.some((kw) => certificationInfo.includes(kw))) return 'safety'
-  return 'genuine'
+  return detectCertType(certificationInfo)
 }
 
-// NEXFIT image_generation_agent.py:1183-1190
-const RANKING_CERT_PROMPT =
-  "No.1 crown emblem for best-selling product. " +
+// NEXFIT image_generation_agent.py:1183-1190 — 숫자 '1'은 입력에 1위·No.1이 있을 때만(P0-1b)
+const RANKING_CERT_PROMPT = (first: boolean) =>
+  (first ? 'No.1 crown emblem for best-selling product. ' : 'Laurel wreath emblem for a featured product. ') +
   'Royal crown combined with laurel wreath emblem design, metallic gold finish, ' +
-  "number '1' prominently featured in center. Victory and excellence symbolism. " +
+  (first ? "number '1' prominently featured in center. " : 'no numbers. ') +
+  'Victory and excellence symbolism. ' +
   'Clean dark background (#1a1a1a). Professional premium quality. ' +
   'No text, no letters, no words — pure graphic emblem only.'
 
@@ -220,9 +219,10 @@ const SAFETY_CERT_MARK_PROMPTS: Record<string, string> = {
   HACCP:
     'HACCP food safety certification logo — official blue and white HACCP emblem, ' +
     'hexagonal shape with checkmark, clean professional certification mark on dark background (#1a1a1a).',
+  // 미국 정부 공식 인장은 흉내 내지 않는다(등록을 승인처럼 보이게 하는 사칭 — P0-1b). 약칭 글자만 든 일반 원형 배지
   FDA:
-    'FDA approval seal — official United States Food and Drug Administration emblem, ' +
-    'circular blue seal with eagle, professional government certification on dark background (#1a1a1a).',
+    "Simple circular registration badge with the initials 'FDA' only — generic emblem, not an official government seal, " +
+    'no eagle, no agency insignia, clean vector-style on dark background (#1a1a1a).',
   ISO:
     'ISO international standard certification — circular ISO emblem with globe design, ' +
     'blue and silver tones, official standardization mark on dark background (#1a1a1a).',
@@ -234,15 +234,16 @@ const SAFETY_CERT_MARK_PROMPTS: Record<string, string> = {
     'European standard certification symbol on dark background (#1a1a1a).',
 }
 
-// NEXFIT image_generation_agent.py:1232-1236 — 매칭 키워드 없을 때 기본값
+// NEXFIT image_generation_agent.py:1232-1236 — 매칭 키워드 없을 때 기본값. 정부·기관 공식 인장처럼 보이게 하지 않는다(P0-1b —
+// 특허·식약처·KFDA·UL 등 마크가 따로 없는 입력에 기관 인장을 지어내지 않는다)
 const DEFAULT_SAFETY_CERT_PROMPT =
-  'Official safety certification seal — clean professional certification emblem, ' +
-  'authoritative government-style mark, blue and silver tones on dark background (#1a1a1a).'
+  'Simple certification badge — clean generic emblem with a checkmark, ' +
+  'not an official government or agency seal, blue and silver tones on dark background (#1a1a1a).'
 
-/** safety 세부 마크(KC/HACCP/FDA/ISO/GMP/CE) 첫 매치 선택 — 원문 dict 순회 순서 그대로. */
+/** safety 세부 마크(KC/HACCP/FDA/ISO/GMP/CE) 첫 매치 선택 — 원문 dict 순회 순서 그대로, 영문 약칭은 낱말 경계('KCL'은 KC 아님) */
 function matchSafetyCertMarkPrompt(certificationInfo: string): string {
   for (const key of Object.keys(SAFETY_CERT_MARK_PROMPTS)) {
-    if (certificationInfo.includes(key)) return SAFETY_CERT_MARK_PROMPTS[key]
+    if (hasCertWord(certificationInfo, key)) return SAFETY_CERT_MARK_PROMPTS[key]
   }
   return DEFAULT_SAFETY_CERT_PROMPT
 }
@@ -260,7 +261,7 @@ export function buildCertificationBadgePrompt(certificationInfo: string): string
     case 'genuine':
       return PRO_IMAGE_PROMPTS.certification_badge.positive
     case 'ranking':
-      return RANKING_CERT_PROMPT
+      return RANKING_CERT_PROMPT(FIRST_RANK_PATTERN.test(certificationInfo))
     case 'award':
       return AWARD_CERT_PROMPT
     case 'safety':

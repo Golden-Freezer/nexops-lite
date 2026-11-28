@@ -15,6 +15,7 @@ import {
 import { isAllowedEditorFont } from '@/lib/registration/editor/constants/fonts';
 import { measureTextBlock } from '@/lib/registration/editor/utils/sectionConverter/measure';
 import { isFullBleedClosure } from '@/lib/registration/editor/utils/sectionConverter';
+import { isAnnotationElement, TABLE_NAME_ELEMENT } from '@/lib/registration/editor/utils/mobileReadability';
 
 /**
  * 섹션에 새 레이아웃 프리셋을 적용한다.
@@ -39,14 +40,44 @@ export type PresetApplyMode = 'full' | 'placement-only';
 
 export interface ApplyPresetOptions {
   mode?: PresetApplyMode;
+  /**
+   * 최초 자동 적용(R4 렌더 리듬 잡) — 매칭 안 된 슬롯을 빈 글자·빈 사진 요소로 만들지 않는다. 내용 없는 칸이 짙은 띠 아래
+   * 빈 영역을 만들었다(R4 심사 P02·P07 해결 섹션의 빈 body 슬롯). 편집기에서 고른 레이아웃은 그대로 빈 칸을 둔다(채워 넣을 자리).
+   */
+  omitEmptySlots?: boolean;
+}
+
+/** 옵션 갤러리(T6b, optionGallery.ts) 요소 이름 — 이벤트 옵션 섹션의 option_title·option_0·option_img와 기존 petit_div 알약(petit_opt_*)은 해당하지 않는다 */
+const OPTION_GALLERY_ELEMENT = /^option_(?:card|chip|qty|size_row|bundle|representative|axis|more)(?:_|$)/;
+
+/**
+ * 옵션 카드 섹션인가(R4) — 프리셋은 요소를 슬롯에 하나씩 옮겨 카드 바탕·사진·라벨이 서로 다른 자리로 흩어진다(카드 배치가 깨진다).
+ * 이 섹션에는 프리셋을 적용하지 않는다: 초기 자동 적용(applyLayoutPresetIfSafe → null)과 편집기 레이아웃 목록(LayoutLibrary) 모두.
+ */
+export function isOptionGallerySection(section: Pick<CanvasSection, 'elements'>): boolean {
+  return section.elements.some((el) => OPTION_GALLERY_ELEMENT.test(el.name));
+}
+
+/**
+ * 강조 장식(T4)은 프리셋 매칭·유실 가드에 넣지 않는다 — 레이아웃이 바뀌면 원본 투영 좌표가 맞지 않아 함께 걷어낸다.
+ * 표 이름(TABLE_NAME_ELEMENT)은 장식 규칙만 따르는 내용이라 남긴다 — 걷어내면 표에 값만 남는다(K2).
+ */
+const isDecoration = (el: CanvasElement) => isAnnotationElement(el) && el.name !== TABLE_NAME_ELEMENT;
+function withoutAnnotations(section: CanvasSection): CanvasSection {
+  return section.elements.some(isDecoration)
+    ? { ...section, elements: section.elements.filter((el) => !isDecoration(el)) }
+    : section;
 }
 
 export function applyLayoutPreset(
-  section: CanvasSection,
+  sectionIn: CanvasSection,
   preset: LayoutPreset,
   palette?: DesignPalette | null,
   options?: ApplyPresetOptions,
 ): CanvasSection {
+  // 옵션 카드 섹션은 배치를 그대로 둔다(isOptionGallerySection) — 화면 경로가 막지만 호출부가 늘어도 카드가 깨지지 않게
+  if (isOptionGallerySection(sectionIn)) return sectionIn;
+  const section = withoutAnnotations(sectionIn);
   const mode = options?.mode ?? 'full';
 
   // 트랙 C-3: 배경값의 {{palette.*}} 토큰을 브랜드 팔레트로 해석
@@ -141,7 +172,17 @@ export function applyLayoutPreset(
   }
 
   // required slot 보강 (프리셋 필수 슬롯 누락 방지)
-  const withRequired = ensureRequiredSlots(newElements, preset, section.id, groupFonts);
+  const required = ensureRequiredSlots(newElements, preset, section.id, groupFonts);
+  // R4: 최초 자동 적용은 내용 없이 새로 만든 슬롯 요소를 뺀다 — 유실 가드(applyLayoutPresetIfSafe)는 적용 전에 끝났고
+  // 기존 요소는 하나도 빼지 않는다. 뺀 요소의 매칭 기록도 지운다
+  const originalIds = new Set(section.elements.map((el) => el.id));
+  const withRequired = options?.omitEmptySlots
+    ? required.filter((el) => originalIds.has(el.id) || !isEmptySlotElement(el))
+    : required;
+  if (withRequired.length !== required.length) {
+    const kept = new Set(withRequired.map((el) => el.id));
+    for (const id of Object.keys(slotAssignments)) if (!kept.has(id)) delete slotAssignments[id];
+  }
 
   // 섹션 라벨 헤더: fit 패스 '전에' 68px로 강제 + fontSize 잠금.
   // 잠금 시 fit이 축소하지 않고, 대신 높이 성장 + 아래 요소 캐스케이드로
@@ -288,11 +329,13 @@ const INITIAL_APPLY_MAX_UNMATCHED_RATIO = 0.3;
  * 호출부는 기존 빌더 레이아웃을 유지한다.
  */
 export function applyLayoutPresetIfSafe(
-  section: CanvasSection,
+  sectionIn: CanvasSection,
   preset: LayoutPreset,
   palette?: DesignPalette | null,
   options?: ApplyPresetOptions,
 ): CanvasSection | null {
+  if (isOptionGallerySection(sectionIn)) return null;
+  const section = withoutAnnotations(sectionIn);
   const contentEls = section.elements.filter(isContentBearing);
   const { matched, unmatchedElements } = matchElementsToSlots(
     section.elements,
@@ -581,6 +624,8 @@ function applyImageSlotStyle(
         slotHeight,
       );
     }
+    // 카드 사진 모서리(옵션 카드 — 카드 바탕 위 끝에 맞춘 반경)는 그 자리에서만 맞다. 슬롯으로 옮긴 사진은 각진 모서리로 되돌린다
+    delete nextProps.borderRadii;
     updated.imageProps = nextProps;
   }
 
@@ -675,6 +720,13 @@ function fitTextAndCascade(
 // ─────────────────────────────────────────────
 
 /** 콘텐츠(텍스트 내용/이미지/카드)를 실제로 보유한 요소인지 — 장식과 구분 */
+/** 내용 없는 슬롯 요소 — 빈 글자 또는 src 없는 사진(createSlotElement·ensureRequiredSlots가 만든 자리) */
+function isEmptySlotElement(el: CanvasElement): boolean {
+  if (el.type === 'text') return !(el.textProps?.content ?? '').trim();
+  if (el.type === 'image') return !el.imageProps?.src;
+  return false;
+}
+
 export function isContentBearing(el: CanvasElement): boolean {
   switch (el.type) {
     case 'text':
