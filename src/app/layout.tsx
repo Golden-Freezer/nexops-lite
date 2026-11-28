@@ -38,7 +38,7 @@ export default function RootLayout({
       <head>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+          href="/fonts/pdp/fonts.css"
         />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
